@@ -455,6 +455,364 @@
 
 
 
+    /* Main */
+
+main{
+    width:100%;
+    height:100dvh;
+    padding:var(--size1);
+    box-sizing:border-box;
+
+    position:absolute;
+    top:110vh;
+    left:0;
+
+    background-color:rgb(0,0,0,0);
+    transition:all 0.15s, top 0.5s, width 0s, height 0s;
+    z-index:100;
+}
+
+.main-wrapper{
+    height:100%;
+    display:flex;
+    gap:var(--size1);
+}
+
+.hide-modal main{
+    top:0;
+}
+
+.dock{
+    padding:var(--size1);
+    box-sizing:border-box;
+
+    background-color:var(--shade3);
+    border-radius:var(--mainRadius1);
+    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+
+    backdrop-filter:blur(4px);
+    transition:0.15s;
+}
+
+.dock-inner{
+    padding:var(--size1);
+    box-sizing:border-box;
+
+    background-color:var(--shade1);
+    border-radius:var(--mainRadius1);
+    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+
+    transition:0.15s;
+}  
+
+        /* Main - media */
+
+@media screen and (width <= 768px){
+
+    .dock{
+        backdrop-filter:blur(0);
+    }
+
+}
+
+
+
+    /* Page Content */
+
+.page-content{
+    flex:1;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    gap:var(--size1);
+}
+
+.sections{
+    flex:1;
+}
+
+    /* Page Content - Nav */
+
+nav{
+    --elemSize:70px;
+
+    display:flex;
+    justify-content:center;
+}
+
+.nav-inner{
+    padding:0 var(--size1);
+    position:relative;
+    
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-elem{
+    height:var(--elemSize);
+    aspect-ratio:1/1;
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+}
+
+.nav-icon{
+    position:relative;
+    bottom:0;
+    left:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:0.35s;
+    z-index:10000;
+}
+
+.curr-section .nav-icon{
+    bottom:calc(var(--elemSize) * -0.5);
+}
+
+.nav-icon svg{
+    width:calc(80% - 20px);
+    transition:0.35s;
+}
+
+.nav-icon svg *{
+    stroke:var(--txt1);
+    stroke-width:16px;
+    transition:0.35s;
+}
+
+.curr-section .nav-icon svg *{
+    stroke:#FFF;
+}
+
+.nav-txt{
+    position:absolute;
+    top:-5px;
+    left:50%;
+    transform:translate(-50%, 0) rotate3d(1, 0, 0, -90deg);
+    transform-origin:center center;
+
+    color:var(--txt1);
+    font-family:font1-semibold;
+    text-transform:uppercase;
+
+    opacity:0.5;
+    transition:all 0.15s, top 0.35s, transform 0.35s;
+}
+
+.curr-section .nav-txt{
+    top:12px;
+    opacity:1;
+    transform:translate(-50%, 0) rotate3d(1, 0, 0, 0);
+}
+
+        /* Nav Mark */
+
+.nav-mark{
+    width:var(--elemSize);
+    aspect-ratio:1/1;
+    padding:10px;
+    box-sizing:border-box;
+
+    position:absolute;
+    bottom:calc(var(--elemSize) * -0.5);
+
+    border-radius:50%;
+    transition:0.35s;
+}
+
+.nav-mark:before{
+    content:"";
+    width:100%;
+    height:calc(50% + 10px);
+
+    position:absolute;
+    bottom:calc(50% - 10px);
+    left:0;
+    
+    background-color:var(--shade3);
+    box-shadow:inset var(--box-shadow1) var(--wrapperColor1), inset var(--box-shadow2) var(--wrapperColor1);
+    clip-path:inset(-10px -10px 10px -10px);
+    border-radius:100px 100px 0 0;
+
+    transition:0.15s;
+}
+
+.nav-mark:after{
+    content:"";
+    width:calc(100% - 20px);
+    aspect-ratio:1/1;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    
+    background-image:radial-gradient(var(--color1), var(--color1), var(--color1a));
+    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+    border-radius:50%;
+
+    transition:0.15s;
+    z-index:10;
+}
+
+.nav-inner:has(:nth-of-type(1).curr-section) .nav-mark{
+    left:var(--size1);
+}
+.nav-inner:has(:nth-of-type(2).curr-section) .nav-mark{
+    left:calc(var(--size1) + var(--elemSize));
+}
+.nav-inner:has(:nth-of-type(3).curr-section) .nav-mark{
+    left:calc(var(--size1) + var(--elemSize) * 2);
+}
+.nav-inner:has(:nth-of-type(4).curr-section) .nav-mark{
+    left:calc(var(--size1) + var(--elemSize) * 3);
+}
+.nav-inner:has(:nth-of-type(5).curr-section) .nav-mark{
+    left:calc(var(--size1) + var(--elemSize) * 4);
+}
+.nav-inner:has(:nth-of-type(6).curr-section) .nav-mark{
+    left:calc(var(--size1) + var(--elemSize) * 5);
+}
+
+.nav-circle{
+    width:100%;
+    height:100%;
+    background-color:var(--color1);
+    border-radius:50%;
+}
+
+            /* Nav Mark - Arcs */
+
+.nav-arc,
+.nav-arc-bg{
+    width:16px;
+    aspect-ratio:1/1;
+    position:absolute;
+    bottom:calc(var(--elemSize) / 2);
+
+    background:var(--shade1);
+    transition:0.15s;
+    z-index:100;
+}
+
+.nav-arc{
+    filter:brightness(97%);
+}
+.dark-mode .nav-arc{
+    filter:brightness(125%);
+}
+
+.nav-arc1{
+    left:-14px;
+    border-bottom-right-radius:50px;
+    box-shadow:var(--box-shadow1) var(--wrapperColor1),
+        var(--box-shadow2) var(--wrapperColor1),
+        3px 3px 0 3px var(--shade3);
+    clip-path:inset(0 0 0 0);
+}
+
+.nav-arc2{
+    right:-14px;
+    border-bottom-left-radius:50px;
+    box-shadow:var(--box-shadow1) var(--wrapperColor1),
+        var(--box-shadow2) var(--wrapperColor1),
+        -3px 3px 0 3px var(--shade3);
+    clip-path:inset(0 0 0 0);
+}
+
+.nav-inner:has(:nth-of-type(1).curr-section) :is(.nav-arc1, .nav-arc-bg1),
+.nav-inner:has(:nth-last-child(2).curr-section) :is(.nav-arc2, .nav-arc-bg2){
+    bottom:calc((var(--elemSize) / 2) + 4px);
+    clip-path:inset(0 0 -4px 0);
+}
+
+.nav-arc-bg{
+    width:18px;
+}
+
+.nav-arc-bg1{
+    left:-15px;
+    border-bottom-right-radius:50px;
+}
+
+.nav-arc-bg2{
+    right:-15px;
+    border-bottom-left-radius:50px;
+}
+
+
+
+
+
+
+
+
+
+
+    /* Sections */
+
+.section{
+    width:calc(100% - var(--size1) * 2);
+    height:calc(100% - var(--size1) * 2);
+
+    position:absolute;
+    top:var(--size1);
+    left:calc(-100% - 25vw);
+
+    transition:all 0.15s, left 0.35s;
+}
+
+.visible-section{
+    left:var(--size1);
+}
+
+
+
+
+
+
+
+
+
+
+
+    /* PDF Content */
+
+.pdf-content{
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.pdfc-inner{
+    height:100%;
+    aspect-ratio:1/1.414; /* A4 aspect ratio */
+    padding:var(--size1);
+    box-sizing:border-box;
+
+    background-color:var(--shade1);
+    border-radius:var(--mainRadius1);
+    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+}
+
+
+
+
+
+
+
+
 
 
 

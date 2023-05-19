@@ -184,6 +184,7 @@ html, body{
 
 html{
     position:relative;
+    overflow:hidden;
 }
 
 body{
@@ -197,28 +198,6 @@ body{
 
 .hide-modal{
     overflow-y:auto;
-}
-
-.page-content{
-    width:100%;
-    position:absolute;
-    top:0;
-}
-
-.page-ready .page-content{
-    top:110vh;
-}
-
-.hide-modal .page-content{
-    top:0;
-}
-
-.page-content-transition .page-content{
-    transition:0.5s;
-}
-
-body:not(.page-ready) .page-content *:not(.main-bg-grad, .main-background){
-    display:none;
 }
 
         /* Fonts */
@@ -311,7 +290,7 @@ h6{
     /* Wrapper - change body content margins */
 
 .wrapper{
-    max-width:1200px;
+    max-width:1440px;
     padding:var(--size1);
     margin:0 auto;
     box-sizing:border-box;
@@ -426,16 +405,9 @@ main{
 }
 
 .main-wrapper{
-    margin:var(--size1) auto;
+    margin:0 auto;
     padding:0;
     position:relative;
-
-    background-color:var(--shade3);
-    border-radius:var(--mainRadius1);
-    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
-
-    backdrop-filter:blur(4px);
-    transition:0.15s;
 }
 
 .main-module-content{

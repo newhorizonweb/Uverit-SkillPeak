@@ -24,7 +24,7 @@
     <script src="int_resources/js/index.js" defer></script>
 </head>
     
-<body>
+<body class="hide-modal">
 
     <!-- LANDING PAGE -->
     <section class="landing-page">
@@ -68,22 +68,93 @@
         <input type="checkbox" class="dm-btn" id="dmtoggle">
         <label for="dmtoggle" class="dm-label"></label>
     </div>
-    
-    <main>
-        
-    <!-- MAIN-MODULE -->
-        <div class="main-wrapper wrapper">
-            <div class="main-module-content">
 
-                <nav>
-                    
+    <!-- MAIN -->   
+    <main>
+        <div class="main-wrapper wrapper">
+
+            <section class="page-content">
+
+                <nav class="dock">
+                    <div class="nav-inner dock-inner">
+
+                        <div class="nav-elem nav-elem1 curr-section" data-link="section1">
+                            <div class="nav-icon">010</div>
+                            <div class="nav-txt">111</div>
+                        </div>
+                        <div class="nav-elem nav-elem2" data-link="section2">
+                            <div class="nav-icon">020</div>
+                            <div class="nav-txt">222</div>
+                        </div>
+                        <div class="nav-elem nav-elem3" data-link="section3">
+                            <div class="nav-icon">030</div>
+                            <div class="nav-txt">333</div>
+                        </div>
+                        <div class="nav-elem nav-elem4" data-link="section4">
+                            <div class="nav-icon">040</div>
+                            <div class="nav-txt">444</div>
+                        </div>
+                        <div class="nav-elem nav-elem5" data-link="section5">
+                            <div class="nav-icon">050</div>
+                            <div class="nav-txt">555</div>
+                        </div>
+                        <div class="nav-elem nav-elem6" data-link="section6">
+                            <div class="nav-icon">060</div>
+                            <div class="nav-txt">666</div>
+                        </div>
+
+                        <div class="nav-mark">
+                            <div class="nav-arc nav-arc1"></div>
+                            <div class="nav-arc-bg nav-arc-bg1"></div>
+
+                            <div class="nav-circle"></div>
+
+                            <div class="nav-arc nav-arc2"></div>
+                            <div class="nav-arc-bg nav-arc-bg2"></div>
+                        </div>
+
+                    </div>
                 </nav>
 
-            </div>
-        </div>
-     <!-- /MAIN-MODULE -->
+                <div class="sections dock">
+                    <div class="section section1 dock-inner visible-section" data-link="section1">
+                        
+                    </div>
 
+                    <div class="section section2 dock-inner" data-link="section2">
+
+                    </div>
+
+                    <div class="section section3 dock-inner" data-link="section3">
+
+                    </div>
+
+                    <div class="section section1 dock-inner" data-link="section4">
+                        
+                    </div>
+
+                    <div class="section section2 dock-inner" data-link="section5">
+
+                    </div>
+
+                    <div class="section section3 dock-inner" data-link="section6">
+
+                    </div>
+                </div>
+
+            </section>
+
+
+
+            <section class="pdf-content dock">
+                <div class="pdfc-inner dock-inner">
+
+                </div>
+            </section>
+            
+        </div>
     </main>
+    <!-- /MAIN -->
 
 </body>
 </html>
