@@ -474,12 +474,21 @@ main{
 
 .main-wrapper{
     height:100%;
+
     display:flex;
+    flex-direction:column;
     gap:var(--size1);
 }
 
 .hide-modal main{
     top:0;
+}
+
+.page-content{
+    flex:1;
+    width:100%;
+    display:flex;
+    gap:var(--size1);
 }
 
 .dock{
@@ -517,29 +526,17 @@ main{
 
 
 
-    /* Page Content */
-
-.page-content{
-    flex:1;
-    height:100%;
-
-    display:flex;
-    flex-direction:column;
-    gap:var(--size1);
-}
-
-.sections{
-    flex:1;
-}
-
-    /* Page Content - Nav */
+    /* Nav */
 
 nav{
     --elemSize:70px;
 
+    width:100%;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
 }
+
+        /* Nav Inner */
 
 .nav-inner{
     padding:0 var(--size1);
@@ -550,8 +547,9 @@ nav{
 }
 
 .nav-elem{
-    height:var(--elemSize);
+    width:var(--elemSize);
     aspect-ratio:1/1;
+    padding:0 3px;
     position:relative;
 
     display:flex;
@@ -560,6 +558,13 @@ nav{
     align-items:center;
 
     cursor:pointer;
+}
+
+.nav-elem:nth-of-type(1){
+    padding-left:0;
+}
+.nav-elem:nth-last-child(2){
+    padding-right:0;
 }
 
 .nav-icon{
@@ -580,17 +585,20 @@ nav{
 }
 
 .nav-icon svg{
-    width:calc(80% - 20px);
-    transition:0.35s;
+    width:calc(80% - 24px);
 }
 
 .nav-icon svg *{
     stroke:var(--txt1);
-    stroke-width:16px;
-    transition:0.35s;
+    stroke-width:10px;
+    transition:0.15s;
 }
 
-.curr-section .nav-icon svg *{
+.nav-elem:hover .nav-icon svg *{
+    stroke:var(--color1);
+}
+
+.nav-elem.curr-section .nav-icon svg *{
     stroke:#FFF;
 }
 
@@ -602,6 +610,7 @@ nav{
     transform-origin:center center;
 
     color:var(--txt1);
+    font-size:13px;
     font-family:font1-semibold;
     text-transform:uppercase;
 
@@ -615,7 +624,7 @@ nav{
     transform:translate(-50%, 0) rotate3d(1, 0, 0, 0);
 }
 
-        /* Nav Mark */
+            /* Nav - Mark */
 
 .nav-mark{
     width:var(--elemSize);
@@ -647,6 +656,10 @@ nav{
     transition:0.15s;
 }
 
+.nav-mark.mark-invisible:before{
+    height:0;
+}
+
 .nav-mark:after{
     content:"";
     width:calc(100% - 20px);
@@ -665,33 +678,34 @@ nav{
     z-index:10;
 }
 
-.nav-inner:has(:nth-of-type(1).curr-section) .nav-mark{
+.nav-mark.mark-invisible:after{
+    top:80%;
+    opacity:0;
+}
+
+.nav-inner:has(:nth-of-type(1).curr-pos) .nav-mark{
     left:var(--size1);
 }
-.nav-inner:has(:nth-of-type(2).curr-section) .nav-mark{
-    left:calc(var(--size1) + var(--elemSize));
+.nav-inner:has(:nth-of-type(2).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px));
 }
-.nav-inner:has(:nth-of-type(3).curr-section) .nav-mark{
-    left:calc(var(--size1) + var(--elemSize) * 2);
+.nav-inner:has(:nth-of-type(3).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px) * 2);
 }
-.nav-inner:has(:nth-of-type(4).curr-section) .nav-mark{
-    left:calc(var(--size1) + var(--elemSize) * 3);
+.nav-inner:has(:nth-of-type(4).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px) * 3);
 }
-.nav-inner:has(:nth-of-type(5).curr-section) .nav-mark{
-    left:calc(var(--size1) + var(--elemSize) * 4);
+.nav-inner:has(:nth-of-type(5).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px) * 4);
 }
-.nav-inner:has(:nth-of-type(6).curr-section) .nav-mark{
-    left:calc(var(--size1) + var(--elemSize) * 5);
+.nav-inner:has(:nth-of-type(6).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px) * 5);
 }
-
-.nav-circle{
-    width:100%;
-    height:100%;
-    background-color:var(--color1);
-    border-radius:50%;
+.nav-inner:has(:nth-of-type(7).curr-pos) .nav-mark{
+    left:calc(var(--size1) + (var(--elemSize) + 6px) * 6);
 }
 
-            /* Nav Mark - Arcs */
+                /* Nav Mark - Arcs */
 
 .nav-arc,
 .nav-arc-bg{
@@ -703,6 +717,11 @@ nav{
     background:var(--shade1);
     transition:0.15s;
     z-index:100;
+}
+
+.mark-invisible :is(.nav-arc, .nav-arc-bg){
+    width:0;
+    opacity:0;
 }
 
 .nav-arc{
@@ -750,6 +769,81 @@ nav{
     border-bottom-left-radius:50px;
 }
 
+        /* Function Nav */
+
+.function-nav{
+    flex:1;
+    height:100%;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:calc(var(--size1) / 2);
+}
+
+.fn-btn{
+    height:50px;
+    aspect-ratio:1/1;
+    padding:6px;
+    box-sizing:border-box;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-color:var(--shade1);
+    border:solid 2px var(--color1);
+    border-radius:var(--mainRadius1);
+
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.fn-btn:hover{
+    background-color:var(--color1);
+}
+
+.fn-btn svg{
+    width:32px;
+    aspect-ratio:1/1;
+    transition:0.25s;
+}
+
+.fn-btn svg *{
+    stroke:var(--txt1);
+    stroke-width:10px;
+    transition:0.1s;
+}
+
+.fn-btn:hover svg *{
+    stroke:#FFF;
+}
+
+
+            /* Function Nav - Settings Button */
+
+.fn-btn.open-settings{
+    background-color:var(--color1);
+}
+
+.fn-btn.open-settings svg{
+    transform:rotate(180deg);
+}
+
+.fn-btn.open-settings svg *{
+    stroke:#FFF;
+}
+
+        /* Nav - media */
+
+
+
+
+
+
+
+
+
 
 
 
@@ -760,6 +854,10 @@ nav{
 
 
     /* Sections */
+
+.sections{
+    flex:1;
+}
 
 .section{
     width:calc(100% - var(--size1) * 2);
@@ -786,24 +884,148 @@ nav{
 
 
 
+
+
+
+
     /* PDF Content */
 
 .pdf-content{
     height:100%;
     display:flex;
-    justify-content:center;
-    align-items:center;
 }
 
 .pdfc-inner{
-    height:100%;
+    min-height:100%;
     aspect-ratio:1/1.414; /* A4 aspect ratio */
     padding:var(--size1);
     box-sizing:border-box;
 
-    background-color:var(--shade1);
+    background-color:#FFF;
     border-radius:var(--mainRadius1);
     box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+}
+
+.pdfc-inner::-webkit-scrollbar{
+    width:8px;
+}
+
+.pdfc-inner::-webkit-scrollbar-thumb{
+    background:var(--txt-faded3);
+    border:solid 3px transparent;
+    border-top-width:var(--size1);
+    border-bottom-width:var(--size1);
+    background-clip:padding-box;
+}
+
+.pdfc-inner::-webkit-scrollbar-thumb:hover{
+    background:var(--txt-faded);
+    border:solid 3px transparent;
+    border-top-width:var(--size1);
+    border-bottom-width:var(--size1);
+    background-clip:padding-box;
+}
+
+.pdfc-inner::-webkit-scrollbar-corner{
+    background:transparent;
+}
+
+.pdfc-inner-inner{
+    width:100%;
+}
+
+        /* PDF Content - Expand */
+
+.pdf-expanded :is(nav, .sections){
+    display:none;
+}
+
+.pdf-expanded .pdf-content{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%, 0);
+    overflow:hidden;
+}    
+
+.pdf-expanded .pdfc-inner{
+    aspect-ratio:auto;
+    overflow:overlay;
+}
+
+.pdf-expanded .pdfc-inner-inner{
+    width:min(1000px, calc(100vw - (var(--size1) * 6)));
+    aspect-ratio:1/1.414; /* A4 aspect ratio */
+    overflow:hidden;
+}
+
+            /* PDF Content - Close Button */
+
+.close-pdf-btn{
+    width:36px;
+    height:36px;
+    box-sizing:border-box;
+    display:none;
+
+    position:absolute;
+    top:calc(var(--size1) + 8px);
+    right:calc(var(--size1) + 8px);
+
+    border:2px solid var(--txt1);
+    border-radius:50%;
+    opacity:0.6;
+
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.pdf-expanded .close-pdf-btn{
+    display:flex;
+}
+
+.close-pdf-btn:hover{
+    opacity:1;
+}
+
+.close-pdf-btn span{
+    width:84%;
+    height:6px;
+    box-sizing:border-box;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    background-color:var(--shade1);
+    border:solid 2px var(--txt1);
+    border-radius:200px;
+    transition:0.15s;
+}
+
+.close-pdf-btn:hover span{
+    border:solid 2px var(--color1);
+}
+
+.close-pdf-btn span:nth-of-type(1){
+    transform:translate(-50%, -50%) rotate(-45deg);
+}
+
+.close-pdf-btn span:nth-of-type(2){
+    transform:translate(-50%, -50%) rotate(45deg);
+}
+
+.close-pdf-btn span:nth-of-type(2):after{
+    content:"";
+    width:10px;
+    height:2px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-90deg);
+
+    background-color:var(--shade1);
+    z-index:1000;
 }
 
 
@@ -821,15 +1043,9 @@ nav{
 
 
 
+    /* Settings */
 
-
-
-
-
-
-
-
-    /* Dark Mode */
+        /* Dark Mode */
 
 .dark-mode-div{
     display:flex;

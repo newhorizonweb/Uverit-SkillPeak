@@ -22,6 +22,7 @@
     <!-- Scripts -->
     <script src="int_resources/js/ScriptPackSP.js" defer></script>
     <script src="int_resources/js/index.js" defer></script>
+    <script src="int_resources/js/icons.js" defer></script>
 </head>
     
 <body class="hide-modal">
@@ -64,93 +65,158 @@
     <div class="main-background"></div>
     <!-- /BACKGROUND -->
 
-    <div class="dark-mode-div">
-        <input type="checkbox" class="dm-btn" id="dmtoggle">
-        <label for="dmtoggle" class="dm-label"></label>
-    </div>
-
     <!-- MAIN -->   
     <main>
         <div class="main-wrapper wrapper">
 
-            <section class="page-content">
+            <nav class="dock">
 
-                <nav class="dock">
-                    <div class="nav-inner dock-inner">
+                <div class="nav-inner dock-inner">
 
-                        <div class="nav-elem nav-elem1 curr-section" data-link="section1">
-                            <div class="nav-icon">010</div>
-                            <div class="nav-txt">111</div>
-                        </div>
-                        <div class="nav-elem nav-elem2" data-link="section2">
-                            <div class="nav-icon">020</div>
-                            <div class="nav-txt">222</div>
-                        </div>
-                        <div class="nav-elem nav-elem3" data-link="section3">
-                            <div class="nav-icon">030</div>
-                            <div class="nav-txt">333</div>
-                        </div>
-                        <div class="nav-elem nav-elem4" data-link="section4">
-                            <div class="nav-icon">040</div>
-                            <div class="nav-txt">444</div>
-                        </div>
-                        <div class="nav-elem nav-elem5" data-link="section5">
-                            <div class="nav-icon">050</div>
-                            <div class="nav-txt">555</div>
-                        </div>
-                        <div class="nav-elem nav-elem6" data-link="section6">
-                            <div class="nav-icon">060</div>
-                            <div class="nav-txt">666</div>
-                        </div>
-
-                        <div class="nav-mark">
-                            <div class="nav-arc nav-arc1"></div>
-                            <div class="nav-arc-bg nav-arc-bg1"></div>
-
-                            <div class="nav-circle"></div>
-
-                            <div class="nav-arc nav-arc2"></div>
-                            <div class="nav-arc-bg nav-arc-bg2"></div>
-                        </div>
-
+                    <div class="nav-elem nav-elem1 curr-section curr-pos" data-link="section1">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Design</div>
                     </div>
-                </nav>
+                    <div class="nav-elem nav-elem2" data-link="section2">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Profile</div>
+                    </div>
+                    <div class="nav-elem nav-elem3" data-link="section3">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Experience</div>
+                    </div>
+                    <div class="nav-elem nav-elem4" data-link="section4">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Education</div>
+                    </div>
+                    <div class="nav-elem nav-elem5" data-link="section5">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Courses</div>
+                    </div>
+                    <div class="nav-elem nav-elem6" data-link="section6">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">Skills</div>
+                    </div>
+                    <div class="nav-elem nav-elem7" data-link="section7">
+                        <div class="nav-icon"></div>
+                        <div class="nav-txt">References</div>
+                    </div>
 
-                <div class="sections dock">
+                    <div class="nav-mark">
+                        <div class="nav-arc nav-arc1"></div>
+                        <div class="nav-arc-bg nav-arc-bg1"></div>
+                        <div class="nav-arc nav-arc2"></div>
+                        <div class="nav-arc-bg nav-arc-bg2"></div>
+                    </div>
+
+                </div>
+
+                <div class="function-nav">
+                    <div class="fn-btn expand-pdf-btn"></div>
+
+                    <div class="fn-btn pdf-btn"></div>
+
+                    <div class="fn-btn settings-btn"></div>
+                </div>
+
+            </nav>
+
+            <div class="page-content">
+
+                <section class="sections dock">
+
                     <div class="section section1 dock-inner visible-section" data-link="section1">
                         
                     </div>
+
+
 
                     <div class="section section2 dock-inner" data-link="section2">
 
                     </div>
 
+
+
                     <div class="section section3 dock-inner" data-link="section3">
 
                     </div>
 
-                    <div class="section section1 dock-inner" data-link="section4">
+
+
+                    <div class="section section4 dock-inner" data-link="section4">
                         
                     </div>
 
-                    <div class="section section2 dock-inner" data-link="section5">
+
+
+                    <div class="section section5 dock-inner" data-link="section5">
 
                     </div>
 
-                    <div class="section section3 dock-inner" data-link="section6">
+
+
+                    <div class="section section6 dock-inner" data-link="section6">
 
                     </div>
-                </div>
-
-            </section>
 
 
 
-            <section class="pdf-content dock">
-                <div class="pdfc-inner dock-inner">
+                    <div class="section section7 dock-inner" data-link="section7">
 
-                </div>
-            </section>
+                    </div>
+
+
+
+                    <div class="section section3 dock-inner" data-link="settings-section">
+                        <div class="dark-mode-div">
+                            <input type="checkbox" class="dm-btn" id="dmtoggle">
+                            <label for="dmtoggle" class="dm-label"></label>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="pdf-content dock">
+
+                    <div class="close-pdf-btn">
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="pdfc-inner dock-inner">
+                        <div class="pdfc-inner-inner">
+
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br>placeholder<br>
+                            test<br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder<br>
+                            test<br><br><br>placeholder
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
             
         </div>
     </main>
