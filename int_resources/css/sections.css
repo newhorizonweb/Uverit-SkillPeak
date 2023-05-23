@@ -1,0 +1,23 @@
+    
+    
+
+    /* Sections */
+
+.sections{
+    flex:1;
+}
+
+.section{
+    width:calc(100% - var(--size1) * 2);
+    height:calc(100% - var(--size1) * 2);
+
+    position:absolute;
+    top:var(--size1);
+    left:calc(-100% - 25vw);
+
+    transition:all 0.15s, left 0.35s;
+}
+
+.visible-section{
+    left:var(--size1);
+}

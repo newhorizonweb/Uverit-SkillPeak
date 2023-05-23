@@ -455,77 +455,6 @@
 
 
 
-    /* Main */
-
-main{
-    width:100%;
-    height:100dvh;
-    padding:var(--size1);
-    box-sizing:border-box;
-
-    position:absolute;
-    top:110vh;
-    left:0;
-
-    background-color:rgb(0,0,0,0);
-    transition:all 0.15s, top 0.5s, width 0s, height 0s;
-    z-index:100;
-}
-
-.main-wrapper{
-    height:100%;
-
-    display:flex;
-    flex-direction:column;
-    gap:var(--size1);
-}
-
-.hide-modal main{
-    top:0;
-}
-
-.page-content{
-    flex:1;
-    width:100%;
-    display:flex;
-    gap:var(--size1);
-}
-
-.dock{
-    padding:var(--size1);
-    box-sizing:border-box;
-
-    background-color:var(--shade3);
-    border-radius:var(--mainRadius1);
-    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
-
-    backdrop-filter:blur(4px);
-    transition:0.15s;
-}
-
-.dock-inner{
-    padding:var(--size1);
-    box-sizing:border-box;
-
-    background-color:var(--shade1);
-    border-radius:var(--mainRadius1);
-    box-shadow:var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
-
-    transition:0.15s;
-}  
-
-        /* Main - media */
-
-@media screen and (width <= 768px){
-
-    .dock{
-        backdrop-filter:blur(0);
-    }
-
-}
-
-
-
     /* Nav */
 
 nav{
@@ -789,7 +718,7 @@ nav{
 }
 
 .nav-close span{
-    width:40px;
+    width:55%;
     height:6px;
     box-sizing:border-box;
 
@@ -815,7 +744,7 @@ nav{
 }
 
 .nav-close:hover span{
-    width:32px;
+    width:45%;
     border:solid 2px var(--color1);
 }
 
@@ -846,7 +775,7 @@ nav{
 }
 
 .fn-btn{
-    height:50px;
+    height:calc(var(--elemSize) - 20px);
     aspect-ratio:1/1;
     padding:6px;
     box-sizing:border-box;
@@ -991,25 +920,25 @@ nav{
         top:7px;
     }
     .open-nav:has(:nth-of-type(1).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) + 7px);
     }
     .open-nav:has(:nth-of-type(2).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 2 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 2 + 7px);
     }
     .open-nav:has(:nth-of-type(3).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 3 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 3 + 7px);
     }
     .open-nav:has(:nth-of-type(4).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 4 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 4 + 7px);
     }
     .open-nav:has(:nth-of-type(5).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 5 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 5 + 7px);
     }
     .open-nav:has(:nth-of-type(6).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 6 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 6 + 7px);
     }
     .open-nav:has(:nth-of-type(7).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * 0.8 * 7 + 7px);
+        top:calc(var(--elemSize) * var(--elemRatio) * 7 + 7px);
     }
 
     .nav-arc,
@@ -1019,39 +948,63 @@ nav{
 
 }
 
+@media screen and (width <= 440px){
 
+    nav{
+        --elemSize:60px;
+    }
 
+    .nav-close span{
+        border:solid 1.25px var(--txt1);
+    }
 
+    .nav-close:hover span{
+        border:solid 1.25px var(--color1);
+    }
 
+    .nav-close span:nth-of-type(2):after{
+        height:3.5px;
+    }
 
-
-
-
-
-
-
-
-
-    /* Sections */
-
-.sections{
-    flex:1;
 }
 
-.section{
-    width:calc(100% - var(--size1) * 2);
-    height:calc(100% - var(--size1) * 2);
+@media screen and (width <= 320px){
 
-    position:absolute;
-    top:var(--size1);
-    left:calc(-100% - 25vw);
+    nav{
+        --elemSize:50px;
+    }
 
-    transition:all 0.15s, left 0.35s;
+    .nav-icon svg{
+        width:calc(95% - 24px);
+    }
+
+    .nav-mark:after{
+        width:calc(100% - 12px);
+    }
+
+    .function-nav{
+        gap:6px;
+    }
+
+    .fn-btn{
+        height:calc(var(--elemSize) - 12px);
+    }
+    
 }
 
-.visible-section{
-    left:var(--size1);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1072,6 +1025,7 @@ nav{
 .pdf-content{
     height:100%;
     display:flex;
+    align-items:center;
 }
 
 .pdfc-inner{
@@ -1124,10 +1078,14 @@ nav{
     top:0;
     left:50%;
     transform:translate(-50%, 0);
+
+    justify-content:center;
     overflow:hidden;
 }    
 
 .pdf-expanded .pdfc-inner{
+    min-height:auto;
+    max-height:100%;
     aspect-ratio:auto;
     overflow:overlay;
 }
@@ -1150,6 +1108,7 @@ nav{
     top:calc(var(--size1) + 8px);
     right:calc(var(--size1) + 8px);
 
+    background-color:var(--shade1);
     border:2px solid var(--txt1);
     border-radius:50%;
     opacity:0.6;
@@ -1167,7 +1126,7 @@ nav{
 }
 
 .close-pdf-btn span{
-    width:26px;
+    width:80%;
     height:6px;
     box-sizing:border-box;
 
@@ -1183,7 +1142,7 @@ nav{
 }
 
 .close-pdf-btn:hover span{
-    width:22px;
+    width:70%;
     border:solid 2px var(--color1);
 }
 
@@ -1210,6 +1169,81 @@ nav{
     background-color:var(--shade1);
     z-index:1000;
 }
+
+        /* PDF Content - media */
+
+@media screen and (width <= 1200px){
+
+    .pdf-content{
+        display:none;
+    }   
+
+    .pdf-expanded .pdf-content{
+        display:flex;
+    }
+
+}
+
+@media screen and (width <= 768px){
+
+    .pdf-expanded .pdf-content{
+        width:100%;
+    }    
+    
+    .pdf-expanded .pdfc-inner{
+        height:100%;
+        max-width:calc(100vw - (var(--size1) * 4));
+    }
+
+    .pdf-expanded .pdfc-inner-inner{
+        height:100%;
+        width:auto;
+        aspect-ratio:1/1.414; /* A4 aspect ratio */
+    }
+
+    .pdfc-inner::-webkit-scrollbar{
+        width:auto;
+        height:8px;
+    }
+
+    .pdfc-inner::-webkit-scrollbar-thumb{
+        border:solid 3px transparent;
+        border-left-width:var(--size1);
+        border-right-width:var(--size1);
+        background-clip:padding-box;
+    }
+
+    .pdfc-inner::-webkit-scrollbar-thumb:hover{
+        border:solid 3px transparent;
+        border-left-width:var(--size1);
+        border-right-width:var(--size1);
+        background-clip:padding-box;
+    }
+
+
+
+}
+
+@media screen and (width <= 540px){
+
+    .pdf-expanded .pdfc-inner{
+        max-width:calc(100vw - (var(--size1) * 2));
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
