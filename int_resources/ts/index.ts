@@ -4,7 +4,7 @@
     /* Program Settings */
 
 // Program Version
-const programVersion:string = "v0.3.2";
+const programVersion:string = "v0.3.3";
 
 
 
@@ -50,7 +50,11 @@ cvBtn!.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", function(){
 
+
+
     //*--|*|--*\\_____// Navigation \\_____//*--|*|--*\\
+
+
 
     const navInner:HTMLElement | null = document.querySelector(".nav-inner");
     const navElements:NodeListOf<Element> = document.querySelectorAll(".nav-elem");
@@ -154,17 +158,116 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
+    //*--|*|--*\\_____// Section Navigation \\_____//*--|*|--*\\
 
 
 
+    const secNavPrev:HTMLElement | null = document.querySelector(".sec-nav-prev");
+    const secNavNext:HTMLElement | null = document.querySelector(".sec-nav-next");
 
+    function findCurrElem(){
+        const navElemArr:Element[] = Array.from(navElements);
 
+        let elemIndex:number = navElemArr.findIndex(function(element){
+            return element.classList.contains("curr-section");
+        });
 
+        return elemIndex;
+    }
 
+    function navigateToSection(actElemIndex, actElemPos){
+
+        // Remove the class from the settings button
+        settingsBtn?.classList.remove("open-settings");
+
+        // Add a class to the nav element
+        removeNavClass();
+        navElements[actElemIndex].classList.add("curr-section");
+        navElements[actElemIndex].classList.add("curr-pos");
+        
+
+        // Add a class to the action section
+        const sectionIndex:string = "section" + actElemPos;
+
+        sections.forEach((section) => {
+            const sectionLink:string | null = section.getAttribute("data-link");
+            section.classList.remove("visible-section");
+
+            if (sectionIndex === sectionLink){
+                section.classList.add("visible-section");
+            }
+        });
+    }
+
+    // Prev
+    secNavPrev?.addEventListener("click", function(){
+
+        // Find the current nav section element
+        findCurrElem();
+        const elemIndex = findCurrElem();
+        const navElemArr:Element[] = Array.from(navElements);
+
+        const elemPos:number = elemIndex + 1;
+        let actElemPos:number = 0;
+
+        let actElemIndex:number = 0;
+
+        // Current position
+        if (elemPos !== 1){
+            actElemPos = elemPos - 1;
+        } else {
+            actElemPos = navElemArr.length;
+        }
+
+        // Previous element index
+        if (elemIndex !== 0){
+            actElemIndex = elemIndex - 1;
+        } else {
+            actElemIndex = navElemArr.length - 1;
+        }
+
+        // Change the current nav element and section
+        navigateToSection(actElemIndex, actElemPos);
+
+    });
+
+    // Next
+    secNavNext?.addEventListener("click", function(){
+
+        // Find the current nav section element
+        findCurrElem();
+        const elemIndex = findCurrElem();
+        const navElemArr:Element[] = Array.from(navElements);
+
+        const elemPos:number = elemIndex + 1;
+        let actElemPos:number = 0;
+
+        let actElemIndex:number = 0;
+
+        // Current position
+        if (elemPos !== navElemArr.length){
+            actElemPos = elemPos + 1;
+        } else {
+            actElemPos = 1;
+        }
+
+        // Next element index
+        if (elemIndex !== navElemArr.length - 1){
+            actElemIndex = elemIndex + 1;
+        } else {
+            actElemIndex = 0;
+        }
+
+        // Change the current nav element and section
+        navigateToSection(actElemIndex, actElemPos);
+
+    });
 
 
 
     //*--|*|--*\\_____// Scroll \\_____//*--|*|--*\\
+
+
 
     function topPageScroll(){
         window.scrollTo(0, 0);

@@ -590,8 +590,6 @@ nav{
     box-shadow:inset var(--box-shadow1) var(--wrapperColor1), inset var(--box-shadow2) var(--wrapperColor1);
     clip-path:inset(-10px -10px 10px -10px);
     border-radius:100px 100px 0 0;
-
-    transition:0.15s;
 }
 
 .nav-mark.mark-invisible:before{
@@ -653,7 +651,6 @@ nav{
     bottom:calc(var(--elemSize) / 2);
 
     background:var(--shade1);
-    transition:0.15s;
     z-index:100;
 }
 
@@ -994,32 +991,6 @@ nav{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* PDF Content */
 
 .pdf-content{
@@ -1220,8 +1191,6 @@ nav{
         background-clip:padding-box;
     }
 
-
-
 }
 
 @media screen and (width <= 540px){
@@ -1231,27 +1200,6 @@ nav{
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
