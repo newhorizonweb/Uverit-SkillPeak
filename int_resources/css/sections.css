@@ -144,9 +144,15 @@
 
         /* Sections - Heading */
 
-.sec-head{
+.section-heading{
+    width:100%;
     padding-bottom:var(--size1);
 
+    display:flex;
+    justify-content:center;
+}
+
+.sec-head{
     background:linear-gradient(to right,
         var(--color1a), var(--color1), var(--color2), var(--color2a));
     -webkit-background-clip:text;
@@ -210,7 +216,7 @@
 
 .add-btn span{
     width:70%;
-    height:4px;
+    height:3px;
 
     position:absolute;
     top:50%;
@@ -261,9 +267,6 @@
     }
 
 }
-
-
-
 
 
 

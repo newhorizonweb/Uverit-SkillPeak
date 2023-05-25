@@ -4,7 +4,7 @@
     /* Program Settings */
 
 // Program Version
-const programVersion:string = "v0.3.3";
+const programVersion:string = "v0.3.4";
 
 
 
@@ -82,6 +82,11 @@ document.addEventListener("DOMContentLoaded", function(){
             this.classList.add("curr-section");
             this.classList.add("curr-pos");
 
+            // Remove the "nav-not-opened" class
+            navElements.forEach((navElem) => {
+                navElem.classList.remove("nav-not-opened");
+            });
+
             // Remove the class from the settings button
             settingsBtn?.classList.remove("open-settings");
 
@@ -106,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     // Hide Nav (smaller screen sizes)
-
     function closeNav(){
         navInner?.classList.remove("open-nav");
     }
@@ -177,6 +181,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function navigateToSection(actElemIndex, actElemPos){
 
+        // Add a "nav-not-opened" class
+        navElements.forEach((navElem) => {
+            navElem.classList.add("nav-not-opened");
+        });
+
         // Remove the class from the settings button
         settingsBtn?.classList.remove("open-settings");
 
@@ -184,8 +193,9 @@ document.addEventListener("DOMContentLoaded", function(){
         removeNavClass();
         navElements[actElemIndex].classList.add("curr-section");
         navElements[actElemIndex].classList.add("curr-pos");
-        
 
+
+    
         // Add a class to the action section
         const sectionIndex:string = "section" + actElemPos;
 
