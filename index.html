@@ -23,10 +23,14 @@
     <link rel="preload" href="int_resources/css/sections.css" as="style">
     <link rel="stylesheet" type="text/css" href="int_resources/css/sections.css" media="screen">
     
+    <link rel="preload" href="int_resources/css/pdf.css" as="style">
+    <link rel="stylesheet" type="text/css" href="int_resources/css/pdf.css" media="screen">
+    
     <!-- Scripts -->
     <script src="int_resources/js/ScriptPackSP.js" defer></script>
     <script src="int_resources/js/index.js" defer></script>
     <script src="int_resources/js/icons.js" defer></script>
+    <script src="int_resources/js/sections.js" defer></script>
 </head>
     
 <body class="hide-modal">
@@ -141,36 +145,95 @@
             <h3 class="sec-head">Profile</h3>
         </div>
         
-        <h4 class="sec-subhead">References & Privacy Policy</h4>
+        <div class="subsection sec-details">
+            <h4 class="sec-subhead">Details</h4>
 
-        <div class="subsection subsection1">
+            <div class="section-item">
+                <label for="sec-first-name">First Name*</label>
+                <input type="text" id="sec-first-name" 
+                    class="sec-input inp-add sec-first-name" data-output="pdf-first-name">
+            </div>
 
-            <div class="add-btn">
+            <div class="section-item">
+                <label for="sec-last-name">Last Name*</label>
+                <input type="text" id="sec-last-name" 
+                    class="sec-input inp-add sec-last-name" data-output="pdf-last-name">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-occupation">Occupation</label>
+                <input type="text" id="sec-occupation" 
+                    class="sec-input inp-add sec-occupation" data-output="pdf-occupation">
+            </div>
+        </div>
+
+        <div class="subsection sec-contact">
+            <h4 class="sec-subhead">Contact</h4>
+
+            <div class="section-item">
+                <label for="sec-email">E-Mail*</label>
+                <input type="email" id="sec-email" 
+                    class="sec-input inp-add sec-email" data-output="pdf-email">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-phone">Phone Number</label>
+                <input type="tel" id="sec-phone" 
+                    class="sec-input inp-add sec-phone" data-output="pdf-phone">
+            </div>
+        </div>
+
+        <div class="subsection sec-address">
+            <h4 class="sec-subhead">Address</h4>
+
+            <div class="section-item">
+                <label for="sec-country">Country</label>
+                <input type="text" id="sec-country" 
+                    class="sec-input inp-add sec-country" data-output="pdf-country">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-city">City</label>
+                <input type="text" id="sec-city" 
+                    class="sec-input inp-add sec-city" data-output="pdf-city">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-post-code">Postal Code</label>
+                <input type="tel" id="sec-post-code" 
+                    class="sec-input inp-add sec-post-code" data-output="pdf-post-code">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-address">Address</label>
+                <input type="text" id="sec-address" 
+                    class="sec-input inp-add sec-address" data-output="pdf-address">
+            </div>
+
+            <div class="section-item">
+                <label for="sec-dob">Date of Birth</label>
+                <input type="date" id="sec-dob" 
+                    class="sec-input inp-add sec-dob" data-output="pdf-dob">
+            </div>
+        </div>
+
+        <div class="subsection sec-summary">
+            <h4 class="sec-subhead">Summary</h4>
+            <p class="sec-desc">Highlight your key qualifications, skills, and accomplishments in 2-4 short sentences. Tailor it to the specific job, focusing on your unique selling points.</p>
+
+            <div class="section-item">
+                <textarea id="sec-summary" maxlength="320" placeholder="My summary (max 320 characters)" aria-label="Professional Summary"
+                    class="sec-input inp-add sec-textarea sec-summary" data-output="pdf-summary"></textarea>
+            </div>
+        </div>
+
+        <div class="subsection sec-links">
+            <h4 class="sec-subhead">Links</h4>
+
+            <div class="add-btn add-link">
                 <span></span>
                 <span></span>
             </div>
-
-            <input type="text" class="sec-input">
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
-<br>aaaaa<br>
         </div>
 
     </div>
@@ -253,14 +316,27 @@
 
                     <div class="section-nav">
                         <div class="sec-nav-btn sec-nav-prev">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <div class="sec-nav-arrow">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="sec-nav-arrow">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>Prev</p>
                         </div>
+
                         <div class="sec-nav-btn sec-nav-next">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <p>Next</p>
+                            <div class="sec-nav-arrow">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="sec-nav-arrow">
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
 
@@ -276,31 +352,25 @@
                     <div class="pdfc-inner dock-inner">
                         <div class="pdfc-inner-inner">
 
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br>placeholder<br>
-                            test<br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder<br>
-                            test<br><br><br>placeholder
+                            <p class="pdf-first-name"></p>
+                            <p class="pdf-last-name"></p>
+                            <p class="pdf-occupation"></p>
+                            <br>
+                            <br>
+                            <p class="pdf-email"></p>
+                            <p class="pdf-phone"></p>
+                            <br>
+                            <br>
+                            <p class="pdf-country"></p>
+                            <p class="pdf-city"></p>
+                            <p class="pdf-post-code"></p>
+                            <p class="pdf-address"></p>
+                            <p class="pdf-dob"></p>
+                            <br>
+                            <br>
+                            <p class="pdf-summary"></p>
+
+                            <div class="pdf-links"></div>
 
                         </div>
                     </div>
