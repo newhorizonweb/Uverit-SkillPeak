@@ -1,4 +1,19 @@
 //*--|*|--*\\_____// Inputs \\_____//*--|*|--*\\
+const inputElements = document.querySelectorAll(".inp-add");
+// Add output elements (for each .inp-add element)
+function addOutputElements() {
+    inputElements.forEach(function (inputElem) {
+        const outputClass = inputElem.getAttribute("data-output");
+        const output = document.querySelector("." + outputClass);
+        inputElem.addEventListener("input", function () {
+            // Change the element value to the input value
+            if (output) {
+                output.innerHTML = inputElem.value;
+            }
+        });
+    });
+}
+addOutputElements();
 // Insert value into the output
 function addOutput(inputElem) {
     const outputClass = inputElem.getAttribute("data-output");
@@ -12,6 +27,21 @@ function addOutput(inputElem) {
 }
 // Append output
 function appendOutput(appendTo, inputElem) {
+    const outputClass = inputElem.getAttribute("data-output");
+    // Create an element and append it
+    const pdfOutput = document.createElement("p");
+    pdfOutput.classList.add(outputClass);
+    appendTo?.appendChild(pdfOutput);
+    inputElem.addEventListener("input", function () {
+        // Change the element value to the input value
+        const output = document.querySelector("." + outputClass);
+        if (output) {
+            output.innerHTML = inputElem.value;
+        }
+    });
+}
+// Append output that is removed when there's no value
+function appendRemoveableOutput(appendTo, inputElem) {
     let hasVal = false;
     const outputClass = inputElem.getAttribute("data-output");
     inputElem.addEventListener("input", function () {
@@ -37,19 +67,6 @@ function appendOutput(appendTo, inputElem) {
         }
     });
 }
-// Append output
-function addOutput2() {
-    inputElements.forEach(function (inputElem) {
-        const outputClass = inputElem.getAttribute("data-output");
-        const output = document.querySelector("." + outputClass);
-        inputElem.addEventListener("input", function () {
-            // Change the element value to the input value
-            if (output) {
-                output.innerHTML = inputElem.value;
-            }
-        });
-    });
-}
 /*
 const pdfElem:HTMLElement | null = document.querySelector(".pdfc-inner-inner");
 
@@ -62,15 +79,20 @@ appendOutput(pdfElem, secInput2);
 const pdfName:HTMLInputElement | null = document.querySelector(".sec-name");
 addOutput(pdfName);
 */
-const inputElements = document.querySelectorAll(".inp-add");
-addOutput2();
 //*--|*|--*\\_____// Create Inputs \\_____//*--|*|--*\\
 const pdfLinks = document.querySelector(".section1 .sec-links");
+const pdfLinksOutput = document.querySelector(".pdf-links");
 const addLinkBtn = document.querySelector(".add-link");
+// Change the label text to the input value
+function changeLabel(inputElem, labelElem) {
+    inputElem.addEventListener("input", function () {
+        labelElem.innerHTML = inputElem.value;
+    });
+}
+// Add the link elements
 let linkIndex = 0;
 addLinkBtn?.addEventListener("click", function () {
     const linkNumber = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
-    ;
     if (linkNumber < 5) {
         // Create a link div
         const newLinkDiv = document.createElement("div");
@@ -112,15 +134,29 @@ addLinkBtn?.addEventListener("click", function () {
         /* Delete Link Button */
         const deleteLinkBtn = document.createElement("div");
         deleteLinkBtn.classList.add("delete-btn", "delete-link");
-        deleteLinkBtn.addEventListener("click", function () {
-            newLinkDiv.remove();
-        });
+        deleteLinkBtn.setAttribute("delete-name", "pdf-link-name" + linkIndex);
+        deleteLinkBtn.setAttribute("delete-url", "pdf-link-url" + linkIndex);
         /* Append */
-        // Append the link name and url divs
+        // Append the link name and url divs to the section
         newLinkDiv?.appendChild(createSecElem1);
         newLinkDiv?.appendChild(createSecElem2);
         newLinkDiv?.appendChild(deleteLinkBtn);
-        pdfLinks?.prepend(newLinkDiv);
+        pdfLinks?.appendChild(newLinkDiv);
+        // Append the link name and url output to the pdf
+        appendOutput(pdfLinksOutput, newInput1);
+        appendOutput(pdfLinksOutput, newInput2);
+        // Set focus on the input
+        newInput1.focus();
+        // Change the input label
+        changeLabel(newInput1, newLabel1);
+        // Delete the link in the PDF
+        deleteLinkBtn.addEventListener("click", function () {
+            const pdfNameElemClass = document.querySelector("." + deleteLinkBtn.getAttribute("delete-name"));
+            const pdfUrlElemClass = document.querySelector("." + deleteLinkBtn.getAttribute("delete-url"));
+            pdfNameElemClass?.remove();
+            pdfUrlElemClass?.remove();
+            newLinkDiv.remove();
+        });
         // Add 1 to the index
         linkIndex++;
     }

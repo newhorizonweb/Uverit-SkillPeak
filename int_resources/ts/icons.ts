@@ -36,13 +36,13 @@ const gearIcon:string = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www
 
     /* Insert Nav Icons */
 
-document.querySelector(".nav-elem1 .nav-icon")!.innerHTML = colorPaletteIcon;
-document.querySelector(".nav-elem2 .nav-icon")!.innerHTML = userIcon;
-document.querySelector(".nav-elem3 .nav-icon")!.innerHTML = briefcaseIcon;
-document.querySelector(".nav-elem4 .nav-icon")!.innerHTML = graduationHatIcon;
-document.querySelector(".nav-elem5 .nav-icon")!.innerHTML = courseIcon;
-document.querySelector(".nav-elem6 .nav-icon")!.innerHTML = lightBulbIcon;
-document.querySelector(".nav-elem7 .nav-icon")!.innerHTML = referencesIcon;
+document.querySelector(".nav-elem1 .nav-icon")!.innerHTML = userIcon;
+document.querySelector(".nav-elem2 .nav-icon")!.innerHTML = briefcaseIcon;
+document.querySelector(".nav-elem3 .nav-icon")!.innerHTML = graduationHatIcon;
+document.querySelector(".nav-elem4 .nav-icon")!.innerHTML = courseIcon;
+document.querySelector(".nav-elem5 .nav-icon")!.innerHTML = lightBulbIcon;
+document.querySelector(".nav-elem6 .nav-icon")!.innerHTML = referencesIcon;
+document.querySelector(".nav-elem7 .nav-icon")!.innerHTML = colorPaletteIcon;
 
 
 
