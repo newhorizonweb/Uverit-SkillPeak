@@ -273,6 +273,10 @@
     cursor:pointer;
 }
 
+.sec-input.validation-failed{
+    box-shadow:var(--box-shadow3) var(--color2);
+}
+
 .sec-textarea{
     width:100%;
     height:160px;

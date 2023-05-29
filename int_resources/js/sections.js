@@ -1,3 +1,50 @@
+//*--|*|--*\\_____// Validation \\_____//*--|*|--*\\
+const allSectionsArr = Array.from(document.querySelectorAll(".section"));
+const inputsVal = document.querySelectorAll(".inp-val");
+const pdfBtn = document.querySelector(".pdf-btn");
+let isValidated = false;
+function inputValidation() {
+    isValidated = true;
+    inputsVal.forEach((input) => {
+        const closestSecIndex = allSectionsArr.indexOf(input.closest(".section")) + 1;
+        const closestNavElem = document.querySelector(".nav-elem"
+            + closestSecIndex);
+        const closestSecElem = document.querySelector(".section"
+            + closestSecIndex);
+        if (!input.value) {
+            closestNavElem.classList.add("validation-failed");
+            input.classList.add("validation-failed");
+            isValidated = false;
+        }
+        else {
+            input.classList.remove("validation-failed");
+            let hasValInp = true;
+            inputsVal.forEach((input) => {
+                if (closestSecElem?.contains(input) && !input.value) {
+                    hasValInp = false;
+                }
+            });
+            if (hasValInp) {
+                closestNavElem.classList.remove("validation-failed");
+            }
+        }
+    });
+}
+let clickedPdfBtn = false;
+pdfBtn.addEventListener("click", function () {
+    inputValidation();
+    if (!clickedPdfBtn) {
+        inputsVal.forEach(function (inpVal) {
+            inpVal.addEventListener("input", function () {
+                inputValidation();
+            });
+        });
+    }
+    if (isValidated) {
+        window.print();
+    }
+    clickedPdfBtn = true;
+});
 //*--|*|--*\\_____// Inputs \\_____//*--|*|--*\\
 const inputElements = document.querySelectorAll(".inp-add");
 // Add output elements (for each .inp-add element)

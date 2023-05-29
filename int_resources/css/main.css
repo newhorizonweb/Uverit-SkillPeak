@@ -540,6 +540,10 @@ nav{
     transition-delay:0.05s;
 }
 
+.nav-elem.validation-failed:not(.curr-section) .nav-icon svg *{
+    stroke:var(--color2);
+}
+
 .nav-txt{
     position:absolute;
     top:-5px;
@@ -560,6 +564,10 @@ nav{
     top:12px;
     opacity:1;
     transform:translate(-50%, 0) rotate3d(1, 0, 0, 0);
+}
+
+.nav-elem.validation-failed .nav-txt{
+    color:var(--color2);
 }
 
             /* Nav - Mark */
@@ -596,8 +604,7 @@ nav{
     height:0;
 }
 
-.nav-mark:after{
-    content:"";
+.nav-mark-inner{
     width:calc(100% - 20px);
     aspect-ratio:1/1;
 
@@ -639,6 +646,26 @@ nav{
 }
 .nav-inner:has(:nth-of-type(7).curr-pos) .nav-mark{
     left:calc(var(--size1) + (var(--elemSize) + 6px) * 6);
+}
+
+.nav-mark-inner:after{
+    content:"";
+    width:100%;
+    aspect-ratio:1/1;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    opacity:0;
+    background-image:radial-gradient(var(--color2), var(--color2), var(--color2a));
+    border-radius:50%;
+    transition:0.1s;
+}
+
+.nav-inner:has(.nav-elem.curr-pos.validation-failed) .nav-mark-inner:after{
+    opacity:1;
 }
 
                 /* Nav Mark - Arcs */
