@@ -145,31 +145,57 @@
         <div class="section-heading">
             <h3 class="sec-head">Profile</h3>
         </div>
-        
+
+
         <div class="subsection sec-details">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Details</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <div class="section-item">
-                <label for="sec-first-name">First Name*</label>
-                <input type="text" id="sec-first-name" 
-                    class="sec-input inp-add sec-first-name inp-val" data-output="pdf-first-name">
+            <div class="file-drop-div">
+                <div class="drop-zone"></div>
+
+                <div class="file-drop-buttons">
+                    <input type="file" id="lm-file" class="lm-file" accept=".jpeg, .png, .svg" hidden>
+                    <label for="lm-file" class="lm-file-btn">select file</label>
+
+                    <div class="delete-file">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
 
-            <div class="section-item">
-                <label for="sec-last-name">Last Name*</label>
-                <input type="text" id="sec-last-name" 
-                    class="sec-input inp-add sec-last-name inp-val" data-output="pdf-last-name">
+            <div class="sec-details-inputs">
+                <div class="section-item">
+                    <label for="sec-first-name">First Name*</label>
+                    <input type="text" id="sec-first-name" 
+                        class="sec-input inp-add sec-first-name inp-val" data-output="pdf-first-name">
+                </div>
+
+                <div class="section-item">
+                    <label for="sec-last-name">Last Name*</label>
+                    <input type="text" id="sec-last-name" 
+                        class="sec-input inp-add sec-last-name inp-val" data-output="pdf-last-name">
+                </div>
+
+                <div class="section-item">
+                    <label for="sec-occupation">Occupation</label>
+                    <input type="text" id="sec-occupation" 
+                        class="sec-input inp-add sec-occupation" data-output="pdf-occupation">
+                </div>
+
+                <div class="section-item">
+                    <label for="sec-dob">Date of Birth</label>
+                    <input type="date" id="sec-dob" 
+                        class="sec-input inp-add sec-dob" 
+                        data-output="pdf-dob">
+                </div>
             </div>
 
-            <div class="section-item">
-                <label for="sec-occupation">Occupation</label>
-                <input type="text" id="sec-occupation" 
-                    class="sec-input inp-add sec-occupation" data-output="pdf-occupation">
-            </div>
         </div>
+
 
         <div class="subsection sec-contact">
             <div class="sec-subhead-div">
@@ -191,6 +217,7 @@
                     data-output="pdf-phone">
             </div>
         </div>
+
 
         <div class="subsection sec-address">
             <div class="sec-subhead-div">
@@ -225,13 +252,8 @@
                     data-output="pdf-address">
             </div>
 
-            <div class="section-item">
-                <label for="sec-dob">Date of Birth</label>
-                <input type="date" id="sec-dob" 
-                    class="sec-input inp-add sec-dob" 
-                    data-output="pdf-dob">
-            </div>
         </div>
+
 
         <div class="subsection sec-summary">
             <div class="sec-subhead-div">
@@ -246,6 +268,7 @@
                     class="sec-input inp-add sec-textarea sec-summary" data-output="pdf-summary"></textarea>
             </div>
         </div>
+
 
         <div class="subsection sec-links">
             <div class="sec-subhead-div">
@@ -264,6 +287,8 @@
 
 
 
+
+
 <div class="section section2 dock-inner" data-link="section2">
     <div class="section-inner">
 
@@ -271,6 +296,8 @@
 
     </div>
 </div>
+
+
 
 
 
@@ -289,6 +316,8 @@
 
 
 
+
+
 <div class="section section4 dock-inner" data-link="section4">
     <div class="section-inner">
 
@@ -298,6 +327,8 @@
 
     </div>
 </div>
+
+
 
 
 
@@ -311,6 +342,8 @@
 
 
 
+
+
 <div class="section section6 dock-inner" data-link="section6">
     <div class="section-inner">
 
@@ -318,6 +351,8 @@
 
     </div>
 </div>
+
+
 
 
 
@@ -331,6 +366,8 @@
 
 
 
+
+
 <div class="section dock-inner" data-link="settings-section">
     <div class="section-inner">
 
@@ -341,6 +378,8 @@
 
     </div>
 </div>
+
+
 
 
 
@@ -381,6 +420,8 @@
 
                     <div class="pdfc-inner dock-inner">
                         <div class="pdfc-inner-inner">
+
+                            <div class="insert-photo"></div>
 
                             <p class="pdf-first-name"></p>
                             <p class="pdf-last-name"></p>

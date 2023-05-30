@@ -61,6 +61,11 @@
 
 .subsection{
     width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    gap:var(--size1);
+    row-gap:calc(var(--size1) / 2);
 }
 
 .subsection:nth-last-of-type(1){
@@ -374,12 +379,13 @@
 
 
 
-    /* Section1 - Profile */
+    /* Section 1 - Profile */
 
-.section1 .subsection{
+.sec-details-inputs{
+    flex:1;
+
     display:flex;
-    flex-wrap:wrap;
-    align-items:flex-start;
+    flex-direction:column;
     gap:var(--size1);
     row-gap:calc(var(--size1) / 2);
 }
@@ -393,7 +399,8 @@
 }
 
 
-        /* Section1 - Links */
+
+        /* Section 1 - Links */
 
 .section1 .sec-links{
     display:flex;
@@ -411,4 +418,293 @@
     gap:var(--size1);
 }
 
+.sec-details{
+    align-items:stretch;
+}
 
+        /* File Drop */
+
+.file-drop-div{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    gap:calc(var(--size1) / 2);
+}
+
+.file-drop-buttons{
+    display:flex;
+    gap:calc(var(--size1) / 2);
+}
+
+        /* File Drop Icon */
+
+.drop-zone{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-icon{
+    max-height:100%;
+    max-width:100%;
+    aspect-ratio:1/1;
+    margin:auto;
+    pointer-events:none;
+}
+
+.modal-icon *{
+    stroke-width:8px;
+    stroke:var(--txt-faded3);
+    transition:0.25s;
+}
+
+            /* File Drop Icon - Upload */
+
+.modal-icon-active .lm-upload-inner{
+    stroke:var(--color1);
+}
+
+.modal-drop .lm-upload-icon circle{
+    stroke:var(--color1);
+}
+
+.lm-upload-arrow{
+    animation:uploadIconMove 4.5s infinite;
+}
+
+.lm-upload-arrowshaft{
+    animation:uploadIconShaft 4.5s infinite, uploadIconMove 4.5s infinite;
+}
+
+@keyframes uploadIconMove{
+    25%{
+        transform:translate(0, 0);
+    }
+    30%{
+        transform:translate(0, -10px);
+    }
+    38%{
+        transform:translate(0, 5px);
+    }
+    50%{
+        transform:translate(0, 0);
+    }
+}
+
+@keyframes uploadIconShaft{
+    25%{
+        stroke-dasharray:100;
+        stroke-dashoffset:0;
+    }
+    30%{
+        stroke-dasharray:60;
+        stroke-dashoffset:-12;
+    }
+    38%{
+        stroke-dasharray:80;
+        stroke-dashoffset:-3;
+    }
+    50%{
+        stroke-dasharray:100;
+        stroke-dashoffset:0;
+    }
+}
+
+            /* File Drop Icon - Checkmark */
+
+.lm-check-icon *{
+    stroke:var(--color1);
+}
+
+.lm-check-circle{
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    animation:0.9s checkCircle forwards cubic-bezier(.14,.6,.56,.86);
+}
+    
+.lm-checkmark{
+    stroke-dasharray:150;
+    stroke-dashoffset:150;
+
+    animation:0.25s checkmark forwards cubic-bezier(.14,.6,.56,.86);
+    animation-delay:0.8s;
+}
+
+@keyframes checkCircle{
+    0%{
+        stroke-dashoffset:600;
+    }
+    100%{
+        stroke-dashoffset:0;
+    }
+}
+
+@keyframes checkmark{
+    0%{
+        stroke-dashoffset:150;
+    }
+    100%{
+        stroke-dashoffset:0;
+    }
+}
+        
+            /* File Drop Icon - X */
+
+.lm-x-inner{
+    stroke:var(--color2);
+}
+
+.lm-x-inner:nth-of-type(1){
+    animation:xIcon 4.5s 0.25s infinite;
+}
+
+.lm-x-inner:nth-of-type(2){
+    animation:xIcon 4.5s infinite;
+}
+
+@keyframes xIcon{
+    25%{
+        stroke-dasharray:115;
+        stroke-dashoffset:0;
+    }
+    35%{
+        stroke-dasharray:90;
+    }
+    45%{
+        stroke-dashoffset:-10;
+    }
+    55%{
+        stroke-dashoffset:0;
+    }
+    65%{
+        stroke-dasharray:115;
+    }
+}
+
+        /* File Drop - Select File Button */
+
+.lm-txt-div{
+    margin-bottom:5px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+}
+
+.lm-txt{
+    font-size:16px;
+}
+
+.lm-file-btn{
+    flex:1;
+    min-width:150px;
+    height:50px;
+    box-sizing:border-box;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:var(--txt1);
+    font-size:18px;
+    font-family:font1-semibold;
+    text-transform:uppercase;
+
+    background-color:var(--shade1);
+    border:solid 2px var(--color1);
+    border-radius:var(--mainRadius1);
+
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.lm-file-btn:hover{
+    color:#FFF;
+    background-color:var(--color1);
+}
+
+.lm-file-type{
+    margin-top:5px;
+    font-size:14px;
+}
+
+        /* File Drop - Delete File Button */
+
+.delete-file{
+    height:50px;
+    aspect-ratio:1/1;
+    box-sizing:border-box;
+    position:relative;
+
+    background-color:var(--shade1);
+    border:solid 2px var(--color1);
+    border-radius:var(--mainRadius1);
+
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.delete-file span{
+    width:70%;
+    height:6px;
+    box-sizing:border-box;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    background-color:var(--shade1);
+    border:solid 2px var(--txt1);
+    border-radius:200px;
+    transition-property:all, width;
+    transition-duration:0.15s, 0.15s;
+}
+
+.delete-file span:nth-of-type(1){
+    transform:translate(-50%, -50%) rotate(-45deg);
+}
+
+.delete-file span:nth-of-type(2){
+    transform:translate(-50%, -50%) rotate(45deg);
+    transition-duration:0.15s, 0.25s;
+    transition-delay:0s, 0.1s;
+}
+
+.delete-file:hover span{
+    width:60%;
+    border:solid 2px var(--color1);
+}
+
+.delete-file span:nth-of-type(2):after{
+    content:"";
+    width:10px;
+    height:2px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-90deg);
+
+    background-color:var(--shade1);
+    z-index:1000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.insert-logo-img{
+    width:200px;
+    max-width:200px;
+}
