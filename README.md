@@ -10,6 +10,7 @@ The simple interface enables individuals to effortlessly generate well-structure
 - Code
     - HTML 5
     - CSS 3
+    - SASS 1.62.1 (SCSS)
     - JavaScript
     - TypeScript 5.0.4
 

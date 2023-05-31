@@ -138,7 +138,7 @@ function changeLabel(inputElem, labelElem) {
 }
 // Add the link elements
 let linkIndex = 0;
-addLinkBtn?.addEventListener("click", function () {
+function addLink() {
     const linkNumber = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
     if (linkNumber < 5) {
         // Create a link div
@@ -193,7 +193,9 @@ addLinkBtn?.addEventListener("click", function () {
         appendOutput(pdfLinksOutput, newInput1);
         appendOutput(pdfLinksOutput, newInput2);
         // Set focus on the input
-        newInput1.focus();
+        if (linkNumber !== 0) {
+            newInput1.focus();
+        }
         // Change the input label
         changeLabel(newInput1, newLabel1);
         // Delete the link in the PDF
@@ -207,7 +209,9 @@ addLinkBtn?.addEventListener("click", function () {
         // Add 1 to the index
         linkIndex++;
     }
-});
+}
+addLink();
+addLinkBtn?.addEventListener("click", addLink);
 //*--|*|--*\\_____// Image Upload \\_____//*--|*|--*\\
 // Upload Icon
 const uploadIcon = "<svg class='modal-icon lm-upload-icon' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><style>.cls-1{fill:none;stroke-linecap:round;stroke-linejoin:round;}</style></defs><circle class='cls-1' cx='100' cy='100' r='90'/><path class='cls-1 lm-upload-inner' d='M145.6,116.6v15.9a15,15,0,0,1-15,15H69.4a15,15,0,0,1-15-15V116.6'/><line class='cls-1 lm-upload-inner lm-upload-arrow lm-upload-arrowshaft' x1='100' y1='121.9' x2='100' y2='52.5'/><polyline class='cls-1 lm-upload-inner lm-upload-arrow' points='124.7 77.2 100 52.5 75.3 77.2'/></svg>";

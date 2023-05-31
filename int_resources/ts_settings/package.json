@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc --watch"
+    "compile": "run-p compile:ts compile:scss",
+    "compile:ts": "tsc --watch",
+    "compile:scss": "sass --watch --no-source-map ../scss:../css"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.2"
+  }
 }

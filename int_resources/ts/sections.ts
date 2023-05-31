@@ -212,7 +212,7 @@ function changeLabel(inputElem, labelElem){
 // Add the link elements
 let linkIndex:number = 0;
 
-addLinkBtn?.addEventListener("click", function(){
+function addLink(){
 
     const linkNumber:number = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
 
@@ -295,7 +295,9 @@ addLinkBtn?.addEventListener("click", function(){
         appendOutput(pdfLinksOutput, newInput2);
 
         // Set focus on the input
-        newInput1.focus();
+        if (linkNumber !== 0){
+            newInput1.focus();
+        }
 
         // Change the input label
         changeLabel(newInput1, newLabel1);
@@ -318,7 +320,10 @@ addLinkBtn?.addEventListener("click", function(){
 
     }
 
-});
+}
+
+addLink();
+addLinkBtn?.addEventListener("click", addLink);
 
 
 

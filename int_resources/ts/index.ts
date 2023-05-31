@@ -4,7 +4,7 @@
     /* Program Settings */
 
 // Program Version
-const programVersion:string = "v0.4.3";
+const programVersion:string = "v0.5.0";
 
 
 
@@ -272,6 +272,16 @@ document.addEventListener("DOMContentLoaded", function(){
         navigateToSection(actElemIndex, actElemPos);
 
     });
+
+
+
+    //*--|*|--*\\_____// Version \\_____//*--|*|--*\\
+
+
+
+    const programVersionElem:HTMLElement | null = document.querySelector(".program-version");
+
+    programVersionElem!.innerHTML = "Uverit SkillPeak " + programVersion;
 
 
 
