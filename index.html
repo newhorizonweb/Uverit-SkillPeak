@@ -154,13 +154,14 @@
             </div>
 
             <div class="file-drop-div">
-                <div class="drop-zone"></div>
+                <div class="drop-zone photo-drop-zone"></div>
 
                 <div class="file-drop-buttons">
-                    <input type="file" id="lm-file" class="lm-file" accept=".jpeg, .png, .svg" hidden>
-                    <label for="lm-file" class="lm-file-btn">select file</label>
+                    <input type="file" id="photo-upload" class="lm-file photo-upload-btn" 
+                        accept=".jpeg, .png, .svg" hidden>
+                    <label for="photo-upload" class="lm-file-btn">select file</label>
 
-                    <div class="delete-file">
+                    <div class="delete-file delete-photo">
                         <span></span>
                         <span></span>
                     </div>
@@ -275,9 +276,44 @@
                 <h4 class="sec-subhead">Links</h4>
                 <div class="sec-subhead-line"></div>
             </div>
+
+            <div class="sec-link-list"></div>
+
             <div class="add-btn add-link">
                 <span></span>
                 <span></span>
+            </div>
+        </div>
+
+
+        <div class="subsection sec-qr-code">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">QR Code</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <div class="drop-zone qr-drop-zone"></div>
+
+            <div class="sec-qr-interact">
+
+                <div class="section-item">
+                    <label for="sec-qr-name">QR Code Name</label>
+                    <input type="text" id="sec-qr-name" 
+                        class="sec-input inp-add sec-qr-name" 
+                        data-output="pdf-qr-name">
+                </div>
+
+                <div class="file-drop-buttons">
+                    <input type="file" id="qr-upload" class="lm-file qr-upload-btn" 
+                        accept=".jpeg, .png, .svg" hidden>
+                    <label for="qr-upload" class="lm-file-btn">select file</label>
+
+                    <div class="delete-file qr-delete-file">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -443,6 +479,9 @@
                             <p class="pdf-summary"></p>
 
                             <div class="pdf-links"></div>
+
+                            <div class="qr-insert"></div>
+                            <p class="pdf-qr-name"></p>
 
                         </div>
                     </div>

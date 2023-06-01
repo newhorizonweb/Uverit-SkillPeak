@@ -127,7 +127,7 @@ const pdfName:HTMLInputElement | null = document.querySelector(".sec-name");
 addOutput(pdfName);
 */
 //*--|*|--*\\_____// Create Inputs \\_____//*--|*|--*\\
-const pdfLinks = document.querySelector(".section1 .sec-links");
+const pdfLinks = document.querySelector(".sec-link-list");
 const pdfLinksOutput = document.querySelector(".pdf-links");
 const addLinkBtn = document.querySelector(".add-link");
 // Change the label text to the input value
@@ -140,6 +140,7 @@ function changeLabel(inputElem, labelElem) {
 let linkIndex = 0;
 function addLink() {
     const linkNumber = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
+    const linkLabelName = "Link Name";
     if (linkNumber < 5) {
         // Create a link div
         const newLinkDiv = document.createElement("div");
@@ -151,7 +152,7 @@ function addLink() {
         // Create a link name label
         const newLabel1 = document.createElement("label");
         newLabel1.setAttribute("for", "sec-link-name" + linkIndex);
-        newLabel1.innerHTML = "Link Name";
+        newLabel1.innerHTML = linkLabelName;
         // Create a link name input
         const newInput1 = document.createElement("input");
         newInput1.type = "text";
@@ -200,11 +201,27 @@ function addLink() {
         changeLabel(newInput1, newLabel1);
         // Delete the link in the PDF
         deleteLinkBtn.addEventListener("click", function () {
-            const pdfNameElemClass = document.querySelector("." + deleteLinkBtn.getAttribute("delete-name"));
-            const pdfUrlElemClass = document.querySelector("." + deleteLinkBtn.getAttribute("delete-url"));
-            pdfNameElemClass?.remove();
-            pdfUrlElemClass?.remove();
-            newLinkDiv.remove();
+            // PDF Link Label
+            const pdfNameElemClass = document.querySelector("." +
+                deleteLinkBtn.getAttribute("delete-name"));
+            // PDF Link URL
+            const pdfUrlElemClass = document.querySelector("." +
+                deleteLinkBtn.getAttribute("delete-url"));
+            if (linkNumber === 0) {
+                // Remove the values if it's the first link element
+                newLabel1.innerHTML = linkLabelName;
+                newInput1.value = "";
+                newInput2.value = "";
+                pdfNameElemClass.innerHTML = "";
+                pdfUrlElemClass.innerHTML = "";
+            }
+            else {
+                // Remove the link element if it's not the first one
+                newLinkDiv.remove();
+                // Remove the link elements from the PDF preview
+                pdfNameElemClass?.remove();
+                pdfUrlElemClass?.remove();
+            }
         });
         // Add 1 to the index
         linkIndex++;
@@ -220,20 +237,16 @@ const checkmarkIcon = "<svg class='modal-icon lm-check-icon' data-name='Layer 1'
 // X Icon
 const xIcon = "<svg class='modal-icon lm-x-icon' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><style>.cls-1{fill:none; stroke-linecap:round;stroke-linejoin:round;}</style></defs><circle class='cls-1' cx='100' cy='100' r='90'/><line class='cls-1 lm-x-inner' x1='61.3' y1='61.3' x2='138.7' y2='138.7'/><line class='cls-1 lm-x-inner' x1='138.7' y1='61.3' x2='61.3' y2='138.7'/></svg>";
 /* File Upload */
+// Drop Zones (you can drop the file on these elements)
+const dropZones = document.querySelectorAll(".drop-zone");
 // Upload Time
 const uploadTime = 1750;
-// Drop zone element
-const dropZone = document.querySelector(".drop-zone");
-// File input
-const fileInput = document.querySelector(".lm-file");
-// Insert the image into these elements
-const insertLogoElements = document.querySelectorAll(".insert-photo");
 // Accepted file types
 const fileTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
 /* Upload Functions */
 // Insert logo
-function insertLogo(url) {
-    insertLogoElements.forEach((logoElem) => {
+function insertImgElem(url, insertElements) {
+    insertElements.forEach((logoElem) => {
         // Create an image element
         const logoImg = document.createElement("img");
         logoImg.src = url;
@@ -249,84 +262,103 @@ function insertLogo(url) {
 }
 // Insert upload icon
 function insertUploadIcon() {
-    dropZone.innerHTML = uploadIcon;
+    dropZones.forEach((dropZone) => {
+        dropZone.innerHTML = uploadIcon;
+    });
 }
 insertUploadIcon();
 // Remove upload icon active class
 function uploadIconActive() {
-    dropZone?.classList.remove("modal-icon-active");
+    dropZones.forEach((dropZone) => {
+        dropZone?.classList.remove("modal-icon-active");
+    });
 }
 // Insert X icon
 function insertXIcon() {
-    dropZone.innerHTML = xIcon;
+    dropZones.forEach((dropZone) => {
+        dropZone.innerHTML = xIcon;
+    });
 }
 // Checkmark icon
-function successfulUpload() {
+function successfulUpload(dropZone) {
     dropZone.innerHTML = checkmarkIcon;
     // Insert the upload icon and remove the classes
-    setTimeout(function () {
-        insertUploadIcon();
+    dropZones.forEach((dropZone) => {
         dropZone?.classList.remove("modal-icon-active");
-        dropZone?.classList.remove("modal-drop");
-    }, uploadTime);
+        setTimeout(function () {
+            insertUploadIcon();
+            dropZone?.classList.remove("modal-drop");
+        }, uploadTime);
+    });
 }
-/* Document drag events */
-document.documentElement.addEventListener('dragover', function (e) {
+/* Document Events */
+// Document drag events
+function docDragOver(e) {
     e.preventDefault();
     // Get the file dragged over the document
     const file = e.dataTransfer?.items[0];
-    if (file && fileTypes.includes(file.type)) {
-        dropZone?.classList.add("modal-icon-active");
-    }
-    else if (file &&
-        !fileTypes.includes(file.type) &&
-        !dropZone?.contains(document.querySelector(".lm-x-icon"))) {
-        // Insert X icon
-        insertXIcon();
-    }
-});
-document.body.addEventListener('dragleave', function (e) {
+    dropZones.forEach((dropZone) => {
+        if (file && fileTypes.includes(file.type)) {
+            dropZone?.classList.add("modal-icon-active");
+        }
+        else if (file &&
+            !fileTypes.includes(file.type) &&
+            !dropZone?.contains(document.querySelector(".lm-x-icon"))) {
+            // Insert X icon
+            insertXIcon();
+        }
+    });
+}
+function docDragLeave(e) {
     // If the mouse is within the window - do nothing
-    if (e.clientX > 0 && e.clientY > 0 && e.clientX < window.innerWidth && e.clientY < window.innerHeight) {
+    if (e.clientX > 0 && e.clientY > 0 &&
+        e.clientX < window.innerWidth && e.clientY < window.innerHeight) {
         return;
     }
     // Insert upload icon
     insertUploadIcon();
     // Remove the active class
     uploadIconActive();
+}
+document.documentElement.addEventListener("dragover", function (e) {
+    docDragOver(e);
 });
-/* File on document drop */
-document.documentElement.addEventListener('drop', function (e) {
+document.body.addEventListener("dragleave", function (e) {
+    docDragLeave(e);
+});
+// File on document drop
+function docDrop(e) {
     // Prevent from opening the file in another tab
     e.preventDefault();
-    const eTarget = e.target;
-    if (!eTarget.closest(".drop-zone")) {
-        // Insert upload icon
-        insertUploadIcon();
-        // Remove the active class
-        uploadIconActive();
+    if (e.target.closest(".drop-zone")) {
+        return;
     }
+    // Insert upload icon
+    insertUploadIcon();
+    // Remove the active class
+    uploadIconActive();
+}
+document.documentElement.addEventListener("drop", function (e) {
+    docDrop(e);
 });
-/* Drop zone drag events */
-dropZone?.addEventListener('dragover', function (e) {
+/* Drop Zone */
+// Drag events
+function fileDragOver(e, dropZone) {
     // Get the file dragged over the document
     const file = e.dataTransfer?.items[0];
     if (file && fileTypes.includes(file.type)) {
         dropZone?.classList.add("modal-drop");
     }
-});
-dropZone?.addEventListener('dragleave', function (e) {
-    dropZone?.classList.remove("modal-drop");
-});
-// Functions called on logo upload
-function uploadFunctions(url) {
-    // Successful Upload
-    successfulUpload();
-    // Insert images into the page elements
-    insertLogo(url);
 }
-/* Drop zone drop event */
-dropZone?.addEventListener('drop', function (e) {
+// Functions called on logo upload
+function uploadFunctions(url, insertElements, dropZone) {
+    // Successful Upload
+    successfulUpload(dropZone);
+    // Insert images into the page elements
+    insertImgElem(url, insertElements);
+}
+// Drop zone drop event
+function fileDrop(e, insertElements, dropZone) {
     // Prevent from opening the file in another tab
     e.preventDefault();
     // Get the dropped file
@@ -334,20 +366,21 @@ dropZone?.addEventListener('drop', function (e) {
     if (file && fileTypes.includes(file.type)) {
         // Create an URL object
         const url = URL.createObjectURL(file);
-        uploadFunctions(url);
+        uploadFunctions(url, insertElements, dropZone);
     }
     else {
         // Insert upload icon
         insertUploadIcon();
     }
-});
-/* File upload via input */
-fileInput?.addEventListener("change", function () {
+}
+// File upload via input
+function fileInputUpload(insertElements, fileInput, dropZone) {
     const file = fileInput.files[0];
+    console.log(fileInput);
     if (file && fileTypes.includes(file.type)) {
         // Create an URL object
         const url = URL.createObjectURL(file);
-        uploadFunctions(url);
+        uploadFunctions(url, insertElements, dropZone);
     }
     else if (file && !fileTypes.includes(file.type)) {
         // Input (in HTML) excludes undesired file types, but just in case
@@ -358,11 +391,51 @@ fileInput?.addEventListener("change", function () {
             insertUploadIcon();
         }, 1000);
     }
-});
-/* Delete File Button */
-const deleteFileBtn = document.querySelector(".delete-file");
-deleteFileBtn?.addEventListener("click", () => {
-    insertLogoElements.forEach((logoElem) => {
+}
+// Delete File
+function fileDelete(insertElements) {
+    insertElements.forEach((logoElem) => {
         logoElem.innerHTML = "";
     });
-});
+}
+function fileEvents(dropZone, fileInput, deleteFileBtn, insertElements) {
+    // Drop zone drag events
+    dropZone?.addEventListener("dragover", function (e) {
+        fileDragOver(e, dropZone);
+    });
+    dropZone?.addEventListener("dragleave", function () {
+        dropZone?.classList.remove("modal-drop");
+    });
+    // Drop zone drop event
+    dropZone?.addEventListener("drop", function (e) {
+        fileDrop(e, insertElements, dropZone);
+    });
+    // File upload via input
+    fileInput?.addEventListener("change", function () {
+        fileInputUpload(insertElements, fileInput, dropZone);
+    });
+    // Delete file
+    deleteFileBtn?.addEventListener("click", () => {
+        fileDelete(insertElements);
+    });
+}
+/* Photo */
+// Drop zone element
+const photoDropZone = document.querySelector(".photo-drop-zone");
+// File input
+const photoFileInput = document.querySelector(".photo-upload-btn");
+// Insert image elements
+const insertPhotos = document.querySelectorAll(".insert-photo");
+// Delete file button
+const deletePhotoBtn = document.querySelector(".delete-photo");
+fileEvents(photoDropZone, photoFileInput, deletePhotoBtn, insertPhotos);
+/* QR Code */
+// Drop zone element
+const dropZoneQR = document.querySelector(".qr-drop-zone");
+// File input
+const fileInputQR = document.querySelector(".qr-upload-btn");
+// Insert image elements
+const insertImagesQR = document.querySelectorAll(".qr-insert");
+// Delete file button
+const deleteFileBtnQR = document.querySelector(".qr-delete-file");
+fileEvents(dropZoneQR, fileInputQR, deleteFileBtnQR, insertImagesQR);

@@ -235,6 +235,7 @@
   box-sizing: border-box;
   color: var(--txt1);
   font-size: 18px;
+  background-color: var(--shade1);
   border: none;
   box-shadow: var(--box-shadow3) var(--txt-faded3);
   border-radius: var(--radius1);
@@ -604,13 +605,13 @@
 .sec-links {
   display: flex;
   flex-direction: column;
-  /* nth-of-type = number of items + 2 (heading & button) */
 }
-.sec-links .add-btn {
-  order: 1;
-}
-.sec-links:has(.sec-link:nth-of-type(7)) .add-btn {
-  display: none;
+.sec-links .sec-link-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size1);
+  row-gap: calc(var(--size1) / 2);
 }
 .sec-links .sec-link {
   width: 100%;
@@ -618,13 +619,43 @@
   align-items: flex-end;
   gap: var(--size1);
 }
-.sec-links .sec-link:nth-of-type(3) .delete-btn {
-  visibility: hidden;
+.sec-links .sec-link-list:has(.sec-link:nth-of-type(5)) ~ .add-btn {
+  display: none;
+}
+
+/* Section 1 - QR Code */
+.sec-qr-code {
+  width: 100%;
+  margin-top: alc(var(--size1)/2);
+  display: flex;
+  align-items: stretch;
+  gap: var(--size1);
+}
+.sec-qr-code .drop-zone {
+  flex: none;
+}
+.sec-qr-code .modal-icon {
+  width: 175px;
+}
+.sec-qr-code .sec-qr-interact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size1);
+}
+.sec-qr-code .section-item {
+  flex: none;
+  width: calc(100% - 6px);
+}
+.sec-qr-code .file-drop-buttons {
+  width: 100%;
 }
 
 /* Section 1 - media */
 @media screen and (1024px < width <= 1200px) {
-  .modal-icon {
+  .photo-drop-zone .modal-icon {
     max-height: none;
     height: 128px;
   }
@@ -643,7 +674,7 @@
   .drop-zone {
     margin-top: calc(var(--size1) / 2);
   }
-  .modal-icon {
+  .photo-drop-zone .modal-icon {
     width: min(100%, 200px);
   }
   .sec-details {
@@ -660,15 +691,21 @@
     flex-wrap: wrap;
     gap: calc(var(--size1) / 2);
   }
-  .section1 .sec-links .sec-link:nth-of-type(3) .delete-btn {
-    display: none;
-  }
   .section1 .sec-links .sec-link .section-item {
     width: auto;
     flex: 1;
   }
   .section1 .sec-links .sec-link .section-item:nth-of-type(1) {
     flex: 100%;
+  }
+  .sec-qr-code {
+    flex-direction: column;
+  }
+  .sec-qr-code .sec-qr-interact {
+    gap: calc(var(--size1) / 2);
+  }
+  .sec-qr-code .modal-icon {
+    width: 200px;
   }
 }
 @media screen and (width <= 440px) {
