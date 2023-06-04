@@ -139,7 +139,7 @@
 
                 <section class="sections dock">
 
-<div class="section section1 dock-inner visible-section" data-link="section1">
+<div class="section section1 dock-inner" data-link="section1">
     <div class="section-inner">
 
         <div class="section-heading">
@@ -172,19 +172,22 @@
                 <div class="section-item">
                     <label for="sec-first-name">First Name*</label>
                     <input type="text" id="sec-first-name" 
-                        class="sec-input inp-add sec-first-name inp-val" data-output="pdf-first-name">
+                        class="sec-input inp-add sec-first-name inp-val" data-output="pdf-first-name"
+                        placeholder="John">
                 </div>
 
                 <div class="section-item">
                     <label for="sec-last-name">Last Name*</label>
                     <input type="text" id="sec-last-name" 
-                        class="sec-input inp-add sec-last-name inp-val" data-output="pdf-last-name">
+                        class="sec-input inp-add sec-last-name inp-val" data-output="pdf-last-name"
+                        placeholder="Doe">
                 </div>
 
                 <div class="section-item">
                     <label for="sec-occupation">Occupation</label>
                     <input type="text" id="sec-occupation" 
-                        class="sec-input inp-add sec-occupation" data-output="pdf-occupation">
+                        class="sec-input inp-add sec-occupation" data-output="pdf-occupation" 
+                        placeholder="HR Specialist">
                 </div>
 
                 <div class="section-item">
@@ -208,14 +211,16 @@
                 <label for="sec-email">E-Mail*</label>
                 <input type="email" id="sec-email" 
                     class="sec-input inp-add sec-email inp-val" 
-                    data-output="pdf-email">
+                    data-output="pdf-email"
+                    placeholder="doe.j@gmail.com">
             </div>
 
             <div class="section-item">
                 <label for="sec-phone">Phone Number</label>
                 <input type="tel" id="sec-phone" 
                     class="sec-input inp-add sec-phone" 
-                    data-output="pdf-phone">
+                    data-output="pdf-phone"
+                    placeholder="123-456-7890">
             </div>
         </div>
 
@@ -230,27 +235,31 @@
                 <label for="sec-country">Country</label>
                 <input type="text" id="sec-country" 
                     class="sec-input inp-add sec-country" 
-                    data-output="pdf-country">
+                    data-output="pdf-country"
+                    placeholder="United States">
             </div>
 
             <div class="section-item">
                 <label for="sec-city">City</label>
                 <input type="text" id="sec-city" 
                     class="sec-input inp-add sec-city" 
-                    data-output="pdf-city">
+                    data-output="pdf-city"
+                    placeholder="New York">
             </div>
 
             <div class="section-item">
                 <label for="sec-post-code">Postal Code</label>
                 <input type="tel" id="sec-post-code" 
-                    class="sec-input inp-add sec-post-code" data-output="pdf-post-code">
+                    class="sec-input inp-add sec-post-code" data-output="pdf-post-code"
+                    placeholder="10259">
             </div>
 
             <div class="section-item">
                 <label for="sec-address">Address</label>
                 <input type="text" id="sec-address" 
                     class="sec-input inp-add sec-address" 
-                    data-output="pdf-address">
+                    data-output="pdf-address"
+                    placeholder="Liberty St">
             </div>
 
         </div>
@@ -265,8 +274,10 @@
             <p class="sec-desc">Highlight your key qualifications, skills, and accomplishments in 2-4 short sentences. Tailor it to the specific job, focusing on your unique selling points.</p>
 
             <div class="section-item">
-                <textarea id="sec-summary" maxlength="320" placeholder="My summary (max 320 characters)" aria-label="Professional Summary"
-                    class="sec-input inp-add sec-textarea sec-summary" data-output="pdf-summary"></textarea>
+                <textarea id="sec-summary" maxlength="320" 
+                    aria-label="Professional Summary"
+                    class="sec-input inp-add sec-textarea sec-summary" data-output="pdf-summary"
+                    placeholder="Resume introduction and qualifications overview. (max 320 characters)"></textarea>
             </div>
         </div>
 
@@ -300,7 +311,8 @@
                     <label for="sec-qr-name">QR Code Name</label>
                     <input type="text" id="sec-qr-name" 
                         class="sec-input inp-add sec-qr-name" 
-                        data-output="pdf-qr-name">
+                        data-output="pdf-qr-name"
+                        placeholder="My Website">
                 </div>
 
                 <div class="file-drop-buttons">
@@ -324,9 +336,14 @@
 
 
 
-<div class="section section2 dock-inner" data-link="section2">
+<div class="section section2 dock-inner visible-section" data-link="section2">
     <div class="section-inner">
 
+        <div class="section-heading">
+            <h3 class="sec-head">Experience</h3>
+        </div>
+
+        <div class="test-label"></div>
 
 
     </div>
@@ -482,6 +499,7 @@
 
                             <div class="qr-insert"></div>
                             <p class="pdf-qr-name"></p>
+
 
                         </div>
                     </div>

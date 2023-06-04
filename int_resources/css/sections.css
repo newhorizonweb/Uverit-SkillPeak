@@ -605,6 +605,10 @@
 .sec-links {
   display: flex;
   flex-direction: column;
+  gap: 0;
+}
+.sec-links .sec-subhead-div {
+  margin-bottom: calc(var(--size1) / 2);
 }
 .sec-links .sec-link-list {
   width: 100%;
@@ -619,6 +623,9 @@
   align-items: flex-end;
   gap: var(--size1);
 }
+.sec-links .sec-link-list:has(.sec-link) ~ .add-btn {
+  margin-top: calc(var(--size1) / 2);
+}
 .sec-links .sec-link-list:has(.sec-link:nth-of-type(5)) ~ .add-btn {
   display: none;
 }
@@ -629,7 +636,6 @@
   margin-top: alc(var(--size1)/2);
   display: flex;
   align-items: stretch;
-  gap: var(--size1);
 }
 .sec-qr-code .drop-zone {
   flex: none;
@@ -671,7 +677,7 @@
   .file-drop-div {
     order: 1;
   }
-  .drop-zone {
+  .sec-details .drop-zone {
     margin-top: calc(var(--size1) / 2);
   }
   .photo-drop-zone .modal-icon {
@@ -684,8 +690,11 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .section1 .sec-links {
+  .section1 .sec-links .sec-link-list {
     gap: var(--size1);
+  }
+  .section1 .sec-links .sec-link-list:has(.sec-link) ~ .add-btn {
+    margin-top: var(--size1);
   }
   .section1 .sec-links .sec-link {
     flex-wrap: wrap;
