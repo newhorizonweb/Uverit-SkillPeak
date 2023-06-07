@@ -78,26 +78,6 @@ pdfBtn!.addEventListener("click", function(){
 
 
 
-
-
-/*
-const pdfElem:HTMLElement | null = document.querySelector(".pdfc-inner-inner");
-
-const secInput:HTMLInputElement | null = document.querySelector(".sec-input1");
-appendOutput(pdfElem, secInput);
-
-const secInput2:HTMLInputElement | null = document.querySelector(".sec-input2");
-appendOutput(pdfElem, secInput2);
-
-const pdfName:HTMLInputElement | null = document.querySelector(".sec-name");
-addOutput(pdfName);
-*/
-
-
-
-
-
-
 //*--|*|--*\\_____// Image Upload \\_____//*--|*|--*\\
 
 
@@ -307,7 +287,7 @@ function fileDrop(e, insertElements, dropZone){
 // File upload via input
 function fileInputUpload(insertElements, fileInput, dropZone){
     const file:File = fileInput!.files![0];
-console.log(fileInput)
+
     if (file && fileTypes.includes(file.type)){
 
         // Create an URL object
@@ -450,7 +430,7 @@ function appendOutput(appendTo, inputElem){
     appendTo?.appendChild(pdfOutput);
 
     inputElem.addEventListener("input", function(){
-
+ 
         // Change the element value to the input value
         const output:HTMLElement | null = document.querySelector("."+outputClass);
 
@@ -621,6 +601,31 @@ function createTextArea(elemObj, elemIndex){
     return newElem;
 
 }
+
+// Create a Button
+function createBtn(elemObj, elemIndex){
+
+    const elemClasses:string = elemObj.elemClasses;
+    const elemIndexClasses:string = elemObj.elemIndexClasses;
+
+    const newElem:HTMLElement = document.createElement("button");
+
+    if (elemClasses.trim() != ""){
+        const classNames = elemClasses.split(", ");
+        newElem.classList.add(...classNames);
+    }
+
+    if (elemIndexClasses.trim() != ""){
+        const classNamesIndex = elemIndexClasses.split(", ");
+        classNamesIndex.forEach((classIndex) => {
+            newElem.classList.add(classIndex + elemIndex);
+        });
+    }
+
+    return newElem;
+
+}
+
 /*
 const divElemObj:Object = {
     elemClasses: "",
@@ -650,6 +655,11 @@ const textareaElemObj:Object = {
     elemPlaceholder: "",
     elemDataOutput: ""
 }
+
+const btnElemObj:Object = {
+    elemClasses: "",
+    elemIndexClasses: ""
+}
 */
 
 
@@ -674,8 +684,6 @@ function changeLabel(inputElem, labelElem, labelName){
     });
 }
 
-// Add the link elements
-let linkIndex:number = 0;
 const linkLabelName:string = "Link Name";
 
 const linkDivObj:Object = {
@@ -729,6 +737,8 @@ const newInput2Obj:Object = {
     elemPlaceholder: "https://www.linkedin.com/in/johndoe",
     elemDataOutput: "pdf-link-url"
 }
+
+let linkIndex:number = 0;
 
 function addLink(){
 
@@ -824,7 +834,7 @@ function addLink(){
 
         });
 
-        // Add 1 to the index
+        // Index number =+ 1
         linkIndex++
 
     }
@@ -832,3 +842,558 @@ function addLink(){
 }
 
 addLinkBtn?.addEventListener("click", addLink);
+
+
+
+//*--|*|--*\\_____// Create Work Experience Elements \\_____//*--|*|--*\\
+
+
+
+// SVG
+const bpListIcon:string = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='51.4' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L51.4,28a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,28l-1.7-.2-1.7-.5A8,8,0,0,1,4,26.5L2.6,25.4,1.5,24a8,8,0,0,1-.8-1.6,9.8,9.8,0,0,1-.5-1.6A11,11,0,0,1,0,19a9.4,9.4,0,0,1,2.6-6.4L4,11.5l1.6-.8,1.7-.5a6.9,6.9,0,0,1,3.5,0l1.7.5,1.5.8,1.4,1.1A7.6,7.6,0,0,1,16.5,14a8,8,0,0,1,.8,1.6,9.8,9.8,0,0,1,.5,1.6A5.5,5.5,0,0,1,18,19a5.5,5.5,0,0,1-.2,1.8,9.8,9.8,0,0,1-.5,1.6,8,8,0,0,1-.8,1.6,13.4,13.4,0,0,1-1.1,1.4A9.4,9.4,0,0,1,9,28Z'/><line class='cls-1' x1='51.4' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-139.6-.2a9,9,0,0,1,0-18h0L191,172a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,189.8a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,10.9,10.9,0,0,1-.5-1.7,11,11,0,0,1-.2-1.8,11.1,11.1,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7l.8-1.6a6.9,6.9,0,0,1,1.1-1.3A9.1,9.1,0,0,1,9,171.8a9.1,9.1,0,0,1,6.4,2.7,6.9,6.9,0,0,1,1.1,1.3l.8,1.6a8.4,8.4,0,0,1,.5,1.7,11.1,11.1,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,10.9,10.9,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4A9,9,0,0,1,9,189.8Z'/><line class='cls-1' x1='51.4' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-139.6-.2a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,108.9a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,15.4,15.4,0,0,1-.5-1.7A11,11,0,0,1,0,99.9a8.8,8.8,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7,8,8,0,0,1,.8-1.6,6.9,6.9,0,0,1,1.1-1.3,9.1,9.1,0,0,1,8.2-2.5l1.6.5,1.6.8,1.4,1.2a6.9,6.9,0,0,1,1.1,1.3,8,8,0,0,1,.8,1.6,8.4,8.4,0,0,1,.5,1.7,8.8,8.8,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,15.4,15.4,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4L14,107.4l-1.6.8a10.4,10.4,0,0,1-1.6.6Z'/></svg>";
+
+const numberListIcon:string = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='119.5' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L119.5,28a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><path d='M52.6,191.5a8.5,8.5,0,0,1-6-2.3,7.8,7.8,0,0,1-2.3-5.5V27.2l2.9,2.6L12.6,53.2a8,8,0,0,1-4.4,1.3,7.6,7.6,0,0,1-5.6-2.6A7.7,7.7,0,0,1,.1,46.4a7.3,7.3,0,0,1,4.2-6.7L47.7,11.1a10.4,10.4,0,0,1,3.2-1.5,7.8,7.8,0,0,1,3-.1A7,7,0,0,1,59.1,12a8.1,8.1,0,0,1,1.8,5.3V183.7a7.4,7.4,0,0,1-2.3,5.5A8.3,8.3,0,0,1,52.6,191.5Z'/></svg>";
+
+
+
+// Elements
+const expList:HTMLElement | null = document.querySelector(".experience-list");
+const addExpBtn:HTMLElement | null = document.querySelector(".add-experience");
+const appendExp:HTMLElement | null = document.querySelector(".exp-append");
+
+const jobTitle:string = "Job Title";
+
+
+    /* Element Objects */
+
+const expSectionObj:Object = {
+    elemClasses: "sec-exp, dock-inner",
+    elemIndexClasses: "sec-exp"
+}
+const expHeadObj:Object = {
+    elemClasses: "sec-exp-head",
+    elemIndexClasses: "sec-exp-head"
+}
+const deleteExpBtnObj:Object = {
+    elemClasses: "delete-btn, delete-exp",
+    elemIndexClasses: "delete-exp"
+}
+const expIndicatorObj:Object = {
+    elemClasses: "sec-exp-indicator",
+    elemIndexClasses: "sec-exp-indicator"
+}
+
+const secInputsObj:Object = {
+    elemClasses: "sec-exp-inputs",
+    elemIndexClasses: ""
+}
+const secItemObj:Object = {
+    elemClasses: "section-item",
+    elemIndexClasses: ""
+}
+const pdfExpDivObj:Object = {
+    elemClasses: "pdf-exp",
+    elemIndexClasses: ""
+}
+
+
+const jobTitleLabObj:Object = {
+    elemName: "Job Title",
+    elemFor: "sec-job-title",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+const jobTitleInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-job-title",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-job-title",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-job-title"
+}
+
+
+const compLabObj:Object = {
+    elemName: "Company",
+    elemFor: "sec-company",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+const compInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-company",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-company",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-company"
+}
+
+
+const locationLabObj:Object = {
+    elemName: "Location",
+    elemFor: "sec-location",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+const locationInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-location",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-location",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-location"
+}
+
+
+const startDateLabObj:Object = {
+    elemName: "Start Date",
+    elemFor: "sec-start-date",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+const startDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-start-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-start-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-start-date"
+}
+
+
+const endDateLabObj:Object = {
+    elemName: "End Date",
+    elemFor: "sec-end-date",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+const endDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-end-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-end-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-end-date"
+}
+
+
+const currPosLabObj:Object = {
+    elemName: "I still work here",
+    elemFor: "sec-curr-pos",
+    elemClasses: "exp-label",
+    elemIndexClasses: ""
+}
+
+
+const descDivObj:Object = {
+    elemClasses: "exp-desc-inner",
+    elemIndexClasses: ""
+}
+
+const descBtnsDivObj:Object = {
+    elemClasses: "exp-desc-btns",
+    elemIndexClasses: ""
+}
+
+const boldBtnObj:Object = {
+    elemClasses: "exp-desc-btn, exp-bold-btn",
+    elemIndexClasses: ""
+}
+const italicBtnObj:Object = {
+    elemClasses: "exp-desc-btn, exp-italic-btn",
+    elemIndexClasses: ""
+}
+const underlineBtnObj:Object = {
+    elemClasses: "exp-desc-btn, exp-underline-btn",
+    elemIndexClasses: ""
+}
+
+const nrListBtnObj:Object = {
+    elemClasses: "exp-desc-btn, exp-list-btn, exp-nr-list-btn",
+    elemIndexClasses: ""
+}
+const bpListBtnObj:Object = {
+    elemClasses: "exp-desc-btn, exp-list-btn, exp-bp-list-btn",
+    elemIndexClasses: ""
+}
+
+
+const descTextAreaObj:Object = {
+    elemClasses: "sec-exp-desc",
+    elemIndexClasses: ""
+}
+
+let expIndex:number = 0;
+
+function addExperience(){
+
+    const expNumber:number = expList?.querySelectorAll(".sec-exp").length ?? 0;
+
+    if (expNumber < 8){
+
+
+
+            /* Section Div */
+
+        // Section Div
+        const expSection:HTMLElement = createDiv(expSectionObj, expIndex);
+
+        // Head
+        const expHead:HTMLElement = createDiv(expHeadObj, expIndex);
+
+        // Heading
+        const expHeading:HTMLElement = document.createElement("h4");
+        expHeading.classList.add("sec-exp-heading", "sec-exp-heading" + expIndex);
+        expHeading.innerHTML = jobTitle;
+
+        // Delete Button
+        const deleteBtn:HTMLElement = createDiv(deleteExpBtnObj, expIndex);
+        deleteBtn.setAttribute("delete-exp", "pdf-exp"+expIndex);
+
+        // List Indicator
+        const expindicator:HTMLElement = createDiv(expIndicatorObj, expIndex);
+        
+        expHead.appendChild(expHeading);
+        expHead.appendChild(deleteBtn);
+        expHead.appendChild(expindicator);
+
+        expSection.appendChild(expHead);
+
+
+
+            /* Job Title */
+
+        // Inputs Div
+        const secInpsuts:HTMLElement = createDiv(secInputsObj, expIndex);
+
+        // Create Elements
+        const jobTitleDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        const jobTitleLab:HTMLLabelElement = createLabel(jobTitleLabObj, expIndex);
+        const jobTitleInp:HTMLInputElement = createInput(jobTitleInpObj, expIndex);
+
+        // Append
+        jobTitleDiv.appendChild(jobTitleLab);
+        jobTitleDiv.appendChild(jobTitleInp);
+        secInpsuts?.appendChild(jobTitleDiv);
+
+        // Change the section title
+        jobTitleInp.addEventListener("input", () => {
+            if (jobTitleInp.value.length > 0){
+                expHeading.innerHTML = jobTitleInp.value;
+            } else {
+                expHeading.innerHTML = jobTitle;
+            }
+        });
+
+
+
+            /* Company */
+
+        // Create Elements
+        const compDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        const compLab:HTMLLabelElement = createLabel(compLabObj, expIndex);
+        const compInp:HTMLInputElement = createInput(compInpObj, expIndex);
+
+        // Append
+        compDiv.appendChild(compLab);
+        compDiv.appendChild(compInp);
+        secInpsuts?.appendChild(compDiv);
+
+
+
+            /* Location */
+
+        // Create Elements
+        const locationDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        const locationLab:HTMLLabelElement = createLabel(locationLabObj, expIndex);
+        const locationInp:HTMLInputElement = createInput(locationInpObj, expIndex);
+
+        // Append
+        locationDiv.appendChild(locationLab);
+        locationDiv.appendChild(locationInp);
+        secInpsuts?.appendChild(locationDiv);
+
+
+
+            /* Start Date */
+
+        // Create Elements
+        const startDateDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        const startDateLab:HTMLLabelElement = createLabel(startDateLabObj, expIndex);
+        const startDateInp:HTMLInputElement = createInput(startDateInpObj, expIndex);
+
+        // Append
+        startDateDiv.appendChild(startDateLab);
+        startDateDiv.appendChild(startDateInp);
+        secInpsuts?.appendChild(startDateDiv);
+
+
+
+            /* End Date */
+
+        // Create Elements
+        const endDateDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        const endDateLab:HTMLLabelElement = createLabel(endDateLabObj, expIndex);
+        const endDateInp:HTMLInputElement = createInput(endDateInpObj, expIndex);
+
+        // Append
+        endDateDiv.appendChild(endDateLab);
+        endDateDiv.appendChild(endDateInp);
+        secInpsuts?.appendChild(endDateDiv);
+
+
+
+            /* Current Position */
+
+        // Create Elements
+        const currPosDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        currPosDiv.classList.add("curr-pos-div");
+        const currPosLab:HTMLLabelElement = createLabel(currPosLabObj, expIndex);
+
+        const currPosInp:HTMLInputElement = document.createElement("input");
+        currPosInp.type = "checkbox";
+        currPosInp.classList.add("sec-curr-pos" + expIndex);
+        currPosInp.setAttribute("id", "sec-curr-pos" + expIndex);
+        currPosInp.setAttribute("data-output", "pdf-curr-pos" + expIndex);
+
+        // Append
+        currPosDiv.appendChild(currPosLab);
+        currPosDiv.appendChild(currPosInp);
+        secInpsuts?.appendChild(currPosDiv);
+
+
+
+            /* Description */
+
+        // Create Elements
+        const descDiv:HTMLElement = createDiv(secItemObj, expIndex);
+        descDiv.classList.add("exp-desc-div");
+        const descDivInner:HTMLElement = createDiv(descDivObj, expIndex);
+
+
+        const descBtnsDiv:HTMLElement = createDiv(descBtnsDivObj, expIndex);
+
+        const boldBtn:HTMLElement = createBtn(boldBtnObj, expIndex);
+        boldBtn.innerHTML = "B";
+
+        const italicBtn:HTMLElement = createBtn(italicBtnObj, expIndex);
+        italicBtn.innerHTML = "I";
+
+        const underlineBtn:HTMLElement = createBtn(underlineBtnObj, expIndex);
+        underlineBtn.innerHTML = "U";
+
+
+        const nrListBtn:HTMLElement = createBtn(nrListBtnObj, expIndex);
+        nrListBtn.innerHTML = numberListIcon;
+
+        const bpListBtn:HTMLElement = createBtn(bpListBtnObj, expIndex);
+        bpListBtn.innerHTML = bpListIcon;
+
+
+        const descLab:HTMLElement = document.createElement("p");
+        descLab.classList.add("exp-label");
+        descLab.innerHTML = "Description";
+
+        const descTextArea:HTMLElement = createDiv(descTextAreaObj, expIndex);
+        descTextArea.setAttribute("id", "sec-exp-desc" + expIndex);
+        descTextArea.setAttribute("contentEditable", "true");
+        descTextArea.setAttribute("data-output", "pdf-exp-desc" + expIndex);
+        descTextArea.setAttribute("placeholder", 
+            "Developed and maintained responsive web applications using JavaScript, TypeScript and jQuery.");
+        
+        // Append
+        descDiv.appendChild(descLab);
+
+        descBtnsDiv.appendChild(boldBtn);
+        descBtnsDiv.appendChild(italicBtn);
+        descBtnsDiv.appendChild(underlineBtn);
+        descBtnsDiv.appendChild(nrListBtn);
+        descBtnsDiv.appendChild(bpListBtn);
+
+        descDivInner.appendChild(descBtnsDiv);
+        descDivInner.appendChild(descTextArea);
+
+        descDiv.appendChild(descDivInner);
+        secInpsuts?.appendChild(descDiv);
+
+        expSection?.appendChild(secInpsuts);
+
+
+
+            /* Append Description & Character Limit */
+
+        const outputClass:string | null = descTextArea.getAttribute("data-output");
+    
+        // Create an element and append it
+        const pdfOutput:HTMLElement = document.createElement("p");
+        pdfOutput.classList.add(outputClass!);
+    
+        const maxDescLength:number = 200; 
+
+        function textAreaInput(){
+
+            // Change the element value to the input value
+            const output:HTMLElement | null = document.querySelector("."+outputClass);
+
+            // Limit the character number
+            if(descTextArea.innerText.length > maxDescLength){
+                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
+            }
+    
+            // Append the text to the pdf preview
+            if (output){
+                output.innerHTML = descTextArea.innerHTML;
+            }
+
+        }
+
+        descTextArea.addEventListener("input", textAreaInput);
+        
+
+
+            /* Description Buttons && Text Area */
+
+        boldBtn.addEventListener("click", () => {
+            document.execCommand("bold");
+            boldBtn.classList.toggle("desc-btn-active");
+        });
+        italicBtn.addEventListener("click", () => {
+            document.execCommand("italic");
+            italicBtn.classList.toggle("desc-btn-active");
+        });
+        underlineBtn.addEventListener("click", () => {
+            document.execCommand("underline");
+            underlineBtn.classList.toggle("desc-btn-active");
+        });
+
+        let currentListNum:number = 1;
+        nrListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>${currentListNum}.&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
+            }
+
+            nrListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+            currentListNum++
+        });
+
+        bpListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>&#x2022;&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `&#x2022;&nbsp;`;
+            }
+
+            bpListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+        });
+
+
+
+            /* Append the elements to PDF */
+
+        // Append the link name and url output to the pdf
+        const pdfExpDiv:HTMLElement = document.createElement("div");
+        pdfExpDiv.classList.add("pdf-exp");
+        pdfExpDiv.setAttribute("id", "pdf-exp"+expIndex);
+
+        appendOutput(pdfExpDiv, jobTitleInp);
+        appendOutput(pdfExpDiv, compInp);
+        appendOutput(pdfExpDiv, locationInp);
+        appendOutput(pdfExpDiv, startDateInp);
+        appendOutput(pdfExpDiv, endDateInp);
+
+        pdfExpDiv.appendChild(pdfOutput);
+        appendExp?.appendChild(pdfExpDiv);
+        
+
+
+            /* Delete Link Button Event */
+
+        deleteBtn.addEventListener("click", function(){
+
+            // PDF Experience Section
+            const pdfElemClass:HTMLElement | null = document.querySelector("#" + 
+            deleteBtn.getAttribute("delete-exp"));
+
+            // Remove the section link element if it's not the first one
+            deleteBtn.remove();
+
+            // Remove the experience section (sections)
+            expSection?.remove();
+
+            // Remove the experience section from the PDF preview
+            pdfElemClass?.remove()
+
+        });
+
+        
+
+            /* Current Position Checkbox Event */
+
+        const currentJobTxt:string = "Present";
+
+        currPosInp.addEventListener("click", () => {
+
+            const pdfEndDate:HTMLElement | null = document.querySelector("." + 
+                endDateInp.getAttribute("data-output"))
+
+            if(currPosInp.checked){
+                endDateDiv.classList.add("no-end-date");
+                pdfEndDate!.innerHTML = currentJobTxt;
+            } else {
+                endDateDiv.classList.remove("no-end-date");
+                pdfEndDate!.innerHTML = endDateInp.value;
+            }
+
+        });
+
+        endDateInp.addEventListener("input", () => {
+            currPosInp.checked = false;
+        });
+
+
+        
+            /* Section expand / collapse */
+
+        function removeOpenClass(){
+            document.querySelectorAll(".sec-exp").forEach((section) => {
+                if (section !== expSection){
+                    section.classList.remove("exp-open");
+                }
+            });
+        }
+
+        removeOpenClass();
+        expSection.classList.add("exp-open");
+
+        expHead.addEventListener("click", () => {
+            removeOpenClass();
+            expSection.classList.toggle("exp-open");
+        });
+
+
+
+            /* Settings */
+
+        // Append Elements (Section)
+        expList?.appendChild(expSection);
+
+        // Set focus when creating a new section
+        jobTitleInp.focus();
+
+        // Index number =+ 1
+        expIndex++
+
+    }
+
+}
+
+addExpBtn?.addEventListener("click", addExperience);

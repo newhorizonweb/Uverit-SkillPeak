@@ -241,6 +241,7 @@
         /* Sections - Input (Item) */
 
 .section-item{
+    flex:40%;
     min-width:0;
     display:flex;
     flex-direction:column;
@@ -381,6 +382,13 @@
     }
 
 }
+
+
+
+
+
+
+
 
 
 
@@ -864,6 +872,428 @@
         min-width:0;
         font-size:5.5vw;
 
+    }
+
+}    
+
+
+
+
+
+
+
+
+
+
+    /* Section 2 - Experience */
+
+.experience-list{
+    width:100%;
+}
+
+.experience-list:not(:has(.sec-exp)){
+    display:none;
+}
+
+.sec-desc{
+    width:100%;
+}
+
+.sec-exp{
+    width:100%;
+    margin-bottom:var(--size1);
+    padding:0;
+
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    background-color:var(--shade2);
+}
+
+.sec-exp:nth-last-of-type(1){
+    margin-bottom:0;
+}
+
+.experience-list:has(.sec-exp:nth-of-type(8)) ~ .add-btn{ 
+    display:none;
+}
+
+        /* Section 2 - Head */
+
+.sec-exp-head{
+    margin:var(--size1);
+    margin-bottom:0;
+    padding-bottom:var(--size1);
+
+    display:flex;
+    align-items:center;
+
+    border-bottom:solid 2px transparent;
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.exp-open .sec-exp-head{
+    margin-bottom:calc(var(--size1) / 2);
+    padding-bottom:calc(var(--size1) / 2);
+    border-color:var(--txt-faded2);
+}
+
+.sec-exp-heading{
+    flex:1;
+    padding-right:calc(var(--size1) / 2);
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    transition:0.15s;
+}
+
+.sec-exp-head:hover .sec-exp-heading{
+    color:var(--color1);
+}
+
+.delete-exp{
+    margin-left:auto;
+}
+
+.sec-exp-indicator{
+    width:32px;
+    aspect-ratio:1/1;
+    margin-left:calc(var(--size1) / 2);
+    position:relative;
+
+    cursor:pointer;
+    transition:0.15s;
+
+    &:before,
+    &:after{
+        content:"";
+        width:20px;
+        height:3px;
+    
+        position:absolute;
+        top:50%;
+        left:50%;
+    
+        background-color:var(--txt-faded2);
+        border-radius:200px;
+        transition:0.15s;
+    }
+
+    &:before{
+        transform:translate(calc(-50% - 6.5px), 0) rotate(45deg);
+    }
+
+    &:after{
+        transform:translate(calc(-50% + 6.5px), 0) rotate(-45deg);
+    }
+
+}
+
+.sec-exp-head:hover .sec-exp-indicator{
+    &:before,
+    &:after{
+        background-color:var(--color1);
+    }
+}
+
+.exp-open .sec-exp-indicator{
+    transform:rotate(180deg);
+}
+
+        /* Section 2 - Inputs */
+        
+.sec-exp-inputs{
+    height:0;
+    padding:0 var(--size1);
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--size1);
+    row-gap:calc(var(--size1) / 2);
+    transition:0.15s;
+}
+
+.exp-open .sec-exp-inputs{
+    height:auto;
+    padding-bottom:var(--size1);
+}
+
+.sec-exp-inputs > .section-item:nth-of-type(1){
+    flex:100%;
+}
+
+.sec-exp-inputs .sec-input{
+    width:100%;
+}
+
+.no-end-date :is(label, input){
+    color:var(--txt-faded3);
+}
+
+            /* Section 2 - Current Job Position */
+
+.curr-pos-div{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.curr-pos-div label{
+    margin-bottom:-1px;
+    padding-right:6px;
+
+    color:var(--txt-faded2);
+    font-size:14px;
+    line-height:1.2;
+
+    pointer-events:all;
+    cursor:pointer;
+}
+
+.curr-pos-div input{
+    width:14px;
+    aspect-ratio:1/1;
+    position:relative;
+
+    appearance:none;
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border-radius:var(--radius1);
+    cursor:pointer;
+}
+
+.curr-pos-div input:after{
+    content:"";
+    width:0;
+    aspect-ratio:1/1;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    background-color:var(--color1);
+    border-radius:50%;
+    transition:0.1s;
+}
+
+.curr-pos-div input:checked:after{
+    width:10px;
+}
+
+            /* Section 2 - Job Desctiption */
+
+.sec-exp-inputs .exp-desc-div{
+    flex:100%;
+}
+
+.exp-desc-div .exp-label{
+    margin-bottom:2px;
+    pointer-events:none;
+}
+
+.exp-desc-inner{
+    width:100%;
+    padding:calc(var(--size1) / 2);
+    box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+
+    box-shadow: var(--box-shadow3) var(--txt-faded3);
+    border-radius: var(--radius1);
+    transition:0.15s;
+}
+
+                /* Job Desctiption - Buttons */
+
+.exp-desc-btns{
+    margin-bottom:calc(var(--size1) / 2);
+    padding-bottom:calc(var(--size1) / 2);
+
+    display:flex;
+    flex-direction:row;
+    gap:calc(var(--size1) / 2);
+
+    border-bottom:solid 2px var(--txt-faded2);
+}
+
+.exp-desc-btn{
+    width:26px;
+    aspect-ratio:1/1;
+    margin:0;
+    padding:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:var(--txt1);
+    font-size:16px;
+
+    background-color:transparent;
+    border:none;
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border-radius:var(--radius1);
+
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.exp-desc-btn:hover{
+    color:var(--color1);
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+.exp-desc-btn.desc-btn-active:not(.exp-list-btn){
+    color:#FFF;
+    background-color:var(--color1);
+}
+
+.exp-bold-btn{
+    font-weight:800;
+}
+
+.exp-italic-btn{
+    font-style:italic;
+}
+
+.exp-underline-btn{
+    text-decoration:underline;
+}
+
+.exp-nr-list-btn{
+    margin-left:auto;
+}
+
+.exp-list-btn svg{
+    width:calc(100% - 12px);
+    aspect-ratio:1/1;
+}
+
+.exp-list-btn svg *{
+    fill:var(--txt1);
+    transition:0.15s;
+}
+
+.exp-list-btn:hover svg *{
+    fill:var(--color1);
+}
+
+                /* Job Desctiption - Description Text Area */
+
+.sec-exp-desc{
+    min-height:150px;
+    color:var(--txt1);
+    font-size:18px;
+    overflow:auto;
+}
+
+.sec-exp-desc{
+    height:125px;
+    color:var(--txt1);
+    font-size:18px;
+    overflow:auto;
+}
+
+.sec-exp-desc[contenteditable=true]:empty:before{
+    content:attr(placeholder);
+    color:var(--txt-faded2);
+    display:block;
+    pointer-events:none;
+  }
+
+.sec-exp-desc::-webkit-scrollbar{
+    width:8px;
+}
+
+.sec-exp-desc::-webkit-scrollbar-thumb{
+    background:var(--txt-faded3);
+    border-left:solid 6px transparent;
+    background-clip:padding-box;
+}
+
+.sec-exp-desc::-webkit-scrollbar-thumb:hover{
+    background:var(--txt-faded);
+    border-left:solid 6px transparent;
+    background-clip:padding-box;
+}    
+
+        /* Section 2 - media */
+        
+@media screen and (width <= 540px){
+
+    .section2 .section-item{
+        flex:100%;
+    }
+
+}
+
+@media screen and (width <= 440px){
+
+    .section2 .delete-btn{
+        height:26px;
+    }
+
+    .sec-exp-indicator{
+        width:26px;
+        margin-left:8px;
+    
+        &:before,
+        &:after{
+            width:14px;
+        }
+    
+        &:before{
+            transform:translate(calc(-50% - 4px), 0) rotate(45deg);
+        }
+    
+        &:after{
+            transform:translate(calc(-50% + 4px), 0) rotate(-45deg);
+        }
+    
+    }
+
+}
+
+@media screen and (width <= 320px){
+
+    .section2 .section-item{
+        flex:100%;
+    }
+
+    .sec-exp-head{
+        flex-wrap:wrap;
+        justify-content:space-between;
+    }
+
+    .sec-exp-heading{
+        order:1;
+        flex:none;
+
+        width:100%;
+        margin-top:8px;
+        padding:0;
+    }
+
+    .section2 .delete-btn{
+        margin:0;
+    }
+
+    .exp-desc-btns{
+        flex-wrap:wrap;
+        justify-content:flex-end;
+    }
+
+    .exp-nr-list-btn{
+        margin-left:calc(100% - 62px);
+    }
+
+    .sec-exp-desc{
+        min-height:200px;
     }
 
 }
