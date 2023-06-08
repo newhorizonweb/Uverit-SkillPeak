@@ -739,7 +739,7 @@
   width: 100%;
 }
 
-.experience-list:not(:has(.sec-exp)) {
+.experience-list:not(:has(.sec-list-elem)) {
   display: none;
 }
 
@@ -747,7 +747,7 @@
   width: 100%;
 }
 
-.sec-exp {
+.sec-list-elem {
   width: 100%;
   margin-bottom: var(--size1);
   padding: 0;
@@ -757,16 +757,16 @@
   background-color: var(--shade2);
 }
 
-.sec-exp:nth-last-of-type(1) {
+.sec-list-elem:nth-last-of-type(1) {
   margin-bottom: 0;
 }
 
-.experience-list:has(.sec-exp:nth-of-type(8)) ~ .add-btn {
+.experience-list:has(.sec-list-elem:nth-of-type(8)) ~ .add-btn {
   display: none;
 }
 
 /* Section 2 - Head */
-.sec-exp-head {
+.sec-list-head {
   margin: var(--size1);
   margin-bottom: 0;
   padding-bottom: var(--size1);
@@ -777,13 +777,13 @@
   transition: 0.15s;
 }
 
-.exp-open .sec-exp-head {
+.list-open .sec-list-head {
   margin-bottom: calc(var(--size1) / 2);
   padding-bottom: calc(var(--size1) / 2);
   border-color: var(--txt-faded2);
 }
 
-.sec-exp-heading {
+.sec-list-heading {
   flex: 1;
   padding-right: calc(var(--size1) / 2);
   text-overflow: ellipsis;
@@ -792,15 +792,15 @@
   transition: 0.15s;
 }
 
-.sec-exp-head:hover .sec-exp-heading {
+.sec-list-head:hover .sec-list-heading {
   color: var(--color1);
 }
 
-.delete-exp {
+.delete-list {
   margin-left: auto;
 }
 
-.sec-exp-indicator {
+.sec-list-indicator {
   width: 32px;
   aspect-ratio: 1/1;
   margin-left: calc(var(--size1) / 2);
@@ -808,7 +808,7 @@
   cursor: pointer;
   transition: 0.15s;
 }
-.sec-exp-indicator:before, .sec-exp-indicator:after {
+.sec-list-indicator:before, .sec-list-indicator:after {
   content: "";
   width: 20px;
   height: 3px;
@@ -819,23 +819,23 @@
   border-radius: 200px;
   transition: 0.15s;
 }
-.sec-exp-indicator:before {
+.sec-list-indicator:before {
   transform: translate(calc(-50% - 6.5px), 0) rotate(45deg);
 }
-.sec-exp-indicator:after {
+.sec-list-indicator:after {
   transform: translate(calc(-50% + 6.5px), 0) rotate(-45deg);
 }
 
-.sec-exp-head:hover .sec-exp-indicator:before, .sec-exp-head:hover .sec-exp-indicator:after {
+.sec-list-head:hover .sec-list-indicator:before, .sec-list-head:hover .sec-list-indicator:after {
   background-color: var(--color1);
 }
 
-.exp-open .sec-exp-indicator {
+.list-open .sec-list-indicator {
   transform: rotate(180deg);
 }
 
 /* Section 2 - Inputs */
-.sec-exp-inputs {
+.sec-list-inputs {
   height: 0;
   padding: 0 var(--size1);
   display: flex;
@@ -845,16 +845,16 @@
   transition: 0.15s;
 }
 
-.exp-open .sec-exp-inputs {
+.list-open .sec-list-inputs {
   height: auto;
   padding-bottom: var(--size1);
 }
 
-.sec-exp-inputs > .section-item:nth-of-type(1) {
+.sec-list-inputs > .section-item:nth-of-type(1) {
   flex: 100%;
 }
 
-.sec-exp-inputs .sec-input {
+.sec-list-inputs .sec-input {
   width: 100%;
 }
 
@@ -908,16 +908,16 @@
 }
 
 /* Section 2 - Job Desctiption */
-.sec-exp-inputs .exp-desc-div {
+.sec-list-inputs .list-desc-div {
   flex: 100%;
 }
 
-.exp-desc-div .exp-label {
+.list-desc-div .list-label {
   margin-bottom: 2px;
   pointer-events: none;
 }
 
-.exp-desc-inner {
+.list-desc-inner {
   width: 100%;
   padding: calc(var(--size1) / 2);
   box-sizing: border-box;
@@ -930,7 +930,7 @@
 }
 
 /* Job Desctiption - Buttons */
-.exp-desc-btns {
+.list-desc-btns {
   margin-bottom: calc(var(--size1) / 2);
   padding-bottom: calc(var(--size1) / 2);
   display: flex;
@@ -939,7 +939,7 @@
   border-bottom: solid 2px var(--txt-faded2);
 }
 
-.exp-desc-btn {
+.list-desc-btn {
   width: 26px;
   aspect-ratio: 1/1;
   margin: 0;
@@ -957,79 +957,79 @@
   cursor: pointer;
 }
 
-.exp-desc-btn:hover {
+.list-desc-btn:hover {
   color: var(--color1);
   box-shadow: var(--box-shadow3) var(--color1);
 }
 
-.exp-desc-btn.desc-btn-active:not(.exp-list-btn) {
+.list-desc-btn.desc-btn-active:not(.list-list-btn) {
   color: #FFF;
   background-color: var(--color1);
 }
 
-.exp-bold-btn {
+.list-bold-btn {
   font-weight: 800;
 }
 
-.exp-italic-btn {
+.list-italic-btn {
   font-style: italic;
 }
 
-.exp-underline-btn {
+.list-underline-btn {
   text-decoration: underline;
 }
 
-.exp-nr-list-btn {
+.list-nr-list-btn {
   margin-left: auto;
 }
 
-.exp-list-btn svg {
+.list-list-btn svg {
   width: calc(100% - 12px);
   aspect-ratio: 1/1;
 }
 
-.exp-list-btn svg * {
+.list-list-btn svg * {
   fill: var(--txt1);
   transition: 0.15s;
 }
 
-.exp-list-btn:hover svg * {
+.list-list-btn:hover svg * {
   fill: var(--color1);
 }
 
 /* Job Desctiption - Description Text Area */
-.sec-exp-desc {
+.sec-list-desc {
   min-height: 150px;
   color: var(--txt1);
   font-size: 18px;
   overflow: auto;
 }
 
-.sec-exp-desc {
+.sec-list-desc {
   height: 125px;
   color: var(--txt1);
   font-size: 18px;
   overflow: auto;
 }
 
-.sec-exp-desc[contenteditable=true]:empty:before {
+.sec-list-desc[contenteditable=true]:empty:before {
   content: attr(placeholder);
   color: var(--txt-faded2);
   display: block;
   pointer-events: none;
 }
 
-.sec-exp-desc::-webkit-scrollbar {
+.sec-list-desc::-webkit-scrollbar {
   width: 8px;
 }
 
-.sec-exp-desc::-webkit-scrollbar-thumb {
+.sec-list-desc::-webkit-scrollbar-thumb {
   background: var(--txt-faded3);
   border-left: solid 6px transparent;
   background-clip: padding-box;
 }
 
-.sec-exp-desc::-webkit-scrollbar-thumb:hover {
+.sec-list-desc::-webkit-scrollbar-thumb:hover {
   background: var(--txt-faded);
   border-left: solid 6px transparent;
   background-clip: padding-box;
@@ -1045,17 +1045,17 @@
   .section2 .delete-btn {
     height: 26px;
   }
-  .sec-exp-indicator {
+  .sec-list-indicator {
     width: 26px;
     margin-left: 8px;
   }
-  .sec-exp-indicator:before, .sec-exp-indicator:after {
+  .sec-list-indicator:before, .sec-list-indicator:after {
     width: 14px;
   }
-  .sec-exp-indicator:before {
+  .sec-list-indicator:before {
     transform: translate(calc(-50% - 4px), 0) rotate(45deg);
   }
-  .sec-exp-indicator:after {
+  .sec-list-indicator:after {
     transform: translate(calc(-50% + 4px), 0) rotate(-45deg);
   }
 }
@@ -1063,11 +1063,11 @@
   .section2 .section-item {
     flex: 100%;
   }
-  .sec-exp-head {
+  .sec-list-head {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .sec-exp-heading {
+  .sec-list-heading {
     order: 1;
     flex: none;
     width: 100%;
@@ -1077,14 +1077,15 @@
   .section2 .delete-btn {
     margin: 0;
   }
-  .exp-desc-btns {
+  .list-desc-btns {
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-  .exp-nr-list-btn {
+  .list-nr-list-btn {
     margin-left: calc(100% - 62px);
   }
-  .sec-exp-desc {
+  .sec-list-desc {
     min-height: 200px;
   }
 }
+/* Section 3 - Education */

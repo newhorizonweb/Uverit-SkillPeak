@@ -845,7 +845,7 @@ addLinkBtn?.addEventListener("click", addLink);
 
 
 
-//*--|*|--*\\_____// Create Work Experience Elements \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Work Experience \\_____//*--|*|--*\\
 
 
 
@@ -864,35 +864,32 @@ const appendExp:HTMLElement | null = document.querySelector(".exp-append");
 const jobTitle:string = "Job Title";
 
 
+
     /* Element Objects */
 
-const expSectionObj:Object = {
-    elemClasses: "sec-exp, dock-inner",
-    elemIndexClasses: "sec-exp"
+const listSectionObj:Object = {
+    elemClasses: "sec-list-elem, sec-exp, dock-inner",
+    elemIndexClasses: ""
 }
-const expHeadObj:Object = {
-    elemClasses: "sec-exp-head",
-    elemIndexClasses: "sec-exp-head"
+const listHeadObj:Object = {
+    elemClasses: "sec-list-head",
+    elemIndexClasses: ""
 }
-const deleteExpBtnObj:Object = {
-    elemClasses: "delete-btn, delete-exp",
-    elemIndexClasses: "delete-exp"
+const deleteListBtnObj:Object = {
+    elemClasses: "delete-btn, delete-list",
+    elemIndexClasses: ""
 }
-const expIndicatorObj:Object = {
-    elemClasses: "sec-exp-indicator",
-    elemIndexClasses: "sec-exp-indicator"
+const listIndicatorObj:Object = {
+    elemClasses: "sec-list-indicator",
+    elemIndexClasses: ""
 }
 
 const secInputsObj:Object = {
-    elemClasses: "sec-exp-inputs",
+    elemClasses: "sec-list-inputs",
     elemIndexClasses: ""
 }
 const secItemObj:Object = {
     elemClasses: "section-item",
-    elemIndexClasses: ""
-}
-const pdfExpDivObj:Object = {
-    elemClasses: "pdf-exp",
     elemIndexClasses: ""
 }
 
@@ -900,7 +897,7 @@ const pdfExpDivObj:Object = {
 const jobTitleLabObj:Object = {
     elemName: "Job Title",
     elemFor: "sec-job-title",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
@@ -917,7 +914,7 @@ const jobTitleInpObj:Object = {
 const compLabObj:Object = {
     elemName: "Company",
     elemFor: "sec-company",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
@@ -934,7 +931,7 @@ const compInpObj:Object = {
 const locationLabObj:Object = {
     elemName: "Location",
     elemFor: "sec-location",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
@@ -951,7 +948,7 @@ const locationInpObj:Object = {
 const startDateLabObj:Object = {
     elemName: "Start Date",
     elemFor: "sec-start-date",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
@@ -968,7 +965,7 @@ const startDateInpObj:Object = {
 const endDateLabObj:Object = {
     elemName: "End Date",
     elemFor: "sec-end-date",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
@@ -985,46 +982,46 @@ const endDateInpObj:Object = {
 const currPosLabObj:Object = {
     elemName: "I still work here",
     elemFor: "sec-curr-pos",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 }
 
 
 const descDivObj:Object = {
-    elemClasses: "exp-desc-inner",
+    elemClasses: "list-desc-inner",
     elemIndexClasses: ""
 }
 
 const descBtnsDivObj:Object = {
-    elemClasses: "exp-desc-btns",
+    elemClasses: "list-desc-btns",
     elemIndexClasses: ""
 }
 
 const boldBtnObj:Object = {
-    elemClasses: "exp-desc-btn, exp-bold-btn",
+    elemClasses: "list-desc-btn, list-bold-btn",
     elemIndexClasses: ""
 }
 const italicBtnObj:Object = {
-    elemClasses: "exp-desc-btn, exp-italic-btn",
+    elemClasses: "list-desc-btn, list-italic-btn",
     elemIndexClasses: ""
 }
 const underlineBtnObj:Object = {
-    elemClasses: "exp-desc-btn, exp-underline-btn",
+    elemClasses: "list-desc-btn, list-underline-btn",
     elemIndexClasses: ""
 }
 
 const nrListBtnObj:Object = {
-    elemClasses: "exp-desc-btn, exp-list-btn, exp-nr-list-btn",
+    elemClasses: "list-desc-btn, list-list-btn, list-nr-list-btn",
     elemIndexClasses: ""
 }
 const bpListBtnObj:Object = {
-    elemClasses: "exp-desc-btn, exp-list-btn, exp-bp-list-btn",
+    elemClasses: "list-desc-btn, list-list-btn, list-bp-list-btn",
     elemIndexClasses: ""
 }
 
 
 const descTextAreaObj:Object = {
-    elemClasses: "sec-exp-desc",
+    elemClasses: "sec-list-desc",
     elemIndexClasses: ""
 }
 
@@ -1032,44 +1029,44 @@ let expIndex:number = 0;
 
 function addExperience(){
 
-    const expNumber:number = expList?.querySelectorAll(".sec-exp").length ?? 0;
+    const listNumber:number = expList?.querySelectorAll(".sec-exp").length ?? 0;
 
-    if (expNumber < 8){
+    if (listNumber < 8){
 
 
 
-            /* Section Div */
+            /* Section Div && Head */
 
         // Section Div
-        const expSection:HTMLElement = createDiv(expSectionObj, expIndex);
+        const listSection:HTMLElement = createDiv(listSectionObj, expIndex);
 
         // Head
-        const expHead:HTMLElement = createDiv(expHeadObj, expIndex);
+        const listHead:HTMLElement = createDiv(listHeadObj, expIndex);
 
         // Heading
-        const expHeading:HTMLElement = document.createElement("h4");
-        expHeading.classList.add("sec-exp-heading", "sec-exp-heading" + expIndex);
-        expHeading.innerHTML = jobTitle;
+        const listHeading:HTMLElement = document.createElement("h4");
+        listHeading.classList.add("sec-list-heading");
+        listHeading.innerHTML = jobTitle;
 
         // Delete Button
-        const deleteBtn:HTMLElement = createDiv(deleteExpBtnObj, expIndex);
-        deleteBtn.setAttribute("delete-exp", "pdf-exp"+expIndex);
+        const deleteBtn:HTMLElement = createDiv(deleteListBtnObj, expIndex);
+        deleteBtn.setAttribute("delete-list", "pdf-exp" + expIndex);
 
         // List Indicator
-        const expindicator:HTMLElement = createDiv(expIndicatorObj, expIndex);
+        const listIndicator:HTMLElement = createDiv(listIndicatorObj, expIndex);
         
-        expHead.appendChild(expHeading);
-        expHead.appendChild(deleteBtn);
-        expHead.appendChild(expindicator);
+        listHead.appendChild(listHeading);
+        listHead.appendChild(deleteBtn);
+        listHead.appendChild(listIndicator);
 
-        expSection.appendChild(expHead);
+        listSection.appendChild(listHead);
 
 
 
             /* Job Title */
 
         // Inputs Div
-        const secInpsuts:HTMLElement = createDiv(secInputsObj, expIndex);
+        const secInputs:HTMLElement = createDiv(secInputsObj, expIndex);
 
         // Create Elements
         const jobTitleDiv:HTMLElement = createDiv(secItemObj, expIndex);
@@ -1079,14 +1076,14 @@ function addExperience(){
         // Append
         jobTitleDiv.appendChild(jobTitleLab);
         jobTitleDiv.appendChild(jobTitleInp);
-        secInpsuts?.appendChild(jobTitleDiv);
+        secInputs?.appendChild(jobTitleDiv);
 
         // Change the section title
         jobTitleInp.addEventListener("input", () => {
             if (jobTitleInp.value.length > 0){
-                expHeading.innerHTML = jobTitleInp.value;
+                listHeading.innerHTML = jobTitleInp.value;
             } else {
-                expHeading.innerHTML = jobTitle;
+                listHeading.innerHTML = jobTitle;
             }
         });
 
@@ -1102,7 +1099,7 @@ function addExperience(){
         // Append
         compDiv.appendChild(compLab);
         compDiv.appendChild(compInp);
-        secInpsuts?.appendChild(compDiv);
+        secInputs?.appendChild(compDiv);
 
 
 
@@ -1116,7 +1113,7 @@ function addExperience(){
         // Append
         locationDiv.appendChild(locationLab);
         locationDiv.appendChild(locationInp);
-        secInpsuts?.appendChild(locationDiv);
+        secInputs?.appendChild(locationDiv);
 
 
 
@@ -1130,7 +1127,7 @@ function addExperience(){
         // Append
         startDateDiv.appendChild(startDateLab);
         startDateDiv.appendChild(startDateInp);
-        secInpsuts?.appendChild(startDateDiv);
+        secInputs?.appendChild(startDateDiv);
 
 
 
@@ -1144,7 +1141,7 @@ function addExperience(){
         // Append
         endDateDiv.appendChild(endDateLab);
         endDateDiv.appendChild(endDateInp);
-        secInpsuts?.appendChild(endDateDiv);
+        secInputs?.appendChild(endDateDiv);
 
 
 
@@ -1164,7 +1161,7 @@ function addExperience(){
         // Append
         currPosDiv.appendChild(currPosLab);
         currPosDiv.appendChild(currPosInp);
-        secInpsuts?.appendChild(currPosDiv);
+        secInputs?.appendChild(currPosDiv);
 
 
 
@@ -1172,7 +1169,7 @@ function addExperience(){
 
         // Create Elements
         const descDiv:HTMLElement = createDiv(secItemObj, expIndex);
-        descDiv.classList.add("exp-desc-div");
+        descDiv.classList.add("list-desc-div");
         const descDivInner:HTMLElement = createDiv(descDivObj, expIndex);
 
 
@@ -1196,7 +1193,7 @@ function addExperience(){
 
 
         const descLab:HTMLElement = document.createElement("p");
-        descLab.classList.add("exp-label");
+        descLab.classList.add("list-label");
         descLab.innerHTML = "Description";
 
         const descTextArea:HTMLElement = createDiv(descTextAreaObj, expIndex);
@@ -1219,9 +1216,9 @@ function addExperience(){
         descDivInner.appendChild(descTextArea);
 
         descDiv.appendChild(descDivInner);
-        secInpsuts?.appendChild(descDiv);
+        secInputs?.appendChild(descDiv);
 
-        expSection?.appendChild(secInpsuts);
+        listSection?.appendChild(secInputs);
 
 
 
@@ -1238,7 +1235,8 @@ function addExperience(){
         function textAreaInput(){
 
             // Change the element value to the input value
-            const output:HTMLElement | null = document.querySelector("."+outputClass);
+            const output:HTMLElement | null = document.querySelector("." + 
+                outputClass);
 
             // Limit the character number
             if(descTextArea.innerText.length > maxDescLength){
@@ -1299,7 +1297,7 @@ function addExperience(){
 
             /* Append the elements to PDF */
 
-        // Append the link name and url output to the pdf
+        // Append the section elements to the pdf
         const pdfExpDiv:HTMLElement = document.createElement("div");
         pdfExpDiv.classList.add("pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp"+expIndex);
@@ -1321,13 +1319,10 @@ function addExperience(){
 
             // PDF Experience Section
             const pdfElemClass:HTMLElement | null = document.querySelector("#" + 
-            deleteBtn.getAttribute("delete-exp"));
-
-            // Remove the section link element if it's not the first one
-            deleteBtn.remove();
+            deleteBtn.getAttribute("delete-list"));
 
             // Remove the experience section (sections)
-            expSection?.remove();
+            listSection?.remove();
 
             // Remove the experience section from the PDF preview
             pdfElemClass?.remove()
@@ -1365,18 +1360,22 @@ function addExperience(){
 
         function removeOpenClass(){
             document.querySelectorAll(".sec-exp").forEach((section) => {
-                if (section !== expSection){
-                    section.classList.remove("exp-open");
+                if (section !== listSection){
+                    section.classList.remove("list-open");
                 }
             });
         }
 
         removeOpenClass();
-        expSection.classList.add("exp-open");
+        listSection.classList.add("list-open");
 
-        expHead.addEventListener("click", () => {
-            removeOpenClass();
-            expSection.classList.toggle("exp-open");
+        listHead.addEventListener("click", (e) => {
+
+            if (!(e.target as HTMLElement)?.contains(deleteBtn)){
+                removeOpenClass();
+                listSection.classList.toggle("list-open");
+            }
+            
         });
 
 
@@ -1384,7 +1383,7 @@ function addExperience(){
             /* Settings */
 
         // Append Elements (Section)
-        expList?.appendChild(expSection);
+        expList?.appendChild(listSection);
 
         // Set focus when creating a new section
         jobTitleInp.focus();
@@ -1397,3 +1396,14 @@ function addExperience(){
 }
 
 addExpBtn?.addEventListener("click", addExperience);
+
+
+
+//*--|*|--*\\_____// Education \\_____//*--|*|--*\\
+
+
+
+
+
+
+

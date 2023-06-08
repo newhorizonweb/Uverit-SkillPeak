@@ -586,7 +586,7 @@ function addLink() {
     }
 }
 addLinkBtn?.addEventListener("click", addLink);
-//*--|*|--*\\_____// Create Work Experience Elements \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Work Experience \\_____//*--|*|--*\\
 // SVG
 const bpListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='51.4' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L51.4,28a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,28l-1.7-.2-1.7-.5A8,8,0,0,1,4,26.5L2.6,25.4,1.5,24a8,8,0,0,1-.8-1.6,9.8,9.8,0,0,1-.5-1.6A11,11,0,0,1,0,19a9.4,9.4,0,0,1,2.6-6.4L4,11.5l1.6-.8,1.7-.5a6.9,6.9,0,0,1,3.5,0l1.7.5,1.5.8,1.4,1.1A7.6,7.6,0,0,1,16.5,14a8,8,0,0,1,.8,1.6,9.8,9.8,0,0,1,.5,1.6A5.5,5.5,0,0,1,18,19a5.5,5.5,0,0,1-.2,1.8,9.8,9.8,0,0,1-.5,1.6,8,8,0,0,1-.8,1.6,13.4,13.4,0,0,1-1.1,1.4A9.4,9.4,0,0,1,9,28Z'/><line class='cls-1' x1='51.4' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-139.6-.2a9,9,0,0,1,0-18h0L191,172a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,189.8a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,10.9,10.9,0,0,1-.5-1.7,11,11,0,0,1-.2-1.8,11.1,11.1,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7l.8-1.6a6.9,6.9,0,0,1,1.1-1.3A9.1,9.1,0,0,1,9,171.8a9.1,9.1,0,0,1,6.4,2.7,6.9,6.9,0,0,1,1.1,1.3l.8,1.6a8.4,8.4,0,0,1,.5,1.7,11.1,11.1,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,10.9,10.9,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4A9,9,0,0,1,9,189.8Z'/><line class='cls-1' x1='51.4' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-139.6-.2a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,108.9a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,15.4,15.4,0,0,1-.5-1.7A11,11,0,0,1,0,99.9a8.8,8.8,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7,8,8,0,0,1,.8-1.6,6.9,6.9,0,0,1,1.1-1.3,9.1,9.1,0,0,1,8.2-2.5l1.6.5,1.6.8,1.4,1.2a6.9,6.9,0,0,1,1.1,1.3,8,8,0,0,1,.8,1.6,8.4,8.4,0,0,1,.5,1.7,8.8,8.8,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,15.4,15.4,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4L14,107.4l-1.6.8a10.4,10.4,0,0,1-1.6.6Z'/></svg>";
 const numberListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='119.5' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L119.5,28a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><path d='M52.6,191.5a8.5,8.5,0,0,1-6-2.3,7.8,7.8,0,0,1-2.3-5.5V27.2l2.9,2.6L12.6,53.2a8,8,0,0,1-4.4,1.3,7.6,7.6,0,0,1-5.6-2.6A7.7,7.7,0,0,1,.1,46.4a7.3,7.3,0,0,1,4.2-6.7L47.7,11.1a10.4,10.4,0,0,1,3.2-1.5,7.8,7.8,0,0,1,3-.1A7,7,0,0,1,59.1,12a8.1,8.1,0,0,1,1.8,5.3V183.7a7.4,7.4,0,0,1-2.3,5.5A8.3,8.3,0,0,1,52.6,191.5Z'/></svg>";
@@ -596,38 +596,34 @@ const addExpBtn = document.querySelector(".add-experience");
 const appendExp = document.querySelector(".exp-append");
 const jobTitle = "Job Title";
 /* Element Objects */
-const expSectionObj = {
-    elemClasses: "sec-exp, dock-inner",
-    elemIndexClasses: "sec-exp"
+const listSectionObj = {
+    elemClasses: "sec-list-elem, sec-exp, dock-inner",
+    elemIndexClasses: ""
 };
-const expHeadObj = {
-    elemClasses: "sec-exp-head",
-    elemIndexClasses: "sec-exp-head"
+const listHeadObj = {
+    elemClasses: "sec-list-head",
+    elemIndexClasses: ""
 };
-const deleteExpBtnObj = {
-    elemClasses: "delete-btn, delete-exp",
-    elemIndexClasses: "delete-exp"
+const deleteListBtnObj = {
+    elemClasses: "delete-btn, delete-list",
+    elemIndexClasses: ""
 };
-const expIndicatorObj = {
-    elemClasses: "sec-exp-indicator",
-    elemIndexClasses: "sec-exp-indicator"
+const listIndicatorObj = {
+    elemClasses: "sec-list-indicator",
+    elemIndexClasses: ""
 };
 const secInputsObj = {
-    elemClasses: "sec-exp-inputs",
+    elemClasses: "sec-list-inputs",
     elemIndexClasses: ""
 };
 const secItemObj = {
     elemClasses: "section-item",
     elemIndexClasses: ""
 };
-const pdfExpDivObj = {
-    elemClasses: "pdf-exp",
-    elemIndexClasses: ""
-};
 const jobTitleLabObj = {
     elemName: "Job Title",
     elemFor: "sec-job-title",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const jobTitleInpObj = {
@@ -641,7 +637,7 @@ const jobTitleInpObj = {
 const compLabObj = {
     elemName: "Company",
     elemFor: "sec-company",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const compInpObj = {
@@ -655,7 +651,7 @@ const compInpObj = {
 const locationLabObj = {
     elemName: "Location",
     elemFor: "sec-location",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const locationInpObj = {
@@ -669,7 +665,7 @@ const locationInpObj = {
 const startDateLabObj = {
     elemName: "Start Date",
     elemFor: "sec-start-date",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const startDateInpObj = {
@@ -683,7 +679,7 @@ const startDateInpObj = {
 const endDateLabObj = {
     elemName: "End Date",
     elemFor: "sec-end-date",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const endDateInpObj = {
@@ -697,66 +693,66 @@ const endDateInpObj = {
 const currPosLabObj = {
     elemName: "I still work here",
     elemFor: "sec-curr-pos",
-    elemClasses: "exp-label",
+    elemClasses: "list-label",
     elemIndexClasses: ""
 };
 const descDivObj = {
-    elemClasses: "exp-desc-inner",
+    elemClasses: "list-desc-inner",
     elemIndexClasses: ""
 };
 const descBtnsDivObj = {
-    elemClasses: "exp-desc-btns",
+    elemClasses: "list-desc-btns",
     elemIndexClasses: ""
 };
 const boldBtnObj = {
-    elemClasses: "exp-desc-btn, exp-bold-btn",
+    elemClasses: "list-desc-btn, list-bold-btn",
     elemIndexClasses: ""
 };
 const italicBtnObj = {
-    elemClasses: "exp-desc-btn, exp-italic-btn",
+    elemClasses: "list-desc-btn, list-italic-btn",
     elemIndexClasses: ""
 };
 const underlineBtnObj = {
-    elemClasses: "exp-desc-btn, exp-underline-btn",
+    elemClasses: "list-desc-btn, list-underline-btn",
     elemIndexClasses: ""
 };
 const nrListBtnObj = {
-    elemClasses: "exp-desc-btn, exp-list-btn, exp-nr-list-btn",
+    elemClasses: "list-desc-btn, list-list-btn, list-nr-list-btn",
     elemIndexClasses: ""
 };
 const bpListBtnObj = {
-    elemClasses: "exp-desc-btn, exp-list-btn, exp-bp-list-btn",
+    elemClasses: "list-desc-btn, list-list-btn, list-bp-list-btn",
     elemIndexClasses: ""
 };
 const descTextAreaObj = {
-    elemClasses: "sec-exp-desc",
+    elemClasses: "sec-list-desc",
     elemIndexClasses: ""
 };
 let expIndex = 0;
 function addExperience() {
-    const expNumber = expList?.querySelectorAll(".sec-exp").length ?? 0;
-    if (expNumber < 8) {
-        /* Section Div */
+    const listNumber = expList?.querySelectorAll(".sec-exp").length ?? 0;
+    if (listNumber < 8) {
+        /* Section Div && Head */
         // Section Div
-        const expSection = createDiv(expSectionObj, expIndex);
+        const listSection = createDiv(listSectionObj, expIndex);
         // Head
-        const expHead = createDiv(expHeadObj, expIndex);
+        const listHead = createDiv(listHeadObj, expIndex);
         // Heading
-        const expHeading = document.createElement("h4");
-        expHeading.classList.add("sec-exp-heading", "sec-exp-heading" + expIndex);
-        expHeading.innerHTML = jobTitle;
+        const listHeading = document.createElement("h4");
+        listHeading.classList.add("sec-list-heading");
+        listHeading.innerHTML = jobTitle;
         // Delete Button
-        const deleteBtn = createDiv(deleteExpBtnObj, expIndex);
-        deleteBtn.setAttribute("delete-exp", "pdf-exp" + expIndex);
+        const deleteBtn = createDiv(deleteListBtnObj, expIndex);
+        deleteBtn.setAttribute("delete-list", "pdf-exp" + expIndex);
         // List Indicator
-        const expindicator = createDiv(expIndicatorObj, expIndex);
-        expHead.appendChild(expHeading);
-        expHead.appendChild(deleteBtn);
-        expHead.appendChild(expindicator);
-        expSection.appendChild(expHead);
+        const listIndicator = createDiv(listIndicatorObj, expIndex);
+        listHead.appendChild(listHeading);
+        listHead.appendChild(deleteBtn);
+        listHead.appendChild(listIndicator);
+        listSection.appendChild(listHead);
         /* Job Title */
         // Inputs Div
-        const secInpsuts = createDiv(secInputsObj, expIndex);
+        const secInputs = createDiv(secInputsObj, expIndex);
         // Create Elements
         const jobTitleDiv = createDiv(secItemObj, expIndex);
         const jobTitleLab = createLabel(jobTitleLabObj, expIndex);
@@ -764,14 +760,14 @@ function addExperience() {
         // Append
         jobTitleDiv.appendChild(jobTitleLab);
         jobTitleDiv.appendChild(jobTitleInp);
-        secInpsuts?.appendChild(jobTitleDiv);
+        secInputs?.appendChild(jobTitleDiv);
         // Change the section title
         jobTitleInp.addEventListener("input", () => {
             if (jobTitleInp.value.length > 0) {
-                expHeading.innerHTML = jobTitleInp.value;
+                listHeading.innerHTML = jobTitleInp.value;
             }
             else {
-                expHeading.innerHTML = jobTitle;
+                listHeading.innerHTML = jobTitle;
             }
         });
         /* Company */
@@ -782,7 +778,7 @@ function addExperience() {
         // Append
         compDiv.appendChild(compLab);
         compDiv.appendChild(compInp);
-        secInpsuts?.appendChild(compDiv);
+        secInputs?.appendChild(compDiv);
         /* Location */
         // Create Elements
         const locationDiv = createDiv(secItemObj, expIndex);
@@ -791,7 +787,7 @@ function addExperience() {
         // Append
         locationDiv.appendChild(locationLab);
         locationDiv.appendChild(locationInp);
-        secInpsuts?.appendChild(locationDiv);
+        secInputs?.appendChild(locationDiv);
         /* Start Date */
         // Create Elements
         const startDateDiv = createDiv(secItemObj, expIndex);
@@ -800,7 +796,7 @@ function addExperience() {
         // Append
         startDateDiv.appendChild(startDateLab);
         startDateDiv.appendChild(startDateInp);
-        secInpsuts?.appendChild(startDateDiv);
+        secInputs?.appendChild(startDateDiv);
         /* End Date */
         // Create Elements
         const endDateDiv = createDiv(secItemObj, expIndex);
@@ -809,7 +805,7 @@ function addExperience() {
         // Append
         endDateDiv.appendChild(endDateLab);
         endDateDiv.appendChild(endDateInp);
-        secInpsuts?.appendChild(endDateDiv);
+        secInputs?.appendChild(endDateDiv);
         /* Current Position */
         // Create Elements
         const currPosDiv = createDiv(secItemObj, expIndex);
@@ -823,11 +819,11 @@ function addExperience() {
         // Append
         currPosDiv.appendChild(currPosLab);
         currPosDiv.appendChild(currPosInp);
-        secInpsuts?.appendChild(currPosDiv);
+        secInputs?.appendChild(currPosDiv);
         /* Description */
         // Create Elements
         const descDiv = createDiv(secItemObj, expIndex);
-        descDiv.classList.add("exp-desc-div");
+        descDiv.classList.add("list-desc-div");
         const descDivInner = createDiv(descDivObj, expIndex);
         const descBtnsDiv = createDiv(descBtnsDivObj, expIndex);
         const boldBtn = createBtn(boldBtnObj, expIndex);
@@ -841,7 +837,7 @@ function addExperience() {
         const bpListBtn = createBtn(bpListBtnObj, expIndex);
         bpListBtn.innerHTML = bpListIcon;
         const descLab = document.createElement("p");
-        descLab.classList.add("exp-label");
+        descLab.classList.add("list-label");
         descLab.innerHTML = "Description";
         const descTextArea = createDiv(descTextAreaObj, expIndex);
         descTextArea.setAttribute("id", "sec-exp-desc" + expIndex);
@@ -858,8 +854,8 @@ function addExperience() {
         descDivInner.appendChild(descBtnsDiv);
         descDivInner.appendChild(descTextArea);
         descDiv.appendChild(descDivInner);
-        secInpsuts?.appendChild(descDiv);
-        expSection?.appendChild(secInpsuts);
+        secInputs?.appendChild(descDiv);
+        listSection?.appendChild(secInputs);
         /* Append Description & Character Limit */
         const outputClass = descTextArea.getAttribute("data-output");
         // Create an element and append it
@@ -868,7 +864,8 @@ function addExperience() {
         const maxDescLength = 200;
         function textAreaInput() {
             // Change the element value to the input value
-            const output = document.querySelector("." + outputClass);
+            const output = document.querySelector("." +
+                outputClass);
             // Limit the character number
             if (descTextArea.innerText.length > maxDescLength) {
                 descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
@@ -915,7 +912,7 @@ function addExperience() {
             textAreaInput();
         });
         /* Append the elements to PDF */
-        // Append the link name and url output to the pdf
+        // Append the section elements to the pdf
         const pdfExpDiv = document.createElement("div");
         pdfExpDiv.classList.add("pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp" + expIndex);
@@ -930,11 +927,9 @@ function addExperience() {
         deleteBtn.addEventListener("click", function () {
             // PDF Experience Section
             const pdfElemClass = document.querySelector("#" +
-                deleteBtn.getAttribute("delete-exp"));
-            // Remove the section link element if it's not the first one
-            deleteBtn.remove();
+                deleteBtn.getAttribute("delete-list"));
             // Remove the experience section (sections)
-            expSection?.remove();
+            listSection?.remove();
             // Remove the experience section from the PDF preview
             pdfElemClass?.remove();
         });
@@ -958,20 +953,22 @@ function addExperience() {
         /* Section expand / collapse */
         function removeOpenClass() {
             document.querySelectorAll(".sec-exp").forEach((section) => {
-                if (section !== expSection) {
-                    section.classList.remove("exp-open");
+                if (section !== listSection) {
+                    section.classList.remove("list-open");
                 }
             });
         }
         removeOpenClass();
-        expSection.classList.add("exp-open");
-        expHead.addEventListener("click", () => {
-            removeOpenClass();
-            expSection.classList.toggle("exp-open");
+        listSection.classList.add("list-open");
+        listHead.addEventListener("click", (e) => {
+            if (!e.target?.contains(deleteBtn)) {
+                removeOpenClass();
+                listSection.classList.toggle("list-open");
+            }
         });
         /* Settings */
         // Append Elements (Section)
-        expList?.appendChild(expSection);
+        expList?.appendChild(listSection);
         // Set focus when creating a new section
         jobTitleInp.focus();
         // Index number =+ 1
@@ -979,3 +976,4 @@ function addExperience() {
     }
 }
 addExpBtn?.addEventListener("click", addExperience);
+//*--|*|--*\\_____// Education \\_____//*--|*|--*\\
