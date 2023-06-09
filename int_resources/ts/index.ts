@@ -4,7 +4,7 @@
     /* Program Settings */
 
 // Program Version
-const programVersion:string = "v0.8.1";
+const programVersion:string = "v0.9.0";
 
 
 

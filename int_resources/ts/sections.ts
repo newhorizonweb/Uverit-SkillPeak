@@ -861,14 +861,14 @@ const expList:HTMLElement | null = document.querySelector(".experience-list");
 const addExpBtn:HTMLElement | null = document.querySelector(".add-experience");
 const appendExp:HTMLElement | null = document.querySelector(".exp-append");
 
-const jobTitle:string = "Job Title";
+const notSpecified:string = "Not Specified";
 
 
 
     /* Element Objects */
 
 const listSectionObj:Object = {
-    elemClasses: "sec-list-elem, sec-exp, dock-inner",
+    elemClasses: "sec-list-elem, dock-inner",
     elemIndexClasses: ""
 }
 const listHeadObj:Object = {
@@ -906,7 +906,7 @@ const jobTitleInpObj:Object = {
     elemId: "sec-job-title",
     elemClasses: "sec-input",
     elemIndexClasses: "sec-job-title",
-    elemPlaceholder: "",
+    elemPlaceholder: "Front-end Web Dev",
     elemDataOutput: "pdf-job-title"
 }
 
@@ -923,7 +923,7 @@ const compInpObj:Object = {
     elemId: "sec-company",
     elemClasses: "sec-input",
     elemIndexClasses: "sec-company",
-    elemPlaceholder: "",
+    elemPlaceholder: "Meta Platforms",
     elemDataOutput: "pdf-company"
 }
 
@@ -940,7 +940,7 @@ const locationInpObj:Object = {
     elemId: "sec-location",
     elemClasses: "sec-input",
     elemIndexClasses: "sec-location",
-    elemPlaceholder: "",
+    elemPlaceholder: "New York City",
     elemDataOutput: "pdf-location"
 }
 
@@ -1029,7 +1029,7 @@ let expIndex:number = 0;
 
 function addExperience(){
 
-    const listNumber:number = expList?.querySelectorAll(".sec-exp").length ?? 0;
+    const listNumber:number = expList?.querySelectorAll(".sec-list-elem").length ?? 0;
 
     if (listNumber < 8){
 
@@ -1039,6 +1039,7 @@ function addExperience(){
 
         // Section Div
         const listSection:HTMLElement = createDiv(listSectionObj, expIndex);
+        listSection.classList.add("sec-exp");
 
         // Head
         const listHead:HTMLElement = createDiv(listHeadObj, expIndex);
@@ -1046,7 +1047,7 @@ function addExperience(){
         // Heading
         const listHeading:HTMLElement = document.createElement("h4");
         listHeading.classList.add("sec-list-heading");
-        listHeading.innerHTML = jobTitle;
+        listHeading.innerHTML = notSpecified;
 
         // Delete Button
         const deleteBtn:HTMLElement = createDiv(deleteListBtnObj, expIndex);
@@ -1083,7 +1084,7 @@ function addExperience(){
             if (jobTitleInp.value.length > 0){
                 listHeading.innerHTML = jobTitleInp.value;
             } else {
-                listHeading.innerHTML = jobTitle;
+                listHeading.innerHTML = notSpecified;
             }
         });
 
@@ -1370,12 +1371,10 @@ function addExperience(){
         listSection.classList.add("list-open");
 
         listHead.addEventListener("click", (e) => {
-
-            if (!(e.target as HTMLElement)?.contains(deleteBtn)){
+            if (!deleteBtn?.contains(e.target as HTMLElement)){
                 removeOpenClass();
                 listSection.classList.toggle("list-open");
             }
-            
         });
 
 
@@ -1403,7 +1402,482 @@ addExpBtn?.addEventListener("click", addExperience);
 
 
 
+// Education section uses some code from the experience section
+
+// Elements
+const eduList:HTMLElement | null = document.querySelector(".education-list");
+const addEduBtn:HTMLElement | null = document.querySelector(".add-education");
+const appendEdu:HTMLElement | null = document.querySelector(".edu-append");
 
 
+
+    /* Element Objects */
+
+const degreeLabObj:Object = {
+    elemName: "Degree",
+    elemFor: "sec-degree",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const degreeInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-degree",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-degree",
+    elemPlaceholder: "Bachelor's degree in CS",
+    elemDataOutput: "pdf-degree"
+}
+
+
+const schoolNameLabObj:Object = {
+    elemName: "School Name",
+    elemFor: "sec-school-name",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const schoolNameInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-school-name",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-school-name",
+    elemPlaceholder: "Cornell University",
+    elemDataOutput: "pdf-school-name"
+}
+
+
+const cityLabObj:Object = {
+    elemName: "City",
+    elemFor: "sec-city",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const cityInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-city",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-city",
+    elemPlaceholder: "Ithaca, NY",
+    elemDataOutput: "pdf-city"
+}
+
+
+const eduStartDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-start-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-start-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-edu-start-date"
+}
+
+const eduEndDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-end-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-end-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-edu-end-date"
+}
+
+
+const currSchoolLabObj:Object = {
+    elemName: "Not graduated yet",
+    elemFor: "sec-curr-school",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+
+let eduIndex:number = 0;
+
+function addEducation(){
+
+    const listNumber:number = eduList?.querySelectorAll(".sec-list-elem").length ?? 0;
+
+    if (listNumber < 8){
+
+
+
+            /* Section Div && Head */
+
+        // Section Div
+        const listSection:HTMLElement = createDiv(listSectionObj, eduIndex);
+        listSection.classList.add("sec-edu");
+
+        // Head
+        const listHead:HTMLElement = createDiv(listHeadObj, eduIndex);
+
+        // Heading
+        const listHeading:HTMLElement = document.createElement("h4");
+        listHeading.classList.add("sec-list-heading");
+        listHeading.innerHTML = notSpecified;
+
+        // Delete Button
+        const deleteBtn:HTMLElement = createDiv(deleteListBtnObj, eduIndex);
+        deleteBtn.setAttribute("delete-list", "pdf-edu" + eduIndex);
+
+        // List Indicator
+        const listIndicator:HTMLElement = createDiv(listIndicatorObj, eduIndex);
+        
+        listHead.appendChild(listHeading);
+        listHead.appendChild(deleteBtn);
+        listHead.appendChild(listIndicator);
+
+        listSection.appendChild(listHead);
+
+
+
+
+
+        
+
+            /* Job Title */
+
+        // Inputs Div
+        const secInputs:HTMLElement = createDiv(secInputsObj, eduIndex);
+
+        // Create Elements
+        const degreeDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        const degreeLab:HTMLLabelElement = createLabel(degreeLabObj, eduIndex);
+        const degreeInp:HTMLInputElement = createInput(degreeInpObj, eduIndex);
+
+        // Append
+        degreeDiv.appendChild(degreeLab);
+        degreeDiv.appendChild(degreeInp);
+        secInputs?.appendChild(degreeDiv);
+
+
+
+            /* Company */
+
+        // Create Elements
+        const schoolNameDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        const schoolNameLab:HTMLLabelElement = createLabel(schoolNameLabObj, eduIndex);
+        const schoolNameInp:HTMLInputElement = createInput(schoolNameInpObj, eduIndex);
+
+        // Append
+        schoolNameDiv.appendChild(schoolNameLab);
+        schoolNameDiv.appendChild(schoolNameInp);
+        secInputs?.appendChild(schoolNameDiv);
+
+
+
+            /* Location */
+
+        // Create Elements
+        const cityDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        const cityLab:HTMLLabelElement = createLabel(cityLabObj, eduIndex);
+        const cityInp:HTMLInputElement = createInput(cityInpObj, eduIndex);
+
+        // Append
+        cityDiv.appendChild(cityLab);
+        cityDiv.appendChild(cityInp);
+        secInputs?.appendChild(cityDiv);
+
+
+
+            /* Start Date */
+
+        // Create Elements
+        const startDateDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        const startDateLab:HTMLLabelElement = createLabel(startDateLabObj, eduIndex);
+        const startDateInp:HTMLInputElement = createInput(eduStartDateInpObj, eduIndex);
+
+        // Append
+        startDateDiv.appendChild(startDateLab);
+        startDateDiv.appendChild(startDateInp);
+        secInputs?.appendChild(startDateDiv);
+
+
+
+            /* End Date */
+
+        // Create Elements
+        const endDateDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        const endDateLab:HTMLLabelElement = createLabel(endDateLabObj, eduIndex);
+        const endDateInp:HTMLInputElement = createInput(eduEndDateInpObj, eduIndex);
+
+        // Append
+        endDateDiv.appendChild(endDateLab);
+        endDateDiv.appendChild(endDateInp);
+        secInputs?.appendChild(endDateDiv);
+
+
+
+            /* Current Position */
+
+        // Create Elements
+        const currPosDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        currPosDiv.classList.add("curr-pos-div");
+        const currPosLab:HTMLLabelElement = createLabel(currSchoolLabObj, eduIndex);
+
+        const currPosInp:HTMLInputElement = document.createElement("input");
+        currPosInp.type = "checkbox";
+        currPosInp.classList.add("sec-curr-school" + eduIndex);
+        currPosInp.setAttribute("id", "sec-curr-school" + eduIndex);
+        currPosInp.setAttribute("data-output", "pdf-curr-school" + eduIndex);
+
+        // Append
+        currPosDiv.appendChild(currPosLab);
+        currPosDiv.appendChild(currPosInp);
+        secInputs?.appendChild(currPosDiv);
+
+
+
+            /* Description */
+
+        // Create Elements
+        const descDiv:HTMLElement = createDiv(secItemObj, eduIndex);
+        descDiv.classList.add("list-desc-div");
+        const descDivInner:HTMLElement = createDiv(descDivObj, eduIndex);
+
+
+        const descBtnsDiv:HTMLElement = createDiv(descBtnsDivObj, eduIndex);
+
+        const boldBtn:HTMLElement = createBtn(boldBtnObj, eduIndex);
+        boldBtn.innerHTML = "B";
+
+        const italicBtn:HTMLElement = createBtn(italicBtnObj, eduIndex);
+        italicBtn.innerHTML = "I";
+
+        const underlineBtn:HTMLElement = createBtn(underlineBtnObj, eduIndex);
+        underlineBtn.innerHTML = "U";
+
+
+        const nrListBtn:HTMLElement = createBtn(nrListBtnObj, eduIndex);
+        nrListBtn.innerHTML = numberListIcon;
+
+        const bpListBtn:HTMLElement = createBtn(bpListBtnObj, eduIndex);
+        bpListBtn.innerHTML = bpListIcon;
+
+
+        const descLab:HTMLElement = document.createElement("p");
+        descLab.classList.add("list-label");
+        descLab.innerHTML = "Description";
+
+        const descTextArea:HTMLElement = createDiv(descTextAreaObj, eduIndex);
+        descTextArea.setAttribute("id", "sec-edu-desc" + eduIndex);
+        descTextArea.setAttribute("contentEditable", "true");
+        descTextArea.setAttribute("data-output", "pdf-edu-desc" + eduIndex);
+        descTextArea.setAttribute("placeholder", 
+            "Developed a strong foundation in core computer science concepts, including algorithms and software development.");
+        
+        // Append
+        descDiv.appendChild(descLab);
+
+        descBtnsDiv.appendChild(boldBtn);
+        descBtnsDiv.appendChild(italicBtn);
+        descBtnsDiv.appendChild(underlineBtn);
+        descBtnsDiv.appendChild(nrListBtn);
+        descBtnsDiv.appendChild(bpListBtn);
+
+        descDivInner.appendChild(descBtnsDiv);
+        descDivInner.appendChild(descTextArea);
+
+        descDiv.appendChild(descDivInner);
+        secInputs?.appendChild(descDiv);
+
+        listSection?.appendChild(secInputs);
+
+
+
+            /* Append Description & Character Limit */
+
+        const outputClass:string | null = descTextArea.getAttribute("data-output");
+    
+        // Create an element and append it
+        const pdfOutput:HTMLElement = document.createElement("p");
+        pdfOutput.classList.add(outputClass!);
+    
+        const maxDescLength:number = 200; 
+
+        function textAreaInput(){
+
+            // Change the element value to the input value
+            const output:HTMLElement | null = document.querySelector("." + 
+                outputClass);
+
+            // Limit the character number
+            if(descTextArea.innerText.length > maxDescLength){
+                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
+            }
+    
+            // Append the text to the pdf preview
+            if (output){
+                output.innerHTML = descTextArea.innerHTML;
+            }
+
+        }
+
+        descTextArea.addEventListener("input", textAreaInput);
+        
+
+
+            /* List title change */
+
+        function changeListTitle(){
+            switch (true){
+                case degreeInp.value.length > 0 && schoolNameInp.value.length > 0:
+                    listHeading.innerHTML = degreeInp.value+" - "+schoolNameInp.value;
+                    break;
+                case degreeInp.value.length > 0:
+                    listHeading.innerHTML = degreeInp.value;
+                    break;
+                case schoolNameInp.value.length > 0:
+                    listHeading.innerHTML = schoolNameInp.value;
+                    break;
+                default:
+                    listHeading.innerHTML = notSpecified;
+            }
+        }
+
+        schoolNameInp.addEventListener("input", changeListTitle);
+        degreeInp.addEventListener("input", changeListTitle);
+
+
+
+            /* Description Buttons && Text Area */
+
+        boldBtn.addEventListener("click", () => {
+            document.execCommand("bold");
+            boldBtn.classList.toggle("desc-btn-active");
+        });
+        italicBtn.addEventListener("click", () => {
+            document.execCommand("italic");
+            italicBtn.classList.toggle("desc-btn-active");
+        });
+        underlineBtn.addEventListener("click", () => {
+            document.execCommand("underline");
+            underlineBtn.classList.toggle("desc-btn-active");
+        });
+
+        let currentListNum:number = 1;
+        nrListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>${currentListNum}.&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
+            }
+
+            nrListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+            currentListNum++
+        });
+
+        bpListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>&#x2022;&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `&#x2022;&nbsp;`;
+            }
+
+            bpListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+        });
+
+
+
+            /* Append the elements to PDF */
+
+        // Append the section elements to the pdf
+        const pdfExpDiv:HTMLElement = document.createElement("div");
+        pdfExpDiv.classList.add("pdf-edu");
+        pdfExpDiv.setAttribute("id", "pdf-edu"+eduIndex);
+
+        appendOutput(pdfExpDiv, degreeInp);
+        appendOutput(pdfExpDiv, schoolNameInp);
+        appendOutput(pdfExpDiv, cityInp);
+        appendOutput(pdfExpDiv, startDateInp);
+        appendOutput(pdfExpDiv, endDateInp);
+
+        pdfExpDiv.appendChild(pdfOutput);
+        appendEdu?.appendChild(pdfExpDiv);
+        
+
+
+            /* Delete Link Button Event */
+
+        deleteBtn.addEventListener("click", function(){
+
+            // PDF Experience Section
+            const pdfElemClass:HTMLElement | null = document.querySelector("#" + 
+            deleteBtn.getAttribute("delete-list"));
+
+            // Remove the experience section (sections)
+            listSection?.remove();
+
+            // Remove the experience section from the PDF preview
+            pdfElemClass?.remove()
+
+        });
+
+        
+
+            /* Current Position Checkbox Event */
+
+        const currentJobTxt:string = "Present";
+
+        currPosInp.addEventListener("click", () => {
+
+            const pdfEndDate:HTMLElement | null = document.querySelector("." + 
+                endDateInp.getAttribute("data-output"))
+
+            if(currPosInp.checked){
+                endDateDiv.classList.add("no-end-date");
+                pdfEndDate!.innerHTML = currentJobTxt;
+            } else {
+                endDateDiv.classList.remove("no-end-date");
+                pdfEndDate!.innerHTML = endDateInp.value;
+            }
+
+        });
+
+        endDateInp.addEventListener("input", () => {
+            currPosInp.checked = false;
+        });
+
+
+        
+            /* Section expand / collapse */
+
+        function removeOpenClass(){
+            document.querySelectorAll(".sec-edu").forEach((section) => {
+                if (section !== listSection){
+                    section.classList.remove("list-open");
+                }
+            });
+        }
+
+        removeOpenClass();
+        listSection.classList.add("list-open");
+
+        listHead.addEventListener("click", (e) => {
+            if (!deleteBtn?.contains(e.target as HTMLElement)){
+                removeOpenClass();
+                listSection.classList.toggle("list-open");
+            }
+        });
+
+
+
+            /* Settings */
+
+        // Append Elements (Section)
+        eduList?.appendChild(listSection);
+
+        // Set focus when creating a new section
+        degreeInp.focus();
+
+        // Index number =+ 1
+        eduIndex++
+
+    }
+
+}
+
+addEduBtn?.addEventListener("click", addEducation);
 
 

@@ -885,13 +885,13 @@
 
 
 
-    /* Section 2 - Experience */
+    /* Section 2 & 3 - Experience & Education */
 
-.experience-list{
+.subsection-list{
     width:100%;
 }
 
-.experience-list:not(:has(.sec-list-elem)){
+.subsection-list:not(:has(.sec-list-elem)){
     display:none;
 }
 
@@ -914,11 +914,11 @@
     margin-bottom:0;
 }
 
-.experience-list:has(.sec-list-elem:nth-of-type(8)) ~ .add-btn{ 
+.subsection-list:has(.sec-list-elem:nth-of-type(8)) ~ .add-btn{ 
     display:none;
 }
 
-        /* Section 2 - Head */
+        /* Head */
 
 .sec-list-head{
     margin:var(--size1);
@@ -992,17 +992,19 @@
 }
 
 .sec-list-head:hover .sec-list-indicator{
+
     &:before,
     &:after{
         background-color:var(--color1);
     }
+    
 }
 
 .list-open .sec-list-indicator{
     transform:rotate(180deg);
 }
 
-        /* Section 2 - Inputs */
+        /* Inputs */
         
 .sec-list-inputs{
     height:0;
@@ -1032,7 +1034,7 @@
     color:var(--txt-faded3);
 }
 
-            /* Section 2 - Current Job Position */
+            /* Current Job Position */
 
 .curr-pos-div{
     display:flex;
@@ -1083,7 +1085,7 @@
     width:10px;
 }
 
-            /* Section 2 - Job Desctiption */
+            /* Job Desctiption */
 
 .sec-list-inputs .list-desc-div{
     flex:100%;
@@ -1222,11 +1224,11 @@
     background-clip:padding-box;
 }    
 
-        /* Section 2 - media */
+        /* Section 2 & 3 - media */
         
 @media screen and (width <= 540px){
 
-    .section2 .section-item{
+    .section-list .section-item{
         flex:100%;
     }
 
@@ -1234,7 +1236,7 @@
 
 @media screen and (width <= 440px){
 
-    .section2 .delete-btn{
+    .section-list .delete-btn{
         height:26px;
     }
 
@@ -1261,7 +1263,7 @@
 
 @media screen and (width <= 320px){
 
-    .section2 .section-item{
+    .section-list .section-item{
         flex:100%;
     }
 
@@ -1279,7 +1281,7 @@
         padding:0;
     }
 
-    .section2 .delete-btn{
+    .section-list .delete-btn{
         margin:0;
     }
 
