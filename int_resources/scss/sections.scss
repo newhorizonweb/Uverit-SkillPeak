@@ -885,7 +885,7 @@
 
 
 
-    /* Section 2 & 3 - Experience & Education */
+    /* Section List */
 
 .subsection-list{
     width:100%;
@@ -1224,7 +1224,7 @@
     background-clip:padding-box;
 }    
 
-        /* Section 2 & 3 - media */
+        /* Section List - media */
         
 @media screen and (width <= 540px){
 
@@ -1302,11 +1302,8 @@
 
 
 
+        /* Section List - Courses */
 
-
-
-
-
-
-
-    /* Section 3 - Education */
+.section4 .sec-list-inputs > .section-item:nth-of-type(1){
+    flex:40%;
+}

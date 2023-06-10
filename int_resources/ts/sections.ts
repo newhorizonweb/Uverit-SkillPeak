@@ -1530,11 +1530,7 @@ function addEducation(){
 
 
 
-
-
-        
-
-            /* Job Title */
+            /* Degree */
 
         // Inputs Div
         const secInputs:HTMLElement = createDiv(secInputsObj, eduIndex);
@@ -1551,7 +1547,7 @@ function addEducation(){
 
 
 
-            /* Company */
+            /* School Name */
 
         // Create Elements
         const schoolNameDiv:HTMLElement = createDiv(secItemObj, eduIndex);
@@ -1565,7 +1561,7 @@ function addEducation(){
 
 
 
-            /* Location */
+            /* City */
 
         // Create Elements
         const cityDiv:HTMLElement = createDiv(secItemObj, eduIndex);
@@ -1881,3 +1877,251 @@ function addEducation(){
 addEduBtn?.addEventListener("click", addEducation);
 
 
+
+//*--|*|--*\\_____// Courses \\_____//*--|*|--*\\
+
+
+
+// Elements
+const courList:HTMLElement | null = document.querySelector(".courses-list");
+const addCourBtn:HTMLElement | null = document.querySelector(".add-courses");
+const appendCour:HTMLElement | null = document.querySelector(".cour-append");
+
+
+
+    /* Element Objects */
+
+const courseLabObj:Object = {
+    elemName: "Course",
+    elemFor: "sec-course",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const courseInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-course",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-course",
+    elemPlaceholder: "Learn TypeScript",
+    elemDataOutput: "pdf-course"
+}
+
+
+const institLabObj:Object = {
+    elemName: "Author",
+    elemFor: "sec-instit",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const institInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-instit",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-instit",
+    elemPlaceholder: "Codecademy",
+    elemDataOutput: "pdf-instit"
+}
+
+
+const courStartDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-start-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-start-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-cour-start-date"
+}
+
+const courEndDateInpObj:Object = {
+    elemType: "date",
+    elemId: "sec-end-date",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-end-date",
+    elemPlaceholder: "",
+    elemDataOutput: "pdf-cour-end-date"
+}
+
+
+let courIndex:number = 0;
+
+function addCourses(){
+
+    const listNumber:number = courList?.querySelectorAll(".sec-list-elem").length ?? 0;
+
+    if (listNumber < 8){
+
+
+
+            /* Section Div && Head */
+
+        // Section Div
+        const listSection:HTMLElement = createDiv(listSectionObj, courIndex);
+        listSection.classList.add("sec-cour");
+
+        // Head
+        const listHead:HTMLElement = createDiv(listHeadObj, courIndex);
+
+        // Heading
+        const listHeading:HTMLElement = document.createElement("h4");
+        listHeading.classList.add("sec-list-heading");
+        listHeading.innerHTML = notSpecified;
+
+        // Delete Button
+        const deleteBtn:HTMLElement = createDiv(deleteListBtnObj, courIndex);
+        deleteBtn.setAttribute("delete-list", "pdf-cour" + courIndex);
+
+        // List Indicator
+        const listIndicator:HTMLElement = createDiv(listIndicatorObj, courIndex);
+        
+        listHead.appendChild(listHeading);
+        listHead.appendChild(deleteBtn);
+        listHead.appendChild(listIndicator);
+
+        listSection.appendChild(listHead);
+
+
+
+            /* Course */
+
+        // Inputs Div
+        const secInputs:HTMLElement = createDiv(secInputsObj, courIndex);
+
+        // Create Elements
+        const courseDiv:HTMLElement = createDiv(secItemObj, courIndex);
+        const courseLab:HTMLLabelElement = createLabel(courseLabObj, courIndex);
+        const courseInp:HTMLInputElement = createInput(courseInpObj, courIndex);
+
+        // Append
+        courseDiv.appendChild(courseLab);
+        courseDiv.appendChild(courseInp);
+        secInputs?.appendChild(courseDiv);
+
+        // Change the section title
+        courseInp.addEventListener("input", () => {
+            if (courseInp.value.length > 0){
+                listHeading.innerHTML = courseInp.value;
+            } else {
+                listHeading.innerHTML = notSpecified;
+            }
+        });
+
+
+
+            /* Institution */
+
+        // Create Elements
+        const institDiv:HTMLElement = createDiv(secItemObj, courIndex);
+        const institLab:HTMLLabelElement = createLabel(institLabObj, courIndex);
+        const institInp:HTMLInputElement = createInput(institInpObj, courIndex);
+
+        // Append
+        institDiv.appendChild(institLab);
+        institDiv.appendChild(institInp);
+        secInputs?.appendChild(institDiv);
+
+
+
+            /* Start Date */
+
+        // Create Elements
+        const startDateDiv:HTMLElement = createDiv(secItemObj, courIndex);
+        const startDateLab:HTMLLabelElement = createLabel(startDateLabObj, courIndex);
+        const startDateInp:HTMLInputElement = createInput(courStartDateInpObj, courIndex);
+
+        // Append
+        startDateDiv.appendChild(startDateLab);
+        startDateDiv.appendChild(startDateInp);
+        secInputs?.appendChild(startDateDiv);
+
+
+
+            /* End Date */
+
+        // Create Elements
+        const endDateDiv:HTMLElement = createDiv(secItemObj, courIndex);
+        const endDateLab:HTMLLabelElement = createLabel(endDateLabObj, courIndex);
+        const endDateInp:HTMLInputElement = createInput(courEndDateInpObj, courIndex);
+
+        // Append
+        endDateDiv.appendChild(endDateLab);
+        endDateDiv.appendChild(endDateInp);
+        secInputs?.appendChild(endDateDiv);
+
+        listSection?.appendChild(secInputs);
+
+
+
+            /* Append the elements to PDF */
+
+        // Append the section elements to the pdf
+        const pdfExpDiv:HTMLElement = document.createElement("div");
+        pdfExpDiv.classList.add("pdf-cour");
+        pdfExpDiv.setAttribute("id", "pdf-cour"+courIndex);
+
+        appendOutput(pdfExpDiv, courseInp);
+        appendOutput(pdfExpDiv, institInp);
+        appendOutput(pdfExpDiv, startDateInp);
+        appendOutput(pdfExpDiv, endDateInp);
+
+        appendCour?.appendChild(pdfExpDiv);
+        
+
+
+            /* Delete Link Button Event */
+
+        deleteBtn.addEventListener("click", function(){
+
+            // PDF Experience Section
+            const pdfElemClass:HTMLElement | null = document.querySelector("#" + 
+            deleteBtn.getAttribute("delete-list"));
+
+            // Remove the experience section (sections)
+            listSection?.remove();
+
+            // Remove the experience section from the PDF preview
+            pdfElemClass?.remove()
+
+        });
+
+
+        
+            /* Section expand / collapse */
+
+        function removeOpenClass(){
+            document.querySelectorAll(".sec-cour").forEach((section) => {
+                if (section !== listSection){
+                    section.classList.remove("list-open");
+                }
+            });
+        }
+
+        removeOpenClass();
+        listSection.classList.add("list-open");
+
+        listHead.addEventListener("click", (e) => {
+            if (!deleteBtn?.contains(e.target as HTMLElement)){
+                removeOpenClass();
+                listSection.classList.toggle("list-open");
+            }
+        });
+
+
+
+            /* Settings */
+
+        // Append Elements (Section)
+        courList?.appendChild(listSection);
+
+        // Set focus when creating a new section
+        courseInp.focus();
+
+        // Index number =+ 1
+        courIndex++
+
+    }
+
+}
+
+addCourBtn?.addEventListener("click", addCourses);

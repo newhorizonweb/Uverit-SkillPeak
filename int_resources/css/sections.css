@@ -734,7 +734,7 @@
     font-size: 5.5vw;
   }
 }
-/* Section 2 & 3 - Experience & Education */
+/* Section List */
 .subsection-list {
   width: 100%;
 }
@@ -1035,7 +1035,7 @@
   background-clip: padding-box;
 }
 
-/* Section 2 & 3 - media */
+/* Section List - media */
 @media screen and (width <= 540px) {
   .section-list .section-item {
     flex: 100%;
@@ -1088,4 +1088,7 @@
     min-height: 200px;
   }
 }
-/* Section 3 - Education */
+/* Section List - Courses */
+.section4 .sec-list-inputs > .section-item:nth-of-type(1) {
+  flex: 40%;
+}
