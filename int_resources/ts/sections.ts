@@ -2125,3 +2125,445 @@ function addCourses(){
 }
 
 addCourBtn?.addEventListener("click", addCourses);
+
+
+
+//*--|*|--*\\_____// References \\_____//*--|*|--*\\
+
+
+
+// Education section uses some code from the experience section
+
+// Elements
+const refList:HTMLElement | null = document.querySelector(".references-list");
+const addRefBtn:HTMLElement | null = document.querySelector(".add-references");
+const appendRef:HTMLElement | null = document.querySelector(".ref-append");
+
+
+
+    /* Element Objects */
+
+const refNameLabObj:Object = {
+    elemName: "Referent's Name",
+    elemFor: "sec-ref-name",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const refNameInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-ref-name",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-ref-name",
+    elemPlaceholder: "John Smith",
+    elemDataOutput: "pdf-ref-name"
+}
+
+
+const refCompLabObj:Object = {
+    elemName: "Company",
+    elemFor: "sec-ref-comp",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const refCompInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-ref-comp",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-ref-comp",
+    elemPlaceholder: "IBM",
+    elemDataOutput: "pdf-ref-comp"
+}
+
+
+const relationLabObj:Object = {
+    elemName: "Relationship",
+    elemFor: "sec-relation",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const relationInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-relation",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-relation",
+    elemPlaceholder: "Manager",
+    elemDataOutput: "pdf-relation"
+}
+
+
+const refMailLabObj:Object = {
+    elemName: "E-Mail",
+    elemFor: "sec-ref-mail",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const refMailInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-ref-mail",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-ref-mail",
+    elemPlaceholder: "j.smith@us.ibm.com",
+    elemDataOutput: "pdf-ref-mail"
+}
+
+
+const refPhoneLabObj:Object = {
+    elemName: "Phone Number",
+    elemFor: "sec-ref-phone",
+    elemClasses: "list-label",
+    elemIndexClasses: ""
+}
+
+const refPhoneInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-ref-phone",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-ref-phone",
+    elemPlaceholder: "987-654-3210",
+    elemDataOutput: "pdf-ref-phone"
+}
+
+
+let refIndex:number = 0;
+
+function addReferences(){
+
+    const listNumber:number = refList?.querySelectorAll(".sec-list-elem").length ?? 0;
+
+    if (listNumber < 6){
+
+
+
+            /* Section Div && Head */
+
+        // Section Div
+        const listSection:HTMLElement = createDiv(listSectionObj, refIndex);
+        listSection.classList.add("sec-ref");
+
+        // Head
+        const listHead:HTMLElement = createDiv(listHeadObj, refIndex);
+
+        // Heading
+        const listHeading:HTMLElement = document.createElement("h4");
+        listHeading.classList.add("sec-list-heading");
+        listHeading.innerHTML = notSpecified;
+
+        // Delete Button
+        const deleteBtn:HTMLElement = createDiv(deleteListBtnObj, refIndex);
+        deleteBtn.setAttribute("delete-list", "pdf-ref" + refIndex);
+
+        // List Indicator
+        const listIndicator:HTMLElement = createDiv(listIndicatorObj, refIndex);
+        
+        listHead.appendChild(listHeading);
+        listHead.appendChild(deleteBtn);
+        listHead.appendChild(listIndicator);
+
+        listSection.appendChild(listHead);
+
+
+
+            /* Referent's Name */
+
+        // Inputs Div
+        const secInputs:HTMLElement = createDiv(secInputsObj, refIndex);
+
+        // Create Elements
+        const refNameDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        const refNameLab:HTMLLabelElement = createLabel(refNameLabObj, refIndex);
+        const refNameInp:HTMLInputElement = createInput(refNameInpObj, refIndex);
+
+        // Append
+        refNameDiv.appendChild(refNameLab);
+        refNameDiv.appendChild(refNameInp);
+        secInputs?.appendChild(refNameDiv);
+
+
+
+            /* Company */
+
+        // Create Elements
+        const refCompDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        const refCompLab:HTMLLabelElement = createLabel(refCompLabObj, refIndex);
+        const refCompInp:HTMLInputElement = createInput(refCompInpObj, refIndex);
+
+        // Append
+        refCompDiv.appendChild(refCompLab);
+        refCompDiv.appendChild(refCompInp);
+        secInputs?.appendChild(refCompDiv);
+
+
+
+            /* Relationship */
+
+        // Create Elements
+        const relationDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        const relationLab:HTMLLabelElement = createLabel(relationLabObj, refIndex);
+        const relationInp:HTMLInputElement = createInput(relationInpObj, refIndex);
+
+        // Append
+        relationDiv.appendChild(relationLab);
+        relationDiv.appendChild(relationInp);
+        secInputs?.appendChild(relationDiv);
+
+
+
+            /* E-Mail */
+
+        // Create Elements
+        const refMailDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        const refMailLab:HTMLLabelElement = createLabel(refMailLabObj, refIndex);
+        const refMailInp:HTMLInputElement = createInput(refMailInpObj, refIndex);
+
+        // Append
+        refMailDiv.appendChild(refMailLab);
+        refMailDiv.appendChild(refMailInp);
+        secInputs?.appendChild(refMailDiv);
+
+
+
+            /* Phone Number */
+
+        // Create Elements
+        const refPhoneDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        const refPhoneLab:HTMLLabelElement = createLabel(refPhoneLabObj, refIndex);
+        const refPhoneInp:HTMLInputElement = createInput(refPhoneInpObj, refIndex);
+
+        // Append
+        refPhoneDiv.appendChild(refPhoneLab);
+        refPhoneDiv.appendChild(refPhoneInp);
+        secInputs?.appendChild(refPhoneDiv);
+
+
+
+            /* Description */
+
+        // Create Elements
+        const descDiv:HTMLElement = createDiv(secItemObj, refIndex);
+        descDiv.classList.add("list-desc-div");
+        const descDivInner:HTMLElement = createDiv(descDivObj, refIndex);
+
+
+        const descBtnsDiv:HTMLElement = createDiv(descBtnsDivObj, refIndex);
+
+        const boldBtn:HTMLElement = createBtn(boldBtnObj, refIndex);
+        boldBtn.innerHTML = "B";
+
+        const italicBtn:HTMLElement = createBtn(italicBtnObj, refIndex);
+        italicBtn.innerHTML = "I";
+
+        const underlineBtn:HTMLElement = createBtn(underlineBtnObj, refIndex);
+        underlineBtn.innerHTML = "U";
+
+
+        const nrListBtn:HTMLElement = createBtn(nrListBtnObj, refIndex);
+        nrListBtn.innerHTML = numberListIcon;
+
+        const bpListBtn:HTMLElement = createBtn(bpListBtnObj, refIndex);
+        bpListBtn.innerHTML = bpListIcon;
+
+
+        const descLab:HTMLElement = document.createElement("p");
+        descLab.classList.add("list-label");
+        descLab.innerHTML = "Description";
+
+        const descTextArea:HTMLElement = createDiv(descTextAreaObj, refIndex);
+        descTextArea.setAttribute("id", "sec-ref-desc" + refIndex);
+        descTextArea.setAttribute("contentEditable", "true");
+        descTextArea.setAttribute("data-output", "pdf-ref-desc" + refIndex);
+        descTextArea.setAttribute("placeholder", 
+            "John Smith was my manager from 2018 to 2020. We worked on implementing the front-end features of the company's website.");
+        
+        // Append
+        descDiv.appendChild(descLab);
+
+        descBtnsDiv.appendChild(boldBtn);
+        descBtnsDiv.appendChild(italicBtn);
+        descBtnsDiv.appendChild(underlineBtn);
+        descBtnsDiv.appendChild(nrListBtn);
+        descBtnsDiv.appendChild(bpListBtn);
+
+        descDivInner.appendChild(descBtnsDiv);
+        descDivInner.appendChild(descTextArea);
+
+        descDiv.appendChild(descDivInner);
+        secInputs?.appendChild(descDiv);
+
+        listSection?.appendChild(secInputs);
+
+
+
+            /* Append Description & Character Limit */
+
+        const outputClass:string | null = descTextArea.getAttribute("data-output");
+    
+        // Create an element and append it
+        const pdfOutput:HTMLElement = document.createElement("p");
+        pdfOutput.classList.add(outputClass!);
+    
+        const maxDescLength:number = 200; 
+
+        function textAreaInput(){
+
+            // Change the element value to the input value
+            const output:HTMLElement | null = document.querySelector("." + 
+                outputClass);
+
+            // Limit the character number
+            if(descTextArea.innerText.length > maxDescLength){
+                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
+            }
+    
+            // Append the text to the pdf preview
+            if (output){
+                output.innerHTML = descTextArea.innerHTML;
+            }
+
+        }
+
+        descTextArea.addEventListener("input", textAreaInput);
+        
+
+
+            /* List title change */
+
+        function changeListTitle(){
+            switch (true){
+                case refNameInp.value.length > 0 && refCompInp.value.length > 0:
+                    listHeading.innerHTML = refNameInp.value+" - "+refCompInp.value;
+                    break;
+                case refNameInp.value.length > 0:
+                    listHeading.innerHTML = refNameInp.value;
+                    break;
+                case refCompInp.value.length > 0:
+                    listHeading.innerHTML = refCompInp.value;
+                    break;
+                default:
+                    listHeading.innerHTML = notSpecified;
+            }
+        }
+
+        refCompInp.addEventListener("input", changeListTitle);
+        refNameInp.addEventListener("input", changeListTitle);
+
+
+
+            /* Description Buttons && Text Area */
+
+        boldBtn.addEventListener("click", () => {
+            document.execCommand("bold");
+            boldBtn.classList.toggle("desc-btn-active");
+        });
+        italicBtn.addEventListener("click", () => {
+            document.execCommand("italic");
+            italicBtn.classList.toggle("desc-btn-active");
+        });
+        underlineBtn.addEventListener("click", () => {
+            document.execCommand("underline");
+            underlineBtn.classList.toggle("desc-btn-active");
+        });
+
+        let currentListNum:number = 1;
+        nrListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>${currentListNum}.&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
+            }
+
+            nrListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+            currentListNum++
+        });
+
+        bpListBtn.addEventListener("click", () => {
+            if (descTextArea.innerHTML != ""){
+                descTextArea.innerHTML += `<br>&#x2022;&nbsp;`;
+            } else {
+                descTextArea.innerHTML += `&#x2022;&nbsp;`;
+            }
+
+            bpListBtn.classList.toggle("desc-btn-active");
+            textAreaInput();
+        });
+
+
+
+            /* Append the elements to PDF */
+
+        // Append the section elements to the pdf
+        const pdfExpDiv:HTMLElement = document.createElement("div");
+        pdfExpDiv.classList.add("pdf-ref");
+        pdfExpDiv.setAttribute("id", "pdf-ref"+refIndex);
+
+        appendOutput(pdfExpDiv, refNameInp);
+        appendOutput(pdfExpDiv, refCompInp);
+        appendOutput(pdfExpDiv, relationInp);
+        appendOutput(pdfExpDiv, refMailInp);
+        appendOutput(pdfExpDiv, refPhoneInp);
+
+        pdfExpDiv.appendChild(pdfOutput);
+        appendRef?.appendChild(pdfExpDiv);
+        
+
+
+            /* Delete Link Button Event */
+
+        deleteBtn.addEventListener("click", function(){
+
+            // PDF Experience Section
+            const pdfElemClass:HTMLElement | null = document.querySelector("#" + 
+            deleteBtn.getAttribute("delete-list"));
+
+            // Remove the experience section (sections)
+            listSection?.remove();
+
+            // Remove the experience section from the PDF preview
+            pdfElemClass?.remove()
+
+        });
+
+
+        
+            /* Section expand / collapse */
+
+        function removeOpenClass(){
+            document.querySelectorAll(".sec-ref").forEach((section) => {
+                if (section !== listSection){
+                    section.classList.remove("list-open");
+                }
+            });
+        }
+
+        removeOpenClass();
+        listSection.classList.add("list-open");
+
+        listHead.addEventListener("click", (e) => {
+            if (!deleteBtn?.contains(e.target as HTMLElement)){
+                removeOpenClass();
+                listSection.classList.toggle("list-open");
+            }
+        });
+
+
+
+            /* Settings */
+
+        // Append Elements (Section)
+        refList?.appendChild(listSection);
+
+        // Set focus when creating a new section
+        refNameInp.focus();
+
+        // Index number =+ 1
+        refIndex++
+
+    }
+
+}
+
+addRefBtn?.addEventListener("click", addReferences);
