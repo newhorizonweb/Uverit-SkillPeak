@@ -1777,3 +1777,127 @@ function addReferences() {
     }
 }
 addRefBtn?.addEventListener("click", addReferences);
+//*--|*|--*\\_____// Create Language Items \\_____//*--|*|--*\\
+const langList = document.querySelector(".languages-list");
+const addLangBtn = document.querySelector(".add-languages");
+const appendLang = document.querySelector(".lang-append");
+const langLabelName = "Language";
+const langLevels = [
+    { val: "dont-display", text: "Don't Display" },
+    { val: "A1", text: "A1 - Beginner" },
+    { val: "A2", text: "A2 - Elementary" },
+    { val: "B1", text: "B1 - Intermediate" },
+    { val: "B2", text: "B2 - Upper-Intermed." },
+    { val: "C1", text: "C1 - Advanced" },
+    { val: "C2", text: "C2 - Proficiency" }
+];
+const langDivObj = {
+    elemClasses: "sec-lang",
+    elemIndexClasses: ""
+};
+const langLabelObj = {
+    elemName: langLabelName,
+    elemFor: "sec-lang-name",
+    elemClasses: "",
+    elemIndexClasses: ""
+};
+const langInpObj = {
+    elemType: "text",
+    elemId: "sec-lang-name",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-lang-name",
+    elemPlaceholder: "English",
+    elemDataOutput: "pdf-lang-name"
+};
+const langLvlLabelObj = {
+    elemName: "Level",
+    elemFor: "sec-lang-lvl",
+    elemClasses: "",
+    elemIndexClasses: ""
+};
+let langIndex = 0;
+function addLang() {
+    const langNumber = langList?.querySelectorAll(".sec-link").length ?? 0;
+    if (langNumber < 6) {
+        // Create a link div
+        const langDiv = createDiv(langDivObj, langIndex);
+        /* Lang Name */
+        // Create elements
+        const linkElem1 = createDiv(secItemObj, langIndex);
+        const langLabel = createLabel(langLabelObj, langIndex);
+        const langInp = createInput(langInpObj, langIndex);
+        // Append elements
+        linkElem1?.appendChild(langLabel);
+        linkElem1?.appendChild(langInp);
+        /* Lang Lvl */
+        // Create elements
+        const linkElem2 = createDiv(secItemObj, langIndex);
+        const langLvlLabel = createLabel(langLvlLabelObj, langIndex);
+        const langLvlSel = document.createElement("select");
+        // Set the select level attributes
+        langLvlSel.classList.add("sec-input", "sec-lang-lvl", "sec-lang-lvl" + langIndex);
+        langLvlSel.setAttribute("id", "sec-lang-lvl" + langIndex);
+        langLvlSel.setAttribute("data-output", "pdf-lang-lvl" + langIndex);
+        // Create level options and append them
+        for (let lvl = 0; lvl < langLevels.length; lvl++) {
+            const lvlOption = document.createElement("option");
+            lvlOption.value = langLevels[lvl].val;
+            lvlOption.innerHTML = langLevels[lvl].text;
+            langLvlSel.appendChild(lvlOption);
+        }
+        // Append the label and input
+        linkElem2?.appendChild(langLvlLabel);
+        linkElem2?.appendChild(langLvlSel);
+        /* Delete Link Button */
+        const deleteLinkBtn = createDiv(deleteListBtnObj, langIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-link-name" + langIndex);
+        deleteLinkBtn.setAttribute("delete-url", "pdf-link-url" + langIndex);
+        /* Append */
+        // Append the link name and url divs to the section
+        langDiv?.appendChild(linkElem1);
+        langDiv?.appendChild(linkElem2);
+        langDiv?.appendChild(deleteLinkBtn);
+        langList?.appendChild(langDiv);
+        // Append the link name and url output to the pdf
+        appendOutput(appendLang, langInp);
+        const langLvlOutputClass = langLvlSel.getAttribute("data-output");
+        // Create an element and append it
+        const pdfOutput = document.createElement("p");
+        pdfOutput.classList.add(langLvlOutputClass);
+        appendLang?.appendChild(pdfOutput);
+        langLvlSel.addEventListener("input", function () {
+            // Change the element value to the input value
+            const output = document.querySelector("." + langLvlOutputClass);
+            if (langLvlSel.value !== "dont-display" &&
+                output) {
+                output.innerHTML = langLvlSel.value;
+            }
+            else if (output) {
+                output.innerHTML = "";
+            }
+        });
+        // Set focus on the input
+        if (langNumber !== 0) {
+            langInp.focus();
+        }
+        // Change the input label
+        changeLabel(langInp, langLabel, langLabelName);
+        /* Delete Button */
+        deleteLinkBtn.addEventListener("click", function () {
+            // PDF Link Label
+            const pdfNameElemClass = document.querySelector("." +
+                deleteLinkBtn.getAttribute("delete-name"));
+            // PDF Link URL
+            const pdfUrlElemClass = document.querySelector("." +
+                deleteLinkBtn.getAttribute("delete-url"));
+            // Remove the section link element if it's not the first one
+            langDiv.remove();
+            // Remove the link elements from the PDF preview
+            pdfNameElemClass?.remove();
+            pdfUrlElemClass?.remove();
+        });
+        // Index number =+ 1
+        langIndex++;
+    }
+}
+addLangBtn?.addEventListener("click", addLang);

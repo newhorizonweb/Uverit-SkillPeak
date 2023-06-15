@@ -1307,3 +1307,90 @@
 .section4 .sec-list-inputs > .section-item:nth-of-type(1){
     flex:40%;
 }
+
+
+
+
+
+
+
+
+
+
+    /* Section 5 - Skills */
+
+.sec-languages{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+
+    .sec-subhead-div{
+        margin-bottom:calc(var(--size1) / 2);
+    }
+
+    .languages-list{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        gap:var(--size1);
+        row-gap:calc(var(--size1) / 2);
+    }
+    
+    .sec-lang{
+        width:100%;
+        display:flex;
+        align-items:flex-end;
+        gap:var(--size1);
+    }
+
+    .section-item > *{
+        width:100%;
+    }
+
+    .sec-lang-lvl{
+        cursor:pointer;
+    }
+
+    .languages-list:has(.sec-lang) ~ .add-btn{ 
+        margin-top:calc(var(--size1) / 2);
+    }
+
+    .languages-list:has(.sec-lang:nth-of-type(6)) ~ .add-btn{ 
+        display:none;
+    }
+
+}
+
+        /* Section 5 - media */
+
+@media screen and (width <= 540px){
+
+    .sec-languages{
+
+        .languages-list{
+            gap:var(--size1);
+        }
+        
+        .languages-list:has(.sec-lang) ~ .add-btn{ 
+            margin-top:var(--size1);
+        }
+
+        .sec-lang{
+            flex-wrap:wrap;
+            gap:calc(var(--size1) / 2);
+
+            .section-item{
+                width:auto;
+                flex:1;
+
+                &:nth-of-type(1){
+                    flex:100%;
+                }
+
+            }
+
+        }
+
+    }
+
+}
