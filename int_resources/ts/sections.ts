@@ -2570,7 +2570,7 @@ addRefBtn?.addEventListener("click", addReferences);
 
 
 
-//*--|*|--*\\_____// Create Language Items \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Language Items \\_____//*--|*|--*\\
 
 
 
@@ -2625,7 +2625,7 @@ let langIndex:number = 0;
 
 function addLang(){
 
-    const langNumber:number = langList?.querySelectorAll(".sec-link").length ?? 0;
+    const langNumber:number = langList?.querySelectorAll(".sec-lang").length ?? 0;
     
     if (langNumber < 6){
 
@@ -2676,8 +2676,8 @@ function addLang(){
             /* Delete Link Button */
 
         const deleteLinkBtn:HTMLElement = createDiv(deleteListBtnObj, langIndex);
-        deleteLinkBtn.setAttribute("delete-name", "pdf-link-name" + langIndex);
-        deleteLinkBtn.setAttribute("delete-url", "pdf-link-url" + langIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-lang-name" + langIndex);
+        deleteLinkBtn.setAttribute("delete-url", "pdf-lang-lvl" + langIndex);
 
 
         
@@ -2715,9 +2715,7 @@ function addLang(){
         });
 
         // Set focus on the input
-        if (langNumber !== 0){
-            langInp.focus();
-        }
+        langInp.focus();
 
         // Change the input label
         changeLabel(langInp, langLabel, langLabelName);
@@ -2753,3 +2751,265 @@ function addLang(){
 }
 
 addLangBtn?.addEventListener("click", addLang);
+
+
+
+//*--|*|--*\\_____// Skills \\_____//*--|*|--*\\
+
+
+
+const skillList:HTMLElement | null = document.querySelector(".skills-list");
+const addSkillBtn:HTMLElement | null = document.querySelector(".add-skills");
+const appendSkill:HTMLElement | null = document.querySelector(".skill-append");
+
+const slDivObj:Object = {
+    elemClasses: "sl-elem",
+    elemIndexClasses: ""
+}
+
+const skillInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-skill",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-skill",
+    elemPlaceholder: "JavaScript",
+    elemDataOutput: "pdf-skill"
+}
+
+let skillIndex:number = 0;
+
+function addSkill(){
+
+    const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
+    
+    if (elemNumber < 16){
+
+
+
+            /* Elements */
+
+        // Create a parent div
+        const parentDiv:HTMLElement = createDiv(slDivObj, skillIndex);
+
+        // Create & append elements
+        const elemDiv:HTMLElement = createDiv(secItemObj, skillIndex);
+        const elemInp:HTMLInputElement = createInput(skillInpObj, skillIndex);
+        elemDiv?.appendChild(elemInp);
+
+        // Delete Link Button
+        const deleteLinkBtn:HTMLElement = createDiv(deleteListBtnObj, skillIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-skill" + skillIndex);
+
+
+        
+            /* Append */
+
+        // Append the link name and url divs to the section
+        parentDiv?.appendChild(elemDiv);
+        parentDiv?.appendChild(deleteLinkBtn);
+    
+        skillList?.appendChild(parentDiv);
+
+        // Append the link name and url output to the pdf
+        appendOutput(appendSkill, elemInp);
+
+        // Set focus on the input
+        elemInp.focus();
+
+
+
+            /* Delete Button */
+
+        deleteLinkBtn.addEventListener("click", function(){
+
+            // PDF Link Label
+            const pdfNameElemClass:HTMLElement | null = document.querySelector("." + 
+            deleteLinkBtn.getAttribute("delete-name"));
+
+            // Remove the section link element if it's not the first one
+            parentDiv.remove();
+
+            // Remove the link elements from the PDF preview
+            pdfNameElemClass?.remove();
+
+        });
+
+        // Index number =+ 1
+        skillIndex++
+
+    }
+
+}
+
+addSkillBtn?.addEventListener("click", addSkill);
+
+
+//*--|*|--*\\_____// Accomplishments \\_____//*--|*|--*\\
+
+
+
+const accompList:HTMLElement | null = document.querySelector(".accomplishments-list");
+const addAccompBtn:HTMLElement | null = document.querySelector(".add-accomplishments");
+const appendAccomp:HTMLElement | null = document.querySelector(".accomp-append");
+
+const accompInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-accomp",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-accomp",
+    elemPlaceholder: "Developed a cookbook app",
+    elemDataOutput: "pdf-accomp"
+}
+
+let accompIndex:number = 0;
+
+function addAccomp(){
+
+    const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
+    
+    if (elemNumber < 10){
+
+
+
+            /* Elements */
+
+        // Create a parent div
+        const parentDiv:HTMLElement = createDiv(slDivObj, accompIndex);
+
+        // Create & append elements
+        const elemDiv:HTMLElement = createDiv(secItemObj, accompIndex);
+        const elemInp:HTMLInputElement = createInput(accompInpObj, accompIndex);
+        elemDiv?.appendChild(elemInp);
+
+        // Delete Link Button
+        const deleteLinkBtn:HTMLElement = createDiv(deleteListBtnObj, accompIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-accomp" + accompIndex);
+
+
+        
+            /* Append */
+
+        // Append the link name and url divs to the section
+        parentDiv?.appendChild(elemDiv);
+        parentDiv?.appendChild(deleteLinkBtn);
+    
+        accompList?.appendChild(parentDiv);
+
+        // Append the link name and url output to the pdf
+        appendOutput(appendAccomp, elemInp);
+
+        // Set focus on the input
+        elemInp.focus();
+
+
+
+            /* Delete Button */
+
+        deleteLinkBtn.addEventListener("click", function(){
+
+            // PDF Link Label
+            const pdfNameElemClass:HTMLElement | null = document.querySelector("." + 
+            deleteLinkBtn.getAttribute("delete-name"));
+
+            // Remove the section link element if it's not the first one
+            parentDiv.remove();
+
+            // Remove the link elements from the PDF preview
+            pdfNameElemClass?.remove();
+
+        });
+
+        // Index number =+ 1
+        accompIndex++
+
+    }
+
+}
+
+addAccompBtn?.addEventListener("click", addAccomp);
+
+
+
+//*--|*|--*\\_____// Hobbies \\_____//*--|*|--*\\
+
+
+
+const hobbyList:HTMLElement | null = document.querySelector(".hobbies-list");
+const addHobbyBtn:HTMLElement | null = document.querySelector(".add-hobbies");
+const appendHobby:HTMLElement | null = document.querySelector(".hobby-append");
+
+const hobbyInpObj:Object = {
+    elemType: "text",
+    elemId: "sec-hobby",
+    elemClasses: "sec-input",
+    elemIndexClasses: "sec-hobby",
+    elemPlaceholder: "Video Editing",
+    elemDataOutput: "pdf-hobby"
+}
+
+let hobbyIndex:number = 0;
+
+function addHobby(){
+
+    const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
+    
+    if (elemNumber < 10){
+
+
+
+            /* Elements */
+
+        // Create a parent div
+        const parentDiv:HTMLElement = createDiv(slDivObj, hobbyIndex);
+
+        // Create & append elements
+        const elemDiv:HTMLElement = createDiv(secItemObj, hobbyIndex);
+        const elemInp:HTMLInputElement = createInput(hobbyInpObj, hobbyIndex);
+        elemDiv?.appendChild(elemInp);
+
+        // Delete Link Button
+        const deleteLinkBtn:HTMLElement = createDiv(deleteListBtnObj, hobbyIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-hobby" + hobbyIndex);
+
+
+        
+            /* Append */
+
+        // Append the link name and url divs to the section
+        parentDiv?.appendChild(elemDiv);
+        parentDiv?.appendChild(deleteLinkBtn);
+    
+        hobbyList?.appendChild(parentDiv);
+
+        // Append the link name and url output to the pdf
+        appendOutput(appendHobby, elemInp);
+
+        // Set focus on the input
+        elemInp.focus();
+
+
+
+            /* Delete Button */
+
+        deleteLinkBtn.addEventListener("click", function(){
+
+            // PDF Link Label
+            const pdfNameElemClass:HTMLElement | null = document.querySelector("." + 
+            deleteLinkBtn.getAttribute("delete-name"));
+
+            // Remove the section link element if it's not the first one
+            parentDiv.remove();
+
+            // Remove the link elements from the PDF preview
+            pdfNameElemClass?.remove();
+
+        });
+
+        // Index number =+ 1
+        hobbyIndex++
+
+    }
+
+}
+
+addHobbyBtn?.addEventListener("click", addHobby);

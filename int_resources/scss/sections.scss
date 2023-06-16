@@ -708,7 +708,7 @@
         width:100%;
         display:flex;
         align-items:flex-end;
-        gap:var(--size1);
+        gap:calc(var(--size1) / 2);
     }
 
     .sec-link-list:has(.sec-link) ~ .add-btn{ 
@@ -815,7 +815,6 @@
 
             .sec-link{
                 flex-wrap:wrap;
-                gap:calc(var(--size1) / 2);
     
                 .section-item{
                     width:auto;
@@ -1300,8 +1299,6 @@
 
 }
 
-
-
         /* Section List - Courses */
 
 .section4 .sec-list-inputs > .section-item:nth-of-type(1){
@@ -1328,6 +1325,10 @@
         margin-bottom:calc(var(--size1) / 2);
     }
 
+    .sec-desc{
+        margin-bottom:calc(var(--size1) / 2);
+    }
+
     .languages-list{
         width:100%;
         display:flex;
@@ -1339,19 +1340,16 @@
     .sec-lang{
         width:100%;
         display:flex;
+        flex-wrap:wrap;
         align-items:flex-end;
-        gap:var(--size1);
-    }
-
-    .section-item > *{
-        width:100%;
+        gap:calc(var(--size1) / 2);
     }
 
     .sec-lang-lvl{
         cursor:pointer;
     }
 
-    .languages-list:has(.sec-lang) ~ .add-btn{ 
+    &:has(.sec-lang) .add-btn{
         margin-top:calc(var(--size1) / 2);
     }
 
@@ -1359,6 +1357,57 @@
         display:none;
     }
 
+}
+
+.section5 .section-item > *{
+    width:100%;
+}
+
+        /* Section 5 - Small Layout */
+
+.sl-subsection{
+    gap:0;
+
+    .sec-subhead-div{
+        margin-bottom:calc(var(--size1) / 2);
+    }
+
+    .sec-desc{
+        margin-bottom:calc(var(--size1) / 2);
+    }
+
+    &:has(.sl-elem) .add-btn{
+        margin-top:calc(var(--size1) / 2);
+    }
+    
+}
+
+.sl-list{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:var(--size1);
+    row-gap:calc(var(--size1) / 2);
+}
+
+.skills-list:has(.sl-elem:nth-of-type(16)) ~ .add-btn{
+    display:none;
+}
+
+.accomplishments-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn,
+.hobbies-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn{
+    display:none;
+}
+
+.sl-elem{
+    width:calc((100% - var(--size1)) / 2);
+    display:flex;
+    gap:calc(var(--size1) / 2);
+}
+
+.sl-elem .sec-input{
+    flex:1;
 }
 
         /* Section 5 - media */
@@ -1375,22 +1424,20 @@
             margin-top:var(--size1);
         }
 
-        .sec-lang{
-            flex-wrap:wrap;
-            gap:calc(var(--size1) / 2);
+    }
 
-            .section-item{
-                width:auto;
-                flex:1;
+    .section5 .section-item{
+        width:auto;
+        flex:1;
 
-                &:nth-of-type(1){
-                    flex:100%;
-                }
-
-            }
-
+        &:nth-of-type(1){
+            flex:100%;
         }
 
+    }
+
+    .sl-elem{
+        width:100%;
     }
 
 }

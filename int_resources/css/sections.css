@@ -622,7 +622,7 @@
   width: 100%;
   display: flex;
   align-items: flex-end;
-  gap: var(--size1);
+  gap: calc(var(--size1) / 2);
 }
 .sec-links .sec-link-list:has(.sec-link) ~ .add-btn {
   margin-top: calc(var(--size1) / 2);
@@ -699,7 +699,6 @@
   }
   .section1 .sec-links .sec-link {
     flex-wrap: wrap;
-    gap: calc(var(--size1) / 2);
   }
   .section1 .sec-links .sec-link .section-item {
     width: auto;
@@ -1102,6 +1101,9 @@
 .sec-languages .sec-subhead-div {
   margin-bottom: calc(var(--size1) / 2);
 }
+.sec-languages .sec-desc {
+  margin-bottom: calc(var(--size1) / 2);
+}
 .sec-languages .languages-list {
   width: 100%;
   display: flex;
@@ -1112,20 +1114,64 @@
 .sec-languages .sec-lang {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
-  gap: var(--size1);
-}
-.sec-languages .section-item > * {
-  width: 100%;
+  gap: calc(var(--size1) / 2);
 }
 .sec-languages .sec-lang-lvl {
   cursor: pointer;
 }
-.sec-languages .languages-list:has(.sec-lang) ~ .add-btn {
+.sec-languages:has(.sec-lang) .add-btn {
   margin-top: calc(var(--size1) / 2);
 }
 .sec-languages .languages-list:has(.sec-lang:nth-of-type(6)) ~ .add-btn {
   display: none;
+}
+
+.section5 .section-item > * {
+  width: 100%;
+}
+
+/* Section 5 - Small Layout */
+.sl-subsection {
+  gap: 0;
+}
+.sl-subsection .sec-subhead-div {
+  margin-bottom: calc(var(--size1) / 2);
+}
+.sl-subsection .sec-desc {
+  margin-bottom: calc(var(--size1) / 2);
+}
+.sl-subsection:has(.sl-elem) .add-btn {
+  margin-top: calc(var(--size1) / 2);
+}
+
+.sl-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--size1);
+  row-gap: calc(var(--size1) / 2);
+}
+
+.skills-list:has(.sl-elem:nth-of-type(16)) ~ .add-btn {
+  display: none;
+}
+
+.accomplishments-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn,
+.hobbies-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn {
+  display: none;
+}
+
+.sl-elem {
+  width: calc((100% - var(--size1)) / 2);
+  display: flex;
+  gap: calc(var(--size1) / 2);
+}
+
+.sl-elem .sec-input {
+  flex: 1;
 }
 
 /* Section 5 - media */
@@ -1136,15 +1182,14 @@
   .sec-languages .languages-list:has(.sec-lang) ~ .add-btn {
     margin-top: var(--size1);
   }
-  .sec-languages .sec-lang {
-    flex-wrap: wrap;
-    gap: calc(var(--size1) / 2);
-  }
-  .sec-languages .sec-lang .section-item {
+  .section5 .section-item {
     width: auto;
     flex: 1;
   }
-  .sec-languages .sec-lang .section-item:nth-of-type(1) {
+  .section5 .section-item:nth-of-type(1) {
     flex: 100%;
+  }
+  .sl-elem {
+    width: 100%;
   }
 }
