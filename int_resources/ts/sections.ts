@@ -426,7 +426,7 @@ function appendOutput(appendTo, inputElem){
 
     // Create an element and append it
     const pdfOutput:HTMLElement = document.createElement("p");
-    pdfOutput.classList.add(outputClass);
+    pdfOutput.classList.add("app-elem", outputClass);
     appendTo?.appendChild(pdfOutput);
 
     inputElem.addEventListener("input", function(){

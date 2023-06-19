@@ -31,6 +31,7 @@
     <script src="int_resources/js/index.js" defer></script>
     <script src="int_resources/js/icons.js" defer></script>
     <script src="int_resources/js/sections.js" defer></script>
+    <script src="int_resources/js/pdf.js" defer></script>
 </head>
     
 <body class="hide-modal">
@@ -139,7 +140,7 @@
 
                 <section class="sections dock">
 
-<div class="section section1 dock-inner" data-link="section1">
+<div class="section section1 dock-inner visible-section" data-link="section1">
     <div class="section-inner">
 
         <div class="section-heading">
@@ -396,7 +397,7 @@
 
 
 
-<div class="section section4 section-list dock-inner visible-section" data-link="section4">
+<div class="section section4 section-list dock-inner" data-link="section4">
     <div class="section-inner">
 
         <div class="section-heading">
@@ -426,24 +427,24 @@
 
 
 
-<div class="section section5 dock-inner visible-section" data-link="section5">
+<div class="section section5 dock-inner" data-link="section5">
     <div class="section-inner">
 
         <div class="section-heading">
             <h3 class="sec-head">Skills</h3>
         </div>
 
-        <div class="subsection sec-languages">
+        <div class="subsection sl-subsection">
             <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Languages</h4>
+                <h4 class="sec-subhead">Accomplishments</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <p class="sec-desc">The overview of your multilingual abilities can be very useful for positions that require communication across diverse language groups. - up to 6 languages.</p>
+            <p class="sec-desc">List your accomplishments and milestones attained throughout professional career, showcasing exceptional performance, recognition, and impact - up to 10 elements.</p>
 
-            <div class="sec-list languages-list"></div>
+            <div class="sec-list sl-list accomplishments-list"></div>
 
-            <div class="add-btn add-languages">
+            <div class="add-btn add-accomplishments">
                 <span></span>
                 <span></span>
             </div>
@@ -465,17 +466,17 @@
             </div>
         </div>
 
-        <div class="subsection sl-subsection">
+        <div class="subsection sec-languages">
             <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Accomplishments</h4>
+                <h4 class="sec-subhead">Languages</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <p class="sec-desc">List your accomplishments and milestones attained throughout professional career, showcasing exceptional performance, recognition, and impact - up to 10 elements.</p>
+            <p class="sec-desc">The overview of your multilingual abilities can be very useful for positions that require communication across diverse language groups. - up to 6 languages.</p>
 
-            <div class="sec-list sl-list accomplishments-list"></div>
+            <div class="sec-list languages-list"></div>
 
-            <div class="add-btn add-accomplishments">
+            <div class="add-btn add-languages">
                 <span></span>
                 <span></span>
             </div>
@@ -598,47 +599,102 @@
                         <span></span>
                     </div>
 
-                    <div class="pdfc-inner dock-inner">
+                    <div class="pdfc-inner">
                         <div class="pdfc-inner-inner">
 
-                            <div class="insert-photo"></div>
-
-                            <p class="pdf-first-name"></p>
-                            <p class="pdf-last-name"></p>
-                            <p class="pdf-occupation"></p>
-                            <br>
-                            <br>
-                            <p class="pdf-email"></p>
-                            <p class="pdf-phone"></p>
-                            <br>
-                            <br>
-                            <p class="pdf-country"></p>
-                            <p class="pdf-city"></p>
-                            <p class="pdf-post-code"></p>
-                            <p class="pdf-address"></p>
-                            <p class="pdf-dob"></p>
-                            <br>
-                            <br>
-                            <p class="pdf-summary"></p>
-
-                            <div class="pdf-links"></div>
-
-                            <div class="qr-insert"></div>
-                            <p class="pdf-qr-name"></p>
-
-                            <div class="exp-append"></div>
-
-                            <div class="edu-append"></div>
-
-                            <div class="cour-append"></div>
 
 
-                            <div class="ref-append"></div>
+                            <div class="pdf-aside">
+                                
+                                <div class="insert-photo"></div>
 
-                            <div class="lang-append"></div>
-                            <div class="skill-append"></div>
-                            <div class="accomp-append"></div>
-                            <div class="hobby-append"></div>
+                                <div class="pdf-sec pdf-contact">
+                                    <h3 class="pdf-sec-heading">Contact</h3>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-email-icon"></div>
+                                        <p class="pdf-email"></p>
+                                    </div>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-phone-icon"></div>
+                                        <p class="pdf-phone"></p>
+                                    </div>
+                                </div>
+
+                                <div class="pdf-sec pdf-details">
+                                    <h3 class="pdf-sec-heading">Personal Details</h3>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-dob-icon"></div>
+                                        <p class="pdf-dob"></p>
+                                    </div>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-country-icon"></div>
+                                        <p class="pdf-country"></p>
+                                    </div>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-address-icon"></div>
+
+                                        <p class="pdf-address"></p>
+                                        <p class="pdf-city"></p>
+                                        <p class="pdf-post-code"></p>
+                                    </div>
+                                </div>
+
+                                <div class="pdf-sec pdf-skill">
+                                    <h3 class="pdf-sec-heading">Skills</h3>
+                                    <div class="skill-append"></div>
+                                </div>
+
+                                <div class="pdf-sec pdf-lang">
+                                    <h3 class="pdf-sec-heading">Languages</h3>
+                                    <div class="lang-append"></div>
+                                </div>
+
+                                <div class="pdf-sec pdf-hobby">
+                                    <h3 class="pdf-sec-heading">Hobbies</h3>
+                                    <div class="hobby-append"></div>
+                                </div>
+
+                                <div class="pdf-sec pdf-links-sec">
+                                    <h3 class="pdf-sec-heading">Links</h3>
+                                    <div class="pdf-links"></div>
+                                </div>
+
+                                <div class="pdf-qr-div">
+                                    <p class="pdf-qr-name"></p>
+                                    <div class="qr-insert"></div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pdf-main">
+
+                                <div class="pdf-heading">
+                                    <p class="pdf-first-name"></p>
+                                    <p class="pdf-last-name"></p>
+
+                                    <p class="pdf-occupation"></p>
+                                    <p class="pdf-summary"></p>
+                                </div>
+
+                                <div class="exp-append"></div>
+
+                                <div class="edu-append"></div>
+
+                                <div class="cour-append"></div>
+
+                                <div class="accomp-append"></div>
+
+                                <div class="ref-append"></div>
+
+                            </div>
+
 
 
                         </div>

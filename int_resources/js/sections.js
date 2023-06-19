@@ -286,7 +286,7 @@ function appendOutput(appendTo, inputElem) {
     const outputClass = inputElem.getAttribute("data-output");
     // Create an element and append it
     const pdfOutput = document.createElement("p");
-    pdfOutput.classList.add(outputClass);
+    pdfOutput.classList.add("app-elem", outputClass);
     appendTo?.appendChild(pdfOutput);
     inputElem.addEventListener("input", function () {
         // Change the element value to the input value

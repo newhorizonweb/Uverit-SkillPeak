@@ -898,11 +898,10 @@ nav {
 .pdfc-inner {
   min-height: 100%;
   aspect-ratio: 1/1.414; /* A4 aspect ratio */
-  padding: var(--size1);
-  box-sizing: border-box;
   background-color: #FFF;
   border-radius: var(--mainRadius1);
   box-shadow: var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
+  overflow: hidden;
 }
 
 .pdfc-inner::-webkit-scrollbar {
@@ -974,6 +973,7 @@ nav {
   border-radius: 50%;
   opacity: 0.6;
   transition: 0.15s;
+  z-index: 1000;
   cursor: pointer;
 }
 

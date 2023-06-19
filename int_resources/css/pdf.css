@@ -1,4 +1,87 @@
+/* PDF */
+.pdfc-inner {
+  display: flex;
+}
+
+.pdfc-inner-inner {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* PDF Aside */
+.pdf-aside {
+  height: 100%;
+  width: 35cqw;
+  padding: 1cqw;
+  box-sizing: border-box;
+  background-color: #DDD;
+}
+
+.pdfc-inner p {
+  font-size: 2cqw;
+}
+
+.pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading {
+  display: none;
+}
+
+.pdf-sec-icon {
+  width: 3cqw;
+  aspect-ratio: 1/1;
+}
+
+.pdf-sec-icon svg {
+  stroke: red;
+  stroke-width: 1cqw;
+}
+
+.pdf-sec-elem:not(:has(p:not(:empty))) .pdf-sec-icon {
+  display: none;
+}
+
+/* PDF Aside - Photo */
+.insert-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .insert-logo-img {
-  width: 200px;
-  max-width: 200px;
+  width: 80%;
+}
+
+/* PDF Aside - Contact */
+.insert-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.insert-logo-img {
+  width: 80%;
+}
+
+/* PDF Main */
+.pdf-main {
+  flex: 1;
+}
+
+.pdf-main > div {
+  width: 100%;
+}
+
+.pdf-details {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1cqw;
+}
+
+.pdf-occupation {
+  width: 100%;
 }
