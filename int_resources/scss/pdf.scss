@@ -15,12 +15,16 @@
     align-items:flex-start;
 }
 
+.pdfc-inner p{
+    font-size:1.75cqw;
+}
+
 .pdf-sec-heading{
     display:flex;
     align-items:center;
     gap:2cqw;
 
-    font-size:4cqw;
+    font-size:2.75cqw;
     line-height:1.2;
 }
 
@@ -35,11 +39,12 @@
     display:none;
 }
 
-.pdfc-inner p{
-    font-size:3cqw;
+.pdf-sec-elem{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    column-gap:0.5cqw;
 }
-
-
 
 
 
@@ -48,8 +53,11 @@
 .pdf-aside{
     height:100%;
     width:35cqw;
-    padding:1cqw;
+    padding:2cqw;
     box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
     background-color:#DDD;
 }
 
@@ -67,15 +75,20 @@
     display:none;
 }
 
-        /* PDF Aside - Photo */
+        /* PDF Aside - Photo & QR Code */
 
-.insert-photo{
+.insert-photo,
+.qr-insert{
     width:100%;
-    aspect-ratio:1/1;
-
     display:flex;
     justify-content:center;
-    align-items:center;
+}
+
+.insert-photo{
+    margin-top:10%;
+}
+.qr-insert{
+    margin-bottom:10%;
 }
 
 .insert-photo:not(:has(.insert-logo-img)){
@@ -84,26 +97,43 @@
 
 .insert-logo-img{
     width:80%;
-}
-
-        /* PDF Aside - Contact */
-
-.insert-photo{
-    width:100%;
     aspect-ratio:1/1;
+    object-fit:cover;
+}
 
+        /* PDF Aside - Details */
+
+.pdf-sec-address{
+    gap:0;
+}
+
+.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty)) .pdf-address:after,
+.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-post-code:not(:empty)) .pdf-address:after{
+    content:",";
+}
+
+.pdf-sec-address p:not(:empty){
+    margin-left:1cqw;
+}
+
+        /* PDF Aside - Skills & Hobbies */
+
+.pdf-elem-tiles > div{
     display:flex;
-    justify-content:center;
-    align-items:center;
+    flex-wrap:wrap;
+    gap:1cqw;
 }
 
-.insert-logo-img{
-    width:80%;
+.pdf-elem-tiles .app-elem{
+    padding:0.5cqw;
+    background-color:rgb(0,0,0,0.05);
 }
 
+        /* PDF Aside - Links */
 
-
-
+.pdf-links-sec{
+    margin-top:auto;
+}
 
 
 
@@ -127,25 +157,88 @@
 
 .pdf-main{
     flex:1;
+    height:100%;
+    padding:2cqw;
+    box-sizing:border-box;
 }
 
 .pdf-main > div{
     width:100%;
 }
 
-.pdf-details{
+        /* PDF Main - Heading */
+
+.pdf-heading{
     display:flex;
     flex-wrap:wrap;
-    column-gap:1cqw;
+    justify-content:flex-start;
+    column-gap:0.5cqw;
 }
 
-.pdf-occupation{
+.pdf-occupation,
+.pdf-summary{
     width:100%;
 }
 
+        /* PDF Main - List Group */
 
+.pdf-list-group{
+    display:flex;
+    flex-wrap:wrap;
+}
 
+.append-elem-group{
+    width:100%;
+    display:flex;
+}
 
+.pdf-list-group > .app-elem:nth-of-type(2){
+    margin-left:auto;
+}
 
+.pdf-list-group:has(
+    .app-elem:nth-of-type(2):not(:empty) + 
+    .app-elem:nth-of-type(3):not(:empty)) 
+> .app-elem:nth-of-type(2):after{
+    content:"-";
+    margin:0 0.5cqw;
+}
 
+.append-elem-group:has(
+    .app-elem:nth-of-type(1):not(:empty) + 
+    .app-elem:nth-of-type(2):not(:empty)) 
+.app-elem:nth-of-type(1):after{
+    content:", ";
+    margin-right:0.5cqw;
+}
 
+.pdf-list-group > p:nth-last-child(1){
+    width:100%;
+}
+
+        /* PDF Main - References */
+
+.pdf-ref{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.pdf-ref:has(
+    .app-elem:nth-of-type(1):not(:empty) + 
+    .app-elem:nth-of-type(2):not(:empty)) 
+> .app-elem:nth-of-type(1):after{
+    content:", ";
+    margin-right:0.5cqw;
+}
+
+.pdf-ref:has(
+    :where(
+        .app-elem:nth-of-type(2):not(:empty) + 
+        .app-elem:nth-of-type(3):not(:empty),
+        .app-elem:nth-of-type(1):not(:empty) ~ 
+        .app-elem:nth-of-type(3):not(:empty)
+    )
+) > .app-elem:nth-of-type(2):after{
+    content:"-";
+    margin:0 0.5cqw;
+}

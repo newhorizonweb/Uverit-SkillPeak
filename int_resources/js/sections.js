@@ -911,13 +911,16 @@ function addExperience() {
         /* Append the elements to PDF */
         // Append the section elements to the pdf
         const pdfExpDiv = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-exp");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp" + expIndex);
+        const appendGroup = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
         appendOutput(pdfExpDiv, jobTitleInp);
-        appendOutput(pdfExpDiv, compInp);
-        appendOutput(pdfExpDiv, locationInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(appendGroup, compInp);
+        appendOutput(appendGroup, locationInp);
+        pdfExpDiv.appendChild(appendGroup);
         pdfExpDiv.appendChild(pdfOutput);
         appendExp?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
@@ -1240,13 +1243,16 @@ function addEducation() {
         /* Append the elements to PDF */
         // Append the section elements to the pdf
         const pdfExpDiv = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-edu");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-edu");
         pdfExpDiv.setAttribute("id", "pdf-edu" + eduIndex);
+        const appendGroup = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
         appendOutput(pdfExpDiv, degreeInp);
-        appendOutput(pdfExpDiv, schoolNameInp);
-        appendOutput(pdfExpDiv, cityInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(appendGroup, schoolNameInp);
+        appendOutput(appendGroup, cityInp);
+        pdfExpDiv.appendChild(appendGroup);
         pdfExpDiv.appendChild(pdfOutput);
         appendEdu?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
@@ -1426,12 +1432,12 @@ function addCourses() {
         /* Append the elements to PDF */
         // Append the section elements to the pdf
         const pdfExpDiv = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-cour");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-cour");
         pdfExpDiv.setAttribute("id", "pdf-cour" + courIndex);
         appendOutput(pdfExpDiv, courseInp);
-        appendOutput(pdfExpDiv, institInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfExpDiv, institInp);
         appendCour?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
         deleteBtn.addEventListener("click", function () {
@@ -1730,11 +1736,14 @@ function addReferences() {
         const pdfExpDiv = document.createElement("div");
         pdfExpDiv.classList.add("pdf-ref");
         pdfExpDiv.setAttribute("id", "pdf-ref" + refIndex);
+        const appendGroup = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
         appendOutput(pdfExpDiv, refNameInp);
         appendOutput(pdfExpDiv, refCompInp);
         appendOutput(pdfExpDiv, relationInp);
-        appendOutput(pdfExpDiv, refMailInp);
-        appendOutput(pdfExpDiv, refPhoneInp);
+        appendOutput(appendGroup, refMailInp);
+        appendOutput(appendGroup, refPhoneInp);
+        pdfExpDiv.appendChild(appendGroup);
         pdfExpDiv.appendChild(pdfOutput);
         appendRef?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */

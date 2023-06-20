@@ -849,8 +849,6 @@ const bpListIcon:string = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://w
 
 const numberListIcon:string = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='119.5' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L119.5,28a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><path d='M52.6,191.5a8.5,8.5,0,0,1-6-2.3,7.8,7.8,0,0,1-2.3-5.5V27.2l2.9,2.6L12.6,53.2a8,8,0,0,1-4.4,1.3,7.6,7.6,0,0,1-5.6-2.6A7.7,7.7,0,0,1,.1,46.4a7.3,7.3,0,0,1,4.2-6.7L47.7,11.1a10.4,10.4,0,0,1,3.2-1.5,7.8,7.8,0,0,1,3-.1A7,7,0,0,1,59.1,12a8.1,8.1,0,0,1,1.8,5.3V183.7a7.4,7.4,0,0,1-2.3,5.5A8.3,8.3,0,0,1,52.6,191.5Z'/></svg>";
 
-
-
 // Elements
 const expList:HTMLElement | null = document.querySelector(".experience-list");
 const addExpBtn:HTMLElement | null = document.querySelector(".add-experience");
@@ -1295,14 +1293,19 @@ function addExperience(){
 
         // Append the section elements to the pdf
         const pdfExpDiv:HTMLElement = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-exp");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp"+expIndex);
 
+        const appendGroup:HTMLElement = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
+
         appendOutput(pdfExpDiv, jobTitleInp);
-        appendOutput(pdfExpDiv, compInp);
-        appendOutput(pdfExpDiv, locationInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+
+        appendOutput(appendGroup, compInp);
+        appendOutput(appendGroup, locationInp);
+        pdfExpDiv.appendChild(appendGroup);
 
         pdfExpDiv.appendChild(pdfOutput);
         appendExp?.appendChild(pdfExpDiv);
@@ -1775,14 +1778,19 @@ function addEducation(){
 
         // Append the section elements to the pdf
         const pdfExpDiv:HTMLElement = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-edu");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-edu");
         pdfExpDiv.setAttribute("id", "pdf-edu"+eduIndex);
 
+        const appendGroup:HTMLElement = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
+
         appendOutput(pdfExpDiv, degreeInp);
-        appendOutput(pdfExpDiv, schoolNameInp);
-        appendOutput(pdfExpDiv, cityInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+
+        appendOutput(appendGroup, schoolNameInp);
+        appendOutput(appendGroup, cityInp);
+        pdfExpDiv.appendChild(appendGroup);
 
         pdfExpDiv.appendChild(pdfOutput);
         appendEdu?.appendChild(pdfExpDiv);
@@ -2052,13 +2060,13 @@ function addCourses(){
 
         // Append the section elements to the pdf
         const pdfExpDiv:HTMLElement = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-cour");
-        pdfExpDiv.setAttribute("id", "pdf-cour"+courIndex);
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-cour");
+        pdfExpDiv.setAttribute("id", "pdf-cour" + courIndex);
 
         appendOutput(pdfExpDiv, courseInp);
-        appendOutput(pdfExpDiv, institInp);
         appendOutput(pdfExpDiv, startDateInp);
         appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfExpDiv, institInp);
 
         appendCour?.appendChild(pdfExpDiv);
         
@@ -2495,11 +2503,16 @@ function addReferences(){
         pdfExpDiv.classList.add("pdf-ref");
         pdfExpDiv.setAttribute("id", "pdf-ref"+refIndex);
 
+        const appendGroup:HTMLElement = document.createElement("div");
+        appendGroup.classList.add("append-elem-group");
+
         appendOutput(pdfExpDiv, refNameInp);
         appendOutput(pdfExpDiv, refCompInp);
         appendOutput(pdfExpDiv, relationInp);
-        appendOutput(pdfExpDiv, refMailInp);
-        appendOutput(pdfExpDiv, refPhoneInp);
+
+        appendOutput(appendGroup, refMailInp);
+        appendOutput(appendGroup, refPhoneInp);
+        pdfExpDiv.appendChild(appendGroup);
 
         pdfExpDiv.appendChild(pdfOutput);
         appendRef?.appendChild(pdfExpDiv);

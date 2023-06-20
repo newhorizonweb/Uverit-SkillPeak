@@ -233,14 +233,6 @@
             </div>
 
             <div class="section-item">
-                <label for="sec-country">Country</label>
-                <input type="text" id="sec-country" 
-                    class="sec-input inp-add sec-country" 
-                    data-output="pdf-country"
-                    placeholder="United States">
-            </div>
-
-            <div class="section-item">
                 <label for="sec-city">City</label>
                 <input type="text" id="sec-city" 
                     class="sec-input inp-add sec-city" 
@@ -263,6 +255,13 @@
                     placeholder="Liberty St">
             </div>
 
+            <div class="section-item">
+                <label for="sec-country">Country</label>
+                <input type="text" id="sec-country" 
+                    class="sec-input inp-add sec-country" 
+                    data-output="pdf-country"
+                    placeholder="United States">
+            </div>
         </div>
 
 
@@ -630,21 +629,21 @@
                                         <p class="pdf-dob"></p>
                                     </div>
 
-                                    <div class="pdf-sec-elem">
-                                        <div class="pdf-sec-icon pdf-country-icon"></div>
-                                        <p class="pdf-country"></p>
-                                    </div>
-
-                                    <div class="pdf-sec-elem">
+                                    <div class="pdf-sec-elem pdf-sec-address">
                                         <div class="pdf-sec-icon pdf-address-icon"></div>
 
                                         <p class="pdf-address"></p>
                                         <p class="pdf-city"></p>
                                         <p class="pdf-post-code"></p>
                                     </div>
+
+                                    <div class="pdf-sec-elem">
+                                        <div class="pdf-sec-icon pdf-country-icon"></div>
+                                        <p class="pdf-country"></p>
+                                    </div>
                                 </div>
 
-                                <div class="pdf-sec pdf-skill-sec">
+                                <div class="pdf-sec pdf-elem-tiles">
                                     <h3 class="pdf-sec-heading">Skills</h3>
                                     <div class="skill-append"></div>
                                 </div>
@@ -654,7 +653,7 @@
                                     <div class="lang-append"></div>
                                 </div>
 
-                                <div class="pdf-sec pdf-hobby-sec">
+                                <div class="pdf-sec pdf-elem-tiles">
                                     <h3 class="pdf-sec-heading">Hobbies</h3>
                                     <div class="hobby-append"></div>
                                 </div>
