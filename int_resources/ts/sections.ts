@@ -788,8 +788,8 @@ function addLink(){
             /* Delete Link Button */
 
         const deleteLinkBtn:HTMLElement = createDiv(deleteLinkBtnObj, linkIndex);
-        deleteLinkBtn.setAttribute("delete-name", "pdf-link-name"+linkIndex);
-        deleteLinkBtn.setAttribute("delete-url", "pdf-link-url"+linkIndex);
+        deleteLinkBtn.setAttribute("delete-name", "pdf-link-name" + linkIndex);
+        deleteLinkBtn.setAttribute("delete-url", "pdf-link-url" + linkIndex);
 
 
         
@@ -803,8 +803,12 @@ function addLink(){
         pdfLinks?.appendChild(newLinkDiv);
 
         // Append the link name and url output to the pdf
-        appendOutput(pdfLinksOutput, newInput1);
-        appendOutput(pdfLinksOutput, newInput2);
+        const pdfOutput:HTMLElement = document.createElement("div");
+        pdfOutput.classList.add("pdf-sec-elem");
+
+        appendOutput(pdfOutput, newInput1);
+        appendOutput(pdfOutput, newInput2);
+        pdfLinksOutput?.appendChild(pdfOutput);
 
         // Set focus on the input
         if (linkNumber !== 0){
@@ -817,20 +821,11 @@ function addLink(){
         // Delete the link in the PDF
         deleteLinkBtn.addEventListener("click", function(){
 
-            // PDF Link Label
-            const pdfNameElemClass:HTMLElement | null = document.querySelector("." + 
-            deleteLinkBtn.getAttribute("delete-name"));
-    
-            // PDF Link URL
-            const pdfUrlElemClass:HTMLElement | null = document.querySelector("." + 
-                deleteLinkBtn.getAttribute("delete-url"));
-
             // Remove the section link element if it's not the first one
             newLinkDiv.remove();
 
-            // Remove the link elements from the PDF preview
-            pdfNameElemClass?.remove();
-            pdfUrlElemClass?.remove();
+            // Remove the link div from the PDF
+            pdfOutput.remove();
 
         });
 
@@ -2691,14 +2686,19 @@ function addLang(){
         langList?.appendChild(langDiv);
 
         // Append the link name and url output to the pdf
-        appendOutput(appendLang, langInp);
+        const pdfOutputDiv:HTMLElement = document.createElement("div");
+        pdfOutputDiv.classList.add("pdf-sec-elem");
+
+        appendOutput(pdfOutputDiv, langInp);
 
         const langLvlOutputClass:string | null = langLvlSel.getAttribute("data-output");
 
         // Create an element and append it
         const pdfOutput:HTMLElement = document.createElement("p");
         pdfOutput.classList.add(langLvlOutputClass!);
-        appendLang?.appendChild(pdfOutput);
+        pdfOutputDiv.appendChild(pdfOutput);
+
+        appendLang?.appendChild(pdfOutputDiv);
     
         langLvlSel.addEventListener("input", function(){
         
@@ -2726,20 +2726,11 @@ function addLang(){
 
         deleteLinkBtn.addEventListener("click", function(){
 
-            // PDF Link Label
-            const pdfNameElemClass:HTMLElement | null = document.querySelector("." + 
-            deleteLinkBtn.getAttribute("delete-name"));
-    
-            // PDF Link URL
-            const pdfUrlElemClass:HTMLElement | null = document.querySelector("." + 
-                deleteLinkBtn.getAttribute("delete-url"));
-
             // Remove the section link element if it's not the first one
             langDiv.remove();
 
-            // Remove the link elements from the PDF preview
-            pdfNameElemClass?.remove();
-            pdfUrlElemClass?.remove();
+            // Remove the link elements (parent div) from the PDF preview
+            pdfOutputDiv?.remove();
 
         });
 

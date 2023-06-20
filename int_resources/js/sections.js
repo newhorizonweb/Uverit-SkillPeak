@@ -559,8 +559,11 @@ function addLink() {
         newLinkDiv?.appendChild(deleteLinkBtn);
         pdfLinks?.appendChild(newLinkDiv);
         // Append the link name and url output to the pdf
-        appendOutput(pdfLinksOutput, newInput1);
-        appendOutput(pdfLinksOutput, newInput2);
+        const pdfOutput = document.createElement("div");
+        pdfOutput.classList.add("pdf-sec-elem");
+        appendOutput(pdfOutput, newInput1);
+        appendOutput(pdfOutput, newInput2);
+        pdfLinksOutput?.appendChild(pdfOutput);
         // Set focus on the input
         if (linkNumber !== 0) {
             newInput1.focus();
@@ -569,17 +572,10 @@ function addLink() {
         changeLabel(newInput1, newLabel1, linkLabelName);
         // Delete the link in the PDF
         deleteLinkBtn.addEventListener("click", function () {
-            // PDF Link Label
-            const pdfNameElemClass = document.querySelector("." +
-                deleteLinkBtn.getAttribute("delete-name"));
-            // PDF Link URL
-            const pdfUrlElemClass = document.querySelector("." +
-                deleteLinkBtn.getAttribute("delete-url"));
             // Remove the section link element if it's not the first one
             newLinkDiv.remove();
-            // Remove the link elements from the PDF preview
-            pdfNameElemClass?.remove();
-            pdfUrlElemClass?.remove();
+            // Remove the link div from the PDF
+            pdfOutput.remove();
         });
         // Index number =+ 1
         linkIndex++;
@@ -1859,12 +1855,15 @@ function addLang() {
         langDiv?.appendChild(deleteLinkBtn);
         langList?.appendChild(langDiv);
         // Append the link name and url output to the pdf
-        appendOutput(appendLang, langInp);
+        const pdfOutputDiv = document.createElement("div");
+        pdfOutputDiv.classList.add("pdf-sec-elem");
+        appendOutput(pdfOutputDiv, langInp);
         const langLvlOutputClass = langLvlSel.getAttribute("data-output");
         // Create an element and append it
         const pdfOutput = document.createElement("p");
         pdfOutput.classList.add(langLvlOutputClass);
-        appendLang?.appendChild(pdfOutput);
+        pdfOutputDiv.appendChild(pdfOutput);
+        appendLang?.appendChild(pdfOutputDiv);
         langLvlSel.addEventListener("input", function () {
             // Change the element value to the input value
             const output = document.querySelector("." + langLvlOutputClass);
@@ -1882,17 +1881,10 @@ function addLang() {
         changeLabel(langInp, langLabel, langLabelName);
         /* Delete Button */
         deleteLinkBtn.addEventListener("click", function () {
-            // PDF Link Label
-            const pdfNameElemClass = document.querySelector("." +
-                deleteLinkBtn.getAttribute("delete-name"));
-            // PDF Link URL
-            const pdfUrlElemClass = document.querySelector("." +
-                deleteLinkBtn.getAttribute("delete-url"));
             // Remove the section link element if it's not the first one
             langDiv.remove();
-            // Remove the link elements from the PDF preview
-            pdfNameElemClass?.remove();
-            pdfUrlElemClass?.remove();
+            // Remove the link elements (parent div) from the PDF preview
+            pdfOutputDiv?.remove();
         });
         // Index number =+ 1
         langIndex++;

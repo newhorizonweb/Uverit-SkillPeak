@@ -10,6 +10,29 @@
   align-items: flex-start;
 }
 
+.pdf-sec-heading {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+  font-size: 4cqw;
+  line-height: 1.2;
+}
+
+.pdf-sec-heading:after {
+  content: "";
+  flex: 1;
+  height: 0.25cqw;
+  background-color: red;
+}
+
+.pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading {
+  display: none;
+}
+
+.pdfc-inner p {
+  font-size: 3cqw;
+}
+
 /* PDF Aside */
 .pdf-aside {
   height: 100%;
@@ -17,14 +40,6 @@
   padding: 1cqw;
   box-sizing: border-box;
   background-color: #DDD;
-}
-
-.pdfc-inner p {
-  font-size: 2cqw;
-}
-
-.pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading {
-  display: none;
 }
 
 .pdf-sec-icon {
@@ -48,6 +63,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.insert-photo:not(:has(.insert-logo-img)) {
+  display: none;
 }
 
 .insert-logo-img {
