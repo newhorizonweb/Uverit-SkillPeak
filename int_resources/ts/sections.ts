@@ -2700,7 +2700,7 @@ function addLang(){
 
         // Append the link name and url output to the pdf
         const pdfOutputDiv:HTMLElement = document.createElement("div");
-        pdfOutputDiv.classList.add("pdf-sec-elem");
+        pdfOutputDiv.classList.add("pdf-lang-elem");
 
         appendOutput(pdfOutputDiv, langInp);
 

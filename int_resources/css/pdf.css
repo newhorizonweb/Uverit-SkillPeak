@@ -102,7 +102,7 @@
 }
 
 .pdf-sec-address p:not(:empty) {
-  margin-left: 1cqw;
+  margin-left: 0.5cqw;
 }
 
 /* PDF Aside - Skills & Hobbies */
@@ -120,6 +120,12 @@
 /* PDF Aside - Links */
 .pdf-links-sec {
   margin-top: auto;
+}
+
+.pdf-sec-elem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* PDF Main */

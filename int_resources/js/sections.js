@@ -1865,7 +1865,7 @@ function addLang() {
         langList?.appendChild(langDiv);
         // Append the link name and url output to the pdf
         const pdfOutputDiv = document.createElement("div");
-        pdfOutputDiv.classList.add("pdf-sec-elem");
+        pdfOutputDiv.classList.add("pdf-lang-elem");
         appendOutput(pdfOutputDiv, langInp);
         const langLvlOutputClass = langLvlSel.getAttribute("data-output");
         // Create an element and append it
