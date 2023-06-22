@@ -10,3 +10,27 @@ document.querySelector(".pdf-phone-icon").innerHTML = phoneIcon;
 document.querySelector(".pdf-address-icon").innerHTML = pinIcon;
 document.querySelector(".pdf-dob-icon").innerHTML = dobIcon;
 document.querySelector(".pdf-country-icon").innerHTML = countryIcon;
+//*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
+const subHeadingSwitch = document.querySelector(".subhead-switch");
+const secSubtitles = document.querySelectorAll(".pdf-sec-title");
+const secIcons = document.querySelectorAll(".pdf-sec-icon");
+function subHeadSwitch() {
+    if (subHeadingSwitch.checked) {
+        secIcons.forEach(function (elem) {
+            elem.classList.remove("subhead-visible");
+        });
+        secSubtitles.forEach(function (elem) {
+            elem.classList.add("subhead-visible");
+        });
+    }
+    else {
+        secIcons.forEach(function (elem) {
+            elem.classList.add("subhead-visible");
+        });
+        secSubtitles.forEach(function (elem) {
+            elem.classList.remove("subhead-visible");
+        });
+    }
+}
+subHeadSwitch();
+subHeadingSwitch?.addEventListener("click", subHeadSwitch);

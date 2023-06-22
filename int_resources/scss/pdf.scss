@@ -61,6 +61,18 @@
     background-color:#DDD;
 }
 
+.pdf-sec-elem:not(:has(p:not(:empty))) .pdf-sec-subhead{
+    display:none;
+}
+
+.pdf-sec-subhead{
+    display:none;
+}
+
+.pdf-sec-subhead.subhead-visible{
+    display:block;
+}
+
 .pdf-sec-icon{
     width:3cqw;
     aspect-ratio:1/1;
@@ -71,9 +83,11 @@
     stroke-width:1cqw;
 }
 
-.pdf-sec-elem:not(:has(p:not(:empty))) .pdf-sec-icon{
-    display:none;
+.pdf-sec-title{
+    width:100%;
 }
+
+
 
         /* PDF Aside - Photo & QR Code */
 
@@ -135,7 +149,7 @@
     margin-top:auto;
 }
 
-.pdf-sec-elem{
+.pdf-links-sec .pdf-sec-elem{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
