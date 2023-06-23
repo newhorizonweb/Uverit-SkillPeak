@@ -10,6 +10,104 @@ document.querySelector(".pdf-phone-icon").innerHTML = phoneIcon;
 document.querySelector(".pdf-address-icon").innerHTML = pinIcon;
 document.querySelector(".pdf-dob-icon").innerHTML = dobIcon;
 document.querySelector(".pdf-country-icon").innerHTML = countryIcon;
+//*--|*|--*\\_____// PDF Colors \\_____//*--|*|--*\\
+// Elements
+const pdfColorInp = document.querySelectorAll(".pdf-color");
+const asideColorInp = document.querySelector(".pdf-color-aside");
+const asideTxtColor = document.querySelector(".aside-text-color");
+const asideTxtWarning = document.querySelector(".color-warning");
+const asideColorReset = document.querySelector(".reset-color-aside");
+const mainColorReset = document.querySelector(".reset-color-main");
+const accentColorReset = document.querySelector(".reset-color-accent");
+const baseColors = [
+    "#223856",
+    "#07ABDB",
+    "#CC1EEC" // accent
+];
+// Color lightness
+function calcLightness(color) {
+    const hex = color.slice(1);
+    // Convert the HEX values to RGB
+    const r = parseInt(hex.substr(0, 2), 16) / 255;
+    const g = parseInt(hex.substr(2, 2), 16) / 255;
+    const b = parseInt(hex.substr(4, 2), 16) / 255;
+    // Find the minimum and maximum values to calculate the lightness
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const lightness = Math.round(((max + min) / 2) * 100);
+    return lightness;
+}
+// Color contrast warning
+function contrastWarning() {
+    // Remove the warning class
+    asideTxtWarning?.classList.remove("show-color-warning");
+    const textColor = asideTxtColor?.value;
+    const asideColor = asideColorInp?.value;
+    // Calculate the color lightness
+    const colorLightness = calcLightness(asideColor);
+    // Show the warning message if contrast is bad
+    if (textColor === "dark" && colorLightness <= 85 ||
+        textColor === "light" && colorLightness >= 60) {
+        asideTxtWarning?.classList.add("show-color-warning");
+    }
+}
+// Change colors (color inputs)
+function inputColorChange(input) {
+    const inpColor = input.value;
+    const inpTarget = input.getAttribute("target-color");
+    document.documentElement.style.setProperty(`--${inpTarget}`, inpColor);
+    contrastWarning();
+}
+pdfColorInp.forEach(function (input) {
+    input.addEventListener("input", function () {
+        inputColorChange(input);
+    });
+});
+// Change the aside text color
+function asideTxtColorChng() {
+    const textColor = asideTxtColor?.value;
+    switch (textColor) {
+        case "dark":
+            document.body.classList.remove("aside-light-txt");
+            document.body.classList.add("aside-dark-txt");
+            break;
+        case "light":
+            document.body.classList.remove("aside-dark-txt");
+            document.body.classList.add("aside-light-txt");
+            break;
+        default:
+            document.body.classList.remove("aside-light-txt");
+            document.body.classList.remove("aside-dark-txt");
+    }
+}
+asideTxtColorChng();
+asideTxtColor.addEventListener("input", function () {
+    asideTxtColorChng();
+    contrastWarning();
+});
+/* Base colors */
+// Aside
+function asideBaseColor() {
+    pdfColorInp[0].value = baseColors[0];
+    inputColorChange(pdfColorInp[0]);
+}
+asideBaseColor();
+// Main
+function mainBaseColor() {
+    pdfColorInp[1].value = baseColors[1];
+    inputColorChange(pdfColorInp[1]);
+}
+mainBaseColor();
+// Accent
+function accentBaseColor() {
+    pdfColorInp[2].value = baseColors[2];
+    inputColorChange(pdfColorInp[2]);
+}
+accentBaseColor();
+// Reset buttons
+asideColorReset?.addEventListener("click", asideBaseColor);
+mainColorReset?.addEventListener("click", mainBaseColor);
+accentColorReset?.addEventListener("click", accentBaseColor);
 //*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
 const subHeadingSwitch = document.querySelector(".subhead-switch");
 const secSubtitles = document.querySelectorAll(".pdf-sec-title");

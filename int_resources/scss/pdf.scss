@@ -3,6 +3,10 @@
 
     /* PDF */
 
+:root{
+    --pdf-color-aside:#EEEEEE;
+}
+
 .pdfc-inner{
     display:flex;
 }
@@ -58,7 +62,7 @@
 
     display:flex;
     flex-direction:column;
-    background-color:#DDD;
+    background-color:var(--pdf-color-aside);
 }
 
 .pdf-sec-elem:not(:has(p:not(:empty))) .pdf-sec-subhead{
@@ -74,13 +78,22 @@
 }
 
 .pdf-sec-icon{
-    width:3cqw;
+    width:2.5cqw;
     aspect-ratio:1/1;
 }
 
 .pdf-sec-icon svg{
-    stroke:red;
-    stroke-width:1cqw;
+    stroke-width:1.25cqw;
+}
+
+.aside-dark-txt .pdfc-inner .pdf-sec-icon svg,
+.aside-light-txt.dark-mode .pdfc-inner .pdf-sec-icon svg{
+    stroke:var(--txt1);
+}
+
+.aside-light-txt .pdfc-inner .pdf-sec-icon svg,
+.aside-dark-txt.dark-mode .pdfc-inner .pdf-sec-icon svg{
+    stroke:var(--txt2);
 }
 
 .pdf-sec-title{
@@ -154,22 +167,6 @@
     flex-direction:column;
     align-items:flex-start;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -262,3 +259,41 @@
     content:"-";
     margin:0 0.5cqw;
 }
+
+
+
+
+
+
+
+
+/* --/*|*\-- PDF Settings --/*|*\-- */
+
+
+
+    /* Colors */
+
+.aside-dark-txt .pdfc-inner p,
+.aside-light-txt.dark-mode .pdfc-inner p{
+    color:var(--txt1);
+}
+
+.aside-light-txt .pdfc-inner p,
+.aside-dark-txt.dark-mode .pdfc-inner p{
+    color:var(--txt2);
+}
+
+.color-warning{
+    display:none;
+}
+
+.show-color-warning{
+    display:block;
+}
+
+
+
+
+
+
+

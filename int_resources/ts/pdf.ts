@@ -15,7 +15,6 @@ const countryIcon:string = "<svg id='Layer_2' data-name='Layer 2' xmlns='http://
 
 
 
-
     /* Elements */
 
 document.querySelector(".pdf-email-icon")!.innerHTML = emailIcon;
@@ -26,7 +25,141 @@ document.querySelector(".pdf-country-icon")!.innerHTML = countryIcon;
 
 
 
+//*--|*|--*\\_____// PDF Colors \\_____//*--|*|--*\\
+
+
+// Elements
+const pdfColorInp:NodeListOf<HTMLInputElement> = document.querySelectorAll(".pdf-color");
+const asideColorInp:HTMLInputElement | null = document.querySelector(".pdf-color-aside");
+
+const asideTxtColor:HTMLInputElement | null = document.querySelector(".aside-text-color");
+const asideTxtWarning:HTMLInputElement | null = document.querySelector(".color-warning");
+
+const asideColorReset:HTMLInputElement | null = document.querySelector(".reset-color-aside");
+const mainColorReset:HTMLInputElement | null = document.querySelector(".reset-color-main");
+const accentColorReset:HTMLInputElement | null = document.querySelector(".reset-color-accent");
+
+const baseColors:string[] = [
+    "#223856",  // aside
+    "#07ABDB",  // main
+    "#CC1EEC"   // accent
+]
+
+// Color lightness
+function calcLightness(color){
+    const hex = color.slice(1);
+  
+    // Convert the HEX values to RGB
+    const r = parseInt(hex.substr(0, 2), 16) / 255;
+    const g = parseInt(hex.substr(2, 2), 16) / 255;
+    const b = parseInt(hex.substr(4, 2), 16) / 255;
+  
+    // Find the minimum and maximum values to calculate the lightness
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const lightness = Math.round(((max + min) / 2) * 100);
+  
+    return lightness;
+}
+
+// Color contrast warning
+function contrastWarning(){
+
+    // Remove the warning class
+    asideTxtWarning?.classList.remove("show-color-warning");
+
+    const textColor:string | undefined = asideTxtColor?.value;
+    const asideColor:string | undefined = asideColorInp?.value;
+
+    // Calculate the color lightness
+    const colorLightness:number = calcLightness(asideColor);
+
+    // Show the warning message if contrast is bad
+    if (textColor === "dark" && colorLightness <= 85 ||
+    textColor === "light" && colorLightness >= 60){
+        asideTxtWarning?.classList.add("show-color-warning");
+    }
+
+}
+
+// Change colors (color inputs)
+function inputColorChange(input){
+    const inpColor:string = input.value;
+    const inpTarget = input.getAttribute("target-color");
+
+    document.documentElement.style.setProperty(`--${inpTarget}`, inpColor);
+
+    contrastWarning();
+}
+
+pdfColorInp.forEach(function(input){
+    input.addEventListener("input", function(){
+        inputColorChange(input);
+    });
+});
+
+// Change the aside text color
+function asideTxtColorChng(){
+
+    const textColor:string | undefined = asideTxtColor?.value;
+
+    switch (textColor){
+        case "dark":
+            document.body.classList.remove("aside-light-txt");
+            document.body.classList.add("aside-dark-txt");
+            break;
+        case "light":
+            document.body.classList.remove("aside-dark-txt");
+            document.body.classList.add("aside-light-txt");
+            break;
+        default:
+            document.body.classList.remove("aside-light-txt");
+            document.body.classList.remove("aside-dark-txt");
+    }
+
+}
+
+asideTxtColorChng();
+
+asideTxtColor!.addEventListener("input", function(){
+    asideTxtColorChng();
+    contrastWarning();
+});
+
+
+
+    /* Base colors */
+
+// Aside
+function asideBaseColor(){
+    pdfColorInp[0].value = baseColors[0];
+    inputColorChange(pdfColorInp[0]);
+}
+asideBaseColor();
+
+// Main
+function mainBaseColor(){
+    pdfColorInp[1].value = baseColors[1];
+    inputColorChange(pdfColorInp[1]);
+}
+mainBaseColor();
+
+// Accent
+function accentBaseColor(){
+    pdfColorInp[2].value = baseColors[2];
+    inputColorChange(pdfColorInp[2]);
+}
+accentBaseColor();
+
+// Reset buttons
+asideColorReset?.addEventListener("click", asideBaseColor);
+mainColorReset?.addEventListener("click", mainBaseColor);
+accentColorReset?.addEventListener("click", accentBaseColor);
+
+
+
 //*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
+
 
 
 const subHeadingSwitch:HTMLInputElement | null = document.querySelector(".subhead-switch");
