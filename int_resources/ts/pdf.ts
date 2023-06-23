@@ -158,6 +158,81 @@ accentColorReset?.addEventListener("click", accentBaseColor);
 
 
 
+//*--|*|--*\\_____// Font Size \\_____//*--|*|--*\\
+
+
+
+const txtFontSize:HTMLInputElement | null = document.querySelector(".text-size-input");
+const headingFontSize:HTMLInputElement | null = document.querySelector(".heading-size-input");
+
+
+
+    /* Text */
+
+function pdfTextSize(){
+
+    let fontSizeVal:string = "";
+
+    switch (txtFontSize!.value){
+        case "1":
+            fontSizeVal = "1.4cqw";
+            break;
+        case "2":
+            fontSizeVal = "1.5cqw";
+            break;
+        case "3":
+            fontSizeVal = "1.6cqw";
+            break;
+        case "4":
+            fontSizeVal = "1.7cqw";
+            break;
+        case "5":
+            fontSizeVal = "1.8cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty("--pdf-txt-size", fontSizeVal);
+
+}
+
+pdfTextSize();
+txtFontSize?.addEventListener("input", pdfTextSize);
+
+
+
+    /* Headings */
+
+function pdfHeadingSize(){
+
+    let fontSizeVal:string = "";
+
+    switch (headingFontSize!.value){
+        case "1":
+            fontSizeVal = "2.1cqw";
+            break;
+        case "2":
+            fontSizeVal = "2.25cqw";
+            break;
+        case "3":
+            fontSizeVal = "2.4cqw";
+            break;
+        case "4":
+            fontSizeVal = "2.55cqw";
+            break;
+        case "5":
+            fontSizeVal = "2.7cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty("--pdf-heading-size", fontSizeVal);
+
+}
+
+pdfHeadingSize();
+headingFontSize?.addEventListener("input", pdfHeadingSize);
+
+
+
 //*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
 
 

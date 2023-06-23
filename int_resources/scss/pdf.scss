@@ -20,7 +20,7 @@
 }
 
 .pdfc-inner p{
-    font-size:1.75cqw;
+    font-size:var(--pdf-txt-size);
 }
 
 .pdf-sec-heading{
@@ -28,7 +28,7 @@
     align-items:center;
     gap:2cqw;
 
-    font-size:2.75cqw;
+    font-size:var(--pdf-heading-size);
     line-height:1.2;
 }
 
@@ -273,13 +273,13 @@
 
     /* Colors */
 
-.aside-dark-txt .pdfc-inner p,
-.aside-light-txt.dark-mode .pdfc-inner p{
+.aside-dark-txt .pdf-aside p,
+.aside-light-txt.dark-mode .pdf-aside p{
     color:var(--txt1);
 }
 
-.aside-light-txt .pdfc-inner p,
-.aside-dark-txt.dark-mode .pdfc-inner p{
+.aside-light-txt .pdf-aside p,
+.aside-dark-txt.dark-mode .pdf-aside p{
     color:var(--txt2);
 }
 
