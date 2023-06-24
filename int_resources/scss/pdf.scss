@@ -112,20 +112,34 @@
 }
 
 .insert-photo{
-    margin-top:10%;
-}
-.qr-insert{
-    margin-bottom:10%;
+    margin-top:calc((100% - var(--photo-size-input)) / 2);
 }
 
-.insert-photo:not(:has(.insert-logo-img)){
+.qr-insert{
+    margin-bottom:calc((100% - var(--qr-size-input)) / 2);
+}
+
+.insert-photo:not(:has(.insert-logo-img)),
+.qr-insert:not(:has(.insert-logo-img)){
     display:none;
 }
 
 .insert-logo-img{
-    width:80%;
     aspect-ratio:1/1;
     object-fit:cover;
+    position:relative;
+}
+
+.insert-photo .insert-logo-img{
+    width:var(--photo-size-input);
+    top:calc(var(--photo-border-input) * -1);
+    
+    border:solid var(--photo-border-input) var(--pdf-color-main);
+    border-radius:var(--photo-round-input);
+}
+
+.qr-insert .insert-logo-img{
+    width:var(--qr-size-input);
 }
 
         /* PDF Aside - Details */

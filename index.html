@@ -541,7 +541,7 @@
             <h3 class="sec-head">Design</h3>
         </div>
 
-        <div class="subsection sec-summary">
+        <div class="subsection">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Colors</h4>
                 <div class="sec-subhead-line"></div>
@@ -567,28 +567,58 @@
             </select>
         </div>
 
-        <div class="subsection sec-summary">
+        <div class="subsection">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Text Size</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
             <label for="text-size-input">Text</label>
-            <input type="range" class="font-size-input text-size-input"
+            <input type="range" class="pdf-range-input text-size-input"
                 min="1" max="5" value="3" id="text-size-input">
 
             <label for="heading-size-input">Headings</label>
-            <input type="range" class="font-size-input heading-size-input"
+            <input type="range" class="pdf-range-input heading-size-input"
                 min="1" max="5" value="3" id="heading-size-input">
         </div>
 
-        <div class="subsection sec-summary">
+        <div class="subsection">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Aside Subheadings</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
             <input type="checkbox" class="subhead-switch">
+        </div>
+
+        <div class="subsection">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">Photo</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <label for="photo-size-input">Size</label>
+            <input type="range" class="pdf-range-input photo-size-input"
+                min="1" max="5" value="3" id="photo-size-input">
+
+            <label for="photo-border-input">Border Width</label>
+            <input type="range" class="pdf-range-input photo-border-input"
+                min="1" max="5" value="3" id="photo-border-input">
+
+            <label for="photo-round-input">Corner Rounding</label>
+            <input type="range" class="pdf-range-input photo-round-input"
+                min="0" max="10" value="2" id="photo-round-input">
+        </div>
+
+        <div class="subsection">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">QR Code</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <label for="qr-size-input">Size</label>
+            <input type="range" class="pdf-range-input qr-size-input"
+                min="1" max="5" value="3" id="qr-size-input">
         </div>
 
     </div>

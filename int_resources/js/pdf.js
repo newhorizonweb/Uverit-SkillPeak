@@ -183,3 +183,93 @@ function subHeadSwitch() {
 }
 subHeadSwitch();
 subHeadingSwitch?.addEventListener("click", subHeadSwitch);
+//*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
+// Elements
+const photoSize = document.querySelector(".photo-size-input");
+const photoBorder = document.querySelector(".photo-border-input");
+const photoRound = document.querySelector(".photo-round-input");
+/* Size */
+function pdfPhotoSize() {
+    const elem = photoSize;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "40%";
+            break;
+        case "2":
+            inpVal = "50%";
+            break;
+        case "3":
+            inpVal = "60%";
+            break;
+        case "4":
+            inpVal = "70%";
+            break;
+        case "5":
+            inpVal = "80%";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+}
+pdfPhotoSize();
+photoSize?.addEventListener("input", pdfPhotoSize);
+/* Border Width */
+function pdfPhotoBorder() {
+    const elem = photoBorder;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "0";
+            break;
+        case "2":
+            inpVal = "0.25cqw";
+            break;
+        case "3":
+            inpVal = "0.6cqw";
+            break;
+        case "4":
+            inpVal = "0.95cqw";
+            break;
+        case "5":
+            inpVal = "1.3cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+}
+pdfPhotoBorder();
+photoBorder?.addEventListener("input", pdfPhotoBorder);
+/* Border Width */
+function pdfPhotoRadius() {
+    const elem = photoRound;
+    const inpVal = (parseFloat(elem.value) * 5).toString() + "%";
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+}
+pdfPhotoRadius();
+photoRound?.addEventListener("input", pdfPhotoRadius);
+//*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
+/* Size */
+const qrSize = document.querySelector(".qr-size-input");
+function pdfQrSize() {
+    const elem = qrSize;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "40%";
+            break;
+        case "2":
+            inpVal = "50%";
+            break;
+        case "3":
+            inpVal = "60%";
+            break;
+        case "4":
+            inpVal = "70%";
+            break;
+        case "5":
+            inpVal = "80%";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+}
+pdfQrSize();
+qrSize?.addEventListener("input", pdfQrSize);
