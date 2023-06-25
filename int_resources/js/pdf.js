@@ -1,3 +1,4 @@
+//*--|*|--*\\_____// General \\_____//*--|*|--*\\
 /* SVG */
 const emailIcon = "<svg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><style>.cls-1{fill:none;stroke-miterlimit:10;}</style></defs><path class='cls-1' d='M167.4,173.4H32.7A24.7,24.7,0,0,1,8,148.8V51.2A24.7,24.7,0,0,1,32.7,26.6H167.4A24.6,24.6,0,0,1,192,51.2v97.6A24.6,24.6,0,0,1,167.4,173.4Z'/><path class='cls-1' d='M183,36.3l-60.1,64.4a31.7,31.7,0,0,1-46.6,0L16.2,36.3'/></svg>";
 const phoneIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><style>.cls-1,.cls-2{fill:none;stroke-miterlimit:10;}.cls-2{stroke-linecap:round;}</style></defs><path class='cls-1' d='M77.1,123a86.8,86.8,0,0,1,8,9.1c6.3,6.9,13.9,13.9,20.2,7,7.3-9.1,19.2-14.8,30.2-8.7,4.2,1.8,15.3,14.4,18.7,17.4a21.6,21.6,0,0,1,3.4,25.9C144,192,118.5,197.6,87,181.4h0a169.8,169.8,0,0,1-39.1-29.2h-.1A175.5,175.5,0,0,1,18.6,113h0C2.5,81.5,8,56,26.4,42.4a21.5,21.5,0,0,1,25.8,3.4c3,3.4,15.7,14.6,17.4,18.7,6.1,11,.4,22.9-8.6,30.2-7,6.3,0,13.9,6.9,20.2A79.4,79.4,0,0,1,77,123Z'/><path class='cls-2' d='M100,9.1A90.9,90.9,0,0,1,190.9,100'/><path class='cls-2' d='M100,49.7A50.3,50.3,0,0,1,150.3,100'/></svg>";
@@ -10,11 +11,23 @@ document.querySelector(".pdf-phone-icon").innerHTML = phoneIcon;
 document.querySelector(".pdf-address-icon").innerHTML = pinIcon;
 document.querySelector(".pdf-dob-icon").innerHTML = dobIcon;
 document.querySelector(".pdf-country-icon").innerHTML = countryIcon;
+/* Functions */
+// Add a current value info element
+function inputInfo(elem, outputVal) {
+    let infoElem = elem?.parentNode?.querySelector(".input-info");
+    if (!infoElem) {
+        infoElem = document.createElement("p");
+        infoElem.classList.add("input-info");
+        elem?.parentNode?.insertBefore(infoElem, elem.nextSibling);
+    }
+    infoElem.innerHTML = outputVal;
+}
 //*--|*|--*\\_____// PDF Colors \\_____//*--|*|--*\\
 // Elements
 const pdfColorInp = document.querySelectorAll(".pdf-color");
 const asideColorInp = document.querySelector(".pdf-color-aside");
 const asideTxtColor = document.querySelector(".aside-text-color");
+const asideTxtColorInfo = document.querySelector(".aside-text-color-info");
 const asideTxtWarning = document.querySelector(".color-warning");
 const asideColorReset = document.querySelector(".reset-color-aside");
 const mainColorReset = document.querySelector(".reset-color-main");
@@ -41,13 +54,12 @@ function calcLightness(color) {
 function contrastWarning() {
     // Remove the warning class
     asideTxtWarning?.classList.remove("show-color-warning");
-    const textColor = asideTxtColor?.value;
     const asideColor = asideColorInp?.value;
     // Calculate the color lightness
     const colorLightness = calcLightness(asideColor);
     // Show the warning message if contrast is bad
-    if (textColor === "dark" && colorLightness <= 85 ||
-        textColor === "light" && colorLightness >= 60) {
+    if (asideTxtColor.checked && colorLightness <= 85 ||
+        !asideTxtColor.checked && colorLightness >= 60) {
         asideTxtWarning?.classList.add("show-color-warning");
     }
 }
@@ -56,6 +68,7 @@ function inputColorChange(input) {
     const inpColor = input.value;
     const inpTarget = input.getAttribute("target-color");
     document.documentElement.style.setProperty(`--${inpTarget}`, inpColor);
+    inputInfo(input, inpColor);
     contrastWarning();
 }
 pdfColorInp.forEach(function (input) {
@@ -65,19 +78,15 @@ pdfColorInp.forEach(function (input) {
 });
 // Change the aside text color
 function asideTxtColorChng() {
-    const textColor = asideTxtColor?.value;
-    switch (textColor) {
-        case "dark":
-            document.body.classList.remove("aside-light-txt");
-            document.body.classList.add("aside-dark-txt");
-            break;
-        case "light":
-            document.body.classList.remove("aside-dark-txt");
-            document.body.classList.add("aside-light-txt");
-            break;
-        default:
-            document.body.classList.remove("aside-light-txt");
-            document.body.classList.remove("aside-dark-txt");
+    if (asideTxtColor.checked) {
+        document.body.classList.remove("aside-light-txt");
+        document.body.classList.add("aside-dark-txt");
+        asideTxtColorInfo.innerHTML = "Switch to light text";
+    }
+    else {
+        document.body.classList.remove("aside-dark-txt");
+        document.body.classList.add("aside-light-txt");
+        asideTxtColorInfo.innerHTML = "Switch to dark text";
     }
 }
 asideTxtColorChng();
@@ -109,58 +118,66 @@ asideColorReset?.addEventListener("click", asideBaseColor);
 mainColorReset?.addEventListener("click", mainBaseColor);
 accentColorReset?.addEventListener("click", accentBaseColor);
 //*--|*|--*\\_____// Font Size \\_____//*--|*|--*\\
+// Elements
 const txtFontSize = document.querySelector(".text-size-input");
 const headingFontSize = document.querySelector(".heading-size-input");
 /* Text */
 function pdfTextSize() {
-    let fontSizeVal = "";
-    switch (txtFontSize.value) {
+    const elem = txtFontSize;
+    let inpVal = "";
+    switch (elem.value) {
         case "1":
-            fontSizeVal = "1.4cqw";
+            inpVal = "1.4cqw";
             break;
         case "2":
-            fontSizeVal = "1.5cqw";
+            inpVal = "1.5cqw";
             break;
         case "3":
-            fontSizeVal = "1.6cqw";
+            inpVal = "1.6cqw";
             break;
         case "4":
-            fontSizeVal = "1.7cqw";
+            inpVal = "1.7cqw";
             break;
         case "5":
-            fontSizeVal = "1.8cqw";
+            inpVal = "1.8cqw";
             break;
     }
-    document.documentElement.style.setProperty("--pdf-txt-size", fontSizeVal);
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
 }
 pdfTextSize();
 txtFontSize?.addEventListener("input", pdfTextSize);
 /* Headings */
 function pdfHeadingSize() {
-    let fontSizeVal = "";
-    switch (headingFontSize.value) {
+    const elem = headingFontSize;
+    let inpVal = "";
+    switch (elem.value) {
         case "1":
-            fontSizeVal = "2.1cqw";
+            inpVal = "2.1cqw";
             break;
         case "2":
-            fontSizeVal = "2.25cqw";
+            inpVal = "2.25cqw";
             break;
         case "3":
-            fontSizeVal = "2.4cqw";
+            inpVal = "2.4cqw";
             break;
         case "4":
-            fontSizeVal = "2.55cqw";
+            inpVal = "2.55cqw";
             break;
         case "5":
-            fontSizeVal = "2.7cqw";
+            inpVal = "2.7cqw";
             break;
     }
-    document.documentElement.style.setProperty("--pdf-heading-size", fontSizeVal);
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
 }
 pdfHeadingSize();
 headingFontSize?.addEventListener("input", pdfHeadingSize);
 //*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
 const subHeadingSwitch = document.querySelector(".subhead-switch");
+const subHeadingSwitchInfo = document.querySelector(".subhead-switch-info");
 const secSubtitles = document.querySelectorAll(".pdf-sec-title");
 const secIcons = document.querySelectorAll(".pdf-sec-icon");
 function subHeadSwitch() {
@@ -171,6 +188,7 @@ function subHeadSwitch() {
         secSubtitles.forEach(function (elem) {
             elem.classList.add("subhead-visible");
         });
+        subHeadingSwitchInfo.innerHTML = "Switch to icons";
     }
     else {
         secIcons.forEach(function (elem) {
@@ -179,6 +197,7 @@ function subHeadSwitch() {
         secSubtitles.forEach(function (elem) {
             elem.classList.remove("subhead-visible");
         });
+        subHeadingSwitchInfo.innerHTML = "Switch to text";
     }
 }
 subHeadSwitch();
@@ -210,6 +229,8 @@ function pdfPhotoSize() {
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
 }
 pdfPhotoSize();
 photoSize?.addEventListener("input", pdfPhotoSize);
@@ -235,18 +256,86 @@ function pdfPhotoBorder() {
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
 }
 pdfPhotoBorder();
 photoBorder?.addEventListener("input", pdfPhotoBorder);
-/* Border Width */
+/* Rounding */
 function pdfPhotoRadius() {
     const elem = photoRound;
     const inpVal = (parseFloat(elem.value) * 5).toString() + "%";
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
 }
 pdfPhotoRadius();
 photoRound?.addEventListener("input", pdfPhotoRadius);
-//*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Skills & Hobbies \\_____//*--|*|--*\\
+// Elements
+const skillsShade = document.querySelector(".skills-shade-input");
+const skillsTranspar = document.querySelector(".skills-transpar-input");
+const skillsGap = document.querySelector(".skills-gap-input");
+const skillsRound = document.querySelector(".skills-round-input");
+/* Background Shade */
+function pdfSkillShade() {
+    const elem = skillsShade;
+    const shadeVal = (parseFloat(elem.value) * 25.5).toString();
+    const inpVal = `${shadeVal}, ${shadeVal}, ${shadeVal}`;
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfSkillShade();
+skillsShade?.addEventListener("input", pdfSkillShade);
+/* Background Transparency */
+function pdfSkillTranspar() {
+    const elem = skillsTranspar;
+    const inpVal = (parseFloat(elem.value) / 10).toString();
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfSkillTranspar();
+skillsTranspar?.addEventListener("input", pdfSkillTranspar);
+/* Gap */
+function pdfSkillsGap() {
+    const elem = skillsGap;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "0.5cqw";
+            break;
+        case "2":
+            inpVal = "0.75cqw";
+            break;
+        case "3":
+            inpVal = "1cqw";
+            break;
+        case "4":
+            inpVal = "1.25cqw";
+            break;
+        case "5":
+            inpVal = "1.5cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
+}
+pdfSkillsGap();
+skillsGap?.addEventListener("input", pdfSkillsGap);
+/* Rounding */
+function pdfSkillRadius() {
+    const elem = skillsRound;
+    const inpVal = (parseFloat(elem.value) / 10).toString();
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfSkillRadius();
+skillsRound?.addEventListener("input", pdfSkillRadius);
+//*--|*|--*\\_____// QR Code \\_____//*--|*|--*\\
 /* Size */
 const qrSize = document.querySelector(".qr-size-input");
 function pdfQrSize() {
@@ -270,6 +359,8 @@ function pdfQrSize() {
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
 }
 pdfQrSize();
 qrSize?.addEventListener("input", pdfQrSize);

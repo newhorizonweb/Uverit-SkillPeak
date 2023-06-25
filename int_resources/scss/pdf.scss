@@ -20,7 +20,7 @@
 }
 
 .pdfc-inner p{
-    font-size:var(--pdf-txt-size);
+    font-size:var(--text-size-input);
 }
 
 .pdf-sec-heading{
@@ -28,7 +28,7 @@
     align-items:center;
     gap:2cqw;
 
-    font-size:var(--pdf-heading-size);
+    font-size:var(--heading-size-input);
     line-height:1.2;
 }
 
@@ -162,12 +162,13 @@
 .pdf-elem-tiles > div{
     display:flex;
     flex-wrap:wrap;
-    gap:1cqw;
+    gap:var(--skills-gap-input);
 }
 
 .pdf-elem-tiles .app-elem{
-    padding:0.5cqw;
-    background-color:rgb(0,0,0,0.05);
+    padding:calc(var(--text-size-input) / 4) calc(var(--text-size-input) / 2);
+    background-color:rgb(var(--skills-shade-input), var(--skills-transpar-input));
+    border-radius:calc((var(--text-size-input)) * var(--skills-round-input));
 }
 
         /* PDF Aside - Links */
@@ -287,13 +288,13 @@
 
     /* Colors */
 
-.aside-dark-txt .pdf-aside p,
-.aside-light-txt.dark-mode .pdf-aside p{
+.aside-dark-txt .pdf-aside :where(p, .pdf-sec-heading),
+.aside-light-txt.dark-mode .pdf-aside :where(p, .pdf-sec-heading){
     color:var(--txt1);
 }
 
-.aside-light-txt .pdf-aside p,
-.aside-dark-txt.dark-mode .pdf-aside p{
+.aside-light-txt .pdf-aside :where(p, .pdf-sec-heading),
+.aside-dark-txt.dark-mode .pdf-aside :where(p, .pdf-sec-heading){
     color:var(--txt2);
 }
 

@@ -549,22 +549,33 @@
             
             <p class="color-warning">The text and aside background color may not have  sufficient contrast.</p>
 
-            <input type="color" class="pdf-color pdf-color-aside" target-color="pdf-color-aside">
+            <div class="design-item">
+                <label for="pdf-color-aside">Aside</label>
+                <input type="color" class="pdf-color pdf-color-aside" 
+                    id="pdf-color-aside" target-color="pdf-color-aside">
+                <p class="reset-color-aside">Reset</p>
+            </div>
 
-            <p class="reset-color-aside">Reset</p>
+            <div class="design-item">
+                <label for="pdf-color-main">Main</label>
+                <input type="color" class="pdf-color pdf-color-main"    
+                    id="pdf-color-main" target-color="pdf-color-main">
+                <p class="reset-color-main">Reset</p>
+            </div>
 
-            <input type="color" class="pdf-color pdf-color-main" target-color="pdf-color-main">
+            <div class="design-item">
+                <label for="pdf-color-accent">Accent</label>
+                <input type="color" class="pdf-color pdf-color-accent"
+                    id="pdf-color-accent" target-color="pdf-color-accent">
+                <p class="reset-color-accent">Reset</p>
+            </div>
 
-            <p class="reset-color-main">Reset</p>
-
-            <input type="color" class="pdf-color pdf-color-accent" target-color="pdf-color-accent">
-
-            <p class="reset-color-accent">Reset</p>
-
-            <select class="aside-text-color">
-                <option value="light" selected>Light Text</option>
-                <option value="dark">Dark Text</option>
-            </select>
+            <div class="design-item">
+                <label for="aside-text-color">Text Color</label>
+                <input type="checkbox" class="pdf-switch-input aside-text-color"
+                    id="aside-text-color">
+                <p class="input-info aside-text-color-info"></p>
+             </div>
         </div>
 
         <div class="subsection">
@@ -573,13 +584,17 @@
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <label for="text-size-input">Text</label>
-            <input type="range" class="pdf-range-input text-size-input"
-                min="1" max="5" value="3" id="text-size-input">
+            <div class="design-item">
+                <label for="text-size-input">Text</label>
+                <input type="range" class="pdf-range-input text-size-input"
+                    min="1" max="5" value="3" id="text-size-input">
+            </div>
 
-            <label for="heading-size-input">Headings</label>
-            <input type="range" class="pdf-range-input heading-size-input"
-                min="1" max="5" value="3" id="heading-size-input">
+            <div class="design-item">
+                <label for="heading-size-input">Headings</label>
+                <input type="range" class="pdf-range-input heading-size-input"
+                    min="1" max="5" value="3" id="heading-size-input">
+            </div>
         </div>
 
         <div class="subsection">
@@ -588,7 +603,12 @@
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <input type="checkbox" class="subhead-switch">
+            <div class="design-item">
+                <label for="subhead-switch">Accent</label>
+                <input type="checkbox" class="pdf-switch-input subhead-switch"
+                    id="subhead-switch">
+                <p class="input-info subhead-switch-info"></p>
+             </div>
         </div>
 
         <div class="subsection">
@@ -597,17 +617,54 @@
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <label for="photo-size-input">Size</label>
-            <input type="range" class="pdf-range-input photo-size-input"
-                min="1" max="5" value="3" id="photo-size-input">
+            <div class="design-item">
+                <label for="photo-size-input">Size</label>
+                <input type="range" class="pdf-range-input photo-size-input"
+                    min="1" max="5" value="3" id="photo-size-input">
+            </div>
 
-            <label for="photo-border-input">Border Width</label>
-            <input type="range" class="pdf-range-input photo-border-input"
-                min="1" max="5" value="3" id="photo-border-input">
+            <div class="design-item">
+                <label for="photo-border-input">Border Width</label>
+                <input type="range" class="pdf-range-input photo-border-input"
+                    min="1" max="5" value="3" id="photo-border-input">
+            </div>
 
-            <label for="photo-round-input">Corner Rounding</label>
-            <input type="range" class="pdf-range-input photo-round-input"
-                min="0" max="10" value="2" id="photo-round-input">
+            <div class="design-item">
+                <label for="photo-round-input">Corner Rounding</label>
+                <input type="range" class="pdf-range-input photo-round-input"
+                    min="0" max="10" value="2" id="photo-round-input">
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">Skills & hobbies</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <div class="design-item">
+                <label for="skills-shade-input">Background Shade</label>
+                <input type="range" class="pdf-range-input skills-shade-input"
+                    min="0" max="10" value="5" id="skills-shade-input">
+            </div>
+
+            <div class="design-item">
+                <label for="skills-transpar-input">Background Transparency</label>
+                <input type="range" class="pdf-range-input skills-transpar-input"
+                    min="0" max="10" value="5" id="skills-transpar-input">
+            </div>
+
+            <div class="design-item">
+                <label for="skills-gap-input">Gap</label>
+                <input type="range" class="pdf-range-input skills-gap-input"
+                    min="1" max="5" value="3" id="skills-gap-input">
+            </div>
+
+            <div class="design-item">
+                <label for="skills-round-input">Corner Rounding</label>
+                <input type="range" class="pdf-range-input skills-round-input"
+                    min="0" max="10" value="2" id="skills-round-input">
+            </div>
         </div>
 
         <div class="subsection">
@@ -616,9 +673,11 @@
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <label for="qr-size-input">Size</label>
-            <input type="range" class="pdf-range-input qr-size-input"
-                min="1" max="5" value="3" id="qr-size-input">
+            <div class="design-item">
+                <label for="qr-size-input">Size</label>
+                <input type="range" class="pdf-range-input qr-size-input"
+                    min="1" max="5" value="3" id="qr-size-input">
+            </div>
         </div>
 
     </div>
