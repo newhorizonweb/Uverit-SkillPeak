@@ -288,13 +288,13 @@
 
     /* Colors */
 
-.aside-dark-txt .pdf-aside :where(p, .pdf-sec-heading),
-.aside-light-txt.dark-mode .pdf-aside :where(p, .pdf-sec-heading){
+.aside-dark-txt .pdf-aside :where(p, h5, h3),
+.aside-light-txt.dark-mode .pdf-aside :where(p, h5, h3){
     color:var(--txt1);
 }
 
-.aside-light-txt .pdf-aside :where(p, .pdf-sec-heading),
-.aside-dark-txt.dark-mode .pdf-aside :where(p, .pdf-sec-heading){
+.aside-light-txt .pdf-aside :where(p, h5, h3),
+.aside-dark-txt.dark-mode .pdf-aside :where(p, h5, h3){
     color:var(--txt2);
 }
 
@@ -308,7 +308,17 @@
 
 
 
+    /* Text */
 
+.pdf-sec-heading,
+.pdf-sec-title{
+    text-transform:capitalize;
+}
 
+.head-uppercase :where(.pdf-sec-heading, .pdf-sec-title){
+    text-transform:uppercase;
+}
 
-
+.pdf-content *{
+    font-family:var(--text-tf-input);
+}

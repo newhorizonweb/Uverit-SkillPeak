@@ -580,18 +580,46 @@
 
         <div class="subsection">
             <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Text Size</h4>
+                <h4 class="sec-subhead">Text</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
             <div class="design-item">
-                <label for="text-size-input">Text</label>
+                <label for="text-tf-input">Typeface</label>
+                <select class="pdf-range-input text-tf-input" id="text-tf-input">
+                    <optgroup label="Sans Serif">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="Calibri, sans-serif">Calibri</option>
+                        <option value="Roboto, sans-serif">Roboto</option>
+                        <option value="Segoe UI, sans-serif">Segoe UI</option>
+                        <option value="Source Sans Pro, serif">Source Sans Pro</option>
+                        <option value="Tahoma, sans-serif">Tahoma</option>
+                        <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                    </optgroup>
+                    <optgroup label="Serif">
+                        <option value="Cambria, serif">Cambria</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Times New Roman, serif">Times New Roman</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="design-item">
+                <label for="heading-case-input">Heading Case</label>
+                <input type="checkbox" class="pdf-switch-input heading-case-input"
+                    id="heading-case-input">
+                <p class="input-info heading-case-info"></p>
+            </div>
+
+            <div class="design-item">
+                <label for="text-size-input">Text Size</label>
                 <input type="range" class="pdf-range-input text-size-input"
                     min="1" max="5" value="3" id="text-size-input">
             </div>
 
             <div class="design-item">
-                <label for="heading-size-input">Headings</label>
+                <label for="heading-size-input">Heading Size</label>
                 <input type="range" class="pdf-range-input heading-size-input"
                     min="1" max="5" value="3" id="heading-size-input">
             </div>
@@ -604,7 +632,7 @@
             </div>
 
             <div class="design-item">
-                <label for="subhead-switch">Accent</label>
+                <label for="subhead-switch">Subheading Appearance</label>
                 <input type="checkbox" class="pdf-switch-input subhead-switch"
                     id="subhead-switch">
                 <p class="input-info subhead-switch-info"></p>

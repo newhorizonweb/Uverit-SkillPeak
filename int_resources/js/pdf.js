@@ -117,11 +117,34 @@ accentBaseColor();
 asideColorReset?.addEventListener("click", asideBaseColor);
 mainColorReset?.addEventListener("click", mainBaseColor);
 accentColorReset?.addEventListener("click", accentBaseColor);
-//*--|*|--*\\_____// Font Size \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Text \\_____//*--|*|--*\\
 // Elements
+const txtTypeface = document.querySelector(".text-tf-input");
 const txtFontSize = document.querySelector(".text-size-input");
 const headingFontSize = document.querySelector(".heading-size-input");
-/* Text */
+const headingCase = document.querySelector(".heading-case-input");
+const headingInfo = document.querySelector(".heading-case-info");
+/* Typeface */
+const typefacesStyle = document.createElement('style');
+function typefaceChange() {
+    document.documentElement.style.setProperty(`--${txtTypeface?.getAttribute("id")}`, txtTypeface.value);
+}
+typefaceChange();
+txtTypeface?.addEventListener("input", typefaceChange);
+/* Heading Case */
+function headCaseChange() {
+    if (headingCase.checked) {
+        document.body.classList.add("head-uppercase");
+        headingInfo.innerHTML = "Switch to title case";
+    }
+    else {
+        document.body.classList.remove("head-uppercase");
+        headingInfo.innerHTML = "Switch to upper case";
+    }
+}
+headCaseChange();
+headingCase?.addEventListener("click", headCaseChange);
+/* Text Size */
 function pdfTextSize() {
     const elem = txtFontSize;
     let inpVal = "";
@@ -148,7 +171,7 @@ function pdfTextSize() {
 }
 pdfTextSize();
 txtFontSize?.addEventListener("input", pdfTextSize);
-/* Headings */
+/* Heading Size */
 function pdfHeadingSize() {
     const elem = headingFontSize;
     let inpVal = "";
