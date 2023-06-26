@@ -182,6 +182,7 @@ accentColorReset?.addEventListener("click", accentBaseColor);
 const txtTypeface:HTMLSelectElement | null = document.querySelector(".text-tf-input");
 const txtFontSize:HTMLInputElement | null = document.querySelector(".text-size-input");
 const headingFontSize:HTMLInputElement | null = document.querySelector(".heading-size-input");
+const lineHeight:HTMLInputElement | null = document.querySelector(".line-height-input");
 
 const headingCase:HTMLInputElement | null = document.querySelector(".heading-case-input");
 const headingInfo:HTMLElement | null = document.querySelector(".heading-case-info");
@@ -291,6 +292,128 @@ function pdfHeadingSize(){
 
 pdfHeadingSize();
 headingFontSize?.addEventListener("input", pdfHeadingSize);
+
+
+
+    /* Line Height */
+
+function lineHeightChange(){
+
+    const elem:HTMLInputElement | null = lineHeight;
+
+    let inpVal:string = "";
+
+    switch (elem!.value){
+        case "1":
+            inpVal = "100%";
+            break;
+        case "2":
+            inpVal = "110%";
+            break;
+        case "3":
+            inpVal = "120%";
+            break;
+        case "4":
+            inpVal = "130%";
+            break;
+        case "5":
+            inpVal = "140%";
+            break;
+    }
+
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    inputInfo(elem, inpVal);
+
+}
+
+lineHeightChange();
+lineHeight?.addEventListener("input", lineHeightChange);
+
+
+
+//*--|*|--*\\_____// Spacing \\_____//*--|*|--*\\
+
+
+
+// Elements
+const sectionSpacing:HTMLInputElement | null = document.querySelector(".section-spacing-input");
+const paragraphSpacing:HTMLInputElement | null = document.querySelector(".paragraph-spacing-input");
+
+
+
+    /* Section Spacing */
+
+function sectionSpacingChange(){
+
+    const elem:HTMLInputElement | null = sectionSpacing;
+
+    let inpVal:string = "";
+
+    switch (elem!.value){
+        case "1":
+            inpVal = "1.2cqw";
+            break;
+        case "2":
+            inpVal = "1.6cqw";
+            break;
+        case "3":
+            inpVal = "2cqw";
+            break;
+        case "4":
+            inpVal = "2.4cqw";
+            break;
+        case "5":
+            inpVal = "3cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+
+    const outputVal:string = "LVL " + elem!.value;
+    inputInfo(elem, outputVal);
+
+}
+
+sectionSpacingChange();
+sectionSpacing?.addEventListener("input", sectionSpacingChange);
+
+
+
+    /* Paraghaph Spacing */
+
+function paragraphSpacingChange(){
+
+    const elem:HTMLInputElement | null = paragraphSpacing;
+
+    let inpVal:string = "";
+
+    switch (elem!.value){
+        case "1":
+            inpVal = "0.4cqw";
+            break;
+        case "2":
+            inpVal = "0.6cqw";
+            break;
+        case "3":
+            inpVal = "0.8cqw";
+            break;
+        case "4":
+            inpVal = "1cqw";
+            break;
+        case "5":
+            inpVal = "1.2cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+
+    const outputVal:string = "LVL " + elem!.value;
+    inputInfo(elem, outputVal);
+
+}
+
+paragraphSpacingChange();
+paragraphSpacing?.addEventListener("input", paragraphSpacingChange);
 
 
 

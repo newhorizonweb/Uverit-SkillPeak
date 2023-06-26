@@ -565,9 +565,7 @@ function addLink() {
         appendOutput(pdfOutput, newInput2);
         pdfLinksOutput?.appendChild(pdfOutput);
         // Set focus on the input
-        if (linkNumber !== 0) {
-            newInput1.focus();
-        }
+        newInput1.focus();
         // Change the input label
         changeLabel(newInput1, newLabel1, linkLabelName);
         // Delete the link in the PDF

@@ -19,8 +19,10 @@
     align-items:flex-start;
 }
 
-.pdfc-inner p{
-    font-size:var(--text-size-input);
+.pdf-sec{
+    display:flex;
+    flex-direction:column;
+    gap:var(--paragraph-spacing-input);
 }
 
 .pdf-sec-heading{
@@ -50,6 +52,10 @@
     column-gap:0.5cqw;
 }
 
+.pdf-sec-elem:not(:has(p:not(:empty))){
+    display:none;
+}
+
 
 
     /* PDF Aside */
@@ -62,6 +68,8 @@
 
     display:flex;
     flex-direction:column;
+    gap:var(--section-spacing-input);
+
     background-color:var(--pdf-color-aside);
 }
 
@@ -309,6 +317,11 @@
 
 
     /* Text */
+
+.pdfc-inner p{
+    font-size:var(--text-size-input);
+    line-height:var(--line-height-input);
+}
 
 .pdf-sec-heading,
 .pdf-sec-title{

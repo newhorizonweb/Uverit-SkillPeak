@@ -122,6 +122,7 @@ accentColorReset?.addEventListener("click", accentBaseColor);
 const txtTypeface = document.querySelector(".text-tf-input");
 const txtFontSize = document.querySelector(".text-size-input");
 const headingFontSize = document.querySelector(".heading-size-input");
+const lineHeight = document.querySelector(".line-height-input");
 const headingCase = document.querySelector(".heading-case-input");
 const headingInfo = document.querySelector(".heading-case-info");
 /* Typeface */
@@ -198,6 +199,90 @@ function pdfHeadingSize() {
 }
 pdfHeadingSize();
 headingFontSize?.addEventListener("input", pdfHeadingSize);
+/* Line Height */
+function lineHeightChange() {
+    const elem = lineHeight;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "100%";
+            break;
+        case "2":
+            inpVal = "110%";
+            break;
+        case "3":
+            inpVal = "120%";
+            break;
+        case "4":
+            inpVal = "130%";
+            break;
+        case "5":
+            inpVal = "140%";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    inputInfo(elem, inpVal);
+}
+lineHeightChange();
+lineHeight?.addEventListener("input", lineHeightChange);
+//*--|*|--*\\_____// Spacing \\_____//*--|*|--*\\
+// Elements
+const sectionSpacing = document.querySelector(".section-spacing-input");
+const paragraphSpacing = document.querySelector(".paragraph-spacing-input");
+/* Section Spacing */
+function sectionSpacingChange() {
+    const elem = sectionSpacing;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "1.2cqw";
+            break;
+        case "2":
+            inpVal = "1.6cqw";
+            break;
+        case "3":
+            inpVal = "2cqw";
+            break;
+        case "4":
+            inpVal = "2.4cqw";
+            break;
+        case "5":
+            inpVal = "3cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
+}
+sectionSpacingChange();
+sectionSpacing?.addEventListener("input", sectionSpacingChange);
+/* Paraghaph Spacing */
+function paragraphSpacingChange() {
+    const elem = paragraphSpacing;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "0.4cqw";
+            break;
+        case "2":
+            inpVal = "0.6cqw";
+            break;
+        case "3":
+            inpVal = "0.8cqw";
+            break;
+        case "4":
+            inpVal = "1cqw";
+            break;
+        case "5":
+            inpVal = "1.2cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
+}
+paragraphSpacingChange();
+paragraphSpacing?.addEventListener("input", paragraphSpacingChange);
 //*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
 const subHeadingSwitch = document.querySelector(".subhead-switch");
 const subHeadingSwitchInfo = document.querySelector(".subhead-switch-info");
