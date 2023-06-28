@@ -1865,23 +1865,91 @@ function addLang() {
         const pdfOutputDiv = document.createElement("div");
         pdfOutputDiv.classList.add("pdf-lang-elem");
         appendOutput(pdfOutputDiv, langInp);
+        // Create a lang lvl element and append it
+        const pdfOutput = document.createElement("div");
         const langLvlOutputClass = langLvlSel.getAttribute("data-output");
-        // Create an element and append it
-        const pdfOutput = document.createElement("p");
-        pdfOutput.classList.add(langLvlOutputClass);
+        pdfOutput.classList.add("pdf-lang-lvl", langLvlOutputClass);
+        // Create the children of the lang lvl elements
+        // Short (A2, C1...)
+        const langLvlShort = document.createElement("p");
+        langLvlShort.classList.add("pdf-lang-lvl-short");
+        pdfOutput.appendChild(langLvlShort);
+        // Long (beginner, advanced...)
+        const langLvlLong = document.createElement("p");
+        langLvlLong.classList.add("pdf-lang-lvl-long");
+        pdfOutput.appendChild(langLvlLong);
+        // Spans
+        for (let i = 0; i < 6; i++) {
+            const langLvlSpan = document.createElement("span");
+            langLvlSpan.classList.add("lang-lvl-span");
+            pdfOutput.appendChild(langLvlSpan);
+        }
+        // Append the divs
         pdfOutputDiv.appendChild(pdfOutput);
         appendLang?.appendChild(pdfOutputDiv);
+        /* Lang lvl element values */
+        // Elements
+        const output = document.querySelector("." + langLvlOutputClass);
+        const outputShort = output?.querySelector(".pdf-lang-lvl-short");
+        const outputLong = output?.querySelector(".pdf-lang-lvl-long");
+        const outputSpans = output?.querySelectorAll(".lang-lvl-span");
+        // Add the "hide-lvl" class
+        output.classList.add("hide-lvl");
+        // Element values
         langLvlSel.addEventListener("input", function () {
-            // Change the element value to the input value
-            const output = document.querySelector("." + langLvlOutputClass);
-            if (langLvlSel.value !== "dont-display" &&
-                output) {
-                output.innerHTML = langLvlSel.value;
+            if (langLvlSel.value !== "dont-display") {
+                // Value switch
+                let elemVal = "";
+                let lvlNum = 0;
+                switch (langLvlSel.value) {
+                    case "A1":
+                        elemVal = "Beginner";
+                        lvlNum = 1;
+                        break;
+                    case "A2":
+                        elemVal = "Elementary";
+                        lvlNum = 2;
+                        break;
+                    case "B1":
+                        elemVal = "Intermediate";
+                        lvlNum = 3;
+                        break;
+                    case "B2":
+                        elemVal = "Upper-Intermediate";
+                        lvlNum = 4;
+                        break;
+                    case "C1":
+                        elemVal = "Advanced";
+                        lvlNum = 5;
+                        break;
+                    case "C2":
+                        elemVal = "Proficiency";
+                        lvlNum = 6;
+                        break;
+                }
+                // Change the "short" element value
+                outputShort.innerHTML = langLvlSel.value;
+                // Change the "long" element value
+                outputLong.innerHTML = elemVal;
+                // Active-span class
+                outputSpans?.forEach(function (span) {
+                    span.classList.remove("active-span");
+                });
+                for (let i = 0; i < lvlNum; i++) {
+                    outputSpans[i].classList.add("active-span");
+                }
+                // Remove the "hide-lvl" class
+                output.classList.remove("hide-lvl");
             }
-            else if (output) {
-                output.innerHTML = "";
+            else {
+                // Remove the value
+                outputShort.innerHTML = "";
+                outputLong.innerHTML = "";
+                // Add the "hide-lvl" class
+                output.classList.add("hide-lvl");
             }
         });
+        /* Section Functionality */
         // Set focus on the input
         langInp.focus();
         // Change the input label

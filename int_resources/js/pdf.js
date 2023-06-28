@@ -205,26 +205,118 @@ function lineHeightChange() {
     let inpVal = "";
     switch (elem.value) {
         case "1":
-            inpVal = "100%";
+            inpVal = "1";
             break;
         case "2":
-            inpVal = "110%";
+            inpVal = "1.1";
             break;
         case "3":
-            inpVal = "120%";
+            inpVal = "1.2";
             break;
         case "4":
-            inpVal = "130%";
+            inpVal = "1.3";
             break;
         case "5":
-            inpVal = "140%";
+            inpVal = "1.4";
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    inputInfo(elem, inpVal);
+    const outputVal = Math.round(parseFloat(inpVal) * 100) + "%";
+    inputInfo(elem, outputVal);
 }
 lineHeightChange();
 lineHeight?.addEventListener("input", lineHeightChange);
+//*--|*|--*\\_____// Aside Subheadings \\_____//*--|*|--*\\
+const subHeadingSwitch = document.querySelector(".subhead-switch");
+const subHeadingSwitchInfo = document.querySelector(".subhead-switch-info");
+const secSubtitles = document.querySelectorAll(".pdf-sec-title");
+const secIcons = document.querySelectorAll(".pdf-sec-icon");
+function subHeadSwitch() {
+    if (subHeadingSwitch.checked) {
+        secIcons.forEach(function (elem) {
+            elem.classList.remove("subhead-visible");
+        });
+        secSubtitles.forEach(function (elem) {
+            elem.classList.add("subhead-visible");
+        });
+        subHeadingSwitchInfo.innerHTML = "Switch to icons";
+    }
+    else {
+        secIcons.forEach(function (elem) {
+            elem.classList.add("subhead-visible");
+        });
+        secSubtitles.forEach(function (elem) {
+            elem.classList.remove("subhead-visible");
+        });
+        subHeadingSwitchInfo.innerHTML = "Switch to text";
+    }
+}
+subHeadSwitch();
+subHeadingSwitch?.addEventListener("click", subHeadSwitch);
+//*--|*|--*\\_____// General Elements \\_____//*--|*|--*\\
+// Elements
+const generalShade = document.querySelector(".general-shade-input");
+const generalTranspar = document.querySelector(".general-transpar-input");
+const generalGap = document.querySelector(".general-gap-input");
+const generalRound = document.querySelector(".general-round-input");
+/* Background Shade */
+function pdfGeneralShade() {
+    const elem = generalShade;
+    const shadeVal = (parseFloat(elem.value) * 25.5).toString();
+    const inpVal = `${shadeVal}, ${shadeVal}, ${shadeVal}`;
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfGeneralShade();
+generalShade?.addEventListener("input", pdfGeneralShade);
+/* Background Transparency */
+function pdfGeneralTranspar() {
+    const elem = generalTranspar;
+    const inpVal = (1 - parseInt(elem.value) / 10).toFixed(1).toString();
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfGeneralTranspar();
+generalTranspar?.addEventListener("input", pdfGeneralTranspar);
+/* Gap */
+function pdfGeneralGap() {
+    const elem = generalGap;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "0.5cqw";
+            break;
+        case "2":
+            inpVal = "0.75cqw";
+            break;
+        case "3":
+            inpVal = "1cqw";
+            break;
+        case "4":
+            inpVal = "1.25cqw";
+            break;
+        case "5":
+            inpVal = "1.5cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
+}
+pdfGeneralGap();
+generalGap?.addEventListener("input", pdfGeneralGap);
+/* Rounding Corners */
+function pdfGeneralRadius() {
+    const elem = generalRound;
+    const inpVal = (parseFloat(elem.value) / 10).toString();
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfGeneralRadius();
+generalRound?.addEventListener("input", pdfGeneralRadius);
 //*--|*|--*\\_____// Spacing \\_____//*--|*|--*\\
 // Elements
 const sectionSpacing = document.querySelector(".section-spacing-input");
@@ -283,33 +375,6 @@ function paragraphSpacingChange() {
 }
 paragraphSpacingChange();
 paragraphSpacing?.addEventListener("input", paragraphSpacingChange);
-//*--|*|--*\\_____// Subheading Switch \\_____//*--|*|--*\\
-const subHeadingSwitch = document.querySelector(".subhead-switch");
-const subHeadingSwitchInfo = document.querySelector(".subhead-switch-info");
-const secSubtitles = document.querySelectorAll(".pdf-sec-title");
-const secIcons = document.querySelectorAll(".pdf-sec-icon");
-function subHeadSwitch() {
-    if (subHeadingSwitch.checked) {
-        secIcons.forEach(function (elem) {
-            elem.classList.remove("subhead-visible");
-        });
-        secSubtitles.forEach(function (elem) {
-            elem.classList.add("subhead-visible");
-        });
-        subHeadingSwitchInfo.innerHTML = "Switch to icons";
-    }
-    else {
-        secIcons.forEach(function (elem) {
-            elem.classList.add("subhead-visible");
-        });
-        secSubtitles.forEach(function (elem) {
-            elem.classList.remove("subhead-visible");
-        });
-        subHeadingSwitchInfo.innerHTML = "Switch to text";
-    }
-}
-subHeadSwitch();
-subHeadingSwitch?.addEventListener("click", subHeadSwitch);
 //*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
 // Elements
 const photoSize = document.querySelector(".photo-size-input");
@@ -379,70 +444,31 @@ function pdfPhotoRadius() {
 }
 pdfPhotoRadius();
 photoRound?.addEventListener("input", pdfPhotoRadius);
-//*--|*|--*\\_____// Skills & Hobbies \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Language Level \\_____//*--|*|--*\\
 // Elements
-const skillsShade = document.querySelector(".skills-shade-input");
-const skillsTranspar = document.querySelector(".skills-transpar-input");
-const skillsGap = document.querySelector(".skills-gap-input");
-const skillsRound = document.querySelector(".skills-round-input");
-/* Background Shade */
-function pdfSkillShade() {
-    const elem = skillsShade;
-    const shadeVal = (parseFloat(elem.value) * 25.5).toString();
-    const inpVal = `${shadeVal}, ${shadeVal}, ${shadeVal}`;
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
-    inputInfo(elem, outputVal);
-}
-pdfSkillShade();
-skillsShade?.addEventListener("input", pdfSkillShade);
-/* Background Transparency */
-function pdfSkillTranspar() {
-    const elem = skillsTranspar;
-    const inpVal = (parseFloat(elem.value) / 10).toString();
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
-    inputInfo(elem, outputVal);
-}
-pdfSkillTranspar();
-skillsTranspar?.addEventListener("input", pdfSkillTranspar);
-/* Gap */
-function pdfSkillsGap() {
-    const elem = skillsGap;
-    let inpVal = "";
-    switch (elem.value) {
-        case "1":
-            inpVal = "0.5cqw";
-            break;
-        case "2":
-            inpVal = "0.75cqw";
-            break;
-        case "3":
-            inpVal = "1cqw";
-            break;
-        case "4":
-            inpVal = "1.25cqw";
-            break;
-        case "5":
-            inpVal = "1.5cqw";
-            break;
+const langDesignDivs = document.querySelectorAll(".pdf-lang-design");
+const baseLagnLvlDesign = "3";
+// For each design
+langDesignDivs.forEach(function (designDiv) {
+    // Add spans
+    const spanParent = document.createElement("div");
+    spanParent.classList.add("pdf-lang-spans");
+    for (let i = 0; i < 6; i++) {
+        const newSpan = document.createElement("span");
+        newSpan.classList.add("lang-lvl-span");
+        spanParent.appendChild(newSpan);
     }
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = "LVL " + elem.value;
-    inputInfo(elem, outputVal);
-}
-pdfSkillsGap();
-skillsGap?.addEventListener("input", pdfSkillsGap);
-/* Rounding */
-function pdfSkillRadius() {
-    const elem = skillsRound;
-    const inpVal = (parseFloat(elem.value) / 10).toString();
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
-    inputInfo(elem, outputVal);
-}
-pdfSkillRadius();
-skillsRound?.addEventListener("input", pdfSkillRadius);
+    designDiv.appendChild(spanParent);
+    // Add / remove the design class
+    designDiv.addEventListener("click", function () {
+        for (let i = 1; i <= langDesignDivs.length; i++) {
+            document.body.classList.remove("lang-design" + i);
+        }
+        document.body.classList.add("lang-design" + designDiv.getAttribute("target-index"));
+    });
+});
+// Add a lang design class to the body on page load
+document.body.classList.add("lang-design" + baseLagnLvlDesign);
 //*--|*|--*\\_____// QR Code \\_____//*--|*|--*\\
 /* Size */
 const qrSize = document.querySelector(".qr-size-input");

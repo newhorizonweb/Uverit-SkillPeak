@@ -170,13 +170,13 @@
 .pdf-elem-tiles > div{
     display:flex;
     flex-wrap:wrap;
-    gap:var(--skills-gap-input);
+    gap:var(--general-gap-input);
 }
 
 .pdf-elem-tiles .app-elem{
     padding:calc(var(--text-size-input) / 4) calc(var(--text-size-input) / 2);
-    background-color:rgb(var(--skills-shade-input), var(--skills-transpar-input));
-    border-radius:calc((var(--text-size-input)) * var(--skills-round-input));
+    background-color:rgb(var(--general-shade-input), var(--general-transpar-input));
+    border-radius:calc(((var(--text-size-input) * var(--line-height-input)) + (var(--text-size-input) * 0.5)) * (var(--general-round-input) * 0.5));
 }
 
         /* PDF Aside - Links */
@@ -334,4 +334,41 @@
 
 .pdf-content *{
     font-family:var(--text-tf-input);
+}
+
+
+
+    /* Language Level */
+
+.hide-lvl,
+.lang-design1 .pdf-lang-elem :where(.pdf-lang-lvl-long, .lang-lvl-span),
+.lang-design2 .pdf-lang-elem :where(.pdf-lang-lvl-short, .lang-lvl-span),
+body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short, .pdf-lang-lvl-long){
+    display:none !important;
+}
+
+.lang-design3 .pdf-lang-elem .pdf-lang-lvl{
+    width:100%;
+    box-sizing:border-box;
+    display:flex;
+    overflow:hidden;
+}
+
+        /* Style 3 */
+
+.lang-design3 .pdf-lang-elem .pdf-lang-lvl{
+    width:100%;
+    height:1.25cqw;
+
+    border:solid 0.25cqw var(--pdf-color-main);
+    border-radius:calc(1.25cqw * (var(--general-round-input) / 2));
+}
+
+.lang-design3 .pdf-lang-elem .lang-lvl-span{
+    flex:1;
+    height:100%;
+}
+
+.lang-design3 .pdf-lang-elem .active-span{
+    background-color:var(--pdf-color-main);
 }

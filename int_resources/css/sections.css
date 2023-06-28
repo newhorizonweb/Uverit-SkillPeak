@@ -1193,3 +1193,164 @@
     width: 100%;
   }
 }
+/* Section 7 - Design */
+/* Section 7 - Language */
+.design-item {
+  --lvl-height:8px;
+  flex: 30%;
+}
+
+.design-item:has(.pdf-lang-design1, .pdf-lang-design2) {
+  flex: 40%;
+}
+
+.pdf-lang-design {
+  width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius1);
+  box-shadow: var(--box-shadow3) var(--txt-faded3);
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.lang-design1 .pdf-lang-design1,
+.lang-design2 .pdf-lang-design2,
+.lang-design3 .pdf-lang-design3,
+.lang-design4 .pdf-lang-design4,
+.lang-design5 .pdf-lang-design5,
+.lang-design6 .pdf-lang-design6,
+.lang-design7 .pdf-lang-design7,
+.lang-design8 .pdf-lang-design8 {
+  box-shadow: var(--box-shadow3) var(--color2);
+}
+
+.pdf-lang-spans {
+  width: 100%;
+  height: var(--lvl-height);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.pdf-lang-design span {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  display: block;
+  background-color: var(--pdf-color-main);
+}
+
+.pdf-lang-design span:is(:nth-last-child(1), :nth-last-child(2)) {
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
+}
+
+:is(.pdf-lang-design3, .pdf-lang-design4, .pdf-lang-design5) span:is(:nth-last-child(1), :nth-last-child(2)) {
+  background-color: transparent;
+}
+
+/* Style 1 & 2 */
+:is(.pdf-lang-design1, .pdf-lang-design2) .pdf-lang-spans {
+  display: none;
+}
+
+/* Style 3 & 4 */
+.pdf-lang-design3 .pdf-lang-spans {
+  border: solid 2px var(--pdf-color-main);
+  border-radius: calc((var(--lvl-height) + 4px) * var(--general-round-input) * 0.5);
+}
+
+.pdf-lang-design4 .pdf-lang-spans {
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
+  border-radius: calc(var(--lvl-height) * var(--general-round-input) * 0.5);
+}
+
+:is(.pdf-lang-design3, .pdf-lang-design4) span:nth-child(4) {
+  border-radius: 0 calc(var(--lvl-height) * var(--general-round-input) * 0.5) calc(var(--lvl-height) * var(--general-round-input) * 0.5) 0;
+}
+
+:is(.pdf-lang-design3, .pdf-lang-design4) span:is(:nth-last-child(1), :nth-last-child(2)) {
+  background-color: transparent;
+}
+
+/* Style 5 & 7 */
+.pdf-lang-design5 .pdf-lang-spans {
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
+}
+
+.pdf-lang-design5 .pdf-lang-spans:before,
+.pdf-lang-design5 .pdf-lang-spans:after,
+.pdf-lang-design5 span:before,
+.pdf-lang-design5 span:after,
+.pdf-lang-design7 span:before,
+.pdf-lang-design7 span:after {
+  content: "";
+  width: var(--lvl-height);
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
+}
+
+.pdf-lang-design5 .pdf-lang-spans:before,
+.pdf-lang-design5 span:nth-child(5):before,
+.pdf-lang-design7 span:before {
+  top: 0;
+  left: 0;
+  border: solid calc(var(--lvl-height) / 2) var(--shade1);
+  border-right: solid calc(var(--lvl-height) / 2) transparent;
+  border-bottom: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+.pdf-lang-design5 span:nth-child(5):before {
+  border: solid calc(var(--lvl-height) / 2) var(--pdf-color-main);
+  border-right: solid calc(var(--lvl-height) / 2) transparent;
+  border-bottom: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+.pdf-lang-design5 .pdf-lang-spans:after,
+.pdf-lang-design7 span:after {
+  bottom: 0;
+  right: 0;
+  border: solid calc(var(--lvl-height) / 2) var(--shade1);
+  border-top: solid calc(var(--lvl-height) / 2) transparent;
+  border-left: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+/* Style 6 */
+.pdf-lang-design6 .pdf-lang-spans {
+  gap: 3%;
+}
+
+.pdf-lang-design6 span {
+  border-radius: calc(var(--lvl-height) * var(--general-round-input) * 0.5);
+}
+
+/* Style 8 */
+.pdf-lang-design8 .pdf-lang-spans {
+  justify-content: center;
+  gap: 3%;
+}
+
+.pdf-lang-design8 span {
+  flex: none;
+  width: var(--lvl-height);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+/* Section 7 - media */
+@media screen and (width <= 768px) {
+  .subsection .design-item {
+    flex: 40%;
+  }
+}
+@media screen and (width <= 440px) {
+  .subsection .design-item {
+    flex: 100%;
+  }
+}
