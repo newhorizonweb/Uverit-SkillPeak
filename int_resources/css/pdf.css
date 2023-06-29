@@ -275,7 +275,7 @@
   text-transform: capitalize;
 }
 
-.head-uppercase :where(.pdf-sec-heading, .pdf-sec-title) {
+.head-uppercase :where(.head-design-txt, .pdf-sec-heading, .pdf-sec-title) {
   text-transform: uppercase;
 }
 
@@ -283,6 +283,7 @@
   font-family: var(--text-tf-input);
 }
 
+/* Headings */
 /* Language Level */
 .pdfc-inner {
   --lvl-height:calc(var(--text-size-input) / 2);

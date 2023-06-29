@@ -270,16 +270,16 @@ function pdfHeadingSize(){
             inpVal = "2.1cqw";
             break;
         case "2":
-            inpVal = "2.25cqw";
+            inpVal = "2.2cqw";
             break;
         case "3":
-            inpVal = "2.4cqw";
+            inpVal = "2.3cqw";
             break;
         case "4":
-            inpVal = "2.55cqw";
+            inpVal = "2.4cqw";
             break;
         case "5":
-            inpVal = "2.7cqw";
+            inpVal = "2.5cqw";
             break;
     }
 
@@ -561,6 +561,43 @@ paragraphSpacing?.addEventListener("input", paragraphSpacingChange);
 
 
 
+//*--|*|--*\\_____// Headings \\_____//*--|*|--*\\
+
+
+
+// Elements
+const headDesignDivs:NodeListOf<Element> = document.querySelectorAll(".pdf-head-design");
+const baseHeadDesign:number = 3;
+const headingTxt:string = "Contact";
+
+// For each design
+headDesignDivs.forEach(function(designDiv){
+
+    // Text Element
+    const headingTxtElem:HTMLElement = document.createElement("h3");
+    headingTxtElem.classList.add("head-design-txt");
+    headingTxtElem.innerHTML = headingTxt;
+    designDiv.appendChild(headingTxtElem);
+
+    // Add / remove the "design" class
+    designDiv.addEventListener("click", function(){
+        for (let i = 1; i <= headDesignDivs.length; i++){
+            document.body.classList.remove("head-design" + i);
+            headDesignDivs[i - 1].classList.remove("curr-head-design");
+        }
+
+        document.body.classList.add("head-design" + designDiv.getAttribute("target-index"));
+        designDiv.classList.add("curr-head-design");
+    });
+
+});
+
+// Set the base design
+document.body.classList.add("head-design" + baseHeadDesign);
+headDesignDivs[baseHeadDesign - 1].classList.add("curr-head-design");
+
+
+
 //*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
 
 
@@ -670,7 +707,7 @@ photoRound?.addEventListener("input", pdfPhotoRadius);
 
 // Elements
 const langDesignDivs:NodeListOf<Element> = document.querySelectorAll(".pdf-lang-design");
-const baseLagnLvlDesign:string = "3";
+const baseLangLvlDesign:number = 3;
 
 // For each design
 langDesignDivs.forEach(function(designDiv){
@@ -691,14 +728,17 @@ langDesignDivs.forEach(function(designDiv){
     designDiv.addEventListener("click", function(){
         for (let i = 1; i <= langDesignDivs.length; i++){
             document.body.classList.remove("lang-design" + i);
+            langDesignDivs[i - 1].classList.remove("curr-lang-design");
         }
 
         document.body.classList.add("lang-design" + designDiv.getAttribute("target-index"));
+        designDiv.classList.add("curr-lang-design");
     });
 });
 
-// Add a lang design class to the body on page load
-document.body.classList.add("lang-design" + baseLagnLvlDesign);
+// Set the base design
+document.body.classList.add("lang-design" + baseLangLvlDesign);
+langDesignDivs[baseLangLvlDesign - 1].classList.add("curr-lang-design");
 
 
 
