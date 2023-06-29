@@ -284,6 +284,10 @@
 }
 
 /* Language Level */
+.pdfc-inner {
+  --lvl-height:calc(var(--text-size-input) / 2);
+}
+
 .hide-lvl,
 .lang-design1 .pdf-lang-elem :where(.pdf-lang-lvl-long, .lang-lvl-span),
 .lang-design2 .pdf-lang-elem :where(.pdf-lang-lvl-short, .lang-lvl-span),
@@ -291,26 +295,127 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
   display: none !important;
 }
 
-.lang-design3 .pdf-lang-elem .pdf-lang-lvl {
+.pdf-lang-elem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:is(.lang-design1, .lang-design2, .lang-design8) .pdf-lang-elem {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5cqw;
+}
+
+.pdf-lang-lvl {
   width: 100%;
-  box-sizing: border-box;
+  height: var(--lvl-height);
+  position: relative;
   display: flex;
   overflow: hidden;
 }
 
-/* Style 3 */
-.lang-design3 .pdf-lang-elem .pdf-lang-lvl {
-  width: 100%;
-  height: 1.25cqw;
-  border: solid 0.25cqw var(--pdf-color-main);
-  border-radius: calc(1.25cqw * var(--general-round-input) / 2);
+:is(.lang-design1, .lang-design2, .lang-design8) .pdf-lang-lvl {
+  flex: 1;
+  width: auto;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: visible;
 }
 
-.lang-design3 .pdf-lang-elem .lang-lvl-span {
+.pdf-lang-elem .lang-lvl-span {
   flex: 1;
   height: 100%;
+  position: relative;
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
 }
 
-.lang-design3 .pdf-lang-elem .active-span {
+.pdf-lang-elem .active-span {
   background-color: var(--pdf-color-main);
+}
+
+:is(.lang-design3, .lang-design4, .lang-design5) .pdf-lang-elem .lang-lvl-span:not(.active-span) {
+  background-color: transparent;
+}
+
+/* Style 3 & 4 */
+.lang-design3 .pdf-lang-lvl {
+  border: solid 0.2cqw var(--pdf-color-main);
+  border-radius: calc((var(--lvl-height) + 0.4cqw) * var(--general-round-input) / 2);
+}
+
+.lang-design4 .pdf-lang-lvl {
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
+  border-radius: calc(var(--lvl-height) * var(--general-round-input) / 2);
+}
+
+:is(.lang-design3, .lang-design4) .last-active-span {
+  border-radius: 0 calc(var(--lvl-height) * var(--general-round-input) / 2) calc(var(--lvl-height) * var(--general-round-input) / 2) 0;
+}
+
+/* Style 5 & 7 */
+.lang-design5 .pdf-lang-lvl {
+  background-color: rgb(var(--general-shade-input), var(--general-transpar-input));
+}
+
+.lang-design5 .pdf-lang-lvl:before,
+.lang-design5 .pdf-lang-lvl:after,
+.lang-design5 .pdf-lang-elem .lang-lvl-span:before,
+.lang-design5 .pdf-lang-elem .lang-lvl-span:after,
+.lang-design7 .pdf-lang-elem .lang-lvl-span:before,
+.lang-design7 .pdf-lang-elem .lang-lvl-span:after {
+  content: "";
+  width: var(--lvl-height);
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
+}
+
+.lang-design5 .pdf-lang-lvl:before,
+.lang-design5 .pdf-lang-elem .last-active-span + .lang-lvl-span:before,
+.lang-design7 .pdf-lang-elem .lang-lvl-span:before {
+  top: 0;
+  left: 0;
+  border: solid calc(var(--lvl-height) / 2) var(--pdf-color-aside);
+  border-right: solid calc(var(--lvl-height) / 2) transparent;
+  border-bottom: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+.lang-design5 .pdf-lang-elem .last-active-span + .lang-lvl-span:before {
+  border: solid calc(var(--lvl-height) / 2) var(--pdf-color-main);
+  border-right: solid calc(var(--lvl-height) / 2) transparent;
+  border-bottom: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+.lang-design5 .pdf-lang-lvl:after,
+.lang-design7 .pdf-lang-elem .lang-lvl-span:after {
+  bottom: 0;
+  right: 0;
+  border: solid calc(var(--lvl-height) / 2) var(--pdf-color-aside);
+  border-top: solid calc(var(--lvl-height) / 2) transparent;
+  border-left: solid calc(var(--lvl-height) / 2) transparent;
+}
+
+/* Style 6 */
+.lang-design6 .pdf-lang-lvl {
+  gap: var(--general-gap-input);
+}
+
+.lang-design6 .pdf-lang-elem .lang-lvl-span {
+  border-radius: calc(var(--lvl-height) * var(--general-round-input) * 0.5);
+}
+
+/* Style 8 */
+.lang-design8 .pdf-lang-lvl {
+  gap: calc(var(--lvl-height) / 2);
+}
+
+.lang-design8 .pdf-lang-elem .lang-lvl-span {
+  flex: none;
+  width: calc(var(--lvl-height) * 1.5);
+  height: calc(var(--lvl-height) * 1.5);
+  border-radius: 50%;
 }

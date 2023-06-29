@@ -1938,6 +1938,11 @@ function addLang() {
                 for (let i = 0; i < lvlNum; i++) {
                     outputSpans[i].classList.add("active-span");
                 }
+                // Last-active-span class
+                outputSpans?.forEach(function (span) {
+                    span.classList.remove("last-active-span");
+                });
+                outputSpans[lvlNum - 1].classList.add("last-active-span");
                 // Remove the "hide-lvl" class
                 output.classList.remove("hide-lvl");
             }

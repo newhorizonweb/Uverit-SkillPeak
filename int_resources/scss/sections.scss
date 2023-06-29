@@ -1529,21 +1529,20 @@
 
 .pdf-lang-design3 .pdf-lang-spans{
     border:solid 2px var(--pdf-color-main);
-    border-radius:calc((var(--lvl-height) + 4px) * (var(--general-round-input) * 0.5));
+    border-radius:calc((var(--lvl-height) + 4px) * (var(--general-round-input) / 2));
 }
 
 .pdf-lang-design4 .pdf-lang-spans{
     background-color:rgb(var(--general-shade-input), var(--general-transpar-input));
-    border-radius:calc(var(--lvl-height) * (var(--general-round-input) * 0.5));
+    border-radius:calc(var(--lvl-height) * (var(--general-round-input) / 2));
 }
 
 :is(.pdf-lang-design3, .pdf-lang-design4) span:nth-child(4){
     border-radius:0 
-        calc(var(--lvl-height) * (var(--general-round-input) * 0.5))
-        calc(var(--lvl-height) * (var(--general-round-input) * 0.5))
+        calc(var(--lvl-height) * (var(--general-round-input) / 2))
+        calc(var(--lvl-height) * (var(--general-round-input) / 2))
         0;
 }
-
 
 :is(.pdf-lang-design3, .pdf-lang-design4) span:is(:nth-last-child(1), :nth-last-child(2)){
     background-color:transparent;
@@ -1612,14 +1611,16 @@
             /* Style 8 */
 
 .pdf-lang-design8 .pdf-lang-spans{
+    height:auto;
     justify-content:center;
     gap:3%;
+    overflow:visible;
 }
 
 .pdf-lang-design8 span{
     flex:none;
-    width:var(--lvl-height);
-    aspect-ratio:1/1;
+    width:calc(var(--lvl-height) * 1.5);
+    height:calc(var(--lvl-height) * 1.5);
     border-radius:50%;
 }
 
