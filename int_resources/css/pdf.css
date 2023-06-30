@@ -20,21 +20,6 @@
   gap: var(--paragraph-spacing-input);
 }
 
-.pdf-sec-heading {
-  display: flex;
-  align-items: center;
-  gap: 2cqw;
-  font-size: var(--heading-size-input);
-  line-height: 1.2;
-}
-
-.pdf-sec-heading:after {
-  content: "";
-  flex: 1;
-  height: 0.25cqw;
-  background-color: red;
-}
-
 .pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading {
   display: none;
 }
@@ -48,6 +33,11 @@
 
 .pdf-sec-elem:not(:has(p:not(:empty))) {
   display: none;
+}
+
+.pdf-sec > div {
+  position: relative;
+  z-index: 1000;
 }
 
 /* PDF Aside */
@@ -275,7 +265,7 @@
   text-transform: capitalize;
 }
 
-.head-uppercase :where(.head-design-txt, .pdf-sec-heading, .pdf-sec-title) {
+.head-uppercase :where(.pdf-sec-heading, .pdf-sec-heading, .pdf-sec-title) {
   text-transform: uppercase;
 }
 
@@ -283,7 +273,162 @@
   font-family: var(--text-tf-input);
 }
 
-/* Headings */
+/* Heading */
+.pdf-sec-heading {
+  --head-height:calc(1em * var(--line-height-input));
+  --border-size:0.2cqw;
+  align-self: center;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: var(--heading-size-input);
+  text-transform: capitalize;
+  line-height: var(--line-height-input);
+}
+
+.pdf-aside .pdf-sec-heading {
+  --pdf-bg:var(--pdf-color-aside);
+  --head-small-width:90%;
+}
+
+.pdf-main .pdf-sec-heading {
+  --pdf-bg:#FFF;
+  --head-small-width:65%;
+}
+
+.pdf-sec-heading:before,
+.pdf-sec-heading:after {
+  content: "";
+  height: var(--border-size);
+  background-color: var(--pdf-color-main);
+  border-radius: calc(var(--border-size) * var(--general-round-input) / 2);
+  display: none;
+}
+
+/* Style 2 */
+.head-design2 .pdf-sec-heading {
+  justify-content: center;
+}
+
+/* Style 3 & 4 */
+.head-design4 .pdf-sec-heading {
+  justify-content: center;
+}
+
+:is(.head-design3, .head-design4) .pdf-sec-heading:after {
+  width: 100%;
+  position: absolute;
+  top: calc(100% + var(--border-size));
+  left: 0;
+  display: block;
+}
+
+/* Style 5 & 6 */
+:is(.head-design5, .head-design6) .pdf-sec-heading {
+  gap: calc(var(--general-gap-input) * 1.5);
+}
+
+.head-design6 .pdf-sec-heading:before,
+:is(.head-design5, .head-design6) .pdf-sec-heading:after {
+  flex: 1;
+  display: block;
+}
+
+/* Style 7 */
+.head-design7 .pdf-sec-heading {
+  width: var(--head-small-width);
+  height: var(--head-height);
+  justify-content: center;
+  border: solid var(--border-size) var(--pdf-color-main);
+  border-radius: calc((var(--head-height) + var(--border-size) * 2) * var(--general-round-input) / 2);
+}
+
+/* Style 8 */
+.head-design8 {
+  overflow: hidden;
+}
+
+.head-design8 .pdf-sec-heading {
+  width: var(--head-small-width);
+  height: var(--head-height);
+  justify-content: center;
+  border: solid var(--border-size) var(--pdf-color-main);
+  border-radius: calc((var(--head-height) + var(--border-size) * 2) * var(--general-round-input) / 2);
+}
+
+.head-design8 .pdf-sec-heading:before,
+.head-design8 .pdf-sec-heading:after {
+  content: "";
+  height: calc((var(--head-height) + var(--border-size) * 1.25) * 1.4);
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  background-color: var(--pdf-bg);
+  z-index: 100;
+}
+
+.head-design8 .pdf-sec-heading:before {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-right: solid var(--border-size) var(--pdf-color-main);
+}
+
+.head-design8 .pdf-sec-heading:after {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%) rotate(45deg);
+  border-left: solid var(--border-size) var(--pdf-color-main);
+}
+
+/* Style 9 */
+.head-design9 .pdf-sec-heading {
+  width: var(--head-small-width);
+  height: var(--head-height);
+  justify-content: center;
+  color: var(--shade1);
+  background-color: var(--pdf-color-main);
+  border-radius: calc(var(--head-height) * var(--general-round-input) / 2);
+}
+
+/* Style 10 */
+.head-design10 .pdf-sec-heading {
+  width: var(--head-small-width);
+  height: var(--head-height);
+  justify-content: center;
+  color: var(--shade1);
+  background-color: var(--pdf-color-main);
+}
+
+.head-design10 .pdf-sec-heading:before,
+.head-design10 .pdf-sec-heading:after {
+  content: "";
+  height: var(--head-height);
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  z-index: 100;
+}
+
+.head-design10 .pdf-sec-heading:before {
+  top: 0;
+  left: 0;
+  border: solid calc(var(--head-height) / 2) var(--pdf-bg);
+  border-right: solid calc(var(--head-height) / 2) transparent;
+  border-bottom: solid calc(var(--head-height) / 2) transparent;
+}
+
+.head-design10 .pdf-sec-heading:after {
+  bottom: 0;
+  right: 0;
+  border: solid calc(var(--head-height) / 2) var(--pdf-bg);
+  border-left: solid calc(var(--head-height) / 2) transparent;
+  border-top: solid calc(var(--head-height) / 2) transparent;
+}
+
 /* Language Level */
 .pdfc-inner {
   --lvl-height:calc(var(--text-size-input) / 2);

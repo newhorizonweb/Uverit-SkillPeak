@@ -1456,6 +1456,7 @@
         /* Section 7 - Heading */
 
 .head-design-item{
+    --head-height:calc(1em * var(--line-height-input));
     flex:40%;
 }
 
@@ -1469,9 +1470,8 @@
     justify-content:center;
     align-items:center;
 
-    border-radius: var(--radius1);
+    border-radius:var(--radius1);
     box-shadow:var(--box-shadow3) var(--txt-faded3);
-
     transition:0.1s;
     cursor:pointer;
 }
@@ -1499,7 +1499,6 @@
     border-radius:calc(3px * (var(--general-round-input) / 2));
     display:none;
 }
-
 
             /* Style 2 */
 
@@ -1537,11 +1536,11 @@
 
 .pdf-head-design7 .head-design-txt{
     width:90%;
-    height:calc(1em * var(--line-height-input));
+    height:var(--head-height);
     justify-content:center;
 
     border:solid 3px var(--pdf-color-main);
-    border-radius:calc(((1em * var(--line-height-input)) + 6px) * var(--general-round-input) / 2);
+    border-radius:calc((var(--head-height) + 6px) * var(--general-round-input) / 2);
 }
 
             /* Style 8 */
@@ -1552,18 +1551,17 @@
 
 .pdf-head-design8 .head-design-txt{
     width:90%;
-    height:calc(1em * var(--line-height-input));
+    height:var(--head-height);
     justify-content:center;
 
     border:solid 3px var(--pdf-color-main);
-    border-radius:calc(((1em * var(--line-height-input)) + 6px) * var(--general-round-input) / 2);
-
+    border-radius:calc((var(--head-height) + 6px) * var(--general-round-input) / 2);
 }
 
 .pdf-head-design8 .head-design-txt:before,
 .pdf-head-design8 .head-design-txt:after{
     content:"";
-    height:calc((1em * var(--line-height-input) + 4px) * 1.4);
+    height:calc((var(--head-height) + 4px) * 1.4);
     aspect-ratio:1/1;
     box-sizing:border-box;
     position:absolute;
@@ -1591,19 +1589,19 @@
 
 .pdf-head-design9 .head-design-txt{
     width:90%;
-    height:calc(1em * var(--line-height-input));
+    height:var(--head-height);
     justify-content:center;
 
     color:var(--shade1);
     background-color:var(--pdf-color-main);
-    border-radius:calc(1em * var(--line-height-input) * var(--general-round-input) / 2);
+    border-radius:calc(var(--head-height) * var(--general-round-input) / 2);
 }
 
             /* Style 10 */
 
 .pdf-head-design10 .head-design-txt{
     width:90%;
-    height:calc(1em * var(--line-height-input));
+    height:var(--head-height);
     justify-content:center;
 
     color:var(--shade1);
@@ -1613,7 +1611,7 @@
 .pdf-head-design10 .head-design-txt:before,
 .pdf-head-design10 .head-design-txt:after{
     content:"";
-    height:calc(1em * var(--line-height-input));
+    height:var(--head-height);
     aspect-ratio:1/1;
     box-sizing:border-box;
 
@@ -1626,18 +1624,18 @@
     top:0;
     left:0;
 
-    border:solid calc(1em * var(--line-height-input) / 2) var(--shade1);
-    border-right:solid calc(1em * var(--line-height-input) / 2) transparent;
-    border-bottom:solid calc(1em * var(--line-height-input) / 2) transparent;
+    border:solid calc(var(--head-height) / 2) var(--shade1);
+    border-right:solid calc(var(--head-height) / 2) transparent;
+    border-bottom:solid calc(var(--head-height) / 2) transparent;
 }
 
 .pdf-head-design10 .head-design-txt:after{
     bottom:0;
     right:0;
 
-    border:solid calc(1em * var(--line-height-input) / 2) var(--shade1);
-    border-left:solid calc(1em * var(--line-height-input) / 2) transparent;
-    border-top:solid calc(1em * var(--line-height-input) / 2) transparent;
+    border:solid calc(var(--head-height) / 2) var(--shade1);
+    border-left:solid calc(var(--head-height) / 2) transparent;
+    border-top:solid calc(var(--head-height) / 2) transparent;
 }
 
             /* Section 7 - media */

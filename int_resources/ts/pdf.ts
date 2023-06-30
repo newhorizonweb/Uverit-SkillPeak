@@ -267,16 +267,16 @@ function pdfHeadingSize(){
 
     switch (elem!.value){
         case "1":
-            inpVal = "2.1cqw";
+            inpVal = "1.9cqw";
             break;
         case "2":
-            inpVal = "2.2cqw";
+            inpVal = "2.05cqw";
             break;
         case "3":
-            inpVal = "2.3cqw";
+            inpVal = "2.2cqw";
             break;
         case "4":
-            inpVal = "2.4cqw";
+            inpVal = "2.35cqw";
             break;
         case "5":
             inpVal = "2.5cqw";
