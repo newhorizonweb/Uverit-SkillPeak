@@ -526,3 +526,50 @@ function pdfQrSize() {
 }
 pdfQrSize();
 qrSize?.addEventListener("input", pdfQrSize);
+//*--|*|--*\\_____// Main Sections \\_____//*--|*|--*\\
+// Elements
+const mainDesignDivs = document.querySelectorAll(".pdf-main-design");
+const baseMainLvlDesign = 3;
+const mainHeadContent = "Heading";
+const mainTxtContent = "&#x2022; Text";
+// For each design
+mainDesignDivs.forEach(function (designDiv) {
+    /* Insert Elements */
+    for (let i = 0; i < 2; i++) {
+        // Add mainInner div
+        const mainInner = document.createElement("div");
+        mainInner.classList.add("pdf-main-inner");
+        designDiv.appendChild(mainInner);
+        // Add secDesignElem div
+        const secDesignElem = document.createElement("div");
+        secDesignElem.classList.add("pdf-design-elem");
+        mainInner.appendChild(secDesignElem);
+        // Add mainContent div
+        const mainContent = document.createElement("div");
+        mainContent.classList.add("pdf-main-content");
+        mainInner.appendChild(mainContent);
+        // Add Heading Placeholder
+        const mainHeading = document.createElement("h3");
+        mainHeading.classList.add("pdf-main-head");
+        mainHeading.innerHTML = mainHeadContent;
+        mainContent.appendChild(mainHeading);
+        // Add Text Placeholder
+        const mainTxt = document.createElement("p");
+        mainTxt.classList.add("pdf-main-txt");
+        mainTxt.innerHTML = mainTxtContent;
+        mainContent.appendChild(mainTxt);
+    }
+    /* Design Class */
+    // Add / remove the design class
+    designDiv.addEventListener("click", function () {
+        for (let i = 1; i <= langDesignDivs.length; i++) {
+            document.body.classList.remove("main-design" + i);
+            mainDesignDivs[i - 1].classList.remove("curr-main-design");
+        }
+        document.body.classList.add("main-design" + designDiv.getAttribute("target-index"));
+        designDiv.classList.add("curr-main-design");
+    });
+});
+// Set the base design
+document.body.classList.add("main-design" + baseLangLvlDesign);
+mainDesignDivs[baseMainLvlDesign - 1].classList.add("curr-main-design");

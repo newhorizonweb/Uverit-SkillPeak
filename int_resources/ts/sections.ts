@@ -1294,18 +1294,27 @@ function addExperience(){
         pdfExpDiv.classList.add("pdf-list-group", "pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp"+expIndex);
 
+        const pdfDesignElem:HTMLElement = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+
+        const pdfInnerList:HTMLElement = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
+
         const appendGroup:HTMLElement = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
 
-        appendOutput(pdfExpDiv, jobTitleInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfInnerList, jobTitleInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
 
         appendOutput(appendGroup, compInp);
         appendOutput(appendGroup, locationInp);
-        pdfExpDiv.appendChild(appendGroup);
+        pdfInnerList.appendChild(appendGroup);
 
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(pdfOutput);
         appendExp?.appendChild(pdfExpDiv);
         
 
@@ -1779,18 +1788,27 @@ function addEducation(){
         pdfExpDiv.classList.add("pdf-list-group", "pdf-edu");
         pdfExpDiv.setAttribute("id", "pdf-edu"+eduIndex);
 
+        const pdfDesignElem:HTMLElement = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+
+        const pdfInnerList:HTMLElement = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
+
         const appendGroup:HTMLElement = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
 
-        appendOutput(pdfExpDiv, degreeInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfInnerList, degreeInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
 
         appendOutput(appendGroup, schoolNameInp);
         appendOutput(appendGroup, cityInp);
-        pdfExpDiv.appendChild(appendGroup);
+        pdfInnerList.appendChild(appendGroup);
 
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(pdfOutput);
         appendEdu?.appendChild(pdfExpDiv);
         
 
@@ -2061,10 +2079,19 @@ function addCourses(){
         pdfExpDiv.classList.add("pdf-list-group", "pdf-cour");
         pdfExpDiv.setAttribute("id", "pdf-cour" + courIndex);
 
-        appendOutput(pdfExpDiv, courseInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
-        appendOutput(pdfExpDiv, institInp);
+        const pdfDesignElem:HTMLElement = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+
+        const pdfInnerList:HTMLElement = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
+
+        appendOutput(pdfInnerList, courseInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
+        appendOutput(pdfInnerList, institInp);
 
         appendCour?.appendChild(pdfExpDiv);
         
@@ -2498,21 +2525,30 @@ function addReferences(){
 
         // Append the section elements to the pdf
         const pdfExpDiv:HTMLElement = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-ref");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-ref");
         pdfExpDiv.setAttribute("id", "pdf-ref"+refIndex);
+
+        const pdfDesignElem:HTMLElement = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+
+        const pdfInnerList:HTMLElement = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
 
         const appendGroup:HTMLElement = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
 
-        appendOutput(pdfExpDiv, refNameInp);
-        appendOutput(pdfExpDiv, refCompInp);
-        appendOutput(pdfExpDiv, relationInp);
+        appendOutput(pdfInnerList, refNameInp);
+        appendOutput(pdfInnerList, refCompInp);
+        appendOutput(pdfInnerList, relationInp);
 
         appendOutput(appendGroup, refMailInp);
         appendOutput(appendGroup, refPhoneInp);
-        pdfExpDiv.appendChild(appendGroup);
+        pdfInnerList.appendChild(appendGroup);
 
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(pdfOutput);
         appendRef?.appendChild(pdfExpDiv);
         
 

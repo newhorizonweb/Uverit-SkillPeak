@@ -191,19 +191,33 @@
 /* PDF Main - List Group */
 .pdf-list-group {
   display: flex;
+}
+
+.pdf-list-inner {
+  flex: 1;
+  display: flex;
   flex-wrap: wrap;
+}
+
+.pdf-list-inner p:empty {
+  display: none;
 }
 
 .append-elem-group {
   width: 100%;
+  display: none;
+}
+
+.append-elem-group:not(:has(p:empty)) {
   display: flex;
 }
 
-.pdf-list-group > .app-elem:nth-of-type(2) {
+.pdf-list-inner > .app-elem:nth-of-type(2) {
   margin-left: auto;
+  display: block;
 }
 
-.pdf-list-group:has(.app-elem:nth-of-type(2):not(:empty) + .app-elem:nth-of-type(3):not(:empty)) > .app-elem:nth-of-type(2):after {
+.pdf-list-inner:has(.app-elem:nth-of-type(2):not(:empty) + .app-elem:nth-of-type(3):not(:empty)) > .app-elem:nth-of-type(2):after {
   content: "-";
   margin: 0 0.5cqw;
 }
@@ -213,7 +227,7 @@
   margin-right: 0.5cqw;
 }
 
-.pdf-list-group > p:nth-last-child(1) {
+.pdf-list-inner > p:nth-last-child(1) {
   width: 100%;
 }
 
@@ -564,4 +578,107 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
   width: calc(var(--lvl-height) * 1.5);
   height: calc(var(--lvl-height) * 1.5);
   border-radius: 50%;
+}
+
+/* Main Sections */
+.pdf-list-group {
+  --design-size:0.2cqw;
+  --design-indicator:1cqw;
+  position: relative;
+}
+
+.pdf-list-inner {
+  padding: 0 calc(var(--design-indicator) * 2);
+  padding-bottom: calc(var(--design-size) * 3);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+}
+
+.pdf-list-group:nth-last-child(1) .pdf-list-inner {
+  padding-bottom: 0;
+}
+
+.list-design-elem {
+  width: var(--design-size);
+  min-height: calc(100% + var(--design-indicator) + var(--design-size) * 3 - var(--text-size-input) * var(--line-height-input) / 2);
+  position: absolute;
+  top: calc(var(--text-size-input) * var(--line-height-input) / 2 - var(--design-indicator) / 2);
+  background-color: var(--pdf-color-main);
+  z-index: 1000;
+}
+
+.pdf-list-group:nth-last-child(1) .list-design-elem {
+  min-height: 0;
+}
+
+.list-design-elem:before,
+.list-design-elem:after {
+  content: "";
+  width: var(--design-indicator);
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #FFFFFF;
+  border: solid var(--design-size) var(--pdf-color-main);
+  border-radius: calc(100% * var(--general-round-input) / 2);
+}
+
+.list-design-elem:after {
+  top: auto;
+  bottom: 0;
+  display: none;
+}
+
+/* Style 1 & 2 */
+:is(.main-design1, .main-design2) .list-design-elem {
+  display: none;
+}
+
+.main-design2 .pdf-list-group:not(:nth-last-of-type(1)) .list-design-elem {
+  width: calc(100% - var(--design-indicator) * 4);
+  height: var(--design-size);
+  min-height: 0;
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: block;
+}
+
+.main-design2 .pdf-list-group:not(:nth-last-child(1)) .list-design-elem:before {
+  display: none;
+}
+
+/* Style 4 - 8 */
+:is(.main-design4, .main-design6, .main-design8) .list-design-elem:before {
+  background-color: var(--pdf-color-main);
+}
+
+:is(.main-design5, .main-design6) .list-design-elem {
+  top: 0;
+}
+
+:is(.main-design5, .main-design6) .list-design-elem:before {
+  height: calc(var(--text-size-input) * var(--line-height-input));
+  aspect-ratio: auto;
+}
+
+:is(.main-design7, .main-design8) .list-design-elem {
+  min-height: calc(100% - var(--text-size-input) * var(--line-height-input) / 2 - var(--design-size) * 3);
+}
+
+:is(.main-design7, .main-design8) .pdf-list-group:nth-last-child(1) .list-design-elem {
+  min-height: calc(100% - var(--text-size-input) * var(--line-height-input) / 2);
+}
+
+:is(.main-design7, .main-design8) .list-design-elem:after {
+  display: block;
+}
+
+.main-design8 .list-design-elem:after {
+  background-color: var(--pdf-color-main);
 }

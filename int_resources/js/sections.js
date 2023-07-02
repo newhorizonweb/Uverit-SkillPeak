@@ -911,15 +911,21 @@ function addExperience() {
         const pdfExpDiv = document.createElement("div");
         pdfExpDiv.classList.add("pdf-list-group", "pdf-exp");
         pdfExpDiv.setAttribute("id", "pdf-exp" + expIndex);
+        const pdfDesignElem = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+        const pdfInnerList = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
         const appendGroup = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
-        appendOutput(pdfExpDiv, jobTitleInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfInnerList, jobTitleInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
         appendOutput(appendGroup, compInp);
         appendOutput(appendGroup, locationInp);
-        pdfExpDiv.appendChild(appendGroup);
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(appendGroup);
+        pdfInnerList.appendChild(pdfOutput);
         appendExp?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
         deleteBtn.addEventListener("click", function () {
@@ -1243,15 +1249,21 @@ function addEducation() {
         const pdfExpDiv = document.createElement("div");
         pdfExpDiv.classList.add("pdf-list-group", "pdf-edu");
         pdfExpDiv.setAttribute("id", "pdf-edu" + eduIndex);
+        const pdfDesignElem = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+        const pdfInnerList = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
         const appendGroup = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
-        appendOutput(pdfExpDiv, degreeInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
+        appendOutput(pdfInnerList, degreeInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
         appendOutput(appendGroup, schoolNameInp);
         appendOutput(appendGroup, cityInp);
-        pdfExpDiv.appendChild(appendGroup);
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(appendGroup);
+        pdfInnerList.appendChild(pdfOutput);
         appendEdu?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
         deleteBtn.addEventListener("click", function () {
@@ -1432,10 +1444,16 @@ function addCourses() {
         const pdfExpDiv = document.createElement("div");
         pdfExpDiv.classList.add("pdf-list-group", "pdf-cour");
         pdfExpDiv.setAttribute("id", "pdf-cour" + courIndex);
-        appendOutput(pdfExpDiv, courseInp);
-        appendOutput(pdfExpDiv, startDateInp);
-        appendOutput(pdfExpDiv, endDateInp);
-        appendOutput(pdfExpDiv, institInp);
+        const pdfDesignElem = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+        const pdfInnerList = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
+        appendOutput(pdfInnerList, courseInp);
+        appendOutput(pdfInnerList, startDateInp);
+        appendOutput(pdfInnerList, endDateInp);
+        appendOutput(pdfInnerList, institInp);
         appendCour?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
         deleteBtn.addEventListener("click", function () {
@@ -1732,17 +1750,23 @@ function addReferences() {
         /* Append the elements to PDF */
         // Append the section elements to the pdf
         const pdfExpDiv = document.createElement("div");
-        pdfExpDiv.classList.add("pdf-ref");
+        pdfExpDiv.classList.add("pdf-list-group", "pdf-ref");
         pdfExpDiv.setAttribute("id", "pdf-ref" + refIndex);
+        const pdfDesignElem = document.createElement("div");
+        pdfDesignElem.classList.add("list-design-elem");
+        const pdfInnerList = document.createElement("div");
+        pdfInnerList.classList.add("pdf-list-inner");
+        pdfExpDiv.appendChild(pdfDesignElem);
+        pdfExpDiv.appendChild(pdfInnerList);
         const appendGroup = document.createElement("div");
         appendGroup.classList.add("append-elem-group");
-        appendOutput(pdfExpDiv, refNameInp);
-        appendOutput(pdfExpDiv, refCompInp);
-        appendOutput(pdfExpDiv, relationInp);
+        appendOutput(pdfInnerList, refNameInp);
+        appendOutput(pdfInnerList, refCompInp);
+        appendOutput(pdfInnerList, relationInp);
         appendOutput(appendGroup, refMailInp);
         appendOutput(appendGroup, refPhoneInp);
-        pdfExpDiv.appendChild(appendGroup);
-        pdfExpDiv.appendChild(pdfOutput);
+        pdfInnerList.appendChild(appendGroup);
+        pdfInnerList.appendChild(pdfOutput);
         appendRef?.appendChild(pdfExpDiv);
         /* Delete Link Button Event */
         deleteBtn.addEventListener("click", function () {
