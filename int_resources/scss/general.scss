@@ -38,6 +38,7 @@
     --shade4:#ECECEC;                   /* Shade 4 */
     --shade5:#DDE6EA;                   /* Shade 5 */
     --shade6:#D6D6D6;                   /* Shade 6 */
+    --shade7:#CACECE;                   /* Shade 7 */
 
     
     --txt1:#222;                    /* Text color 1 */    
@@ -72,6 +73,7 @@
     --shade4:#151718;               /* Shade 4 */
     --shade5:#343738;               /* Shade 5 */
     --shade6:#3B3B42;               /* Shade 6 */
+    --shade7:#7A7E7E;                   /* Shade 7 */
 
     --txt1:#FAFAFA;                 /* Text color 1 */    
     --txt2:#222;                    /* Text color 2 */
@@ -227,6 +229,11 @@ p, a, label{
     text-decoration:none;
     color:var(--txt-faded);
     transition:0.15s;
+}
+
+label{
+    font-size:16px;
+    color:var(--txt-faded2);
 }
 
 @media screen and (width <= 440px){

@@ -27,15 +27,14 @@ function inputInfo(elem, outputVal) {
 const pdfColorInp = document.querySelectorAll(".pdf-color");
 const asideColorInp = document.querySelector(".pdf-color-aside");
 const asideTxtColor = document.querySelector(".aside-text-color");
-const asideTxtColorInfo = document.querySelector(".aside-text-color-info");
-const asideTxtWarning = document.querySelector(".color-warning");
 const asideColorReset = document.querySelector(".reset-color-aside");
 const mainColorReset = document.querySelector(".reset-color-main");
-const accentColorReset = document.querySelector(".reset-color-accent");
+const asideTxtWarning = document.querySelector(".color-warning");
+const asideTxtBase = "Choose your color palette.";
+const asideTxtWarn = "The text and aside background color may not have  sufficient contrast.";
 const baseColors = [
-    "#223856",
     "#07ABDB",
-    "#CC1EEC" // accent
+    "#223856" // Aside Base Color
 ];
 // Color lightness
 function calcLightness(color) {
@@ -52,15 +51,17 @@ function calcLightness(color) {
 }
 // Color contrast warning
 function contrastWarning() {
-    // Remove the warning class
-    asideTxtWarning?.classList.remove("show-color-warning");
+    // Remove the warning
+    asideTxtWarning.innerHTML = asideTxtBase;
+    asideTxtWarning.classList.remove("show-color-warning");
     const asideColor = asideColorInp?.value;
     // Calculate the color lightness
     const colorLightness = calcLightness(asideColor);
     // Show the warning message if contrast is bad
     if (asideTxtColor.checked && colorLightness <= 85 ||
         !asideTxtColor.checked && colorLightness >= 60) {
-        asideTxtWarning?.classList.add("show-color-warning");
+        asideTxtWarning.innerHTML = asideTxtWarn;
+        asideTxtWarning.classList.add("show-color-warning");
     }
 }
 // Change colors (color inputs)
@@ -81,12 +82,10 @@ function asideTxtColorChng() {
     if (asideTxtColor.checked) {
         document.body.classList.remove("aside-light-txt");
         document.body.classList.add("aside-dark-txt");
-        asideTxtColorInfo.innerHTML = "Switch to light text";
     }
     else {
         document.body.classList.remove("aside-dark-txt");
         document.body.classList.add("aside-light-txt");
-        asideTxtColorInfo.innerHTML = "Switch to dark text";
     }
 }
 asideTxtColorChng();
@@ -95,52 +94,48 @@ asideTxtColor.addEventListener("input", function () {
     contrastWarning();
 });
 /* Base colors */
-// Aside
-function asideBaseColor() {
+// Main
+function mainBaseColor() {
     pdfColorInp[0].value = baseColors[0];
     inputColorChange(pdfColorInp[0]);
 }
-asideBaseColor();
-// Main
-function mainBaseColor() {
+mainBaseColor();
+// Aside
+function asideBaseColor() {
     pdfColorInp[1].value = baseColors[1];
     inputColorChange(pdfColorInp[1]);
 }
-mainBaseColor();
-// Accent
-function accentBaseColor() {
-    pdfColorInp[2].value = baseColors[2];
-    inputColorChange(pdfColorInp[2]);
-}
-accentBaseColor();
+asideBaseColor();
 // Reset buttons
-asideColorReset?.addEventListener("click", asideBaseColor);
 mainColorReset?.addEventListener("click", mainBaseColor);
-accentColorReset?.addEventListener("click", accentBaseColor);
+asideColorReset?.addEventListener("click", asideBaseColor);
 //*--|*|--*\\_____// Text \\_____//*--|*|--*\\
 // Elements
 const txtTypeface = document.querySelector(".text-tf-input");
+const txtTypefaceOptions = document.querySelectorAll(".text-tf-input option");
 const txtFontSize = document.querySelector(".text-size-input");
 const headingFontSize = document.querySelector(".heading-size-input");
 const lineHeight = document.querySelector(".line-height-input");
 const headingCase = document.querySelector(".heading-case-input");
-const headingInfo = document.querySelector(".heading-case-info");
-/* Typeface */
+/* Typeface & Options */
+// Typeface Select Element
 const typefacesStyle = document.createElement('style');
 function typefaceChange() {
     document.documentElement.style.setProperty(`--${txtTypeface?.getAttribute("id")}`, txtTypeface.value);
 }
 typefaceChange();
 txtTypeface?.addEventListener("input", typefaceChange);
+// Typeface Options
+txtTypefaceOptions.forEach(function (option) {
+    option.style.fontFamily = option.value;
+});
 /* Heading Case */
 function headCaseChange() {
     if (headingCase.checked) {
         document.body.classList.add("head-uppercase");
-        headingInfo.innerHTML = "Switch to title case";
     }
     else {
         document.body.classList.remove("head-uppercase");
-        headingInfo.innerHTML = "Switch to upper case";
     }
 }
 headCaseChange();
@@ -228,7 +223,6 @@ lineHeightChange();
 lineHeight?.addEventListener("input", lineHeightChange);
 //*--|*|--*\\_____// Aside Subheadings \\_____//*--|*|--*\\
 const subHeadingSwitch = document.querySelector(".subhead-switch");
-const subHeadingSwitchInfo = document.querySelector(".subhead-switch-info");
 const secSubtitles = document.querySelectorAll(".pdf-sec-title");
 const secIcons = document.querySelectorAll(".pdf-sec-icon");
 function subHeadSwitch() {
@@ -239,7 +233,6 @@ function subHeadSwitch() {
         secSubtitles.forEach(function (elem) {
             elem.classList.add("subhead-visible");
         });
-        subHeadingSwitchInfo.innerHTML = "Switch to icons";
     }
     else {
         secIcons.forEach(function (elem) {
@@ -248,7 +241,6 @@ function subHeadSwitch() {
         secSubtitles.forEach(function (elem) {
             elem.classList.remove("subhead-visible");
         });
-        subHeadingSwitchInfo.innerHTML = "Switch to text";
     }
 }
 subHeadSwitch();
@@ -375,36 +367,12 @@ function paragraphSpacingChange() {
 }
 paragraphSpacingChange();
 paragraphSpacing?.addEventListener("input", paragraphSpacingChange);
-//*--|*|--*\\_____// Headings \\_____//*--|*|--*\\
-// Elements
-const headDesignDivs = document.querySelectorAll(".pdf-head-design");
-const baseHeadDesign = 3;
-const headingTxt = "Contact";
-// For each design
-headDesignDivs.forEach(function (designDiv) {
-    // Text Element
-    const headingTxtElem = document.createElement("h3");
-    headingTxtElem.classList.add("head-design-txt");
-    headingTxtElem.innerHTML = headingTxt;
-    designDiv.appendChild(headingTxtElem);
-    // Add / remove the "design" class
-    designDiv.addEventListener("click", function () {
-        for (let i = 1; i <= headDesignDivs.length; i++) {
-            document.body.classList.remove("head-design" + i);
-            headDesignDivs[i - 1].classList.remove("curr-head-design");
-        }
-        document.body.classList.add("head-design" + designDiv.getAttribute("target-index"));
-        designDiv.classList.add("curr-head-design");
-    });
-});
-// Set the base design
-document.body.classList.add("head-design" + baseHeadDesign);
-headDesignDivs[baseHeadDesign - 1].classList.add("curr-head-design");
 //*--|*|--*\\_____// Photo \\_____//*--|*|--*\\
 // Elements
 const photoSize = document.querySelector(".photo-size-input");
-const photoBorder = document.querySelector(".photo-border-input");
 const photoRound = document.querySelector(".photo-round-input");
+const photoBorder = document.querySelector(".photo-border-input");
+const photoBorderColor = document.querySelector(".photo-border-color-input");
 /* Size */
 function pdfPhotoSize() {
     const elem = photoSize;
@@ -432,6 +400,16 @@ function pdfPhotoSize() {
 }
 pdfPhotoSize();
 photoSize?.addEventListener("input", pdfPhotoSize);
+/* Rounding */
+function pdfPhotoRadius() {
+    const elem = photoRound;
+    const inpVal = (parseFloat(elem.value) * 5).toString() + "%";
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+    inputInfo(elem, outputVal);
+}
+pdfPhotoRadius();
+photoRound?.addEventListener("input", pdfPhotoRadius);
 /* Border Width */
 function pdfPhotoBorder() {
     const elem = photoBorder;
@@ -459,44 +437,17 @@ function pdfPhotoBorder() {
 }
 pdfPhotoBorder();
 photoBorder?.addEventListener("input", pdfPhotoBorder);
-/* Rounding */
-function pdfPhotoRadius() {
-    const elem = photoRound;
-    const inpVal = (parseFloat(elem.value) * 5).toString() + "%";
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
-    inputInfo(elem, outputVal);
-}
-pdfPhotoRadius();
-photoRound?.addEventListener("input", pdfPhotoRadius);
-//*--|*|--*\\_____// Language Level \\_____//*--|*|--*\\
-// Elements
-const langDesignDivs = document.querySelectorAll(".pdf-lang-design");
-const baseLangLvlDesign = 3;
-// For each design
-langDesignDivs.forEach(function (designDiv) {
-    // Add spans
-    const spanParent = document.createElement("div");
-    spanParent.classList.add("pdf-lang-spans");
-    for (let i = 0; i < 6; i++) {
-        const newSpan = document.createElement("span");
-        newSpan.classList.add("lang-lvl-span");
-        spanParent.appendChild(newSpan);
+/* Border Color */
+function photoBorderColorChange() {
+    if (photoBorderColor.checked) {
+        document.body.classList.add("photo-main-color");
     }
-    designDiv.appendChild(spanParent);
-    // Add / remove the design class
-    designDiv.addEventListener("click", function () {
-        for (let i = 1; i <= langDesignDivs.length; i++) {
-            document.body.classList.remove("lang-design" + i);
-            langDesignDivs[i - 1].classList.remove("curr-lang-design");
-        }
-        document.body.classList.add("lang-design" + designDiv.getAttribute("target-index"));
-        designDiv.classList.add("curr-lang-design");
-    });
-});
-// Set the base design
-document.body.classList.add("lang-design" + baseLangLvlDesign);
-langDesignDivs[baseLangLvlDesign - 1].classList.add("curr-lang-design");
+    else {
+        document.body.classList.remove("photo-main-color");
+    }
+}
+photoBorderColorChange();
+photoBorderColor?.addEventListener("click", photoBorderColorChange);
 //*--|*|--*\\_____// QR Code \\_____//*--|*|--*\\
 /* Size */
 const qrSize = document.querySelector(".qr-size-input");
@@ -526,6 +477,59 @@ function pdfQrSize() {
 }
 pdfQrSize();
 qrSize?.addEventListener("input", pdfQrSize);
+//*--|*|--*\\_____// Headings \\_____//*--|*|--*\\
+// Elements
+const headDesignDivs = document.querySelectorAll(".pdf-head-design");
+const baseHeadDesign = 3;
+const headingTxt = "Contact";
+// For each design
+headDesignDivs.forEach(function (designDiv) {
+    // Text Element
+    const headingTxtElem = document.createElement("h3");
+    headingTxtElem.classList.add("head-design-txt");
+    headingTxtElem.innerHTML = headingTxt;
+    designDiv.appendChild(headingTxtElem);
+    // Add / remove the "design" class
+    designDiv.addEventListener("click", function () {
+        for (let i = 1; i <= headDesignDivs.length; i++) {
+            document.body.classList.remove("head-design" + i);
+            headDesignDivs[i - 1].classList.remove("curr-head-design");
+        }
+        document.body.classList.add("head-design" + designDiv.getAttribute("target-index"));
+        designDiv.classList.add("curr-head-design");
+    });
+});
+// Set the base design
+document.body.classList.add("head-design" + baseHeadDesign);
+headDesignDivs[baseHeadDesign - 1].classList.add("curr-head-design");
+//*--|*|--*\\_____// Language Level \\_____//*--|*|--*\\
+// Elements
+const langDesignDivs = document.querySelectorAll(".pdf-lang-design");
+const baseLangLvlDesign = 3;
+// For each design
+langDesignDivs.forEach(function (designDiv) {
+    // Add spans
+    const spanParent = document.createElement("div");
+    spanParent.classList.add("pdf-lang-spans");
+    for (let i = 0; i < 6; i++) {
+        const newSpan = document.createElement("span");
+        newSpan.classList.add("lang-lvl-span");
+        spanParent.appendChild(newSpan);
+    }
+    designDiv.appendChild(spanParent);
+    // Add / remove the design class
+    designDiv.addEventListener("click", function () {
+        for (let i = 1; i <= langDesignDivs.length; i++) {
+            document.body.classList.remove("lang-design" + i);
+            langDesignDivs[i - 1].classList.remove("curr-lang-design");
+        }
+        document.body.classList.add("lang-design" + designDiv.getAttribute("target-index"));
+        designDiv.classList.add("curr-lang-design");
+    });
+});
+// Set the base design
+document.body.classList.add("lang-design" + baseLangLvlDesign);
+langDesignDivs[baseLangLvlDesign - 1].classList.add("curr-lang-design");
 //*--|*|--*\\_____// Main Sections \\_____//*--|*|--*\\
 // Elements
 const mainDesignDivs = document.querySelectorAll(".pdf-main-design");

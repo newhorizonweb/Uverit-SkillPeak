@@ -541,44 +541,39 @@
             <h3 class="sec-head">Design</h3>
         </div>
 
-        <div class="subsection">
+        <div class="subsection color-section">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Colors</h4>
                 <div class="sec-subhead-line"></div>
             </div>
             
-            <p class="color-warning">The text and aside background color may not have  sufficient contrast.</p>
-
-            <div class="design-item">
-                <label for="pdf-color-aside">Aside</label>
-                <input type="color" class="pdf-color pdf-color-aside" 
-                    id="pdf-color-aside" target-color="pdf-color-aside">
-                <p class="reset-color-aside">Reset</p>
-            </div>
+            <p class="color-warning"></p>
 
             <div class="design-item">
                 <label for="pdf-color-main">Main</label>
                 <input type="color" class="pdf-color pdf-color-main"    
                     id="pdf-color-main" target-color="pdf-color-main">
-                <p class="reset-color-main">Reset</p>
+                <p class="reset-color-btn reset-color-main">Reset</p>
             </div>
 
             <div class="design-item">
-                <label for="pdf-color-accent">Accent</label>
-                <input type="color" class="pdf-color pdf-color-accent"
-                    id="pdf-color-accent" target-color="pdf-color-accent">
-                <p class="reset-color-accent">Reset</p>
+                <label for="pdf-color-aside">Aside</label>
+                <input type="color" class="pdf-color pdf-color-aside" 
+                    id="pdf-color-aside" target-color="pdf-color-aside">
+                <p class="reset-color-btn reset-color-aside">Reset</p>
             </div>
 
             <div class="design-item">
                 <label for="aside-text-color">Text Color</label>
+
+                <p class="switch-info">Light</p>
                 <input type="checkbox" class="pdf-switch-input aside-text-color"
                     id="aside-text-color">
-                <p class="input-info aside-text-color-info"></p>
+                <p class="switch-info">Dark</p>
              </div>
         </div>
 
-        <div class="subsection">
+        <div class="subsection text-section">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Text</h4>
                 <div class="sec-subhead-line"></div>
@@ -586,37 +581,52 @@
 
             <div class="design-item">
                 <label for="text-tf-input">Typeface</label>
-                <select class="pdf-range-input text-tf-input" id="text-tf-input">
+                <select class="text-tf-input" id="text-tf-input">
                     <optgroup label="Sans Serif">
-                        <option value="Arial, sans-serif">Arial</option>
-                        <option value="Calibri, sans-serif">Calibri</option>
-                        <option value="Roboto, sans-serif">Roboto</option>
-                        <option value="Segoe UI, sans-serif">Segoe UI</option>
-                        <option value="Source Sans Pro, serif">Source Sans Pro</option>
-                        <option value="Tahoma, sans-serif">Tahoma</option>
-                        <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
-                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="Arial, sans-serif"
+                            class="tf-arial">Arial</option>
+                        <option value="Calibri, sans-serif"
+                            class="tf-calibri">Calibri</option>
+                        <option value="Roboto, sans-serif"
+                            class="tf-roboto">Roboto</option>
+                        <option value="Segoe UI, sans-serif"
+                            class="tf-segoe-ui">Segoe UI</option>
+                        <option value="Source Sans Pro, serif"
+                            class="tf-source-sans-pro">Source Sans Pro</option>
+                        <option value="Tahoma, sans-serif"
+                            class="tf-tahoma" selected>Tahoma</option>
+                        <option value="Trebuchet MS, sans-serif"
+                            class="tf-trebuchet-ms">Trebuchet MS</option>
+                        <option value="Verdana, sans-serif"
+                            class="tf-verdana">Verdana</option>
                     </optgroup>
                     <optgroup label="Serif">
-                        <option value="Cambria, serif">Cambria</option>
-                        <option value="Georgia, serif">Georgia</option>
-                        <option value="Times New Roman, serif">Times New Roman</option>
+                        <option value="Cambria, serif"
+                            class="tf-cambria">Cambria</option>
+                        <option value="Georgia, serif"
+                            class="tf-georgia">Georgia</option>
+                        <option value="Times New Roman, serif"
+                            class="tf-times-new-roman">Times New Roman</option>
                     </optgroup>
                 </select>
             </div>
 
             <div class="design-item">
                 <label for="heading-case-input">Heading Case</label>
+
+                <p class="switch-info">Title</p>
                 <input type="checkbox" class="pdf-switch-input heading-case-input"
                     id="heading-case-input">
-                <p class="input-info heading-case-info"></p>
+                <p class="switch-info">Upper</p>
             </div>
 
             <div class="design-item">
                 <label for="subhead-switch">Aside Subheading</label>
+
+                <p class="switch-info">Icons</p>
                 <input type="checkbox" class="pdf-switch-input subhead-switch"
                     id="subhead-switch">
-                <p class="input-info subhead-switch-info"></p>
+                <p class="switch-info">Text</p>
             </div>
 
             <div class="design-item">
@@ -638,20 +648,20 @@
             </div>
         </div>
 
-        <div class="subsection">
+        <div class="subsection general-appearance">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">General Appearance</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
             <div class="design-item">
-                <label for="general-shade-input">Background Shade</label>
+                <label for="general-shade-input">Backgr. Shade</label>
                 <input type="range" class="pdf-range-input general-shade-input"
                     min="0" max="10" value="5" id="general-shade-input">
             </div>
 
             <div class="design-item">
-                <label for="general-transpar-input">Background Transparency</label>
+                <label for="general-transpar-input">Backgr. Transpar.</label>
                 <input type="range" class="pdf-range-input general-transpar-input"
                     min="0" max="10" value="5" id="general-transpar-input">
             </div>
@@ -665,7 +675,7 @@
             <div class="design-item">
                 <label for="general-round-input">Corner Rounding</label>
                 <input type="range" class="pdf-range-input general-round-input"
-                    min="0" max="10" value="2" id="general-round-input">
+                    min="0" max="10" value="5" id="general-round-input">
             </div>
         </div>
 
@@ -687,66 +697,8 @@
                     min="1" max="5" value="3" id="paragraph-spacing-input">
             </div>
         </div>
-
-        <div class="subsection">
-            <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Headings</h4>
-                <div class="sec-subhead-line"></div>
-            </div>
-
-            <div class="head-design-item">
-                <label>Style 1</label>
-                <div class="pdf-head-design pdf-head-design1" 
-                    id="pdf-head-design1" target-index="1"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 2</label>
-                <div class="pdf-head-design pdf-head-design2" 
-                    id="pdf-head-design2" target-index="2"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 3</label>
-                <div class="pdf-head-design pdf-head-design3" 
-                    id="pdf-head-design3" target-index="3"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 4</label>
-                <div class="pdf-head-design pdf-head-design4" 
-                    id="pdf-head-design4" target-index="4"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 5</label>
-                <div class="pdf-head-design pdf-head-design5" 
-                    id="pdf-head-design5" target-index="5"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 6</label>
-                <div class="pdf-head-design pdf-head-design6" 
-                    id="pdf-head-design6" target-index="6"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 7</label>
-                <div class="pdf-head-design pdf-head-design7" 
-                    id="pdf-head-design7" target-index="7"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 8</label>
-                <div class="pdf-head-design pdf-head-design8" 
-                    id="pdf-head-design8" target-index="8"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 9</label>
-                <div class="pdf-head-design pdf-head-design9" 
-                    id="pdf-head-design9" target-index="9"></div>
-            </div>
-            <div class="head-design-item">
-                <label>Style 10</label>
-                <div class="pdf-head-design pdf-head-design10" 
-                    id="pdf-head-design10" target-index="10"></div>
-            </div>
-        </div>
-
-        <div class="subsection">
+        
+        <div class="subsection photo-section">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Photo</h4>
                 <div class="sec-subhead-line"></div>
@@ -759,63 +711,24 @@
             </div>
 
             <div class="design-item">
+                <label for="photo-round-input">Corner Rounding</label>
+                <input type="range" class="pdf-range-input photo-round-input"
+                    min="0" max="10" value="2" id="photo-round-input">
+            </div>
+
+            <div class="design-item">
                 <label for="photo-border-input">Border Width</label>
                 <input type="range" class="pdf-range-input photo-border-input"
                     min="1" max="5" value="3" id="photo-border-input">
             </div>
 
             <div class="design-item">
-                <label for="photo-round-input">Corner Rounding</label>
-                <input type="range" class="pdf-range-input photo-round-input"
-                    min="0" max="10" value="2" id="photo-round-input">
-            </div>
-        </div>
+                <label for="heading-case-input">Border Color</label>
 
-        <div class="subsection">
-            <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Language Level</h4>
-                <div class="sec-subhead-line"></div>
-            </div>
-
-            <div class="lang-design-item">
-                <label>Style 1</label>
-                <div class="pdf-lang-design pdf-lang-design1" 
-                    id="pdf-lang-design1" target-index="1"><p>B2</p></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 2</label>
-                <div class="pdf-lang-design pdf-lang-design2" 
-                    id="pdf-lang-design2" target-index="2"><p>Upper-Intermed.</p></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 3</label>
-                <div class="pdf-lang-design pdf-lang-design3" 
-                    id="pdf-lang-design3" target-index="3"></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 4</label>
-                <div class="pdf-lang-design pdf-lang-design4" 
-                    id="pdf-lang-design4" target-index="4"></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 5</label>
-                <div class="pdf-lang-design pdf-lang-design5" 
-                    id="pdf-lang-design5" target-index="5"></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 6</label>
-                <div class="pdf-lang-design pdf-lang-design6" 
-                    id="pdf-lang-design6" target-index="6"></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 7</label>
-                <div class="pdf-lang-design pdf-lang-design7" 
-                    id="pdf-lang-design7" target-index="7"></div>
-            </div>
-            <div class="lang-design-item">
-                <label>Style 8</label>
-                <div class="pdf-lang-design pdf-lang-design8" 
-                    id="pdf-lang-design8" target-index="8"></div>
+                <p class="switch-info">Text</p>
+                <input type="checkbox" class="pdf-switch-input photo-border-color-input"
+                    id="photo-border-color-input">
+                <p class="switch-info">Main</p>
             </div>
         </div>
 
@@ -834,47 +747,153 @@
 
         <div class="subsection">
             <div class="sec-subhead-div">
+                <h4 class="sec-subhead">Headings</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 1</p>
+                <div class="pdf-head-design pdf-head-design1" 
+                    id="pdf-head-design1" target-index="1"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 2</p>
+                <div class="pdf-head-design pdf-head-design2" 
+                    id="pdf-head-design2" target-index="2"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 3</p>
+                <div class="pdf-head-design pdf-head-design3" 
+                    id="pdf-head-design3" target-index="3"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 4</p>
+                <div class="pdf-head-design pdf-head-design4" 
+                    id="pdf-head-design4" target-index="4"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 5</p>
+                <div class="pdf-head-design pdf-head-design5" 
+                    id="pdf-head-design5" target-index="5"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 6</p>
+                <div class="pdf-head-design pdf-head-design6" 
+                    id="pdf-head-design6" target-index="6"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 7</p>
+                <div class="pdf-head-design pdf-head-design7" 
+                    id="pdf-head-design7" target-index="7"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 8</p>
+                <div class="pdf-head-design pdf-head-design8" 
+                    id="pdf-head-design8" target-index="8"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 9</p>
+                <div class="pdf-head-design pdf-head-design9" 
+                    id="pdf-head-design9" target-index="9"></div>
+            </div>
+            <div class="design-item head-design-item">
+                <p class="design-label">Style 10</p>
+                <div class="pdf-head-design pdf-head-design10" 
+                    id="pdf-head-design10" target-index="10"></div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">Language Level</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 1</p>
+                <div class="pdf-lang-design pdf-lang-design1" 
+                    id="pdf-lang-design1" target-index="1"><p>B2</p></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 2</p>
+                <div class="pdf-lang-design pdf-lang-design2" 
+                    id="pdf-lang-design2" target-index="2"><p>Upper-Intermed.</p></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 3</p>
+                <div class="pdf-lang-design pdf-lang-design3" 
+                    id="pdf-lang-design3" target-index="3"></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 4</p>
+                <div class="pdf-lang-design pdf-lang-design4" 
+                    id="pdf-lang-design4" target-index="4"></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 5</p>
+                <div class="pdf-lang-design pdf-lang-design5" 
+                    id="pdf-lang-design5" target-index="5"></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 6</p>
+                <div class="pdf-lang-design pdf-lang-design6" 
+                    id="pdf-lang-design6" target-index="6"></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 7</p>
+                <div class="pdf-lang-design pdf-lang-design7" 
+                    id="pdf-lang-design7" target-index="7"></div>
+            </div>
+            <div class="design-item lang-design-item">
+                <p class="design-label">Style 8</p>
+                <div class="pdf-lang-design pdf-lang-design8" 
+                    id="pdf-lang-design8" target-index="8"></div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Main Sections</h4>
                 <div class="sec-subhead-line"></div>
             </div>
 
-            <div class="main-design-item">
-                <label>Style 1</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 1</p>
                 <div class="pdf-main-design pdf-main-design1" 
                     id="pdf-main-design1" target-index="1"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 2</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 2</p>
                 <div class="pdf-main-design pdf-main-design2" 
                     id="pdf-main-design2" target-index="2"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 3</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 3</p>
                 <div class="pdf-main-design pdf-main-design3" 
                     id="pdf-main-design3" target-index="3"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 4</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 4</p>
                 <div class="pdf-main-design pdf-main-design4" 
                     id="pdf-main-design4" target-index="4"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 5</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 5</p>
                 <div class="pdf-main-design pdf-main-design5" 
                     id="pdf-main-design5" target-index="5"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 6</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 6</p>
                 <div class="pdf-main-design pdf-main-design6" 
                     id="pdf-main-design6" target-index="6"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 7</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 7</p>
                 <div class="pdf-main-design pdf-main-design7" 
                     id="pdf-main-design7" target-index="7"></div>
             </div>
-            <div class="main-design-item">
-                <label>Style 8</label>
+            <div class="design-item main-design-item">
+                <p class="design-label">Style 8</p>
                 <div class="pdf-main-design pdf-main-design8" 
                     id="pdf-main-design8" target-index="8"></div>
             </div>

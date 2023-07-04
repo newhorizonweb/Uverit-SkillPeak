@@ -280,6 +280,10 @@
     cursor:pointer;
 }
 
+.dark-mode .sec-input::-webkit-calendar-picker-indicator{ 
+    color-scheme:dark;
+}
+
 .sec-input.validation-failed{
     box-shadow:var(--box-shadow3) var(--color2);
 }
@@ -1453,6 +1457,256 @@
 
     /* Section 7 - Design */
 
+.section7{
+    --input-size1:20px;
+    --input-size2:24px;
+    --input-gap:8px;
+    --input-border:2px;
+}
+
+.design-item{
+    width:calc((100% - var(--size1)) / 2);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    column-gap:var(--input-gap);
+}
+
+:where(.color-section, .text-section) .design-item{
+    width:calc((100% - var(--size1) * 2) / 3);
+}
+
+.design-item:has(.pdf-range-input){
+    flex-direction:column;
+}
+
+.design-item :is(label, .design-label){
+    width:100%;
+    margin-bottom:var(--input-border);
+    color:var(--txt-faded2);
+    font-size:16px;
+    pointer-events:none;
+}
+
+.design-item .input-info{
+    align-self:flex-end;
+    margin-top:var(--input-border);
+
+    color:var(--txt-faded2);
+    font-size:16px;
+}
+
+.switch-info{
+    color:var(--txt-faded);
+    font-size:16px;
+    line-height:1.2;
+}
+
+        /* Section 7 - media */
+
+@media screen and (1200px < width <= 1440px), screen and (width <= 768px){
+
+    :where(.color-section, .text-section) .design-item{
+        width:calc((100% - var(--size1)) / 2);
+    }
+
+    .text-section .design-item:has(.text-tf-input){
+        width:100%;
+    }
+
+}
+
+@media screen and (1024px < width <= 1200px){
+
+    .general-appearance .design-item{
+        width:calc((100% - var(--size1) * 3) / 4);
+        min-width:0;
+    }
+
+    .general-appearance .design-item:nth-of-type(3){
+        margin-right:0;
+    }
+
+}
+
+@media screen and (width <= 440px){
+
+    .design-item{
+        width:100%;
+    }
+
+    .text-section .design-item:has(.pdf-switch-input){
+        width:calc((100% - var(--size1)) / 2);
+        min-width:140px;
+    }
+
+}
+
+        /* Section 7 - Range Slider */
+
+.pdf-range-input{
+    appearance:none;
+    width:100%;
+    height:8px;
+    margin:calc((var(--input-size1) - 8px) / 2) 0;
+
+    background-color:var(--shade7);
+    border-radius:200px;
+    transition:0.15s;
+}
+
+.pdf-range-input::-webkit-slider-thumb{
+    appearance:none;
+    height:var(--input-size1);
+    aspect-ratio:1/1;
+
+    background-color:var(--shade1);
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border-radius:50%;
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.pdf-range-input::-webkit-slider-thumb:is(:active, :hover){
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+        /* Section 7 - Switch */
+
+.pdf-switch-input{
+    appearance:none;
+    height:var(--input-size2);
+    aspect-ratio:2/1;
+    position:relative;
+
+    background-color:var(--shade1);
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border-radius:200px;
+
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.pdf-switch-input:after{
+    content:"";
+    height:calc(var(--input-size2) - (var(--input-border) * 2));
+    aspect-ratio:1/1;
+
+    position:absolute;
+    top:50%;
+    left:var(--input-border);
+    transform:translate(0, -50%);
+
+    background-color:var(--color1);
+    border-radius:50%;
+    transition:0.15s;
+}
+
+.pdf-switch-input:checked:after{
+    left:calc(100% - var(--input-size1) - var(--input-border) * 1);
+}
+
+        /* Section 7 - Typeface Select */
+
+.text-tf-input{
+    width:100%;
+    height:var(--input-size2);
+    padding:0 var(--input-gap);
+    box-sizing:border-box;
+
+    color:var(--txt1);
+    font-size:16px;
+
+    background-color:var(--shade1);
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border:none;
+    border-radius:200px;
+
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.text-tf-input:hover{
+    box-shadow:var(--box-shadow3) var(--color1);
+}
+
+
+
+        /* Section 7 - Colors */
+
+.color-warning{
+    width:100%;
+    text-wrap:balance;
+}
+
+.show-color-warning{
+    color:var(--color2);
+}
+
+.design-item:has(.pdf-color){
+    column-gap:var(--input-gap);
+}
+        
+.pdf-color{
+    width:100%;
+    height:var(--input-size2);
+    padding:var(--input-border);
+    box-sizing:border-box;
+
+    background-color:var(--shade1);
+    border:none;
+    box-shadow:var(--box-shadow3) var(--txt-faded3);
+    border-radius:200px;
+
+    overflow:hidden;
+    cursor:pointer;
+
+    &::-webkit-color-swatch-wrapper{
+        padding:0;
+    }
+
+    &::-webkit-color-swatch{
+        border:0;
+        border-radius:200px;
+    }
+
+}
+
+.design-item:has(.pdf-color) .input-info{
+    order:1;
+    width:65px;
+    margin:0;
+}
+
+.reset-color-btn{
+    flex:1;
+    height:var(--input-size2);
+    margin-top:var(--input-gap);
+    box-sizing:border-box;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:13px;
+    text-transform:uppercase;
+    line-height:1;
+
+    background-color:var(--shade1);
+    border:solid var(--input-border) var(--color1);
+    border-radius:200px;
+    
+    transition:0.15s;
+    cursor:pointer;
+}
+
+.reset-color-btn:hover{
+    color:#FFF;
+    background-color:var(--color1);
+}
+
+
+
         /* Section 7 - Heading */
 
 .head-design-item{
@@ -1585,27 +1839,19 @@
     border-left:solid 3px var(--pdf-color-main);
 }
 
-            /* Style 9 */
+            /* Style 9 & 10 */
 
-.pdf-head-design9 .head-design-txt{
+:where(.pdf-head-design9, .pdf-head-design10) .head-design-txt{
     width:90%;
     height:var(--head-height);
     justify-content:center;
 
-    color:var(--shade1);
+    color:#FAFAFA;
     background-color:var(--pdf-color-main);
-    border-radius:calc(var(--head-height) * var(--general-round-input) / 2);
 }
 
-            /* Style 10 */
-
-.pdf-head-design10 .head-design-txt{
-    width:90%;
-    height:var(--head-height);
-    justify-content:center;
-
-    color:var(--shade1);
-    background-color:var(--pdf-color-main);
+.pdf-head-design9 .head-design-txt{
+    border-radius:calc(var(--head-height) * var(--general-round-input) / 2);
 }
 
 .pdf-head-design10 .head-design-txt:before,
@@ -1615,8 +1861,8 @@
     aspect-ratio:1/1;
     box-sizing:border-box;
 
-    display:block;
     position:absolute;
+    display:block;
     z-index:100;
 }
 
