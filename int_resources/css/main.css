@@ -639,7 +639,7 @@ nav {
   border-bottom-left-radius: 50px;
 }
 
-/* Nav - Close button */
+/* Nav - Close Button */
 .nav-close {
   position: relative;
   display: none;
@@ -905,6 +905,7 @@ nav {
 }
 
 .pdfc-inner::-webkit-scrollbar {
+  height: 0;
   width: 8px;
 }
 
@@ -947,16 +948,19 @@ nav {
 }
 
 .pdf-expanded .pdfc-inner {
-  min-height: auto;
+  min-height: 0;
   max-height: 100%;
-  aspect-ratio: auto;
+  width: min(1000px, 100vw - var(--size1) * 6);
+  aspect-ratio: 1/1.414;
+  position: relative;
+  box-sizing: border-box;
   overflow: overlay;
 }
 
 .pdf-expanded .pdfc-inner-inner {
   width: min(1000px, 100vw - var(--size1) * 6);
   aspect-ratio: 1/1.414; /* A4 aspect ratio */
-  overflow: hidden;
+  position: absolute;
 }
 
 /* PDF Content - Close Button */
@@ -1039,14 +1043,28 @@ nav {
   .pdf-expanded .pdf-content {
     width: 100%;
   }
+}
+@media screen and (width <= 768px) and (orientation: landscape) {
+  .pdf-expanded .pdfc-inner,
+  .pdf-expanded .pdfc-inner-inner {
+    width: min(1000px, 100vw - var(--size1) * 2);
+  }
+}
+@media screen and (width <= 768px) and (orientation: portrait) {
+  .close-pdf-btn {
+    top: auto;
+    bottom: calc(var(--size1) + 8px);
+    right: calc(var(--size1) + 8px);
+  }
   .pdf-expanded .pdfc-inner {
     height: 100%;
-    max-width: calc(100vw - var(--size1) * 4);
+    width: auto;
   }
   .pdf-expanded .pdfc-inner-inner {
     height: 100%;
     width: auto;
     aspect-ratio: 1/1.414; /* A4 aspect ratio */
+    position: relative;
   }
   .pdfc-inner::-webkit-scrollbar {
     width: auto;
