@@ -683,3 +683,35 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
 .main-design8 .list-design-elem:after {
   background-color: var(--pdf-color-main);
 }
+
+/* PDF Print */
+@media print {
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+  body > *:not(main),
+  nav,
+  .sections,
+  .close-pdf-btn {
+    display: none !important;
+  }
+  main,
+  .main-wrapper,
+  .pdf-content,
+  .pdfc-inner {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    backdrop-filter: none;
+  }
+  .pdfc-inner-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/1.414;
+  }
+}
