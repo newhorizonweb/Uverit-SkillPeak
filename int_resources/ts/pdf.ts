@@ -46,6 +46,127 @@ function inputInfo(elem, outputVal){
 
 
 
+//*--|*|--*\\_____// Page Setup \\_____//*--|*|--*\\
+
+
+
+// Elements
+const pageDimensions:HTMLInputElement | null = document.querySelector(".page-dimensions-input");
+const asideWidth:HTMLInputElement | null = document.querySelector(".aside-width-input");
+
+
+
+    /* Page Dimensions */
+
+function pdfPageDimensions(){
+
+    const elem:HTMLInputElement | null = pageDimensions;
+
+    let docWidth:string = "";
+    let docHeight:string = "";
+
+    switch (elem!.value){
+        case "a4":
+            docWidth = "210mm";
+            docHeight = "297mm";
+            break;
+        case "us-letter":
+            docWidth = "8.5in";
+            docHeight = "11in";
+            break;
+        case "us-legal":
+            docWidth = "8.5in";
+            docHeight = "14in";
+            break;
+
+            
+        case "9-16":
+            docWidth = "900px";
+            docHeight = "1600px";
+            break;
+        case "10-16":
+            docWidth = "1000px";
+            docHeight = "1600px";
+            break;
+        case "2-3":
+            docWidth = "1000px";
+            docHeight = "1500px";
+            break;
+        case "3-4":
+            docWidth = "1200px";
+            docHeight = "1600px";
+            break;
+    }
+
+    const sizeRatio:string = `1/${(parseFloat(docHeight) / parseFloat(docWidth)).toFixed(5).toString()}`; 
+
+    // Set the css variables
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, sizeRatio);
+    document.documentElement.style.setProperty("--doc-width", docWidth);
+    document.documentElement.style.setProperty("--doc-height", docHeight);
+    
+    // Set the "size" css @page property 
+    // Setting size using css variables doesn't work
+    let cssPagedMedia:any = (function(){
+        let style = document.createElement("style");
+        document.head.appendChild(style);
+
+        return function (rule){
+            style.innerHTML = rule;
+        };
+    }());
+
+    cssPagedMedia.size = function (size){
+        cssPagedMedia(`@page {size:${size}}`);
+    };
+
+    cssPagedMedia.size(docWidth+" "+docHeight);
+
+}
+
+pdfPageDimensions();
+pageDimensions?.addEventListener("input", pdfPageDimensions);
+
+
+
+    /* Aside Width */
+
+function pdfAsideWidth(){
+
+    const elem:HTMLInputElement | null = asideWidth;
+
+    let inpVal:string = "";
+
+    switch (elem!.value){
+        case "1":
+            inpVal = "30cqw";
+            break;
+        case "2":
+            inpVal = "32.5cqw";
+            break;
+        case "3":
+            inpVal = "35cqw";
+            break;
+        case "4":
+            inpVal = "37.5cqw";
+            break;
+        case "5":
+            inpVal = "40cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+
+    const outputVal:string = "LVL " + elem!.value;
+    inputInfo(elem, outputVal);
+
+}
+
+pdfAsideWidth();
+asideWidth?.addEventListener("input", pdfAsideWidth);
+
+
+
 //*--|*|--*\\_____// PDF Colors \\_____//*--|*|--*\\
 
 

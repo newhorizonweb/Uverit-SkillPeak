@@ -55,7 +55,7 @@
 
 .pdf-aside{
     height:100%;
-    width:35cqw;
+    width:var(--aside-width-input);
     padding:2cqw;
     box-sizing:border-box;
 
@@ -792,7 +792,18 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
     
     @page{ 
         margin:0;
-        size:A4 portrait;
+        padding:0;
+        // Size set in JS/TS
+    }
+
+    html{
+        width:100%;
+        aspect-ratio:var(--page-dimensions-input);
+        margin:0;
+
+        position:absolute;
+        top:0;
+        left:0;
     }
     
     body > *:not(main),
@@ -806,6 +817,8 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
     .main-wrapper,
     .pdf-content,
     .pdfc-inner{
+        width:100%;
+        aspect-ratio:var(--page-dimensions-input);
         padding:0;
         margin:0;
 
@@ -820,7 +833,8 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
         top:0;
         left:0;
         width:100%;
-        aspect-ratio:1/1.414;
+        aspect-ratio:var(--page-dimensions-input);
+        display:flex !important;
     }
 
 }

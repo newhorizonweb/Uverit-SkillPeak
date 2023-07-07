@@ -1247,7 +1247,7 @@
   :where(.color-section, .text-section) .design-item {
     width: calc((100% - var(--size1)) / 2);
   }
-  .text-section .design-item:has(.text-tf-input) {
+  .text-section .design-item:has(.pdf-select-input) {
     width: 100%;
   }
 }
@@ -1326,7 +1326,7 @@
 }
 
 /* Section 7 - Typeface Select */
-.text-tf-input {
+.pdf-select-input {
   width: 100%;
   height: var(--input-size2);
   padding: 0 var(--input-gap);
@@ -1341,7 +1341,7 @@
   cursor: pointer;
 }
 
-.text-tf-input:hover {
+.pdf-select-input:hover {
   box-shadow: var(--box-shadow3) var(--color1);
 }
 

@@ -897,7 +897,7 @@ nav {
 
 .pdfc-inner {
   min-height: 100%;
-  aspect-ratio: 1/1.414; /* A4 aspect ratio */
+  aspect-ratio: var(--page-dimensions-input);
   background-color: #FFF;
   border-radius: var(--mainRadius1);
   box-shadow: var(--box-shadow1) var(--wrapperColor1), var(--box-shadow2) var(--wrapperColor1);
@@ -951,7 +951,7 @@ nav {
   min-height: 0;
   max-height: 100%;
   width: min(1000px, 100vw - var(--size1) * 6);
-  aspect-ratio: 1/1.414;
+  aspect-ratio: var(--page-dimensions-input);
   position: relative;
   box-sizing: border-box;
   overflow: overlay;
@@ -959,7 +959,7 @@ nav {
 
 .pdf-expanded .pdfc-inner-inner {
   width: min(1000px, 100vw - var(--size1) * 6);
-  aspect-ratio: 1/1.414; /* A4 aspect ratio */
+  aspect-ratio: var(--page-dimensions-input);
   position: absolute;
 }
 
@@ -1063,7 +1063,7 @@ nav {
   .pdf-expanded .pdfc-inner-inner {
     height: 100%;
     width: auto;
-    aspect-ratio: 1/1.414; /* A4 aspect ratio */
+    aspect-ratio: var(--page-dimensions-input);
     position: relative;
   }
   .pdfc-inner::-webkit-scrollbar {
