@@ -1,3 +1,6 @@
+//*--|*|--*\\_____// SVG \\_____//*--|*|--*\\
+const bpListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='51.4' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L51.4,28a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,28l-1.7-.2-1.7-.5A8,8,0,0,1,4,26.5L2.6,25.4,1.5,24a8,8,0,0,1-.8-1.6,9.8,9.8,0,0,1-.5-1.6A11,11,0,0,1,0,19a9.4,9.4,0,0,1,2.6-6.4L4,11.5l1.6-.8,1.7-.5a6.9,6.9,0,0,1,3.5,0l1.7.5,1.5.8,1.4,1.1A7.6,7.6,0,0,1,16.5,14a8,8,0,0,1,.8,1.6,9.8,9.8,0,0,1,.5,1.6A5.5,5.5,0,0,1,18,19a5.5,5.5,0,0,1-.2,1.8,9.8,9.8,0,0,1-.5,1.6,8,8,0,0,1-.8,1.6,13.4,13.4,0,0,1-1.1,1.4A9.4,9.4,0,0,1,9,28Z'/><line class='cls-1' x1='51.4' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-139.6-.2a9,9,0,0,1,0-18h0L191,172a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,189.8a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,10.9,10.9,0,0,1-.5-1.7,11,11,0,0,1-.2-1.8,11.1,11.1,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7l.8-1.6a6.9,6.9,0,0,1,1.1-1.3A9.1,9.1,0,0,1,9,171.8a9.1,9.1,0,0,1,6.4,2.7,6.9,6.9,0,0,1,1.1,1.3l.8,1.6a8.4,8.4,0,0,1,.5,1.7,11.1,11.1,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,10.9,10.9,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4A9,9,0,0,1,9,189.8Z'/><line class='cls-1' x1='51.4' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-139.6-.2a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,108.9a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,15.4,15.4,0,0,1-.5-1.7A11,11,0,0,1,0,99.9a8.8,8.8,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7,8,8,0,0,1,.8-1.6,6.9,6.9,0,0,1,1.1-1.3,9.1,9.1,0,0,1,8.2-2.5l1.6.5,1.6.8,1.4,1.2a6.9,6.9,0,0,1,1.1,1.3,8,8,0,0,1,.8,1.6,8.4,8.4,0,0,1,.5,1.7,8.8,8.8,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,15.4,15.4,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4L14,107.4l-1.6.8a10.4,10.4,0,0,1-1.6.6Z'/></svg>";
+const numberListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='119.5' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L119.5,28a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><path d='M52.6,191.5a8.5,8.5,0,0,1-6-2.3,7.8,7.8,0,0,1-2.3-5.5V27.2l2.9,2.6L12.6,53.2a8,8,0,0,1-4.4,1.3,7.6,7.6,0,0,1-5.6-2.6A7.7,7.7,0,0,1,.1,46.4a7.3,7.3,0,0,1,4.2-6.7L47.7,11.1a10.4,10.4,0,0,1,3.2-1.5,7.8,7.8,0,0,1,3-.1A7,7,0,0,1,59.1,12a8.1,8.1,0,0,1,1.8,5.3V183.7a7.4,7.4,0,0,1-2.3,5.5A8.3,8.3,0,0,1,52.6,191.5Z'/></svg>";
 //*--|*|--*\\_____// Validation \\_____//*--|*|--*\\
 const allSectionsArr = Array.from(document.querySelectorAll(".section"));
 const inputsVal = document.querySelectorAll(".inp-val");
@@ -427,41 +430,160 @@ function createBtn(elemObj, elemIndex) {
     }
     return newElem;
 }
-/*
-const divElemObj:Object = {
-    elemClasses: "",
+// Set focus after the last character
+function setFocus(element) {
+    element.focus();
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    const selection = window.getSelection();
+    if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+//*--|*|--*\\_____// Professional Summary \\_____//*--|*|--*\\
+const profSummary = document.querySelector(".prof-summary-section");
+const profSummaryInput = profSummary.querySelector(".sec-summary");
+const profSumBtnsDiv = profSummary.querySelector(".list-desc-btns");
+const boldBtnObj = {
+    elemClasses: "list-desc-btn, list-bold-btn",
     elemIndexClasses: ""
-}
-
-const labelElemObj:Object = {
-    elemName: "",
-    elemFor: "",
-    elemClasses: "",
+};
+const italicBtnObj = {
+    elemClasses: "list-desc-btn, list-italic-btn",
     elemIndexClasses: ""
-}
-
-const inputElemObj:Object = {
-    elemType: "",
-    elemId: "",
-    elemClasses: "",
-    elemIndexClasses: "",
-    elemPlaceholder: "",
-    elemDataOutput: ""
-}
-
-const textareaElemObj:Object = {
-    elemId: "",
-    elemClasses: "",
-    elemIndexClasses: "",
-    elemPlaceholder: "",
-    elemDataOutput: ""
-}
-
-const btnElemObj:Object = {
-    elemClasses: "",
+};
+const underlineBtnObj = {
+    elemClasses: "list-desc-btn, list-underline-btn",
     elemIndexClasses: ""
+};
+const nrListBtnObj = {
+    elemClasses: "list-desc-btn, list-list-btn, list-nr-list-btn",
+    elemIndexClasses: ""
+};
+const bpListBtnObj = {
+    elemClasses: "list-desc-btn, list-list-btn, list-bp-list-btn",
+    elemIndexClasses: ""
+};
+function isSelectionBold() {
+    const isState = document.queryCommandState("bold");
+    return isState;
 }
-*/
+function isSelectionItalic() {
+    const isState = document.queryCommandState("italic");
+    return isState;
+}
+function isSelectionUnderline() {
+    const isState = document.queryCommandState("underline");
+    return isState;
+}
+function addSummaryButtons() {
+    if (profSummaryInput) {
+        // For some reason the div is not considered empty 
+        // It causes bugs with the buttons (jumping to the next line) and the placeholder
+        profSummaryInput.innerHTML = "";
+        // Create the buttons
+        const boldBtn = createBtn(boldBtnObj, 0);
+        boldBtn.innerHTML = "B";
+        const italicBtn = createBtn(italicBtnObj, 0);
+        italicBtn.innerHTML = "I";
+        const underlineBtn = createBtn(underlineBtnObj, 0);
+        underlineBtn.innerHTML = "U";
+        const nrListBtn = createBtn(nrListBtnObj, 0);
+        nrListBtn.innerHTML = numberListIcon;
+        const bpListBtn = createBtn(bpListBtnObj, 0);
+        bpListBtn.innerHTML = bpListIcon;
+        // Append the buttons
+        profSumBtnsDiv?.appendChild(boldBtn);
+        profSumBtnsDiv?.appendChild(italicBtn);
+        profSumBtnsDiv?.appendChild(underlineBtn);
+        profSumBtnsDiv?.appendChild(nrListBtn);
+        profSumBtnsDiv?.appendChild(bpListBtn);
+        // Make the buttons do their job #necessary_comment
+        boldBtn.addEventListener("click", () => {
+            boldBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionBold();
+            if (boldBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("bold");
+            }
+            else if (textState) {
+                document.execCommand("bold");
+            }
+        });
+        italicBtn.addEventListener("click", () => {
+            italicBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionItalic();
+            if (italicBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("italic");
+            }
+            else if (textState) {
+                document.execCommand("italic");
+            }
+        });
+        underlineBtn.addEventListener("click", () => {
+            underlineBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionUnderline();
+            if (underlineBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("underline");
+            }
+            else if (textState) {
+                document.execCommand("underline");
+            }
+        });
+        let currentListNum = 1;
+        nrListBtn.addEventListener("click", () => {
+            if (profSummaryInput.innerHTML != "") {
+                profSummaryInput.innerHTML += `<br>${currentListNum}.&nbsp;`;
+            }
+            else {
+                profSummaryInput.innerHTML += `${currentListNum}.&nbsp;`;
+            }
+            nrListBtn.classList.toggle("desc-btn-active");
+            textAreaInput(profSummaryInput, maxSumDescLength);
+            setFocus(profSummaryInput);
+            currentListNum++;
+        });
+        bpListBtn.addEventListener("click", () => {
+            if (profSummaryInput.innerHTML != "") {
+                profSummaryInput.innerHTML += `<br>&#x2022;&nbsp;`;
+            }
+            else {
+                profSummaryInput.innerHTML += `&#x2022;&nbsp;`;
+            }
+            bpListBtn.classList.toggle("desc-btn-active");
+            textAreaInput(profSummaryInput, maxSumDescLength);
+            setFocus(profSummaryInput);
+        });
+    }
+}
+addSummaryButtons();
+// Insert the Summary content to the PDF
+const maxSumDescLength = 320;
+function textAreaInput(inputElem, maxLength) {
+    // Change the element value to the input value
+    const output = document.querySelector("." +
+        inputElem?.getAttribute("data-output"));
+    // If the user pastes text, remove the formatting from it
+    const pastedSpans = inputElem.querySelectorAll('span');
+    pastedSpans.forEach((span) => {
+        span.removeAttribute('style');
+    });
+    // Limit the character number
+    if (inputElem.innerText.length > maxLength &&
+        inputElem) {
+        inputElem.innerText = inputElem.innerText.slice(0, maxLength);
+    }
+    // Append the text to the pdf preview
+    if (output && inputElem) {
+        output.innerHTML = inputElem.innerHTML;
+    }
+}
+if (profSummaryInput) {
+    profSummaryInput.addEventListener("input", function () {
+        textAreaInput(profSummaryInput, maxSumDescLength);
+    });
+}
 //*--|*|--*\\_____// Create Links \\_____//*--|*|--*\\
 const pdfLinks = document.querySelector(".sec-link-list");
 const pdfLinksOutput = document.querySelector(".pdf-links");
@@ -581,9 +703,6 @@ function addLink() {
 }
 addLinkBtn?.addEventListener("click", addLink);
 //*--|*|--*\\_____// Work Experience \\_____//*--|*|--*\\
-// SVG
-const bpListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='51.4' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L51.4,28a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,28l-1.7-.2-1.7-.5A8,8,0,0,1,4,26.5L2.6,25.4,1.5,24a8,8,0,0,1-.8-1.6,9.8,9.8,0,0,1-.5-1.6A11,11,0,0,1,0,19a9.4,9.4,0,0,1,2.6-6.4L4,11.5l1.6-.8,1.7-.5a6.9,6.9,0,0,1,3.5,0l1.7.5,1.5.8,1.4,1.1A7.6,7.6,0,0,1,16.5,14a8,8,0,0,1,.8,1.6,9.8,9.8,0,0,1,.5,1.6A5.5,5.5,0,0,1,18,19a5.5,5.5,0,0,1-.2,1.8,9.8,9.8,0,0,1-.5,1.6,8,8,0,0,1-.8,1.6,13.4,13.4,0,0,1-1.1,1.4A9.4,9.4,0,0,1,9,28Z'/><line class='cls-1' x1='51.4' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-139.6-.2a9,9,0,0,1,0-18h0L191,172a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,189.8a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,10.9,10.9,0,0,1-.5-1.7,11,11,0,0,1-.2-1.8,11.1,11.1,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7l.8-1.6a6.9,6.9,0,0,1,1.1-1.3A9.1,9.1,0,0,1,9,171.8a9.1,9.1,0,0,1,6.4,2.7,6.9,6.9,0,0,1,1.1,1.3l.8,1.6a8.4,8.4,0,0,1,.5,1.7,11.1,11.1,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,10.9,10.9,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4A9,9,0,0,1,9,189.8Z'/><line class='cls-1' x1='51.4' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-139.6-.2a9,9,0,0,1,0-18h0l139.6.2a9,9,0,0,1,0,18Z'/><path class='cls-2' d='M9,108.9a9,9,0,0,1-6.4-2.6,7.6,7.6,0,0,1-1.1-1.4,10.9,10.9,0,0,1-.8-1.5,15.4,15.4,0,0,1-.5-1.7A11,11,0,0,1,0,99.9a8.8,8.8,0,0,1,.2-1.7,8.4,8.4,0,0,1,.5-1.7,8,8,0,0,1,.8-1.6,6.9,6.9,0,0,1,1.1-1.3,9.1,9.1,0,0,1,8.2-2.5l1.6.5,1.6.8,1.4,1.2a6.9,6.9,0,0,1,1.1,1.3,8,8,0,0,1,.8,1.6,8.4,8.4,0,0,1,.5,1.7,8.8,8.8,0,0,1,.2,1.7,11,11,0,0,1-.2,1.8,15.4,15.4,0,0,1-.5,1.7,10.9,10.9,0,0,1-.8,1.5,7.6,7.6,0,0,1-1.1,1.4L14,107.4l-1.6.8a10.4,10.4,0,0,1-1.6.6Z'/></svg>";
-const numberListIcon = "<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><line class='cls-1' x1='119.5' y1='19' x2='191' y2='19.2'/><path class='cls-2' d='M191,28.2h0L119.5,28a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='180.8' x2='191' y2='181'/><path class='cls-2' d='M191,190h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><line class='cls-1' x1='119.5' y1='99.9' x2='191' y2='100.1'/><path class='cls-2' d='M191,109.1h0l-71.5-.2a9,9,0,0,1,0-18h0l71.5.2a9,9,0,0,1,0,18Z'/><path d='M52.6,191.5a8.5,8.5,0,0,1-6-2.3,7.8,7.8,0,0,1-2.3-5.5V27.2l2.9,2.6L12.6,53.2a8,8,0,0,1-4.4,1.3,7.6,7.6,0,0,1-5.6-2.6A7.7,7.7,0,0,1,.1,46.4a7.3,7.3,0,0,1,4.2-6.7L47.7,11.1a10.4,10.4,0,0,1,3.2-1.5,7.8,7.8,0,0,1,3-.1A7,7,0,0,1,59.1,12a8.1,8.1,0,0,1,1.8,5.3V183.7a7.4,7.4,0,0,1-2.3,5.5A8.3,8.3,0,0,1,52.6,191.5Z'/></svg>";
 // Elements
 const expList = document.querySelector(".experience-list");
 const addExpBtn = document.querySelector(".add-experience");
@@ -696,26 +815,6 @@ const descDivObj = {
 };
 const descBtnsDivObj = {
     elemClasses: "list-desc-btns",
-    elemIndexClasses: ""
-};
-const boldBtnObj = {
-    elemClasses: "list-desc-btn, list-bold-btn",
-    elemIndexClasses: ""
-};
-const italicBtnObj = {
-    elemClasses: "list-desc-btn, list-italic-btn",
-    elemIndexClasses: ""
-};
-const underlineBtnObj = {
-    elemClasses: "list-desc-btn, list-underline-btn",
-    elemIndexClasses: ""
-};
-const nrListBtnObj = {
-    elemClasses: "list-desc-btn, list-list-btn, list-nr-list-btn",
-    elemIndexClasses: ""
-};
-const bpListBtnObj = {
-    elemClasses: "list-desc-btn, list-list-btn, list-bp-list-btn",
     elemIndexClasses: ""
 };
 const descTextAreaObj = {
@@ -857,32 +956,39 @@ function addExperience() {
         const pdfOutput = document.createElement("p");
         pdfOutput.classList.add(outputClass);
         const maxDescLength = 200;
-        function textAreaInput() {
-            // Change the element value to the input value
-            const output = document.querySelector("." +
-                outputClass);
-            // Limit the character number
-            if (descTextArea.innerText.length > maxDescLength) {
-                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
-            }
-            // Append the text to the pdf preview
-            if (output) {
-                output.innerHTML = descTextArea.innerHTML;
-            }
-        }
-        descTextArea.addEventListener("input", textAreaInput);
+        descTextArea.addEventListener("input", function () {
+            textAreaInput(descTextArea, maxDescLength);
+        });
         /* Description Buttons && Text Area */
         boldBtn.addEventListener("click", () => {
-            document.execCommand("bold");
             boldBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionBold();
+            if (boldBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("bold");
+            }
+            else if (textState) {
+                document.execCommand("bold");
+            }
         });
         italicBtn.addEventListener("click", () => {
-            document.execCommand("italic");
             italicBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionItalic();
+            if (italicBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("italic");
+            }
+            else if (textState) {
+                document.execCommand("italic");
+            }
         });
         underlineBtn.addEventListener("click", () => {
-            document.execCommand("underline");
             underlineBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionUnderline();
+            if (underlineBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("underline");
+            }
+            else if (textState) {
+                document.execCommand("underline");
+            }
         });
         let currentListNum = 1;
         nrListBtn.addEventListener("click", () => {
@@ -893,7 +999,8 @@ function addExperience() {
                 descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
             }
             nrListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
             currentListNum++;
         });
         bpListBtn.addEventListener("click", () => {
@@ -904,7 +1011,8 @@ function addExperience() {
                 descTextArea.innerHTML += `&#x2022;&nbsp;`;
             }
             bpListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
         });
         /* Append the elements to PDF */
         // Append the section elements to the pdf
@@ -1177,20 +1285,9 @@ function addEducation() {
         const pdfOutput = document.createElement("p");
         pdfOutput.classList.add(outputClass);
         const maxDescLength = 200;
-        function textAreaInput() {
-            // Change the element value to the input value
-            const output = document.querySelector("." +
-                outputClass);
-            // Limit the character number
-            if (descTextArea.innerText.length > maxDescLength) {
-                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
-            }
-            // Append the text to the pdf preview
-            if (output) {
-                output.innerHTML = descTextArea.innerHTML;
-            }
-        }
-        descTextArea.addEventListener("input", textAreaInput);
+        descTextArea.addEventListener("input", function () {
+            textAreaInput(descTextArea, maxDescLength);
+        });
         /* List title change */
         function changeListTitle() {
             switch (true) {
@@ -1211,16 +1308,34 @@ function addEducation() {
         degreeInp.addEventListener("input", changeListTitle);
         /* Description Buttons && Text Area */
         boldBtn.addEventListener("click", () => {
-            document.execCommand("bold");
             boldBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionBold();
+            if (boldBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("bold");
+            }
+            else if (textState) {
+                document.execCommand("bold");
+            }
         });
         italicBtn.addEventListener("click", () => {
-            document.execCommand("italic");
             italicBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionItalic();
+            if (italicBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("italic");
+            }
+            else if (textState) {
+                document.execCommand("italic");
+            }
         });
         underlineBtn.addEventListener("click", () => {
-            document.execCommand("underline");
             underlineBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionUnderline();
+            if (underlineBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("underline");
+            }
+            else if (textState) {
+                document.execCommand("underline");
+            }
         });
         let currentListNum = 1;
         nrListBtn.addEventListener("click", () => {
@@ -1231,7 +1346,8 @@ function addEducation() {
                 descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
             }
             nrListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
             currentListNum++;
         });
         bpListBtn.addEventListener("click", () => {
@@ -1242,7 +1358,8 @@ function addEducation() {
                 descTextArea.innerHTML += `&#x2022;&nbsp;`;
             }
             bpListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
         });
         /* Append the elements to PDF */
         // Append the section elements to the pdf
@@ -1680,20 +1797,9 @@ function addReferences() {
         const pdfOutput = document.createElement("p");
         pdfOutput.classList.add(outputClass);
         const maxDescLength = 200;
-        function textAreaInput() {
-            // Change the element value to the input value
-            const output = document.querySelector("." +
-                outputClass);
-            // Limit the character number
-            if (descTextArea.innerText.length > maxDescLength) {
-                descTextArea.innerText = descTextArea.innerText.slice(0, maxDescLength);
-            }
-            // Append the text to the pdf preview
-            if (output) {
-                output.innerHTML = descTextArea.innerHTML;
-            }
-        }
-        descTextArea.addEventListener("input", textAreaInput);
+        descTextArea.addEventListener("input", function () {
+            textAreaInput(descTextArea, maxDescLength);
+        });
         /* List title change */
         function changeListTitle() {
             switch (true) {
@@ -1714,16 +1820,34 @@ function addReferences() {
         refNameInp.addEventListener("input", changeListTitle);
         /* Description Buttons && Text Area */
         boldBtn.addEventListener("click", () => {
-            document.execCommand("bold");
             boldBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionBold();
+            if (boldBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("bold");
+            }
+            else if (textState) {
+                document.execCommand("bold");
+            }
         });
         italicBtn.addEventListener("click", () => {
-            document.execCommand("italic");
             italicBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionItalic();
+            if (italicBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("italic");
+            }
+            else if (textState) {
+                document.execCommand("italic");
+            }
         });
         underlineBtn.addEventListener("click", () => {
-            document.execCommand("underline");
             underlineBtn.classList.toggle("desc-btn-active");
+            const textState = isSelectionUnderline();
+            if (underlineBtn.classList.contains("desc-btn-active")) {
+                document.execCommand("underline");
+            }
+            else if (textState) {
+                document.execCommand("underline");
+            }
         });
         let currentListNum = 1;
         nrListBtn.addEventListener("click", () => {
@@ -1734,7 +1858,8 @@ function addReferences() {
                 descTextArea.innerHTML += `${currentListNum}.&nbsp;`;
             }
             nrListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
             currentListNum++;
         });
         bpListBtn.addEventListener("click", () => {
@@ -1745,7 +1870,8 @@ function addReferences() {
                 descTextArea.innerHTML += `&#x2022;&nbsp;`;
             }
             bpListBtn.classList.toggle("desc-btn-active");
-            textAreaInput();
+            textAreaInput(descTextArea, maxDescLength);
+            setFocus(descTextArea);
         });
         /* Append the elements to PDF */
         // Append the section elements to the pdf
@@ -2149,3 +2275,4 @@ function addHobby() {
     }
 }
 addHobbyBtn?.addEventListener("click", addHobby);
+//*--|*|--*\\_____// Description Text Areas \\_____//*--|*|--*\\

@@ -25,6 +25,8 @@ function inputInfo(elem, outputVal) {
 //*--|*|--*\\_____// Page Setup \\_____//*--|*|--*\\
 // Elements
 const pageDimensions = document.querySelector(".page-dimensions-input");
+const asidePlacement = document.querySelector(".aside-place-input");
+const pagePadding = document.querySelector(".page-padding-input");
 const asideWidth = document.querySelector(".aside-width-input");
 /* Page Dimensions */
 function pdfPageDimensions() {
@@ -82,6 +84,44 @@ function pdfPageDimensions() {
 }
 pdfPageDimensions();
 pageDimensions?.addEventListener("input", pdfPageDimensions);
+/* Aside Placement */
+function asidePlaceChange() {
+    if (asidePlacement.checked) {
+        document.body.classList.add("aside-right");
+    }
+    else {
+        document.body.classList.remove("aside-right");
+    }
+}
+asidePlaceChange();
+asidePlacement?.addEventListener("input", asidePlaceChange);
+/* Page Padding */
+function pdfPagePadding() {
+    const elem = pagePadding;
+    let inpVal = "";
+    switch (elem.value) {
+        case "1":
+            inpVal = "1.5cqw";
+            break;
+        case "2":
+            inpVal = "2cqw";
+            break;
+        case "3":
+            inpVal = "2.5cqw";
+            break;
+        case "4":
+            inpVal = "3cqw";
+            break;
+        case "5":
+            inpVal = "3.5cqw";
+            break;
+    }
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+    const outputVal = "LVL " + elem.value;
+    inputInfo(elem, outputVal);
+}
+pdfPagePadding();
+pagePadding?.addEventListener("input", pdfPagePadding);
 /* Aside Width */
 function pdfAsideWidth() {
     const elem = asideWidth;
@@ -200,13 +240,13 @@ asideColorReset?.addEventListener("click", asideBaseColor);
 // Elements
 const txtTypeface = document.querySelector(".text-tf-input");
 const txtTypefaceOptions = document.querySelectorAll(".text-tf-input option");
+const txtAlign = document.querySelector(".text-align-input");
+const txtBalance = document.querySelector(".text-balance-input");
 const txtFontSize = document.querySelector(".text-size-input");
 const headingFontSize = document.querySelector(".heading-size-input");
 const lineHeight = document.querySelector(".line-height-input");
 const headingCase = document.querySelector(".heading-case-input");
 /* Typeface & Options */
-// Typeface Select Element
-const typefacesStyle = document.createElement('style');
 function typefaceChange() {
     document.documentElement.style.setProperty(`--${txtTypeface?.getAttribute("id")}`, txtTypeface.value);
 }
@@ -216,6 +256,23 @@ txtTypeface?.addEventListener("input", typefaceChange);
 txtTypefaceOptions.forEach(function (option) {
     option.style.fontFamily = option.value;
 });
+/* Text Alignment */
+function txtAlignChange() {
+    document.documentElement.style.setProperty(`--${txtAlign?.getAttribute("id")}`, txtAlign.value);
+}
+txtAlignChange();
+txtAlign?.addEventListener("input", txtAlignChange);
+/* Text Balance */
+function txtBalanceChange() {
+    if (txtBalance.checked) {
+        document.body.classList.remove("balanced-txt");
+    }
+    else {
+        document.body.classList.add("balanced-txt");
+    }
+}
+txtBalanceChange();
+txtBalance?.addEventListener("input", txtBalanceChange);
 /* Heading Case */
 function headCaseChange() {
     if (headingCase.checked) {
@@ -406,19 +463,19 @@ function sectionSpacingChange() {
     let inpVal = "";
     switch (elem.value) {
         case "1":
-            inpVal = "1.2cqw";
+            inpVal = "1cqw";
             break;
         case "2":
             inpVal = "1.6cqw";
             break;
         case "3":
-            inpVal = "2cqw";
+            inpVal = "2.2cqw";
             break;
         case "4":
-            inpVal = "2.4cqw";
+            inpVal = "2.8cqw";
             break;
         case "5":
-            inpVal = "3cqw";
+            inpVal = "3.4cqw";
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);

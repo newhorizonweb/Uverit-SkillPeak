@@ -19,13 +19,18 @@
     align-items:flex-start;
 }
 
-.pdf-sec{
+.pdf-sec,
+.pdf-main .pdf-sec > div{
     display:flex;
     flex-direction:column;
     gap:var(--paragraph-spacing-input);
 }
 
-.pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading{
+.pdf-sec:has(> div:empty),
+.pdf-heading:not(:has(p:not(:empty))),
+.pdf-aside .pdf-sec:not(:has(p:not(:empty))),
+.pdf-aside .pdf-sec:not(:has(p:not(:empty))) .pdf-sec-heading,
+.pdf-sum-sec:has(p:empty){
     display:none;
 }
 
@@ -56,7 +61,7 @@
 .pdf-aside{
     height:100%;
     width:var(--aside-width-input);
-    padding:2cqw;
+    padding:var(--page-padding-input);
     box-sizing:border-box;
 
     display:flex;
@@ -64,6 +69,10 @@
     gap:var(--section-spacing-input);
 
     background-color:var(--pdf-color-aside);
+}
+
+.aside-right .pdf-aside{
+    order:1;
 }
 
 .pdf-sec-subhead{
@@ -76,12 +85,15 @@
 }
 
 .pdf-sec-subhead.subhead-visible{
-    display:block;
+    display:flex;
 }
 
 .pdf-sec-icon{
     width:2.5cqw;
-    aspect-ratio:1/1;
+    height:2.5cqw;
+
+    justify-content:center;
+    align-items:center;
 }
 
 .pdf-sec-icon svg{
@@ -105,6 +117,17 @@
 
 
         /* PDF Aside - Photo & QR Code */
+
+.pdf-qr-div{
+    display:flex;
+    flex-direction:column;
+    gap:var(--paragraph-spacing-input);
+}
+
+
+.pdf-aside:has(.pdf-links:empty) .pdf-qr-div{
+    margin-top:auto;
+}
 
 .insert-photo,
 .qr-insert{
@@ -149,11 +172,23 @@
     width:var(--qr-size-input);
 }
 
+.pdf-qr-name{
+    text-align:center;
+}
+
         /* PDF Aside - Details */
 
 .pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty)) .pdf-address:after,
-.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-post-code:not(:empty)) .pdf-address:after{
+.pdf-sec-elem:has(.pdf-address:not(:empty) ~ .pdf-post-code:not(:empty)) .pdf-address:after{
     content:",";
+}
+
+.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty) + .pdf-post-code:not(:empty)) .pdf-address{
+    width:calc(100% - 3cqw);
+}
+
+.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty) + .pdf-post-code:not(:empty)) .pdf-city{
+    margin-left:3cqw;
 }
 
         /* PDF Aside - Skills & Hobbies */
@@ -172,6 +207,12 @@
 
         /* PDF Aside - Links */
 
+.pdf-links{
+    display:flex;
+    flex-direction:column;
+    gap:var(--paragraph-spacing-input);
+}
+
 .pdf-links-sec{
     margin-top:auto;
 }
@@ -189,8 +230,12 @@
 .pdf-main{
     flex:1;
     height:100%;
-    padding:2cqw;
+    padding:var(--page-padding-input);
     box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+    gap:var(--section-spacing-input);
 }
 
 .pdf-main > div{
@@ -207,12 +252,28 @@
     display:flex;
     flex-wrap:wrap;
     justify-content:flex-start;
-    column-gap:0.5cqw;
+    column-gap:0.75cqw;
+}
+
+.pdfc-inner :is(.pdf-first-name, .pdf-last-name){
+    font-size:calc(var(--heading-size-input) * 2);
+}
+
+.pdfc-inner .pdf-occupation{
+    font-size:var(--heading-size-input);
 }
 
 .pdf-occupation,
 .pdf-summary{
     width:100%;
+}
+
+.pdf-summary{
+    text-align:var(--text-align-input);
+}
+
+.balanced-txt .pdf-summary{
+    text-wrap:balance;
 }
 
         /* PDF Main - List Group */
@@ -240,6 +301,10 @@
     display:none;
 }
 
+:is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec) .pdf-list-inner > .app-elem:nth-of-type(1){
+    font-weight:800;
+}
+
 .pdf-list-inner > .app-elem:nth-of-type(2){
     margin-left:auto;
     display:block;
@@ -263,6 +328,11 @@
 
 .pdf-list-inner > p:nth-last-child(1){
     width:100%;
+    text-align:var(--text-align-input);
+}
+
+.balanced-txt .pdf-list-inner > p:nth-last-child(1){
+    text-wrap:balance;
 }
 
         /* PDF Main - References */
@@ -352,6 +422,7 @@
     
     width:100%;
     position:relative;
+
     display:flex;
     align-items:center;
     
@@ -363,7 +434,9 @@
 .pdf-aside .pdf-sec-heading{
     --pdf-bg:var(--pdf-color-aside);
     --head-small-width:90%;
+    margin-bottom:calc(var(--border-size) * 2);
 }
+
 .pdf-main .pdf-sec-heading{
     --pdf-bg:#FFF;
     --head-small-width:65%;
@@ -388,6 +461,10 @@
 
 .head-design4 .pdf-sec-heading{
     justify-content:center;
+}
+
+:is(.head-design3, .head-design4) .pdf-sec-heading{
+    margin-bottom:calc(var(--border-size) * 2);
 }
 
 :is(.head-design3, .head-design4) .pdf-sec-heading:after{
@@ -451,14 +528,14 @@
 
 .head-design8 .pdf-sec-heading:before{
     top:0;
-    left:0;
+    left:var(--border-size);
     transform:translate(-50%, -50%) rotate(45deg);
     border-right:solid var(--border-size) var(--pdf-color-main);
 }
 
 .head-design8 .pdf-sec-heading:after{
     bottom:0;
-    right:0;
+    right:var(--border-size);
     transform:translate(50%, 50%) rotate(45deg);
     border-left:solid var(--border-size) var(--pdf-color-main);
 }
@@ -516,6 +593,12 @@
     --lvl-height:calc(var(--text-size-input) / 2);
 }
 
+.lang-append{
+    display:flex;
+    flex-direction:column;
+    gap:var(--paragraph-spacing-input);
+}
+
 .hide-lvl,
 .lang-design1 .pdf-lang-elem :where(.pdf-lang-lvl-long, .lang-lvl-span),
 .lang-design2 .pdf-lang-elem :where(.pdf-lang-lvl-short, .lang-lvl-span),
@@ -539,6 +622,7 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
 .pdf-lang-lvl{
     width:100%;
     height:var(--lvl-height);
+    box-sizing:border-box;
     position:relative;
 
     display:flex;
@@ -574,6 +658,7 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
         /* Style 3 & 4 */
 
 .lang-design3 .pdf-lang-lvl{
+    height:calc((var(--text-size-input) / 2) + 0.4cqw);
     border:solid 0.2cqw var(--pdf-color-main);
     border-radius:calc((var(--lvl-height) + 0.4cqw) * (var(--general-round-input) / 2));
 }
@@ -674,23 +759,18 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
 }
 
 .pdf-list-inner{
-    padding:0 calc(var(--design-indicator) * 2);
-    padding-bottom:calc(var(--design-size) * 3);
+    padding-left:calc(var(--design-indicator) * 2);
     box-sizing:border-box;
     position:relative;
     display:flex;
 }
 
-.pdf-list-group:nth-last-child(1) .pdf-list-inner{
-    padding-bottom:0;
-}
-
 .list-design-elem{
     width:var(--design-size);
-    min-height:calc(100% + (var(--design-indicator) + var(--design-size) * 3) - ((var(--text-size-input) * var(--line-height-input) / 2)));
+    min-height:calc(100% + var(--design-indicator));
 
     position:absolute;
-    top:calc((var(--text-size-input) * var(--line-height-input) / 2) - (var(--design-indicator) / 2));
+    top:calc((var(--text-size-input) * var(--line-height-input) / 2) - (var(--design-indicator) / 2) + 1px);
 
     background-color:var(--pdf-color-main);
     z-index:1000;
@@ -760,12 +840,8 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
     aspect-ratio:auto;
 }
 
-:is(.main-design7, .main-design8) .list-design-elem{
-    min-height:calc(100% - (var(--text-size-input) * var(--line-height-input) / 2) - (var(--design-size) * 3));
-}
-
-:is(.main-design7, .main-design8) .pdf-list-group:nth-last-child(1) .list-design-elem{
-    min-height:calc(100% - ((var(--text-size-input) * var(--line-height-input) / 2)));
+:is(.main-design7, .main-design8) .pdf-list-group .list-design-elem{
+    min-height:calc(100% - (var(--text-size-input) * var(--line-height-input) / 2));
 }
 
 :is(.main-design7, .main-design8) .list-design-elem:after{

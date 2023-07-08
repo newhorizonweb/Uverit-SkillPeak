@@ -1003,16 +1003,14 @@
 /* Job Desctiption - Description Text Area */
 .sec-list-desc {
   min-height: 150px;
-  color: var(--txt1);
-  font-size: 18px;
   overflow: auto;
 }
 
-.sec-list-desc {
-  height: 125px;
-  color: var(--txt1);
-  font-size: 18px;
-  overflow: auto;
+.sec-list-desc,
+.sec-list-desc * {
+  color: var(--txt1) !important;
+  font-family: font2, Roboto, Arial, sans-serif !important;
+  font-size: 18px !important;
 }
 
 .sec-list-desc[contenteditable=true]:empty:before {
@@ -1217,6 +1215,10 @@
   width: calc((100% - var(--size1) * 2) / 3);
 }
 
+.text-section .design-item:has(.pdf-select-input) {
+  width: calc((100% - var(--size1)) / 2);
+}
+
 .design-item:has(.pdf-range-input) {
   flex-direction: column;
 }
@@ -1244,11 +1246,28 @@
 
 /* Section 7 - media */
 @media screen and (1200px < width <= 1440px), screen and (width <= 768px) {
-  :where(.color-section, .text-section) .design-item {
+  :where(.page-setup-section, .color-section, .text-section) .design-item {
     width: calc((100% - var(--size1)) / 2);
   }
-  .text-section .design-item:has(.pdf-select-input) {
-    width: 100%;
+}
+@media screen and (1200px < width <= 1440px), screen and (440px < width <= 768px) {
+  .text-section .design-item:has(.text-size-input) {
+    order: 1;
+  }
+  .text-section .design-item:has(.text-balance-input) {
+    order: 2;
+  }
+  .text-section .design-item:has(.heading-size-input) {
+    order: 3;
+  }
+  .text-section .design-item:has(.heading-case-input) {
+    order: 4;
+  }
+  .text-section .design-item:has(.line-height-input) {
+    order: 5;
+  }
+  .text-section .design-item:has(.subhead-switch) {
+    order: 6;
   }
 }
 @media screen and (1024px < width <= 1200px) {
@@ -1261,12 +1280,9 @@
   }
 }
 @media screen and (width <= 440px) {
-  .design-item {
+  .design-item,
+  .text-section .design-item:has(.pdf-select-input) {
     width: 100%;
-  }
-  .text-section .design-item:has(.pdf-switch-input) {
-    width: calc((100% - var(--size1)) / 2);
-    min-width: 140px;
   }
 }
 /* Section 7 - Range Slider */

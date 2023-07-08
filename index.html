@@ -147,7 +147,6 @@
             <h3 class="sec-head">Profile</h3>
         </div>
 
-
         <div class="subsection sec-details">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Details</h4>
@@ -198,9 +197,27 @@
                         data-output="pdf-dob">
                 </div>
             </div>
-
         </div>
 
+        <div class="subsection sec-summary">
+            <div class="sec-subhead-div">
+                <h4 class="sec-subhead">Summary</h4>
+                <div class="sec-subhead-line"></div>
+            </div>
+
+            <p class="sec-desc">Highlight your key qualifications, skills, and accomplishments in 2-4 short sentences. Tailor it to the specific job, focusing on your unique selling points.</p>
+
+            <div class="section-item prof-summary-section">
+                <div class="list-desc-inner">
+                    <div class="list-desc-btns"></div>
+                    <div class="sec-list-desc sec-summary" 
+                        id="sec-summary" data-output="pdf-summary" 
+                        contenteditable="true"
+                        placeholder="Resume introduction and qualifications overview. (max 320 characters)">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="subsection sec-contact">
             <div class="sec-subhead-div">
@@ -261,23 +278,6 @@
                     class="sec-input inp-add sec-country" 
                     data-output="pdf-country"
                     placeholder="United States">
-            </div>
-        </div>
-
-
-        <div class="subsection sec-summary">
-            <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Summary</h4>
-                <div class="sec-subhead-line"></div>
-            </div>
-
-            <p class="sec-desc">Highlight your key qualifications, skills, and accomplishments in 2-4 short sentences. Tailor it to the specific job, focusing on your unique selling points.</p>
-
-            <div class="section-item">
-                <textarea id="sec-summary" maxlength="320" 
-                    aria-label="Professional Summary"
-                    class="sec-input inp-add sec-textarea sec-summary" data-output="pdf-summary"
-                    placeholder="Resume introduction and qualifications overview. (max 320 characters)"></textarea>
             </div>
         </div>
 
@@ -541,7 +541,7 @@
             <h3 class="sec-head">Design</h3>
         </div>
 
-        <div class="subsection">
+        <div class="subsection page-setup-section">
             <div class="sec-subhead-div">
                 <h4 class="sec-subhead">Page Setup</h4>
                 <div class="sec-subhead-line"></div>
@@ -565,11 +565,25 @@
             </div>
 
             <div class="design-item">
+                <label for="aside-place-input">Aside Placement</label>
+
+                <p class="switch-info">Left</p>
+                <input type="checkbox" class="pdf-switch-input aside-place-input"
+                    id="aside-place-input">
+                <p class="switch-info">Right</p>
+            </div>
+
+            <div class="design-item">
+                <label for="page-padding-input">Page Padding</label>
+                <input type="range" class="pdf-range-input page-padding-input"
+                    min="1" max="5" value="3" id="page-padding-input">
+            </div>
+
+            <div class="design-item">
                 <label for="aside-width-input">Aside Width</label>
                 <input type="range" class="pdf-range-input aside-width-input"
                     min="1" max="5" value="3" id="aside-width-input">
             </div>
-
         </div>
 
         <div class="subsection color-section">
@@ -640,6 +654,24 @@
                             class="tf-times-new-roman">Times New Roman</option>
                     </optgroup>
                 </select>
+            </div>
+
+            <div class="design-item">
+                <label for="text-align-input">Text Alignment</label>
+                <select class="pdf-select-input text-align-input" id="text-align-input">
+                    <option value="start">Start</option>
+                    <option value="end">End</option>
+                    <option value="justify">Justify</option>
+                </select>
+            </div>
+
+            <div class="design-item">
+                <label for="text-balance-input">Text Balance</label>
+
+                <p class="switch-info">On</p>
+                <input type="checkbox" class="pdf-switch-input text-balance-input"
+                    id="text-balance-input">
+                <p class="switch-info">Off</p>
             </div>
 
             <div class="design-item">
@@ -1077,8 +1109,11 @@
                                 <div class="pdf-heading">
                                     <p class="pdf-first-name"></p>
                                     <p class="pdf-last-name"></p>
-
                                     <p class="pdf-occupation"></p>
+                                </div>
+
+                                <div class="pdf-sec pdf-sum-sec">
+                                    <h3 class="pdf-sec-heading">Summary</h3>
                                     <p class="pdf-summary"></p>
                                 </div>
 

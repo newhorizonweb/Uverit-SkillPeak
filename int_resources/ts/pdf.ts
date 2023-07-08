@@ -52,6 +52,8 @@ function inputInfo(elem, outputVal){
 
 // Elements
 const pageDimensions:HTMLInputElement | null = document.querySelector(".page-dimensions-input");
+const asidePlacement:HTMLInputElement | null = document.querySelector(".aside-place-input");
+const pagePadding:HTMLInputElement | null = document.querySelector(".page-padding-input");
 const asideWidth:HTMLInputElement | null = document.querySelector(".aside-width-input");
 
 
@@ -79,7 +81,7 @@ function pdfPageDimensions(){
             docHeight = "14in";
             break;
 
-            
+
         case "9-16":
             docWidth = "900px";
             docHeight = "1600px";
@@ -126,6 +128,59 @@ function pdfPageDimensions(){
 
 pdfPageDimensions();
 pageDimensions?.addEventListener("input", pdfPageDimensions);
+
+
+    /* Aside Placement */
+
+function asidePlaceChange(){
+    if (asidePlacement!.checked){
+        document.body.classList.add("aside-right");
+    } else {
+        document.body.classList.remove("aside-right");
+    }
+}
+
+asidePlaceChange();
+asidePlacement?.addEventListener("input", asidePlaceChange);
+
+
+
+
+    /* Page Padding */
+
+function pdfPagePadding(){
+
+    const elem:HTMLInputElement | null = pagePadding;
+
+    let inpVal:string = "";
+
+    switch (elem!.value){
+        case "1":
+            inpVal = "1.5cqw";
+            break;
+        case "2":
+            inpVal = "2cqw";
+            break;
+        case "3":
+            inpVal = "2.5cqw";
+            break;
+        case "4":
+            inpVal = "3cqw";
+            break;
+        case "5":
+            inpVal = "3.5cqw";
+            break;
+    }
+
+    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+
+    const outputVal:string = "LVL " + elem!.value;
+    inputInfo(elem, outputVal);
+
+}
+
+pdfPagePadding();
+pagePadding?.addEventListener("input", pdfPagePadding);
 
 
 
@@ -294,6 +349,9 @@ asideColorReset?.addEventListener("click", asideBaseColor);
 const txtTypeface:HTMLSelectElement | null = document.querySelector(".text-tf-input");
 const txtTypefaceOptions:NodeListOf<HTMLOptionElement> = document.querySelectorAll(".text-tf-input option");
 
+const txtAlign:HTMLSelectElement | null = document.querySelector(".text-align-input");
+const txtBalance:HTMLInputElement | null = document.querySelector(".text-balance-input");
+
 const txtFontSize:HTMLInputElement | null = document.querySelector(".text-size-input");
 const headingFontSize:HTMLInputElement | null = document.querySelector(".heading-size-input");
 const lineHeight:HTMLInputElement | null = document.querySelector(".line-height-input");
@@ -303,9 +361,6 @@ const headingCase:HTMLInputElement | null = document.querySelector(".heading-cas
 
 
     /* Typeface & Options */
-
-// Typeface Select Element
-const typefacesStyle:HTMLStyleElement = document.createElement('style');
 
 function typefaceChange(){
     document.documentElement.style.setProperty(`--${txtTypeface?.getAttribute("id")}`, txtTypeface!.value);
@@ -318,6 +373,32 @@ txtTypeface?.addEventListener("input", typefaceChange);
 txtTypefaceOptions.forEach(function(option){
     option.style.fontFamily = option.value;
 });
+
+
+
+    /* Text Alignment */
+
+function txtAlignChange(){
+    document.documentElement.style.setProperty(`--${txtAlign?.getAttribute("id")}`, txtAlign!.value);
+}
+
+txtAlignChange();
+txtAlign?.addEventListener("input", txtAlignChange);
+
+
+
+    /* Text Balance */
+
+function txtBalanceChange(){
+    if (txtBalance!.checked){
+        document.body.classList.remove("balanced-txt");
+    } else {
+        document.body.classList.add("balanced-txt");
+    }
+}
+
+txtBalanceChange();
+txtBalance?.addEventListener("input", txtBalanceChange);
 
 
 
@@ -603,19 +684,19 @@ function sectionSpacingChange(){
 
     switch (elem!.value){
         case "1":
-            inpVal = "1.2cqw";
+            inpVal = "1cqw";
             break;
         case "2":
             inpVal = "1.6cqw";
             break;
         case "3":
-            inpVal = "2cqw";
+            inpVal = "2.2cqw";
             break;
         case "4":
-            inpVal = "2.4cqw";
+            inpVal = "2.8cqw";
             break;
         case "5":
-            inpVal = "3cqw";
+            inpVal = "3.4cqw";
             break;
     }
 
