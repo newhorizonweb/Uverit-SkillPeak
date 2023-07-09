@@ -4,7 +4,7 @@
     /* Program Settings */
 
 // Program Version
-const programVersion:string = "v0.22.0";
+const programVersion:string = "v0.22.1";
 
 
 
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const programVersionElem:HTMLElement | null = document.querySelector(".program-version");
 
-    programVersionElem!.innerHTML = "Uverit SkillPeak " + programVersion;
+    programVersionElem!.innerHTML = `<a href='https://github.com/newhorizonweb/Uverit-SkillPeak'>Uverit SkillPeak ${programVersion}</a>`;
 
 
 

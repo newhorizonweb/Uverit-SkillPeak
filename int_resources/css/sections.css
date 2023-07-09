@@ -9,12 +9,12 @@
   padding: var(--size1) 0 calc(var(--size1) - 5px);
   position: absolute;
   top: var(--size1);
-  left: calc(-100% - 25vw);
-  transition: all 0.15s, left 0.35s;
+  transform: translate3d(calc(-100% - 25vw), 0, 0);
+  transition: all 0.15s, transform 0.35s;
 }
 
 .visible-section {
-  left: var(--size1);
+  transform: translate3d(0, 0, 0);
 }
 
 .section-inner {
@@ -1244,47 +1244,6 @@
   line-height: 1.2;
 }
 
-/* Section 7 - media */
-@media screen and (1200px < width <= 1440px), screen and (width <= 768px) {
-  :where(.page-setup-section, .color-section, .text-section) .design-item {
-    width: calc((100% - var(--size1)) / 2);
-  }
-}
-@media screen and (1200px < width <= 1440px), screen and (440px < width <= 768px) {
-  .text-section .design-item:has(.text-size-input) {
-    order: 1;
-  }
-  .text-section .design-item:has(.text-balance-input) {
-    order: 2;
-  }
-  .text-section .design-item:has(.heading-size-input) {
-    order: 3;
-  }
-  .text-section .design-item:has(.heading-case-input) {
-    order: 4;
-  }
-  .text-section .design-item:has(.line-height-input) {
-    order: 5;
-  }
-  .text-section .design-item:has(.subhead-switch) {
-    order: 6;
-  }
-}
-@media screen and (1024px < width <= 1200px) {
-  .general-appearance .design-item {
-    width: calc((100% - var(--size1) * 3) / 4);
-    min-width: 0;
-  }
-  .general-appearance .design-item:nth-of-type(3) {
-    margin-right: 0;
-  }
-}
-@media screen and (width <= 440px) {
-  .design-item,
-  .text-section .design-item:has(.pdf-select-input) {
-    width: 100%;
-  }
-}
 /* Section 7 - Range Slider */
 .pdf-range-input {
   appearance: none;
@@ -1424,6 +1383,54 @@
   background-color: var(--color1);
 }
 
+/* Section 7 - media */
+@media screen and (1200px < width <= 1440px), screen and (width <= 768px) {
+  :where(.page-setup-section, .color-section, .text-section) .design-item {
+    width: calc((100% - var(--size1)) / 2);
+  }
+}
+@media screen and (1200px < width <= 1440px), screen and (440px < width <= 768px) {
+  .text-section .design-item:has(.text-size-input) {
+    order: 1;
+  }
+  .text-section .design-item:has(.text-balance-input) {
+    order: 2;
+  }
+  .text-section .design-item:has(.heading-size-input) {
+    order: 3;
+  }
+  .text-section .design-item:has(.heading-case-input) {
+    order: 4;
+  }
+  .text-section .design-item:has(.line-height-input) {
+    order: 5;
+  }
+  .text-section .design-item:has(.subhead-switch) {
+    order: 6;
+  }
+}
+@media screen and (1024px < width <= 1200px) {
+  .general-appearance .design-item {
+    width: calc((100% - var(--size1) * 3) / 4);
+    min-width: 0;
+  }
+  .general-appearance .design-item:nth-of-type(3) {
+    margin-right: 0;
+  }
+}
+@media screen and (width <= 440px) {
+  .design-item,
+  .text-section .design-item:has(.pdf-select-input) {
+    width: 100%;
+  }
+  .design-item:has(.pdf-switch-input) {
+    justify-content: center;
+  }
+  .switch-info {
+    width: 46px;
+    text-align: center;
+  }
+}
 /* Section 7 - Heading */
 .head-design-item {
   --head-height:calc(1em * var(--line-height-input));

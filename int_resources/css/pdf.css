@@ -33,7 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 0.5cqw;
+  column-gap: calc(var(--text-size-input) / 3);
 }
 
 .pdf-sec-elem:not(:has(p:not(:empty))) {
@@ -170,11 +170,11 @@
 }
 
 .pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty) + .pdf-post-code:not(:empty)) .pdf-address {
-  width: calc(100% - 3cqw);
+  width: calc(100% - (2.5cqw + var(--text-size-input) / 3));
 }
 
-.pdf-sec-elem:has(.pdf-address:not(:empty) + .pdf-city:not(:empty) + .pdf-post-code:not(:empty)) .pdf-city {
-  margin-left: 3cqw;
+.pdf-sec-elem:has(.pdf-sec-icon.subhead-visible ~ .pdf-address:not(:empty) + .pdf-city:not(:empty) + .pdf-post-code:not(:empty)) .pdf-city {
+  margin-left: calc(2.5cqw + var(--text-size-input) / 3);
 }
 
 /* PDF Aside - Skills & Hobbies */
@@ -231,7 +231,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  column-gap: 0.75cqw;
+  column-gap: calc(var(--heading-size-input) / 3 * 2);
 }
 
 .pdfc-inner :is(.pdf-first-name, .pdf-last-name) {
@@ -290,12 +290,12 @@
 
 .pdf-list-inner:has(.app-elem:nth-of-type(2):not(:empty) + .app-elem:nth-of-type(3):not(:empty)) > .app-elem:nth-of-type(2):after {
   content: "-";
-  margin: 0 0.5cqw;
+  margin: 0 calc(var(--text-size-input) / 3);
 }
 
 .append-elem-group:has(.app-elem:nth-of-type(1):not(:empty) + .app-elem:nth-of-type(2):not(:empty)) .app-elem:nth-of-type(1):after {
   content: ", ";
-  margin-right: 0.5cqw;
+  margin-right: calc(var(--text-size-input) / 3);
 }
 
 .pdf-list-inner > p:nth-last-child(1) {
@@ -315,13 +315,13 @@
 
 .pdf-ref:has(.app-elem:nth-of-type(1):not(:empty) + .app-elem:nth-of-type(2):not(:empty)) > .app-elem:nth-of-type(1):after {
   content: ", ";
-  margin-right: 0.5cqw;
+  margin-right: calc(var(--text-size-input) / 3);
 }
 
 .pdf-ref:has(:where(.app-elem:nth-of-type(2):not(:empty) + .app-elem:nth-of-type(3):not(:empty),
 .app-elem:nth-of-type(1):not(:empty) ~ .app-elem:nth-of-type(3):not(:empty))) > .app-elem:nth-of-type(2):after {
   content: "-";
-  margin: 0 0.5cqw;
+  margin: 0 calc(var(--text-size-input) / 3);
 }
 
 /* --/*|*\-- PDF Settings --/*|*\-- */

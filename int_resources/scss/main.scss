@@ -519,8 +519,8 @@ nav{
 
 .nav-icon{
     position:relative;
-    bottom:0;
     left:0;
+    transform:translate3d(0, 0, 0);
 
     display:flex;
     justify-content:center;
@@ -531,7 +531,7 @@ nav{
 }
 
 .curr-section .nav-icon{
-    bottom:calc(var(--elemSize) * -0.5);
+    transform:translate3d(0, calc(var(--elemSize) * 0.5), 0);
 }
 
 .nav-icon svg{
@@ -1283,15 +1283,19 @@ nav{
 
 
 
-    /* Settings */
+    /* Settings Section */
 
         /* Dark Mode */
 
 .dark-mode-div{
+    position:relative;
     display:flex;
-    align-items:center;
-    z-index:100000;
-    position:relative
+    flex-direction:column;
+}
+
+.dm-title{
+    margin-bottom:2px;
+    pointer-events:none;
 }
 
 .dm-btn{
@@ -1339,4 +1343,26 @@ nav{
 
 .dark-mode .dm-label:after{
     left:calc(50% + 4px);
+}
+
+        /* Settings Bottom Info */
+
+.settings-info{
+    align-self:flex-end;
+    margin-top:auto;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+}
+
+.settings-info *{
+    color:var(--txt-faded2);
+    font-size:14px;
+    text-align:right;
+    transition:0.15s;
+}
+
+.settings-info *:hover{
+    color:var(--color1);
 }
