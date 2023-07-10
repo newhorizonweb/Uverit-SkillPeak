@@ -418,6 +418,7 @@ function createBtn(elemObj, elemIndex) {
     const elemClasses = elemObj.elemClasses;
     const elemIndexClasses = elemObj.elemIndexClasses;
     const newElem = document.createElement("button");
+    newElem.setAttribute("aria-label", "Text Style Button");
     if (elemClasses.trim() != "") {
         const classNames = elemClasses.split(", ");
         newElem.classList.add(...classNames);
@@ -2275,4 +2276,3 @@ function addHobby() {
     }
 }
 addHobbyBtn?.addEventListener("click", addHobby);
-//*--|*|--*\\_____// Description Text Areas \\_____//*--|*|--*\\

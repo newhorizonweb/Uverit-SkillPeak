@@ -145,7 +145,6 @@ asidePlacement?.addEventListener("input", asidePlaceChange);
 
 
 
-
     /* Page Padding */
 
 function pdfPagePadding(){
