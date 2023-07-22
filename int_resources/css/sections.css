@@ -631,7 +631,7 @@
 .sec-links .sec-link-list:has(.sec-link) ~ .add-btn {
   margin-top: calc(var(--size1) / 2);
 }
-.sec-links .sec-link-list:has(.sec-link:nth-of-type(5)) ~ .add-btn {
+.sec-links .sec-link-list:has(.sec-link:nth-of-type(6)) ~ .add-btn {
   display: none;
 }
 
@@ -764,7 +764,10 @@
   margin-bottom: 0;
 }
 
-.subsection-list:has(.sec-list-elem:nth-of-type(8)) ~ .add-btn {
+.experience-list:has(.sec-list-elem:nth-of-type(10)) ~ .add-btn,
+.education-list:has(.sec-list-elem:nth-of-type(6)) ~ .add-btn,
+.courses-list:has(.sec-list-elem:nth-of-type(8)) ~ .add-btn,
+.references-list:has(.sec-list-elem:nth-of-type(6)) ~ .add-btn {
   display: none;
 }
 
@@ -1126,7 +1129,7 @@
 .sec-languages:has(.sec-lang) .add-btn {
   margin-top: calc(var(--size1) / 2);
 }
-.sec-languages .languages-list:has(.sec-lang:nth-of-type(6)) ~ .add-btn {
+.sec-languages .languages-list:has(.sec-lang:nth-of-type(8)) ~ .add-btn {
   display: none;
 }
 
@@ -1157,11 +1160,11 @@
   row-gap: calc(var(--size1) / 2);
 }
 
-.skills-list:has(.sl-elem:nth-of-type(16)) ~ .add-btn {
+.skills-list:has(.sl-elem:nth-of-type(20)) ~ .add-btn {
   display: none;
 }
 
-.accomplishments-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn,
+.accomplishments-list:has(.sl-elem:nth-of-type(16)) ~ .add-btn,
 .hobbies-list:has(.sl-elem:nth-of-type(10)) ~ .add-btn {
   display: none;
 }

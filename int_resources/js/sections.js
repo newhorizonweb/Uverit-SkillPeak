@@ -560,7 +560,7 @@ function addSummaryButtons() {
 }
 addSummaryButtons();
 // Insert the Summary content to the PDF
-const maxSumDescLength = 320;
+const maxSumDescLength = 500;
 function textAreaInput(inputElem, maxLength) {
     // Change the element value to the input value
     const output = document.querySelector("." +
@@ -648,7 +648,7 @@ const newInput2Obj = {
 let linkIndex = 0;
 function addLink() {
     const linkNumber = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
-    if (linkNumber < 5) {
+    if (linkNumber < 6) {
         // Create a link div
         const newLinkDiv = createDiv(linkDivObj, linkIndex);
         /* Link Name */
@@ -825,7 +825,7 @@ const descTextAreaObj = {
 let expIndex = 0;
 function addExperience() {
     const listNumber = expList?.querySelectorAll(".sec-list-elem").length ?? 0;
-    if (listNumber < 8) {
+    if (listNumber < 10) {
         /* Section Div && Head */
         // Section Div
         const listSection = createDiv(listSectionObj, expIndex);
@@ -1163,7 +1163,7 @@ const currSchoolLabObj = {
 let eduIndex = 0;
 function addEducation() {
     const listNumber = eduList?.querySelectorAll(".sec-list-elem").length ?? 0;
-    if (listNumber < 8) {
+    if (listNumber < 6) {
         /* Section Div && Head */
         // Section Div
         const listSection = createDiv(listSectionObj, eduIndex);
@@ -1972,7 +1972,7 @@ const langLvlLabelObj = {
 let langIndex = 0;
 function addLang() {
     const langNumber = langList?.querySelectorAll(".sec-lang").length ?? 0;
-    if (langNumber < 6) {
+    if (langNumber < 8) {
         // Create a link div
         const langDiv = createDiv(langDivObj, langIndex);
         /* Lang Name */
@@ -2141,7 +2141,7 @@ const skillInpObj = {
 let skillIndex = 0;
 function addSkill() {
     const elemNumber = skillList?.querySelectorAll(".sl-elem").length ?? 0;
-    if (elemNumber < 16) {
+    if (elemNumber < 20) {
         /* Elements */
         // Create a parent div
         const parentDiv = createDiv(slDivObj, skillIndex);
@@ -2191,7 +2191,7 @@ const accompInpObj = {
 let accompIndex = 0;
 function addAccomp() {
     const elemNumber = skillList?.querySelectorAll(".sl-elem").length ?? 0;
-    if (elemNumber < 10) {
+    if (elemNumber < 16) {
         /* Elements */
         // Create a parent div
         const parentDiv = createDiv(slDivObj, accompIndex);

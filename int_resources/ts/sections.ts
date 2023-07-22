@@ -793,7 +793,7 @@ function addSummaryButtons(){
 addSummaryButtons();
 
 // Insert the Summary content to the PDF
-const maxSumDescLength:number = 320; 
+const maxSumDescLength:number = 500; 
 
 function textAreaInput(inputElem, maxLength){
 
@@ -908,7 +908,7 @@ function addLink(){
 
     const linkNumber:number = pdfLinks?.querySelectorAll(".sec-link").length ?? 0;
     
-    if (linkNumber < 5){
+    if (linkNumber < 6){
 
         // Create a link div
         const newLinkDiv:HTMLElement = createDiv(linkDivObj, linkIndex);
@@ -1158,7 +1158,7 @@ function addExperience(){
 
     const listNumber:number = expList?.querySelectorAll(".sec-list-elem").length ?? 0;
 
-    if (listNumber < 8){
+    if (listNumber < 10){
 
 
 
@@ -1642,7 +1642,7 @@ function addEducation(){
 
     const listNumber:number = eduList?.querySelectorAll(".sec-list-elem").length ?? 0;
 
-    if (listNumber < 8){
+    if (listNumber < 6){
 
 
 
@@ -2817,7 +2817,7 @@ function addLang(){
 
     const langNumber:number = langList?.querySelectorAll(".sec-lang").length ?? 0;
     
-    if (langNumber < 6){
+    if (langNumber < 8){
 
         // Create a link div
         const langDiv:HTMLElement = createDiv(langDivObj, langIndex);
@@ -3070,7 +3070,7 @@ function addSkill(){
 
     const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
     
-    if (elemNumber < 16){
+    if (elemNumber < 20){
 
 
 
@@ -3155,7 +3155,7 @@ function addAccomp(){
 
     const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
     
-    if (elemNumber < 10){
+    if (elemNumber < 16){
 
 
 

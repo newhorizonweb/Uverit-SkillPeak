@@ -813,7 +813,7 @@ nav {
     transition-delay: 0s;
   }
   .curr-section .nav-icon {
-    bottom: 0;
+    transform: translate3d(0, 0, 0);
   }
   .nav-txt {
     display: none;
