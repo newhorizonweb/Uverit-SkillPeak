@@ -793,7 +793,7 @@ function addSummaryButtons(){
 addSummaryButtons();
 
 // Insert the Summary content to the PDF
-const maxSumDescLength:number = 500; 
+const maxSumDescLength:number = 600; 
 
 function textAreaInput(inputElem, maxLength){
 
@@ -1358,7 +1358,7 @@ function addExperience(){
         const pdfOutput:HTMLElement = document.createElement("p");
         pdfOutput.classList.add(outputClass!);
     
-        const maxDescLength:number = 200; 
+        const maxDescLength:number = 800; 
 
         descTextArea.addEventListener("input", function(){
             textAreaInput(descTextArea, maxDescLength);
@@ -1833,7 +1833,7 @@ function addEducation(){
         const pdfOutput:HTMLElement = document.createElement("p");
         pdfOutput.classList.add(outputClass!);
     
-        const maxDescLength:number = 200; 
+        const maxDescLength:number = 800; 
 
         descTextArea.addEventListener("input", function(){
             textAreaInput(descTextArea, maxDescLength);
@@ -2577,7 +2577,7 @@ function addReferences(){
         const pdfOutput:HTMLElement = document.createElement("p");
         pdfOutput.classList.add(outputClass!);
     
-        const maxDescLength:number = 200; 
+        const maxDescLength:number = 800; 
 
         descTextArea.addEventListener("input", function(){
             textAreaInput(descTextArea, maxDescLength);
