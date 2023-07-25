@@ -124,6 +124,9 @@
     gap:var(--paragraph-spacing-input);
 }
 
+.pdf-qr-div:not(:has(p:not(:empty))){
+    display:none;
+}
 
 .pdf-aside:has(.pdf-links:empty) .pdf-qr-div{
     margin-top:auto;
@@ -222,6 +225,14 @@
     display:flex;
     flex-direction:column;
     align-items:flex-start;
+}
+
+.aside-dark-txt .pdf-links-sec .pdf-sec-elem p:nth-of-type(1){
+    color:#6A6A6A;
+}
+
+.aside-light-txt .pdf-links-sec .pdf-sec-elem p:nth-of-type(1){
+    color:#CFCFCF;
 }
 
 
@@ -691,39 +702,37 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
 .lang-design7 .pdf-lang-elem .lang-lvl-span:before,
 .lang-design7 .pdf-lang-elem .lang-lvl-span:after{
     content:"";
-    width:var(--lvl-height);
-    aspect-ratio:1/1;
-    box-sizing:border-box;
+    width:0;
+    height:0;
 
     position:absolute;
+    top:0;
     z-index:100;
 }
 
 .lang-design5 .pdf-lang-lvl:before,
 .lang-design5 .pdf-lang-elem .last-active-span + .lang-lvl-span:before,
 .lang-design7 .pdf-lang-elem .lang-lvl-span:before{
-    top:0;
     left:0;
 
-    border:solid calc(var(--lvl-height) / 2) var(--pdf-color-aside);
-    border-right:solid calc(var(--lvl-height) / 2) transparent;
-    border-bottom:solid calc(var(--lvl-height) / 2) transparent;
+    border:solid calc(var(--lvl-height) / 1.4) var(--pdf-color-aside);
+    border-right:solid calc(var(--lvl-height) / 1.4) transparent;
+    border-bottom:solid calc(var(--lvl-height) / 1.4) transparent;
 }
 
 .lang-design5 .pdf-lang-elem .last-active-span + .lang-lvl-span:before{
-    border:solid calc(var(--lvl-height) / 2) var(--pdf-color-main);
-    border-right:solid calc(var(--lvl-height) / 2) transparent;
-    border-bottom:solid calc(var(--lvl-height) / 2) transparent;
+    border:solid calc(var(--lvl-height) / 1.4) var(--pdf-color-main);
+    border-right:solid calc(var(--lvl-height) / 1.4) transparent;
+    border-bottom:solid calc(var(--lvl-height) / 1.4) transparent;
 }
 
 .lang-design5 .pdf-lang-lvl:after,
 .lang-design7 .pdf-lang-elem .lang-lvl-span:after{
-    bottom:0;
     right:0;
 
-    border:solid calc(var(--lvl-height) / 2) var(--pdf-color-aside);
-    border-top:solid calc(var(--lvl-height) / 2) transparent;
-    border-left:solid calc(var(--lvl-height) / 2) transparent;
+    border:solid calc(var(--lvl-height) / 1.4) var(--pdf-color-aside);
+    border-top:solid calc(var(--lvl-height) / 1.4) transparent;
+    border-left:solid calc(var(--lvl-height) / 1.4) transparent;
 }
 
         /* Style 6 */
