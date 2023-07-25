@@ -2240,7 +2240,7 @@ const hobbyInpObj = {
 };
 let hobbyIndex = 0;
 function addHobby() {
-    const elemNumber = skillList?.querySelectorAll(".sl-elem").length ?? 0;
+    const elemNumber = hobbyList?.querySelectorAll(".sl-elem").length ?? 0;
     if (elemNumber < 10) {
         /* Elements */
         // Create a parent div

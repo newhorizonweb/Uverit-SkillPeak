@@ -3239,7 +3239,7 @@ let hobbyIndex:number = 0;
 
 function addHobby(){
 
-    const elemNumber:number = skillList?.querySelectorAll(".sl-elem").length ?? 0;
+    const elemNumber:number = hobbyList?.querySelectorAll(".sl-elem").length ?? 0;
     
     if (elemNumber < 10){
 
