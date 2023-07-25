@@ -905,6 +905,10 @@ body:not(.lang-design1, .lang-design2) .pdf-lang-elem :where(.pdf-lang-lvl-short
         backdrop-filter:none;
     }
 
+    .pdfc-inner{
+        background-color:#FFF;
+    }
+
     .pdfc-inner-inner{
         position:absolute;
         top:0;
