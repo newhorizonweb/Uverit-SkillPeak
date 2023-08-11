@@ -621,6 +621,31 @@ function pdfQrSize() {
 }
 pdfQrSize();
 qrSize?.addEventListener("input", pdfQrSize);
+//*--|*|--*\\_____// Additional Section \\_____//*--|*|--*\\
+const secSnap = document.querySelector(".add-section-snap");
+const addSmallTxt = document.querySelector(".add-section-txt-size");
+/* Section Snap */
+function secSnapChange() {
+    if (secSnap.checked) {
+        document.body.classList.add("additional-sec-snap");
+    }
+    else {
+        document.body.classList.remove("additional-sec-snap");
+    }
+}
+secSnapChange();
+secSnap?.addEventListener("click", secSnapChange);
+/* Small Text */
+function secAddSecSmallText() {
+    if (addSmallTxt.checked) {
+        document.body.classList.add("additional-sec-small-txt");
+    }
+    else {
+        document.body.classList.remove("additional-sec-small-txt");
+    }
+}
+secAddSecSmallText();
+addSmallTxt?.addEventListener("click", secAddSecSmallText);
 //*--|*|--*\\_____// Headings \\_____//*--|*|--*\\
 // Elements
 const headDesignDivs = document.querySelectorAll(".pdf-head-design");

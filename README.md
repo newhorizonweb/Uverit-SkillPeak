@@ -62,6 +62,9 @@ The only exception is the "Languages" subsection. It has an input for the langua
 This section look similar to the Expierience and Edication sections.
 The inputs are: referent's name, company, relationship, e-mail, phone number, and description.
 
+There is also an additional info custom section. 
+The user can customize the title. It functions like a description text area - the user can input content like privacy data consent, etc.
+
 ### Design
 
 This section contains many inputs to change the resume design. It's a more flexible, customizable way to decide on the design than pre-made templates.
@@ -74,6 +77,7 @@ The most important adjustments:
 - Text size (including line height input, and more)
 - Gaps, corner rounding, spacing, etc.
 - Photo and QR code settings (size, etc.)
+- Additional Info Section
 - Heading style
 - Language level style
 - Main section style

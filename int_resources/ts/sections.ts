@@ -655,13 +655,12 @@ function setFocus(element){
 
 
 
-//*--|*|--*\\_____// Professional Summary \\_____//*--|*|--*\\
+//*--|*|--*\\_____// Professional Summary & Additional Info \\_____//*--|*|--*\\
 
 
 
-const profSummary:HTMLElement | null = document.querySelector(".prof-summary-section");
-const profSummaryInput:HTMLElement | null = profSummary!.querySelector(".sec-summary");
-const profSumBtnsDiv:HTMLElement | null = profSummary!.querySelector(".list-desc-btns");
+const infoFields:NodeListOf<Element> = document.querySelectorAll(".info-field-section");
+const addInfoName:HTMLInputElement | null = document.querySelector(".sec-add-sec-name");
 
 
 const boldBtnObj:Object = {
@@ -699,102 +698,6 @@ function isSelectionUnderline(){
     return isState;
 }
 
-function addSummaryButtons(){
-    if(profSummaryInput){
-
-        // For some reason the div is not considered empty 
-        // It causes bugs with the buttons (jumping to the next line) and the placeholder
-        profSummaryInput.innerHTML = "";
-
-        // Create the buttons
-        const boldBtn:HTMLElement = createBtn(boldBtnObj, 0);
-        boldBtn.innerHTML = "B";
-
-        const italicBtn:HTMLElement = createBtn(italicBtnObj, 0);
-        italicBtn.innerHTML = "I";
-
-        const underlineBtn:HTMLElement = createBtn(underlineBtnObj, 0);
-        underlineBtn.innerHTML = "U";
-
-        const nrListBtn:HTMLElement = createBtn(nrListBtnObj, 0);
-        nrListBtn.innerHTML = numberListIcon;
-
-        const bpListBtn:HTMLElement = createBtn(bpListBtnObj, 0);
-        bpListBtn.innerHTML = bpListIcon;
-
-        // Append the buttons
-        profSumBtnsDiv?.appendChild(boldBtn);
-        profSumBtnsDiv?.appendChild(italicBtn);
-        profSumBtnsDiv?.appendChild(underlineBtn);
-
-        profSumBtnsDiv?.appendChild(nrListBtn);
-        profSumBtnsDiv?.appendChild(bpListBtn);
-
-        // Make the buttons do their job #necessary_comment
-        boldBtn.addEventListener("click", () => {
-            boldBtn.classList.toggle("desc-btn-active");
-            const textState:boolean = isSelectionBold();
-
-            if (boldBtn.classList.contains("desc-btn-active")){
-                document.execCommand("bold");
-            } else if (textState){
-                document.execCommand("bold");
-            }
-        });
-        italicBtn.addEventListener("click", () => {
-            italicBtn.classList.toggle("desc-btn-active");
-            const textState:boolean = isSelectionItalic();
-
-            if (italicBtn.classList.contains("desc-btn-active")){
-                document.execCommand("italic");
-            } else if (textState){
-                document.execCommand("italic");
-            }
-        });
-        underlineBtn.addEventListener("click", () => {
-            underlineBtn.classList.toggle("desc-btn-active");
-            const textState:boolean = isSelectionUnderline();
-
-            if (underlineBtn.classList.contains("desc-btn-active")){
-                document.execCommand("underline");
-            } else if (textState){
-                document.execCommand("underline");
-            }
-        });
-
-        let currentListNum:number = 1;
-        nrListBtn.addEventListener("click", () => {
-            if (profSummaryInput.innerHTML != ""){
-                profSummaryInput.innerHTML += `<br>${currentListNum}.&nbsp;`;
-            } else {
-                profSummaryInput.innerHTML += `${currentListNum}.&nbsp;`;
-            }
-
-            nrListBtn.classList.toggle("desc-btn-active");
-            textAreaInput(profSummaryInput, maxSumDescLength);
-            setFocus(profSummaryInput);
-            currentListNum++
-        });
-
-        bpListBtn.addEventListener("click", () => {
-            if (profSummaryInput.innerHTML != ""){
-                profSummaryInput.innerHTML += `<br>&#x2022;&nbsp;`;
-            } else {
-                profSummaryInput.innerHTML += `&#x2022;&nbsp;`;
-            }
-
-            bpListBtn.classList.toggle("desc-btn-active");
-            textAreaInput(profSummaryInput, maxSumDescLength);
-            setFocus(profSummaryInput);
-        });
-
-    }
-}
-addSummaryButtons();
-
-// Insert the Summary content to the PDF
-const maxSumDescLength:number = 600; 
-
 function textAreaInput(inputElem, maxLength){
 
     // Change the element value to the input value
@@ -820,11 +723,136 @@ function textAreaInput(inputElem, maxLength){
 
 }
 
-if(profSummaryInput){
-    profSummaryInput.addEventListener("input", function(){
-        textAreaInput(profSummaryInput, maxSumDescLength);
-    });
+// Add buttons and listen to any input
+infoFields.forEach(function(infoField){
+
+    const infoFieldInput:HTMLElement | null = infoField!.querySelector(".sec-info-field");
+    const infoFieldBtnsDiv:HTMLInputElement | null = infoField!.querySelector(".list-desc-btns");
+
+    function addinfoFieldButtons(){
+        if(infoFieldInput){
+
+            // For some reason the div is not considered empty 
+            // It causes bugs with the buttons (jumping to the next line) and the placeholder
+            infoFieldInput.innerHTML = "";
+
+            // Create the buttons
+            const boldBtn:HTMLElement = createBtn(boldBtnObj, 0);
+            boldBtn.innerHTML = "B";
+
+            const italicBtn:HTMLElement = createBtn(italicBtnObj, 0);
+            italicBtn.innerHTML = "I";
+
+            const underlineBtn:HTMLElement = createBtn(underlineBtnObj, 0);
+            underlineBtn.innerHTML = "U";
+
+            const nrListBtn:HTMLElement = createBtn(nrListBtnObj, 0);
+            nrListBtn.innerHTML = numberListIcon;
+
+            const bpListBtn:HTMLElement = createBtn(bpListBtnObj, 0);
+            bpListBtn.innerHTML = bpListIcon;
+
+            // Append the buttons
+            infoFieldBtnsDiv?.appendChild(boldBtn);
+            infoFieldBtnsDiv?.appendChild(italicBtn);
+            infoFieldBtnsDiv?.appendChild(underlineBtn);
+
+            infoFieldBtnsDiv?.appendChild(nrListBtn);
+            infoFieldBtnsDiv?.appendChild(bpListBtn);
+
+            // Make the buttons do their job #necessary_comment
+            boldBtn.addEventListener("click", () => {
+                boldBtn.classList.toggle("desc-btn-active");
+                const textState:boolean = isSelectionBold();
+
+                if (boldBtn.classList.contains("desc-btn-active")){
+                    document.execCommand("bold");
+                } else if (textState){
+                    document.execCommand("bold");
+                }
+            });
+            italicBtn.addEventListener("click", () => {
+                italicBtn.classList.toggle("desc-btn-active");
+                const textState:boolean = isSelectionItalic();
+
+                if (italicBtn.classList.contains("desc-btn-active")){
+                    document.execCommand("italic");
+                } else if (textState){
+                    document.execCommand("italic");
+                }
+            });
+            underlineBtn.addEventListener("click", () => {
+                underlineBtn.classList.toggle("desc-btn-active");
+                const textState:boolean = isSelectionUnderline();
+
+                if (underlineBtn.classList.contains("desc-btn-active")){
+                    document.execCommand("underline");
+                } else if (textState){
+                    document.execCommand("underline");
+                }
+            });
+
+            let currentListNum:number = 1;
+            nrListBtn.addEventListener("click", () => {
+                if (infoFieldInput.innerHTML != ""){
+                    infoFieldInput.innerHTML += `<br>${currentListNum}.&nbsp;`;
+                } else {
+                    infoFieldInput.innerHTML += `${currentListNum}.&nbsp;`;
+                }
+
+                nrListBtn.classList.toggle("desc-btn-active");
+                textAreaInput(infoFieldInput, maxSumDescLength);
+                setFocus(infoFieldInput);
+                currentListNum++
+            });
+
+            bpListBtn.addEventListener("click", () => {
+                if (infoFieldInput.innerHTML != ""){
+                    infoFieldInput.innerHTML += `<br>&#x2022;&nbsp;`;
+                } else {
+                    infoFieldInput.innerHTML += `&#x2022;&nbsp;`;
+                }
+
+                bpListBtn.classList.toggle("desc-btn-active");
+                textAreaInput(infoFieldInput, maxSumDescLength);
+                setFocus(infoFieldInput);
+            });
+
+        }
+    }
+    addinfoFieldButtons();
+
+    // Insert the Summary content to the PDF
+    const maxSumDescLength:number = 1000; 
+
+    if(infoFieldInput){
+        infoFieldInput.addEventListener("input", function(){
+            textAreaInput(infoFieldInput, maxSumDescLength);
+        });
+    }
+
+});
+
+// Append the additional info section name on page load
+function appendAddInfoSecName(){
+    const sectionName:string = "Additional Info";
+
+    if (addInfoName){
+        addInfoName.value = sectionName;
+
+        const outputClass:string | null = addInfoName!.getAttribute("data-output");
+        const outputElem:HTMLElement | null = document.querySelector("."+outputClass);
+        outputElem!.innerHTML = sectionName;
+        
+        addInfoName?.addEventListener("input", function(){
+            if (addInfoName.value.length < 1){
+                outputElem!.innerHTML = sectionName;
+            }
+        });
+    }
 }
+appendAddInfoSecName();
+
 
 
 
