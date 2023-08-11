@@ -702,11 +702,20 @@ function addLink() {
         newLinkDiv?.appendChild(deleteLinkBtn);
         pdfLinks?.appendChild(newLinkDiv);
         // Append the link name and url output to the pdf
-        const pdfOutput = document.createElement("div");
+        const pdfOutput = document.createElement("a");
         pdfOutput.classList.add("pdf-sec-elem");
         appendOutput(pdfOutput, newInput1);
         appendOutput(pdfOutput, newInput2);
         pdfLinksOutput?.appendChild(pdfOutput);
+        // Update the link (clickable parent element)
+        newInput2.addEventListener("input", function () {
+            let linkHref = newInput2.value;
+            // Check if the link has HTTP/HTTPS - add it if it does not
+            if (!linkHref.startsWith("http://") && !linkHref.startsWith("https://")) {
+                linkHref = "https://" + linkHref;
+            }
+            pdfOutput.setAttribute("href", linkHref);
+        });
         // Set focus on the input
         newInput1.focus();
         // Change the input label

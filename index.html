@@ -34,7 +34,7 @@
     <script src="int_resources/js/pdf.js" defer></script>
 </head>
     
-<body>
+<body class="hide-modal">
 
     <!-- LANDING PAGE -->
     <section class="landing-page">
@@ -284,8 +284,13 @@
 
         <div class="subsection sec-links">
             <div class="sec-subhead-div">
-                <h4 class="sec-subhead">Links</h4>
+                <h4 class="sec-subhead">Links<span class="subhead-indicator"> ?</span></h4>
                 <div class="sec-subhead-line"></div>
+
+                <div class="subhead-info">
+                    <p>If you use a link without "https://" at the beginning, it will be added automatically to make the link clickable in the PDF document.</p>
+                    <p>If the link starts with "http://", do not omit it - otherwise, the link might not function properly.</p>
+                </div>
             </div>
 
             <div class="sec-link-list"></div>
