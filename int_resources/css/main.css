@@ -723,29 +723,130 @@ nav {
   transition: 0.25s;
 }
 
-.fn-btn svg * {
+.fn-btn * {
   stroke: var(--txt1);
   stroke-width: 10px;
   transition: 0.1s;
 }
 
-.fn-btn:hover svg * {
+.fn-btn:hover * {
   stroke: #FFF;
 }
 
+/* Function Nav - Expand PDF */
+.expand-pdf-btn:hover svg {
+  transform-origin: 50% 50%;
+  animation: magnifyingGlassIcon 0.7s cubic-bezier(0.5, 0.5, 1, 1);
+}
+
+.expand-pdf-btn:hover .anim-elem {
+  transform-origin: 68px 68px;
+  animation: magnifyingGlassElem 0.45s ease-in-out;
+}
+
+@keyframes magnifyingGlassIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes magnifyingGlassElem {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+    stroke-width: 16px;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Function Nav - PDF Button */
+.pdf-btn:hover .anim-elem1 {
+  animation: pdfBtnElem1 0.7s ease-in-out;
+}
+
+.pdf-btn:hover .anim-elem2 {
+  animation: pdfBtnElem2 0.45s cubic-bezier(0.5, 0.5, 1, 1);
+}
+
+@keyframes pdfBtnElem1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -30px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, -15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes pdfBtnElem2 {
+  0% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+  40% {
+    transform: translate(0, -40%) scale(1, 1.4);
+  }
+  60% {
+    transform: translate(0, -20%) scale(1, 1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+}
 /* Function Nav - Settings Button */
-.fn-btn.open-settings {
+.settings-btn.open-settings {
   background-color: var(--color1);
 }
 
-.fn-btn.open-settings svg {
+.settings-btn.open-settings svg {
   transform: rotate(180deg);
 }
 
-.fn-btn.open-settings svg * {
+.settings-btn.open-settings svg * {
   stroke: #FFF;
 }
 
+.settings-btn:hover svg {
+  animation: settingsBtn 0.7s ease-in-out;
+}
+
+@keyframes settingsBtn {
+  0% {
+    padding: 0;
+  }
+  25% {
+    padding: 12%;
+  }
+  40% {
+    padding: 2%;
+  }
+  55% {
+    padding: 7%;
+  }
+  100% {
+    padding: 0;
+  }
+}
 /* Nav - media */
 @media screen and (width <= 1024px) {
   nav {
@@ -1160,6 +1261,6 @@ nav {
   transition: 0.15s;
 }
 
-.settings-info *:hover {
+.settings-info:hover * {
   color: var(--color1);
 }

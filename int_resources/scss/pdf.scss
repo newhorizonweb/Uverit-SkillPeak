@@ -381,6 +381,10 @@
     margin-top:auto;
 }
 
+.pdf-add-info{
+    text-wrap:balance;
+}
+
 .additional-sec-small-txt .pdf-add-info{
     font-size:calc(var(--text-size-input) * 0.75);
 }
