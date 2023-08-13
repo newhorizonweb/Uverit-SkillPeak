@@ -487,6 +487,268 @@ nav {
   color: var(--color2);
 }
 
+/* Nav Icon 1 */
+.nav-elem1:not(.curr-section):hover .nav-icon svg {
+  animation: navAnimElem 0.6s ease-in-out;
+}
+
+@keyframes navAnimElem {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Nav Icon 2 */
+.nav-elem2:not(.curr-section):hover .nav-icon svg .anim-elem {
+  animation: navAnimElem2 0.6s ease-in-out;
+  transform-origin: 0% 58px;
+}
+.nav-elem2:not(.curr-section) .nav-icon svg .anim-elem2 {
+  stroke-width: 0;
+  fill: var(--shade1) !important;
+}
+
+@keyframes navAnimElem2 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  30% {
+    transform: rotateX(70deg);
+  }
+  50% {
+    transform: rotateX(40deg);
+  }
+  80% {
+    transform: rotateX(60deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+/* Nav Icon 3 */
+.nav-elem3:not(.curr-section):hover .nav-icon svg {
+  animation: navAnimElem 0.6s ease-in-out;
+}
+.nav-elem3:not(.curr-section):hover .nav-icon svg .anim-elem {
+  animation: navAnimElem3 0.6s ease-in-out;
+  transform-origin: 185px 130px;
+}
+
+@keyframes navAnimElem3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Nav Icon 4 */
+.nav-elem4:not(.curr-section):hover .nav-icon svg {
+  animation: navAnimElem 0.6s ease-in-out;
+}
+.nav-elem4:not(.curr-section):hover .nav-icon svg .anim-elem {
+  animation: navAnimElem4 0.6s ease-in-out;
+}
+
+@keyframes navAnimElem4 {
+  0% {
+    stroke-dasharray: 70;
+    stroke-dashoffset: 70;
+  }
+}
+/* Nav Icon 5 */
+.nav-elem5:not(.curr-section):hover .nav-icon svg {
+  animation: navAnimElem 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem1 {
+  animation: navAnimElem4a 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem2 {
+  animation: navAnimElem4b 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem3 {
+  animation: navAnimElem4c 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem4 {
+  animation: navAnimElem4d 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem5 {
+  animation: navAnimElem4e 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem6 {
+  animation: navAnimElem4f 0.6s ease-in-out;
+}
+.nav-elem5:not(.curr-section):hover .nav-icon svg .anim-elem7 {
+  animation: navAnimElem4g 0.6s ease-in-out;
+  transform-origin: 100px 72px;
+}
+
+@keyframes navAnimElem4a {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(-50px, -75px);
+  }
+  80% {
+    transform: translate(-50px, -75px);
+  }
+}
+@keyframes navAnimElem4b {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(-50px, 0);
+  }
+  80% {
+    transform: translate(-50px, 0);
+  }
+}
+@keyframes navAnimElem4c {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(-50px, 75px);
+  }
+  80% {
+    transform: translate(-50px, 75px);
+  }
+}
+@keyframes navAnimElem4d {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(50px, 75px);
+  }
+  80% {
+    transform: translate(50px, 75px);
+  }
+}
+@keyframes navAnimElem4e {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(50px, 0);
+  }
+  80% {
+    transform: translate(50px, 0);
+  }
+}
+@keyframes navAnimElem4f {
+  0% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(50px, -75px);
+  }
+  80% {
+    transform: translate(50px, -75px);
+  }
+}
+@keyframes navAnimElem4g {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+    stroke-width: 14px;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Nav Icon 6 */
+.nav-elem6:not(.curr-section):hover .nav-icon svg .anim-elem1 {
+  animation: navAnimElem6a 0.6s ease-in-out forwards;
+  transform-origin: center;
+}
+.nav-elem6:not(.curr-section):hover .nav-icon svg .anim-elem2a * {
+  animation: navAnimElem6b1 0.6s ease-in-out;
+}
+.nav-elem6:not(.curr-section):hover .nav-icon svg .anim-elem2b * {
+  animation: navAnimElem6b2 0.6s ease-in-out;
+}
+.nav-elem6:not(.curr-section) .nav-icon svg .anim-elem2 * {
+  fill: var(--shade1);
+}
+
+@keyframes navAnimElem6a {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes navAnimElem6b1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-8px, -8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes navAnimElem6b2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8px, 8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+/* Nav Icon 7 */
+.nav-elem7:not(.curr-section):hover .nav-icon svg .anim-elem1 {
+  animation: navAnimElem7 0.6s ease-in-out;
+  transform-origin: bottom right;
+}
+
+@keyframes navAnimElem7 {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 /* Nav - Mark */
 .nav-mark {
   width: var(--elemSize);
