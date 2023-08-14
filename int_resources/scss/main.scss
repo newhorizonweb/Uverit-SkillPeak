@@ -583,9 +583,9 @@ nav{
     color:var(--color2);
 }
 
-            /* Nav Icon 1 */
+            /* Nav Icons */
 
-.nav-elem1:not(.curr-section){
+.nav-elem:not(.curr-section){
 
     &:hover  .nav-icon svg{
         animation:navAnimElem 0.6s ease-in-out;
@@ -611,18 +611,55 @@ nav{
     }
 }
 
+            /* Nav Icon 1 */
+
+.nav-elem1:not(.curr-section){
+
+    &:hover .nav-icon svg .anim-elem1{
+        animation:navAnimElem1 0.6s ease-in-out;
+        transform-origin:center;
+    }
+
+}
+
+@keyframes navAnimElem1{
+    0%{
+        transform:rotate(0deg);
+    }
+    30%{
+        transform:rotate(-30deg);
+    }
+    55%{
+        transform:rotate(20deg);
+    }
+    80%{
+        transform:rotate(-10deg);
+    }
+    100%{
+        transform:rotate(0deg);
+    }
+}
+
             /* Nav Icon 2 */
 
-.nav-elem2:not(.curr-section){
-
-    &:hover .nav-icon svg .anim-elem{
-        animation:navAnimElem2 0.6s ease-in-out;
-        transform-origin:0% 58px;
-    }
+.nav-elem2{
 
     .nav-icon svg .anim-elem2{
         stroke-width:0;
-        fill:var(--shade1) !important;
+        fill:var(--shade1);
+    }
+
+    .nav-icon svg .anim-elem3{
+        fill:var(--shade1);
+    }
+
+    &:not(.curr-section):hover .nav-icon svg .anim-elem{
+        animation:navAnimElem2 0.6s ease-in-out;
+        transform-origin:0% 60px;
+    }
+
+    &.curr-section .nav-icon svg .anim-elem2{
+        fill:var(--color1);
     }
 
 }
@@ -631,14 +668,11 @@ nav{
     0%{
         transform:rotateX(0deg);
     }
-    30%{
-        transform:rotateX(70deg);
+    20%{
+        transform:rotateX(130deg);
     }
-    50%{
-        transform:rotateX(40deg);
-    }
-    80%{
-        transform:rotateX(60deg);
+    70%{
+        transform:rotateX(130deg);
     }
     100%{
         transform:rotateX(0deg);
@@ -648,10 +682,6 @@ nav{
             /* Nav Icon 3 */
 
 .nav-elem3:not(.curr-section){
-
-    &:hover .nav-icon svg{
-        animation:navAnimElem 0.6s ease-in-out;
-    }
 
     &:hover .nav-icon svg .anim-elem{
         animation:navAnimElem3 0.6s ease-in-out;
@@ -682,10 +712,6 @@ nav{
 
 .nav-elem4:not(.curr-section){
 
-    &:hover .nav-icon svg{
-        animation:navAnimElem 0.6s ease-in-out;
-    }
-
     &:hover .nav-icon svg .anim-elem{
         animation:navAnimElem4 0.6s ease-in-out;
     }
@@ -694,8 +720,8 @@ nav{
 
 @keyframes navAnimElem4{
     0%{
-        stroke-dasharray:70;
-        stroke-dashoffset:70;
+        stroke-dasharray:100;
+        stroke-dashoffset:100;
     }
 }
 
@@ -704,7 +730,6 @@ nav{
 .nav-elem5:not(.curr-section){
 
     &:hover .nav-icon svg{
-        animation:navAnimElem 0.6s ease-in-out;
 
         .anim-elem1{
             animation:navAnimElem4a 0.6s ease-in-out;
@@ -844,7 +869,6 @@ nav{
         fill:var(--shade1);
     }
 
-
 }
 
 @keyframes navAnimElem6a{
@@ -879,7 +903,6 @@ nav{
         transform:translate(0, 0);
     }
 }
-            
 
             /* Nav Icon 7 */
 
