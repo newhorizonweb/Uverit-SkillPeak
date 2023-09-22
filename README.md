@@ -27,6 +27,7 @@ There are 7 sections:
 - Design
 
 Each section contains inputs for the info that will appear on the resume. All changes are updated automatically.
+The section title can be changed directly in the resume preview, just as it were normal, editable text.
 
 ### Profile
 

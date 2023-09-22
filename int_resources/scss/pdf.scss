@@ -451,6 +451,12 @@
     font-size:var(--heading-size-input);
     text-transform:capitalize;
     line-height:var(--line-height-input);
+
+    &:hover,
+    &:focus{
+        color:var(--pdf-color-main);
+    }
+
 }
 
 .pdf-aside .pdf-sec-heading{

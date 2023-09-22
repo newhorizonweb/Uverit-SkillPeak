@@ -401,6 +401,9 @@
   text-transform: capitalize;
   line-height: var(--line-height-input);
 }
+.pdf-sec-heading:hover, .pdf-sec-heading:focus {
+  color: var(--pdf-color-main);
+}
 
 .pdf-aside .pdf-sec-heading {
   --pdf-bg:var(--pdf-color-aside);
