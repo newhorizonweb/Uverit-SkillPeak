@@ -160,7 +160,7 @@ const asideTxtWarning = document.querySelector(".color-warning");
 const asideTxtBase = "Choose your color palette.";
 const asideTxtWarn = "The text and aside background color may not have  sufficient contrast.";
 const baseColors = [
-    "#07ABDB",
+    "#07ABDB", // Main Base Color
     "#223856" // Aside Base Color
 ];
 // Color lightness
