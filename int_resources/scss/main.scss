@@ -57,6 +57,7 @@
 
 .lp-content-inner{
     width:min(640px, 100%);
+    height:100%;
     padding:calc(var(--size1) * 4) var(--size1);
     box-sizing:border-box;
     position:relative;
@@ -76,7 +77,7 @@
         /* Landing Page - Content */
 
 .lp-logo{
-    width:min(200px, 70%);
+    width:min(200px, 60%);
     aspect-ratio:3.5/1;
 }
 
@@ -85,7 +86,7 @@
 }
 
 .lp-content .main-header{
-    margin-bottom:calc(var(--size1) * 2);
+    margin-bottom:calc(var(--size2) * 2);
 }
 
 .lp-heading{
@@ -101,12 +102,15 @@
 .lp-heading:after{
     content:"";
     width:100%;
-    height:2px;
+    height:4px;
+
     position:absolute;
-    bottom:-4px;
+    bottom:-8px;
     left:0;
     transform:translate(0, -50%);
+
     background-color:var(--color1);
+    border-radius:100px;
 }
 
 .lp-txt{
@@ -1327,6 +1331,7 @@ nav{
 
     nav{
         --elemRatio:0.8;
+        --navPadding:10px;
 
         height:calc(var(--elemSize) + (var(--size1) * 2))
     }
@@ -1413,9 +1418,16 @@ nav{
         display:none;
     }
 
-    .nav-mark{
+    .nav-mark-inner{
         top:7px;
+        transform:translate(-50%, 0);
         transition:0.25s;
+    }
+
+    .nav-mark{
+        height:100%;
+        top:0;
+        bottom:auto;
     }
 
     .nav-inner:has(.nav-elem.curr-pos) .nav-mark{
@@ -1426,29 +1438,30 @@ nav{
         display:none;
     }
 
-    .open-nav:has(:nth-of-type(1).curr-pos) .nav-mark{
-        top:7px;
+    .nav-mark-inner,
+    .open-nav:has(:nth-of-type(1).curr-pos) .nav-mark-inner{
+        top:10px;
     }
-    .open-nav:has(:nth-of-type(1).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) + 7px);
+    .open-nav:has(:nth-of-type(1).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(2).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 2 + 7px);
+    .open-nav:has(:nth-of-type(2).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 2 + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(3).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 3 + 7px);
+    .open-nav:has(:nth-of-type(3).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 3 + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(4).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 4 + 7px);
+    .open-nav:has(:nth-of-type(4).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 4 + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(5).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 5 + 7px);
+    .open-nav:has(:nth-of-type(5).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 5 + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(6).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 6 + 7px);
+    .open-nav:has(:nth-of-type(6).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 6 + var(--navPadding));
     }
-    .open-nav:has(:nth-of-type(7).curr-pos) .nav-mark{
-        top:calc(var(--elemSize) * var(--elemRatio) * 7 + 7px);
+    .open-nav:has(:nth-of-type(7).curr-pos) .nav-mark-inner{
+        top:calc(var(--elemSize) * var(--elemRatio) * 7 + var(--navPadding));
     }
 
     .nav-arc,
@@ -1462,6 +1475,10 @@ nav{
 
     nav{
         --elemSize:60px;
+    }
+
+    .nav-mark-inner{
+        transform:translate(-50%, 2px);
     }
 
     .nav-close span{
@@ -1483,7 +1500,7 @@ nav{
     nav{
         --elemSize:54px;
     }
-
+    
     .nav-icon svg{
         width:calc(85% - 24px);
     }

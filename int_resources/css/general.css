@@ -424,7 +424,7 @@ main {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: font1-semibold;
-  font-size: min(56px, 12vw);
+  font-size: min(52px, 12vw);
   text-align: center;
   line-height: 1.2;
   filter: drop-shadow(0 0 1px var(--shade2));
