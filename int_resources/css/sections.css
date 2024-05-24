@@ -1247,6 +1247,10 @@
   }
 }
 /* Section 6 - References & Additional Info */
+.pdf-add-sec-name.hide-heading {
+  display: none;
+}
+
 .sec-additional .section-item {
   flex: 100%;
 }

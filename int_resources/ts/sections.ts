@@ -835,22 +835,37 @@ infoFields.forEach(function(infoField){
 
 // Append the additional info section name on page load
 function appendAddInfoSecName(){
+
     const sectionName:string = "Additional Info";
 
     if (addInfoName){
-        addInfoName.value = sectionName;
-
-        const outputClass:string | null = addInfoName!.getAttribute("data-output");
-        const outputElem:HTMLElement | null = document.querySelector("."+outputClass);
-        outputElem!.innerHTML = sectionName;
         
-        addInfoName?.addEventListener("input", function(){
-            if (addInfoName.value.length < 1){
-                outputElem!.innerHTML = sectionName;
-            }
-        });
+        const outputClass:string | null =
+            addInfoName!.getAttribute("data-output");
+        const outputElem:HTMLElement | null =
+            document.querySelector("."+outputClass);
+
+        if (outputElem){
+
+            // Hide the heading if the input is empty
+            addInfoName?.addEventListener("input", function(){
+                if (addInfoName.value.length < 1){
+                    outputElem.classList.add("hide-heading");
+                } else {
+                    outputElem.classList.remove("hide-heading");
+                }
+            });
+            
+            // Change the heading
+            addInfoName.value = sectionName;
+            outputElem.innerHTML = sectionName;
+
+        }
+
     }
+
 }
+
 appendAddInfoSecName();
 
 

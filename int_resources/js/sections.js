@@ -593,15 +593,22 @@ infoFields.forEach(function (infoField) {
 function appendAddInfoSecName() {
     const sectionName = "Additional Info";
     if (addInfoName) {
-        addInfoName.value = sectionName;
         const outputClass = addInfoName.getAttribute("data-output");
         const outputElem = document.querySelector("." + outputClass);
-        outputElem.innerHTML = sectionName;
-        addInfoName?.addEventListener("input", function () {
-            if (addInfoName.value.length < 1) {
-                outputElem.innerHTML = sectionName;
-            }
-        });
+        if (outputElem) {
+            // Hide the heading if the input is empty
+            addInfoName?.addEventListener("input", function () {
+                if (addInfoName.value.length < 1) {
+                    outputElem.classList.add("hide-heading");
+                }
+                else {
+                    outputElem.classList.remove("hide-heading");
+                }
+            });
+            // Change the heading
+            addInfoName.value = sectionName;
+            outputElem.innerHTML = sectionName;
+        }
     }
 }
 appendAddInfoSecName();
