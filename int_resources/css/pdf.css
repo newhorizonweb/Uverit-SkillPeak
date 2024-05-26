@@ -146,7 +146,11 @@
 }
 
 .insert-photo .insert-logo-img {
-  width: var(--photo-size-input);
+  width: calc((var(--aside-width-input) - var(--page-padding-input)) * var(--photo-size-num));
+  min-height: calc((var(--aside-width-input) - var(--page-padding-input)) * var(--photo-size-num) / 4 * 3);
+  max-height: calc((var(--aside-width-input) - var(--page-padding-input)) * var(--photo-size-num) / 3 * 4);
+  aspect-ratio: auto;
+  box-sizing: border-box;
   top: calc(var(--photo-border-input) * -1);
   border: solid var(--photo-border-input) #FAFAFA;
   border-radius: var(--photo-round-input);
@@ -183,6 +187,12 @@
 }
 
 /* PDF Aside - Skills & Hobbies */
+.skills-layout-col .skill-append,
+.hobby-layout-col .hobby-append {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .pdf-elem-tiles > div {
   display: flex;
   flex-wrap: wrap;
@@ -249,7 +259,7 @@
 }
 
 .pdfc-inner :is(.pdf-first-name, .pdf-last-name) {
-  font-size: calc(var(--heading-size-input) * 2);
+  font-size: calc(var(--heading-size-input) * 1.8);
 }
 
 .pdfc-inner .pdf-occupation {
@@ -280,6 +290,10 @@
   flex-wrap: wrap;
 }
 
+:is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec, .pdf-cour) .pdf-list-inner {
+  justify-content: flex-end;
+}
+
 .pdf-list-inner p:empty {
   display: none;
 }
@@ -295,6 +309,21 @@
 
 :is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec) .pdf-list-inner > .app-elem:nth-of-type(1) {
   font-weight: 800;
+}
+
+:is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec, .pdf-cour) .pdf-list-inner > :is(.app-elem:nth-of-type(2), .app-elem:nth-of-type(3)) {
+  transition: color 0.1s ease-in-out;
+}
+:is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec, .pdf-cour) .pdf-list-inner > :is(.app-elem:nth-of-type(2), .app-elem:nth-of-type(3)):is(:focus, :hover) {
+  color: var(--pdf-color-main);
+}
+
+:is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec, .pdf-cour) .pdf-list-inner:has(> :is(.app-elem:nth-of-type(2), .app-elem:nth-of-type(3)):not(:empty)) > .app-elem:nth-of-type(1) {
+  max-width: calc(100% - (var(--text-size-input) * 12 + var(--text-size-input) * 2));
+}
+
+.balanced-txt :is(.pdf-exp-sec, .pdf-edu-sec, .pdf-ref-sec, .pdf-cour) .pdf-list-inner > .app-elem:nth-of-type(1) {
+  text-wrap: pretty;
 }
 
 .pdf-list-inner > .app-elem:nth-of-type(2) {
@@ -400,6 +429,7 @@
   font-size: var(--heading-size-input);
   text-transform: capitalize;
   line-height: var(--line-height-input);
+  transition: color 0.1s ease-in-out;
 }
 .pdf-sec-heading:hover, .pdf-sec-heading:focus {
   color: var(--pdf-color-main);

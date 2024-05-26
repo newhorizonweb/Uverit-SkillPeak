@@ -317,19 +317,19 @@ function pdfHeadingSize() {
     let inpVal = "";
     switch (elem.value) {
         case "1":
-            inpVal = "1.9cqw";
+            inpVal = "1.8cqw";
             break;
         case "2":
-            inpVal = "2.05cqw";
+            inpVal = "2.0cqw";
             break;
         case "3":
             inpVal = "2.2cqw";
             break;
         case "4":
-            inpVal = "2.35cqw";
+            inpVal = "2.4cqw";
             break;
         case "5":
-            inpVal = "2.5cqw";
+            inpVal = "2.6cqw";
             break;
     }
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
@@ -453,6 +453,30 @@ function pdfGeneralRadius() {
 }
 pdfGeneralRadius();
 generalRound?.addEventListener("input", pdfGeneralRadius);
+/* Skills Layout */
+const skillsLayoutToggle = document.querySelector(".skills-layout-switch");
+function skillsLayoutChange() {
+    if (skillsLayoutToggle.checked) {
+        document.body.classList.add("skills-layout-col");
+    }
+    else {
+        document.body.classList.remove("skills-layout-col");
+    }
+}
+skillsLayoutChange();
+skillsLayoutToggle?.addEventListener("click", skillsLayoutChange);
+/* Hobbies Layout */
+const hobbyLayoutToggle = document.querySelector(".hobby-layout-switch");
+function hobbyLayoutChange() {
+    if (hobbyLayoutToggle.checked) {
+        document.body.classList.add("hobby-layout-col");
+    }
+    else {
+        document.body.classList.remove("hobby-layout-col");
+    }
+}
+hobbyLayoutChange();
+hobbyLayoutToggle?.addEventListener("click", hobbyLayoutChange);
 //*--|*|--*\\_____// Spacing \\_____//*--|*|--*\\
 // Elements
 const sectionSpacing = document.querySelector(".section-spacing-input");
@@ -520,24 +544,31 @@ const photoBorderColor = document.querySelector(".photo-border-color-input");
 /* Size */
 function pdfPhotoSize() {
     const elem = photoSize;
+    let numVal = "";
     let inpVal = "";
     switch (elem.value) {
         case "1":
+            numVal = "0.4";
             inpVal = "40%";
             break;
         case "2":
+            numVal = "0.5";
             inpVal = "50%";
             break;
         case "3":
+            numVal = "0.6";
             inpVal = "60%";
             break;
         case "4":
+            numVal = "0.7";
             inpVal = "70%";
             break;
         case "5":
+            numVal = "0.8";
             inpVal = "80%";
             break;
     }
+    document.documentElement.style.setProperty(`--photo-size-num`, numVal);
     document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
     const outputVal = "LVL " + elem.value;
     inputInfo(elem, outputVal);
@@ -546,14 +577,20 @@ pdfPhotoSize();
 photoSize?.addEventListener("input", pdfPhotoSize);
 /* Rounding */
 function pdfPhotoRadius() {
-    const elem = photoRound;
-    const inpVal = (parseFloat(elem.value) * 5).toString() + "%";
-    document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
-    const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
-    inputInfo(elem, outputVal);
+    const photoImg = document.querySelector(".insert-photo .insert-logo-img");
+    if (photoImg) {
+        const elem = photoRound;
+        const photoWidth = photoImg.offsetWidth ?? 0;
+        const inpVal = ((parseFloat(elem.value) * 5) * photoWidth / 100).toString() + "px";
+        document.documentElement.style.setProperty(`--${elem?.getAttribute("id")}`, inpVal);
+        const outputVal = (parseFloat(elem.value) * 10).toString() + "%";
+        inputInfo(elem, outputVal);
+    }
 }
 pdfPhotoRadius();
 photoRound?.addEventListener("input", pdfPhotoRadius);
+// Custom event when the photo is uploaded
+document.addEventListener("photoUploaded", pdfPhotoRadius);
 /* Border Width */
 function pdfPhotoBorder() {
     const elem = photoBorder;

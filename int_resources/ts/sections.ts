@@ -133,7 +133,13 @@ function insertImgElem(url, insertElements){
 
         // Append logo to the elements
         setTimeout(function(){
+
             logoElem.appendChild(logoImg);
+
+            // Dispatch a custom event to let the (photo radius setting)
+            const photoUploaded = new CustomEvent('photoUploaded');
+            document.dispatchEvent(photoUploaded);
+
         }, uploadTime);
         
     });
@@ -430,13 +436,18 @@ function addOutput(inputElem){
 }
 
 // Append output
-function appendOutput(appendTo, inputElem){
+function appendOutput(appendTo, inputElem, isEditable?: string){
 
     const outputClass:string = inputElem.getAttribute("data-output");
 
     // Create an element and append it
     const pdfOutput:HTMLElement = document.createElement("p");
     pdfOutput.classList.add("app-elem", outputClass);
+    
+    if (isEditable === "editable"){
+        pdfOutput.setAttribute("contentEditable", "true");
+    }
+
     appendTo?.appendChild(pdfOutput);
 
     inputElem.addEventListener("input", function(){
@@ -1502,8 +1513,8 @@ function addExperience(){
         appendGroup.classList.add("append-elem-group");
 
         appendOutput(pdfInnerList, jobTitleInp);
-        appendOutput(pdfInnerList, startDateInp);
-        appendOutput(pdfInnerList, endDateInp);
+        appendOutput(pdfInnerList, startDateInp, "editable");
+        appendOutput(pdfInnerList, endDateInp, "editable");
 
         appendOutput(appendGroup, compInp);
         appendOutput(appendGroup, locationInp);
@@ -2000,8 +2011,8 @@ function addEducation(){
         appendGroup.classList.add("append-elem-group");
 
         appendOutput(pdfInnerList, degreeInp);
-        appendOutput(pdfInnerList, startDateInp);
-        appendOutput(pdfInnerList, endDateInp);
+        appendOutput(pdfInnerList, startDateInp, "editable");
+        appendOutput(pdfInnerList, endDateInp, "editable");
 
         appendOutput(appendGroup, schoolNameInp);
         appendOutput(appendGroup, cityInp);
@@ -2288,8 +2299,8 @@ function addCourses(){
         pdfExpDiv.appendChild(pdfInnerList);
 
         appendOutput(pdfInnerList, courseInp);
-        appendOutput(pdfInnerList, startDateInp);
-        appendOutput(pdfInnerList, endDateInp);
+        appendOutput(pdfInnerList, startDateInp, "editable");
+        appendOutput(pdfInnerList, endDateInp, "editable");
         appendOutput(pdfInnerList, institInp);
 
         appendCour?.appendChild(pdfExpDiv);
